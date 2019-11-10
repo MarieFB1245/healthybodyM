@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Totalkcal_User"
+    android:background="@drawable/backcolor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/text"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status :"
+            android:textSize="30sp"
+            >
+        </TextView>
+
+
+
+        <TextView
+            android:id="@+id/statusname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Normal"
+            android:textSize="30sp"
+            >
+        </TextView>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/totalkcallaout"
+        android:layout_below="@id/text"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/totalkcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="totalkcal to day : "
+            android:textSize="30sp"
+            >
+        </TextView>
+
+
+
+        <TextView
+            android:id="@+id/numberkcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2000"
+            android:textSize="30sp"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/textkcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" kcal"
+            android:textSize="30sp"
+            >
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/totalkcallaout"
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/colorPrimary">
+
+        <Button
+            android:onClick="start"
+            android:text="start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></Button>
+
+    </LinearLayout>
+
+</RelativeLayout>
