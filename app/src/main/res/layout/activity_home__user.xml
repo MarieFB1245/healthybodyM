@@ -27,13 +27,42 @@
         android:layout_height="250dp"
         ></com.github.mikephil.charting.charts.PieChart>
 
+    <TextView
+        android:id="@+id/numberBMI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chart"
+        android:text="0"
+        android:textSize="25sp"></TextView>
+
+    <TextView
+        android:id="@+id/numberBMR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chart"
+        android:text="0"
+        android:textSize="25sp"></TextView>
+
+    <TextView
+        android:id="@+id/numberTDEE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chart"
+        android:text="0"
+        android:textSize="25sp"></TextView>
+    <TextView
+        android:id="@+id/numberTargete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chart"
+        android:text="0"
+        android:textSize="25sp"></TextView>
 
     <TextView
         android:id="@+id/textBMI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/chart"
-        android:layout_marginTop="0dp"
+        android:layout_below="@id/numberBMI"
         android:text="BMI"
         android:textSize="25sp"></TextView>
 
@@ -41,10 +70,9 @@
         android:id="@+id/textBMR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/chart"
+        android:layout_below="@id/numberBMR"
         android:layout_alignLeft="@id/textBMI"
-        android:layout_marginLeft="89dp"
-        android:layout_marginTop="-1dp"
+        android:layout_marginLeft="85dp"
         android:text="BMR"
         android:textSize="25sp"></TextView>
 
@@ -52,10 +80,9 @@
         android:id="@+id/textTDEE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/chart"
+        android:layout_below="@id/numberTDEE"
         android:layout_alignLeft="@id/textBMI"
-        android:layout_marginLeft="185dp"
-        android:layout_marginTop="-1dp"
+        android:layout_marginLeft="181dp"
         android:text="TDEE"
         android:textSize="25sp"></TextView>
 
@@ -63,10 +90,9 @@
         android:id="@+id/texttarget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/chart"
+        android:layout_below="@id/numberTargete"
         android:layout_alignLeft="@id/textBMI"
-        android:layout_marginLeft="284dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginLeft="283dp"
         android:text="Target"
         android:textSize="25sp"></TextView>
 </RelativeLayout>
