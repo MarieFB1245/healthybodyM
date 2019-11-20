@@ -13,7 +13,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/R1"
-    android:background="@color/colorPrimaryDark"
     >
 <Button
     android:layout_width="wrap_content"
@@ -28,7 +27,6 @@
         android:layout_below="@id/R1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         >
     <com.github.mikephil.charting.charts.PieChart
         android:layout_centerHorizontal="true"
@@ -40,11 +38,11 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:layout_marginTop="40sp"
         android:id="@+id/R3"
         android:layout_below="@id/R2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
         android:weightSum="4"
         android:orientation="horizontal"
         >
@@ -53,7 +51,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        android:background="#ff3399"
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:textSize="25sp"></TextView>
@@ -64,7 +61,6 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:gravity="center_horizontal"
-        android:background="#3399ff"
         android:layout_weight="1"
         android:textSize="25sp"></TextView>
 
@@ -74,7 +70,6 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:gravity="center_horizontal"
-        android:background="#ff00ff"
         android:layout_weight="1"
         android:textSize="25sp"></TextView>
     <TextView
@@ -83,7 +78,6 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:layout_weight="1"
-        android:background="#ff0000"
         android:gravity="center_horizontal"
         android:textSize="25sp"></TextView>
     </LinearLayout>
@@ -94,7 +88,6 @@
         android:layout_below="@id/R3"
         android:weightSum="4"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
         android:orientation="horizontal"
 
         >
@@ -104,7 +97,6 @@
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#ff0000"
             android:gravity="center_horizontal"
             android:text="BMI"
             android:textSize="25sp"></TextView>
@@ -114,7 +106,6 @@
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#ff3399"
             android:gravity="center_horizontal"
             android:text="BMR"
             android:textSize="25sp"></TextView>
@@ -126,7 +117,6 @@
         android:layout_height="wrap_content"
         android:text="TDEE"
         android:layout_weight="1"
-        android:background="#3399ff"
         android:gravity="center_horizontal"
         android:textSize="25sp"></TextView>
 
@@ -137,7 +127,6 @@
         android:text="Target"
         android:layout_weight="1"
         android:gravity="center_horizontal"
-        android:background="#ff00ff"
         android:textSize="25sp"></TextView>
 
     </LinearLayout>
@@ -149,7 +138,6 @@
         android:layout_width="match_parent"
         android:layout_below="@id/R4"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
         >
     <Button
         android:layout_width="wrap_content"
