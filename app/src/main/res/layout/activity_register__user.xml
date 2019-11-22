@@ -7,7 +7,8 @@
     tools:context=".Register_User"
     android:background="@drawable/backcolor">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/L0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
@@ -20,66 +21,90 @@
             android:textSize="30dp"
             android:text="Register"></TextView>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/L1"
+        android:layout_below="@id/L0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
         <TextView
             android:id="@+id/text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/H1"
-            android:layout_marginTop="40dp"
+            android:layout_weight="2.5"
             android:text="Username"></TextView>
 
         <EditText
-            android:layout_width="266dp"
+            android:layout_width="match_parent"
             android:id="@+id/e1"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_below="@id/H1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="150sp"
-            android:layout_marginTop="20dp"></EditText>
+            ></EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/L2"
+        android:layout_below="@id/L1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
         <TextView
             android:id="@+id/text2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text1"
-            android:layout_marginTop="40dp"
+            android:layout_weight="2.5"
             android:text="Password"></TextView>
 
         <EditText
             android:id="@+id/e2"
-            android:layout_width="266dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/e1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="150sp"
-            android:layout_marginTop="20dp"></EditText>
-
+            android:layout_weight="1"
+            ></EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/L3"
+        android:layout_below="@id/L2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
         <TextView
             android:id="@+id/text3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text2"
-            android:layout_marginTop="40dp"
+            android:layout_weight="2.5"
             android:text="ConPassword"></TextView>
 
         <EditText
             android:id="@+id/e3"
-            android:layout_width="266dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/e2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="150sp"
-            android:layout_marginTop="20dp"></EditText>
+            android:layout_weight="1"
+            ></EditText>
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/L4"
+        android:layout_below="@id/L3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
 
         <Button
             android:layout_width="600px"
-            android:layout_marginTop="300px"
             android:text="Next"
             android:layout_height="wrap_content"
             android:id="@+id/button1"
-            android:layout_below="@id/e3"
-            android:layout_centerHorizontal="true"
             ></Button>
-    </RelativeLayout>
 
+    </LinearLayout>
 
 </RelativeLayout>
