@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Register_User"
-    android:background="@drawable/backcolor">
+    android:background="@drawable/bacckground_color">
 
     <LinearLayout
         android:id="@+id/L0"
@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             ></EditText>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/L2"
         android:layout_below="@id/L1"
@@ -66,6 +67,7 @@
             android:layout_weight="1"
             ></EditText>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/L3"
         android:layout_below="@id/L2"

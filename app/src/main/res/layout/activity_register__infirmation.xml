@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Register_Infirmation"
-    android:background="@drawable/backcolor">
+    android:background="@drawable/bacckground_color">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-
         >
         <TextView
             android:layout_width="wrap_content"
@@ -30,21 +29,14 @@
         android:orientation="horizontal"
         >
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="name"
-            android:textSize="55px"></TextView>
-
         <EditText
             android:layout_weight="1"
             android:id="@+id/inputname"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/name"
+            android:hint="Name"
             ></EditText>
 
     </LinearLayout>
@@ -55,22 +47,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="30sp"
         >
-        <TextView
-            android:id="@+id/Age"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="Age"
-            android:textSize="55px"></TextView>
 
         <EditText
             android:id="@+id/inputage"
             android:layout_weight="1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Age"></EditText>
+            android:hint="Age"
+            android:inputType="number"
+           ></EditText>
     </LinearLayout>
 
     <LinearLayout
@@ -79,22 +68,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="30sp"
         >
-        <TextView
-            android:id="@+id/weight"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="weight"
-            android:textSize="55px"></TextView>
-
         <EditText
             android:id="@+id/inputweight"
             android:layout_weight="1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Age"></EditText>
+            android:hint="Weight"
+            android:inputType="number"
+           ></EditText>
+
+        <EditText
+            android:id="@+id/inputheight"
+            android:layout_weight="1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Height"
+            android:inputType="number"
+            ></EditText>
     </LinearLayout>
 
     <LinearLayout
@@ -102,23 +98,36 @@
         android:layout_below="@+id/layoutweight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:id="@+id/height"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="height"
-            android:textSize="55px"></TextView>
 
-        <EditText
-            android:id="@+id/inputheight"
-            android:layout_weight="1"
+        android:layout_marginTop="30sp"
+        >
+<RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+        <RadioButton
+            android:id="@+id/CheckBoxmeal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Age"></EditText>
+            android:text="Meal"
+            android:layout_weight="1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            >
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/CheckBoxfemeal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FeMeal"
+            android:layout_weight="1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            >
+        </RadioButton>
+</RadioGroup>
     </LinearLayout>
 
     <LinearLayout
@@ -127,106 +136,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="30sp"
         >
-        <TextView
-            android:id="@+id/gender"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="gender"
-            android:textSize="55px"></TextView>
-
-        <EditText
-            android:id="@+id/inputgender"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Age"></EditText>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutlevelworkout"
+        android:id="@+id/textlayoutlevelworkout"
         android:layout_below="@+id/layoutgender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        <TextView
-            android:id="@+id/levelworkout"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="levelworkout"
-            android:textSize="55px"></TextView>
 
-        <EditText
-            android:id="@+id/inputlevelworkout"
-            android:layout_weight="1"
+        <TextView
+            android:id="@+id/textlevelworkout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Age"></EditText>
+            android:layout_height="match_parent"
+            android:text="Levelwork out"
+android:textSize="25sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            ></TextView>
+
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutcongenital_disease"
-        android:layout_below="@+id/layoutlevelworkout"
+        android:id="@+id/layoutlevelworkout"
+        android:layout_below="@+id/textlayoutlevelworkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        <TextView
-            android:id="@+id/congenital_disease"
-            android:layout_weight="1"
+        <Spinner
+            android:id="@+id/spinner1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="congenital  disease"
-            android:textSize="55px"></TextView>
-
-        <EditText
-            android:id="@+id/inputcongenital_disease"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Age"></EditText>
+            android:spinnerMode="dropdown"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            ></Spinner>
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutallergicfoodfood"
-        android:layout_below="@+id/layoutcongenital_disease"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:id="@+id/allergicfoodfood"
-            android:layout_weight="1.5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="allergicfoodfood"
-            android:textSize="55px"></TextView>
-
-        <EditText
-            android:id="@+id/inputallergicfoodfood"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Age"></EditText>
-    </LinearLayout>
-
 
     <Button
+        android:layout_marginTop="30sp"
         android:onClick="register"
         android:id="@+id/registerbutton"
         android:text="Register"
-        android:layout_below="@id/layoutallergicfoodfood"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_below="@id/layoutlevelworkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
     </Button>
 
 
