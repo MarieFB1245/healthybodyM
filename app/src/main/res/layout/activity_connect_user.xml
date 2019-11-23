@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/H1"
             android:text="Logo"
+            android:textSize="50sp"
 
             />
     </LinearLayout>
