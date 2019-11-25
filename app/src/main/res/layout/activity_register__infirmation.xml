@@ -31,12 +31,12 @@
 
         <EditText
             android:layout_weight="1"
-            android:id="@+id/inputname"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:id="@+id/inputfirstname"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
+            android:hint="firstname"
             ></EditText>
 
     </LinearLayout>
@@ -51,14 +51,13 @@
         >
 
         <EditText
-            android:id="@+id/inputage"
+            android:id="@+id/inputLastname"
             android:layout_weight="1"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Age"
-            android:inputType="number"
+            android:hint="Lastname"
            ></EditText>
     </LinearLayout>
 
@@ -71,10 +70,21 @@
         android:layout_marginTop="30sp"
         >
         <EditText
+            android:id="@+id/inputage"
+            android:layout_weight="1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age"
+            android:inputType="number"
+            ></EditText>
+
+        <EditText
             android:id="@+id/inputweight"
             android:layout_weight="1"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Weight"
@@ -84,8 +94,8 @@
         <EditText
             android:id="@+id/inputheight"
             android:layout_weight="1"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Height"
@@ -98,7 +108,6 @@
         android:layout_below="@+id/layoutweight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="30sp"
         >
 <RadioGroup
@@ -112,8 +121,8 @@
             android:layout_height="wrap_content"
             android:text="Meal"
             android:layout_weight="1"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             >
         </RadioButton>
 
@@ -123,8 +132,8 @@
             android:layout_height="wrap_content"
             android:text="FeMeal"
             android:layout_weight="1"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             >
         </RadioButton>
 </RadioGroup>
@@ -149,15 +158,7 @@
         android:orientation="horizontal"
         >
 
-        <TextView
-            android:id="@+id/textlevelworkout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Levelwork out"
-android:textSize="25sp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            ></TextView>
+
 
     </LinearLayout>
 
@@ -168,14 +169,18 @@ android:textSize="25sp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            ></Spinner>
+
+<com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+    android:id="@+id/android_material_desgn_spinner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Levelwork out"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp"
+    android:layout_alignParentStart="true"
+    android:textColorHint="#05ab9a"
+    ></com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
+
     </LinearLayout>
 
     <Button
@@ -183,9 +188,10 @@ android:textSize="25sp"
         android:onClick="register"
         android:id="@+id/registerbutton"
         android:text="Register"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:layout_below="@id/layoutlevelworkout"
+        android:background="@drawable/button_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </Button>

@@ -11,6 +11,7 @@
         android:id="@+id/L0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
         >
 
         <TextView
@@ -19,7 +20,10 @@
             android:gravity="center"
             android:id="@+id/H1"
             android:textSize="30dp"
-            android:text="Register"></TextView>
+            android:text="Register"
+            android:layout_marginRight="30sp"
+            android:layout_marginLeft="30sp"
+            ></TextView>
 
     </LinearLayout>
 
@@ -36,19 +40,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
-            android:text="Username"></TextView>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:id="@+id/e1"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            ></EditText>
+            android:text="Username"
+            android:layout_marginRight="30sp"
+            android:layout_marginLeft="30sp"
+            ></TextView>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/L2"
         android:layout_below="@id/L1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/e1"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30sp"
+            android:layout_marginLeft="30sp"
+            ></EditText>
+
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/L3"
+        android:layout_below="@id/L2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -58,41 +76,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
-            android:text="Password"></TextView>
-
-        <EditText
-            android:id="@+id/e2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            ></EditText>
+            android:text="Password"
+            android:layout_marginRight="30sp"
+            android:layout_marginLeft="30sp"
+            ></TextView>
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/L3"
-        android:layout_below="@id/L2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/ti_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/img_logo"
-            android:layout_marginTop="@dimen/child_margin_top">
-
-
-
-        <EditText
-            android:id="@+id/e3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/e2"
-            android:layout_weight="1"
-            ></EditText>
-        </android.support.design.widget.TextInputLayout>
-</LinearLayout>
 
     <LinearLayout
         android:id="@+id/L4"
@@ -100,14 +88,76 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <EditText
+            android:id="@+id/e2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="30sp"
+            android:layout_marginLeft="30sp"
+            android:inputType="numberPassword"
+            ></EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/L5"
+        android:layout_below="@id/L4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="ConfrimPassword"
+    android:layout_weight="2.5"
+    android:layout_marginRight="30sp"
+    android:layout_marginLeft="30sp"
+    ></TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/L6"
+        android:layout_below="@id/L5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+        <EditText
+            android:id="@+id/e3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/e2"
+            android:layout_weight="1"
+            android:layout_marginRight="30sp"
+            android:layout_marginLeft="30sp"
+            android:inputType="numberPassword"
+            ></EditText>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/L7"
+        android:layout_below="@id/L6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:gravity="center_horizontal"
         >
 
         <Button
-            android:layout_width="600px"
+            android:layout_width="match_parent"
             android:text="Next"
             android:layout_height="wrap_content"
             android:id="@+id/button1"
+            android:background="@drawable/button_style"
+            android:layout_marginRight="30sp"
+            android:layout_marginLeft="30sp"
             ></Button>
 
     </LinearLayout>

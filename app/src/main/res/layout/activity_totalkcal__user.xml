@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Totalkcal_User"
+    android:gravity="center"
     android:background="@drawable/bacckground_color">
 
     <LinearLayout
@@ -12,7 +13,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:id="@+id/text"
-        android:background="@color/colorPrimary">
+        android:orientation="horizontal"
+        android:layout_marginBottom="30sp"
+       >
 
         <TextView
             android:id="@+id/status"
@@ -22,7 +25,6 @@
             android:textSize="30sp"
             >
         </TextView>
-
 
 
         <TextView
@@ -42,9 +44,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:orientation="horizontal"
         android:id="@+id/totalkcallaout"
+        android:layout_marginBottom="30sp"
         android:layout_below="@id/text"
-        android:background="@color/colorPrimary">
+      >
 
         <TextView
             android:id="@+id/totalkcal"
@@ -83,13 +87,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:background="@color/colorPrimary">
+     >
 
         <Button
             android:onClick="start"
             android:text="start"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></Button>
+            android:layout_height="match_parent"
+            android:background="@drawable/button_style"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            ></Button>
 
     </LinearLayout>
 
