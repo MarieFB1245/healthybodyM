@@ -1,5 +1,6 @@
 package com.example.healthy_body
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import kotlinx.android.synthetic.main.activity_home__user.*
 import java.util.ArrayList
 
 class Home_User : AppCompatActivity() {
@@ -20,6 +22,11 @@ class Home_User : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home__user)
         setupPieChart()
+        bottonop.setOnClickListener {
+            val intent = Intent(this, setting_user::class.java)
+            startActivity(intent)
+
+        }
     }
 
     private fun setupPieChart() {
