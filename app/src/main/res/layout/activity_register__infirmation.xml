@@ -69,6 +69,9 @@
         android:orientation="horizontal"
         android:layout_marginTop="30sp"
         >
+
+
+
         <EditText
             android:id="@+id/inputage"
             android:layout_weight="1"
@@ -185,7 +188,6 @@
 
     <Button
         android:layout_marginTop="30sp"
-        android:onClick="register"
         android:id="@+id/registerbutton"
         android:text="Register"
         android:layout_marginLeft="25dp"

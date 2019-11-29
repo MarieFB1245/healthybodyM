@@ -1,7 +1,9 @@
 package com.example.healthy_body
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toolbar
 
 
@@ -12,14 +14,12 @@ class setting_user : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting_user)
 
+        val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
-        val actionBar = supportActionBar
-        actionBar!!.title = "setting"
-        actionBar.setDisplayShowHomeEnabled(true)
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
 
+        arrow.setOnClickListener {
+            startActivity(Intent(this, Home_User::class.java))
+        }
     }
-
-
 }
