@@ -114,15 +114,15 @@
         android:layout_marginTop="30sp"
         >
 <RadioGroup
+    android:id="@+id/radiogroup"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     >
         <RadioButton
-            android:id="@+id/CheckBoxmeal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Meal"
+            android:text="ชาย"
             android:layout_weight="1"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
@@ -130,10 +130,9 @@
         </RadioButton>
 
         <RadioButton
-            android:id="@+id/CheckBoxfemeal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FeMeal"
+            android:text="หญิง"
             android:layout_weight="1"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
