@@ -24,17 +24,18 @@ class Register_User : AppCompatActivity() {
             val email = email.text.toString()
             val password = password.text.toString()
             val conpassword = conpassword.text.toString()
-           myRef = FirebaseAuth.getInstance()
+          // myRef = FirebaseAuth.getInstance()
 
             if(email!=""&&password!=""&&conpassword!=""){
                 if(password==conpassword){
-                    myRef.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
-                        if (it.isSuccessful)
-                            saveusertodatabase()
+                    saveusertodatabase(email,password)
+                    //myRef.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
+                      //  if (it.isSuccessful)
 
-                    }.addOnFailureListener {
-                        Log.d("Main","Error")
-                   }
+
+                   // }.addOnFailureListener {
+                     //   Log.d("Main","Error")
+                  // }
                }else{
                     Toast.makeText(this, "Password and ConfrimPassword is not correct.", Toast.LENGTH_SHORT).show()
                 }
@@ -44,16 +45,18 @@ class Register_User : AppCompatActivity() {
 
         }
     }
-    private fun saveusertodatabase(){
-        val uid = FirebaseAuth.getInstance().uid?:""
-        val myRef= FirebaseDatabase.getInstance().getReference("/users/$uid")
-        val user = UserLogin(uid,email.text.toString(),password.text.toString())
-        myRef.setValue(user)
-            .addOnSuccessListener {
+    private fun saveusertodatabase(email:String,password:String){
+       // val uid = FirebaseAuth.getInstance().uid?:""
+      //  val myRef= FirebaseDatabase.getInstance().getReference("/users/$uid")
+      //  val user = UserLogin(uid,email.text.toString(),password.text.toString())
+      //  myRef.setValue(user)
+         //   .addOnSuccessListener {
                 Log.e("register","save to database")
                 val intent = Intent(this, Register_Infirmation::class.java)
+        intent.putExtra("email",email)
+intent.putExtra("password",password)
                 startActivity(intent)
-            }
+        //    }
     }
 }
 class UserLogin(val uid:String ,val email:String ,val password:String)

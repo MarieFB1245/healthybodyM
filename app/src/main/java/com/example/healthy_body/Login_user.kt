@@ -1,12 +1,39 @@
 package com.example.healthy_body
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_login_user.*
 
 class Login_user : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_user)
+
+
+        login.setOnClickListener {
+            auth = FirebaseAuth.getInstance()
+            var email = email.text.toString()
+            var password = password.text.toString()
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
+                    var uid = FirebaseAuth.getInstance().uid?:""
+                    login(uid)
+                } else {
+                    Toast.makeText(this, "Fall Logged In", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+    fun login(uid:String){
+        val intent = Intent(this, Home_User::class.java)
+        intent.putExtra("uid",uid)
+        startActivity(intent)
     }
 }
