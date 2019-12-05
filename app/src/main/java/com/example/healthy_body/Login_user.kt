@@ -15,6 +15,10 @@ class Login_user : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_user)
 
+        register.setOnClickListener{
+            val intent = Intent(this, Register_User::class.java)
+            startActivity(intent)
+        }
 
         login.setOnClickListener {
             auth = FirebaseAuth.getInstance()
@@ -36,4 +40,6 @@ class Login_user : AppCompatActivity() {
         intent.putExtra("uid",uid)
         startActivity(intent)
     }
+
+
 }
