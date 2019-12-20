@@ -16,13 +16,13 @@
     android:layout_height="wrap_content"
     android:id="@+id/R1"
     >
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/bottonop"
-    android:text="option"
-    android:background="@drawable/button_style"
-    ></Button>
+
+    <ImageView
+        android:layout_width="57dp"
+        android:layout_height="49dp"
+        android:id="@+id/bottonop"
+        android:src="@drawable/ic_settings_black_24dp"></ImageView>
+
 </RelativeLayout>
 
     <RelativeLayout
