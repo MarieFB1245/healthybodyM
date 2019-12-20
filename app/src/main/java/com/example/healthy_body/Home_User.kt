@@ -4,11 +4,13 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_home__user.*
 import java.util.ArrayList
@@ -20,6 +22,7 @@ class Home_User : AppCompatActivity() {
     private val peercenData = intArrayOf(test, test2)
     private val pnameFood = arrayOf("Food", "Workout")
     private lateinit var myRef: DatabaseReference
+    private var myAut = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +34,9 @@ class Home_User : AppCompatActivity() {
         val BMIshow = findViewById<TextView>(R.id.numberBMI)
         val BMRshow = findViewById<TextView>(R.id.numberBMR)
 
+        signout.setOnClickListener {
+            signout()
+        }
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val map = dataSnapshot.value as Map<*, *>?
@@ -48,6 +54,7 @@ class Home_User : AppCompatActivity() {
         })
         bottonop.setOnClickListener {
             val intent = Intent(this, setting_user::class.java)
+            intent.putExtra("uid",UID)
             startActivity(intent)
 
         }
@@ -81,5 +88,10 @@ class Home_User : AppCompatActivity() {
         chart.invalidate()
 
 
+    }
+    private fun signout (){
+        val intent = Intent(this, Login_user::class.java)
+        myAut.signOut()
+        startActivity(intent)
     }
 }

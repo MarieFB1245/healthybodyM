@@ -9,17 +9,18 @@ import android.widget.Toolbar
 
 
 class setting_user : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting_user)
-
+        var UID: String = intent.getStringExtra("uid")
         val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
-            startActivity(Intent(this, Home_User::class.java))
+            val intent = Intent(this, Home_User::class.java)
+            intent.putExtra("uid",UID)
+            startActivity(intent)
         }
     }
 }

@@ -42,6 +42,8 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 
 
 
+
+
 class Register_Infirmation : AppCompatActivity() {
 
     internal var SPINNERLST = arrayOf("low workout","normal workout to 1-3 time a week","normal workout to 4-5 time a week",
@@ -67,13 +69,13 @@ class Register_Infirmation : AppCompatActivity() {
         betterSpinner.setAdapter(arrayAdapter)
         var email: String = intent.getStringExtra("email")
         var password: String = intent.getStringExtra("password")
-
         registerbutton.setOnClickListener {
 
             myRef = FirebaseAuth.getInstance()
             myRef.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
                 if (it.isSuccessful)
                     Log.d("Main","saved")
+
 
                 var firstname  =  findViewById<EditText>(R.id.inputfirstname)
                 var lastname  =  findViewById<EditText>(R.id.inputLastname)

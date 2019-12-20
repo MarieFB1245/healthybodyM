@@ -6,6 +6,23 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login_user.*
+import android.text.method.PasswordTransformationMethod
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.text.InputType
+
+
+
+
+
+
+
+
+
+
+
+
 
 class Login_user : AppCompatActivity() {
 
@@ -14,7 +31,6 @@ class Login_user : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_user)
-
         register.setOnClickListener{
             val intent = Intent(this, Register_User::class.java)
             startActivity(intent)
