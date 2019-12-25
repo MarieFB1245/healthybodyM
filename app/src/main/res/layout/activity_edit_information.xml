@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".edit_information">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Information"
+            android:textSize="30dp"
+
+            ></TextView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="40sp"
+        android:id="@+id/namelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <EditText
+            android:layout_weight="1"
+            android:id="@+id/inputfirstname"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="firstname"
+            ></EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutage"
+        android:layout_below="@+id/namelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30sp"
+        >
+
+        <EditText
+            android:id="@+id/inputLastname"
+            android:layout_weight="1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lastname"
+            ></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutweight"
+        android:layout_below="@+id/layoutage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30sp"
+        >
+
+        <EditText
+            android:id="@+id/inputage"
+            android:layout_weight="1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age"
+            android:inputType="numberDecimal|numberSigned"
+            ></EditText>
+
+        <EditText
+            android:id="@+id/inputweight"
+            android:layout_weight="1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Weight"
+            android:inputType="number"
+            ></EditText>
+
+        <EditText
+            android:id="@+id/inputheight"
+            android:layout_weight="1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Height"
+            android:inputType="number"
+            ></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutheight"
+        android:layout_below="@+id/layoutweight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        >
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <RadioButton
+                android:id="@+id/ra1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ชาย"
+                android:layout_weight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+android:checked="false"
+                >
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/ra2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="หญิง"
+                android:layout_weight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:checked="false"
+                >
+            </RadioButton>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutgender"
+        android:layout_below="@+id/layoutheight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30sp"
+        >
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/textlayoutlevelworkout"
+        android:layout_below="@+id/layoutgender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutlevelworkout"
+        android:layout_below="@+id/textlayoutlevelworkout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            android:id="@+id/android_material_desgn_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Levelwork out"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_alignParentStart="true"
+            android:textColorHint="#05ab9a"
+            ></com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="30sp"
+        android:id="@+id/registerbutton"
+        android:text="Register"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_below="@id/layoutlevelworkout"
+        android:background="@drawable/button_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Button>
+
+
+</RelativeLayout>
