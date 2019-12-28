@@ -186,16 +186,15 @@ android:checked="false"
     </LinearLayout>
 
     <Button
-        android:layout_marginTop="30sp"
         android:id="@+id/registerbutton"
-        android:text="Register"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_below="@id/layoutlevelworkout"
-        android:background="@drawable/button_style"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </Button>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutlevelworkout"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30sp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/button_style"
+        android:text="Edit"></Button>
 
 
 </RelativeLayout>

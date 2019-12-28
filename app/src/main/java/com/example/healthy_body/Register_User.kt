@@ -46,18 +46,12 @@ class Register_User : AppCompatActivity() {
         }
     }
     private fun saveusertodatabase(email:String,password:String){
-       // val uid = FirebaseAuth.getInstance().uid?:""
-      //  val myRef= FirebaseDatabase.getInstance().getReference("/users/$uid")
-      //  val user = UserLogin(uid,email.text.toString(),password.text.toString())
-      //  myRef.setValue(user)
-         //   .addOnSuccessListener {
                 Log.e("register","save to database")
                 val intent = Intent(this, Register_Infirmation::class.java)
         intent.putExtra("email",email)
 intent.putExtra("password",password)
                 startActivity(intent)
-        //    }
+
     }
 }
-class UserLogin(val uid:String ,val email:String ,val password:String)
 
