@@ -53,8 +53,8 @@ class Home_User : AppCompatActivity() {
             }
         })
         bottonop.setOnClickListener {
-            val intent = Intent(this, setting_user::class.java)
-            intent.putExtra("uid",UID)
+            val intent = Intent(this,edit_information::class.java)
+            intent.putExtra("UID",UID)
             startActivity(intent)
 
         }

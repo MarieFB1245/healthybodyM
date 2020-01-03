@@ -21,7 +21,6 @@ class Totalkcal_User : AppCompatActivity() {
         myRef = FirebaseDatabase.getInstance().reference
 
 
-
         val TDEEshow = findViewById<TextView>(R.id.statusname)
         val Statusshow = findViewById<TextView>(R.id.numberkcal)
         var UID: String = intent.getStringExtra("uid")
@@ -49,7 +48,6 @@ class Totalkcal_User : AppCompatActivity() {
         }
 
     }
-
 
     fun startintent (UID:String){
         val intent = Intent(this, Home_User::class.java)
