@@ -1,9 +1,13 @@
 package com.example.healthy_body
 
+
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import com.example.healthy_body.calculate.editinformation
+import com.example.healthy_body.model.get_dattauser_edit
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -12,100 +16,108 @@ import kotlinx.android.synthetic.main.activity_edit_information.*
 
 class edit_information : AppCompatActivity() {
 
-
-val UID = "WKtbyCKFPLfWdTtMLEbv5VYouuw1"
-
+//var UID :String="WISbOJ5Q6TZ7cSCfuxBJyG5UlH93"
     private lateinit var myRef: DatabaseReference
-    private var myAut = FirebaseAuth.getInstance()
     internal var SPINNERLST = arrayOf("low workout","normal workout to 1-3 time a week","normal workout to 4-5 time a week",
         "heavy workout to 6-7 time a week","heaviest workout over to 2 time a day")
-
+    internal var SPINNERLSTGENDER = arrayOf("ชาย","หญิง")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_information)
 
 
-        myRef = FirebaseDatabase.getInstance().reference
 
-        //var UID: String = intent.getStringExtra("UID")
+
+        var UID: String = intent.getStringExtra("UID")
         val inputfirstname = findViewById<EditText>(R.id.inputfirstname)
         val inputLastname = findViewById<EditText>(R.id.inputLastname)
         val inputage = findViewById<EditText>(R.id.inputage)
         val inputweight = findViewById<EditText>(R.id.inputweight)
         val inputheight = findViewById<EditText>(R.id.inputheight)
-        var radiogroup = findViewById<RadioGroup>(R.id.radiogroup)
+        val arrayAdaptergender = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,SPINNERLSTGENDER)
+        val betterSpinnergender = findViewById(R.id.spinner_gender) as MaterialBetterSpinner
+        betterSpinnergender.setAdapter(arrayAdaptergender)
+
         val arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,SPINNERLST)
         val betterSpinner = findViewById(R.id.android_material_desgn_spinner) as MaterialBetterSpinner
         betterSpinner.setAdapter(arrayAdapter)
-
         val Level_Workout = betterSpinner.text.toString()
-       var value = radiogroup.checkedRadioButtonId
+        myRef = FirebaseDatabase.getInstance().getReference("users").child("${UID}")
+
+
 
 
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                test(dataSnapshot)
+                val userinfo = dataSnapshot.getValue(get_dattauser_edit::class.java)
+
+                val firstname = userinfo?.textfirstname
+                val lastname = userinfo?.textlastname
+                val age = userinfo?.age
+                val weight = userinfo?.weigth
+                val height = userinfo?.height
+                val gender = userinfo?.gender
+                val betterSpinnerNostring = userinfo?.level_Workout
+
+                val ageI = age!!.toInt()
+                val weightI = weight!!.toInt()
+                val heightI = height!!.toInt()
+
+                val agestring: String = ageI.toString()
+                val weightstring: String = weightI.toString()
+                val heightstring: String = heightI.toString()
+
+
+
+                inputfirstname.setText(firstname)
+                inputLastname.setText(lastname)
+                inputage.setText(agestring)
+                inputweight.setText(weightstring)
+                inputheight.setText(heightstring)
+                betterSpinnergender.setText(gender)
+                betterSpinner.setText(betterSpinnerNostring)
+
+
+                editbutton.setOnClickListener {
+                    val firstnameE: String = inputfirstname.text.toString()
+                    val lastnameE: String = inputLastname.text.toString()
+                    val ageE: String = inputage.text.toString()
+                    val weightE: String = inputweight.text.toString()
+                    val heightE: String = inputheight.text.toString()
+                    val genderE: String = betterSpinnergender.text.toString()
+                    val betterSpinnerNostringE: String = betterSpinner.text.toString()
+
+                    val result = editinformation(
+                        UID,
+                        firstnameE,
+                        lastnameE,
+                        ageE,
+                        weightE,
+                        heightE,
+                        genderE,
+                        betterSpinnerNostringE
+                    ).edit()
+
+if (result == true) {
+   pass(UID)
+
+}
+
             }
-
-
+            }
             override fun onCancelled(databaseError: DatabaseError) {
 
             }
 
-            fun test(dataSnapshot: DataSnapshot) {
-                val betterSpinner = findViewById(R.id.android_material_desgn_spinner) as MaterialBetterSpinner
-
-
-                var ra1 = findViewById<RadioButton>(R.id.ra1)
-                var ra2 = findViewById<RadioButton>(R.id.ra2)
-                val map1 = dataSnapshot.child("users").child(UID).value as Map<*, *>?
-                val firstname = map1!!["textfirstname"].toString()
-                val lastname = map1!!["textlastname"].toString()
-                val age = map1!!["age"].toString()
-                val weight = map1!!["weigth"].toString()
-                val height = map1!!["height"].toString()
-                val gender = map1["gender"].toString()
-                val betterSpinnerNostring = map1["level_Workout"].toString()
-
-                inputfirstname.setText(firstname)
-                inputLastname.setText(lastname)
-                inputage.setText(age)
-                inputweight.setText(weight)
-                inputheight.setText(height)
-                betterSpinner.setText(betterSpinnerNostring)
-
-                if (gender == "ชาย") {
-                  //  genderint =
-                // value = gender
-                    var radioG = findViewById<RadioButton>(value)
-                } else {
-                    ra2.setChecked(true)
-                }
-
-                editbutton.setOnClickListener {
-                    editinformation(
-                        UID,
-                        firstname,
-                        lastname,
-                        age,
-                        weight,
-                        height,
-                        gender,
-                        Level_Workout
-                    ).edit()
-                }
-            }
         })
 
         }
-       /*var firstname = inputfirstname.text.toString()
-        var lastname = inputLastname.text.toString()
-        var agef = java.lang.Float.valueOf(inputage.getText().toString())
-        var weightf = java.lang.Float.valueOf(inputweight.getText().toString())
-       var heightf = java.lang.Float.valueOf(inputheight.getText().toString())
-        var genderE = radioG.text.toString()*/
 
-
-    }
+fun pass (uid:String=""){
+    val intent = Intent(this,Home_User::class.java)
+    intent.putExtra("uid",uid)
+    startActivity(intent)
 
 }
+
+    }

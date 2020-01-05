@@ -13,11 +13,7 @@
             android:theme="@style/AppTheme.NoActionbar"
             >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity><!-- Theme.AppCompat.DayNight.NoActionBar -->
         <activity
             android:name=".setting_user"
@@ -25,7 +21,11 @@
         <activity
             android:name=".Login_user"
             android:theme="@style/AppTheme.NoActionbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Home_User"

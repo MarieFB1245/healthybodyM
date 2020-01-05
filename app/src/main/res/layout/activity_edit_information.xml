@@ -68,16 +68,7 @@
         android:layout_marginTop="30sp"
         >
 
-        <EditText
-            android:id="@+id/inputage"
-            android:layout_weight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Age"
-            android:inputType="numberDecimal|numberSigned"
-            ></EditText>
+
 
         <EditText
             android:id="@+id/inputweight"
@@ -109,36 +100,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
         >
-        <RadioGroup
-            android:id="@+id/radiogroup"
+        <EditText
+            android:id="@+id/inputage"
+            android:layout_weight="1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-            <RadioButton
-                android:id="@+id/ra1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ชาย"
-                android:layout_weight="1"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-android:checked="false"
-                >
-            </RadioButton>
+            android:hint="Age"
+            android:inputType="numberDecimal|numberSigned"
+            ></EditText>
 
-            <RadioButton
-                android:id="@+id/ra2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="หญิง"
-                android:layout_weight="1"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:checked="false"
-                >
-            </RadioButton>
-        </RadioGroup>
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            android:id="@+id/spinner_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Gender"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_alignParentStart="true"
+            android:textColorHint="#05ab9a"
+            ></com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
+
     </LinearLayout>
 
     <LinearLayout
