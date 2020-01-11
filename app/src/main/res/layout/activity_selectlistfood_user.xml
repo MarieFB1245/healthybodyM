@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".selectlistfood_user">
+    <include
+        android:id="@+id/searchView"
+        layout="@layout/barselect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
+
+
+    <EditText
+        android:id="@+id/Searching"
+        android:layout_width="211dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="Searching"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/mRecycleVeiew"
+        app:layout_constraintStart_toStartOf="@+id/searchView"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mRecycleVeiew"
+        app_mt_speechMode="true"
+        android:layout_width="415dp"
+        android:layout_height="578dp"
+        android:scrollbars="vertical"
+        android:windowSoftInputMode="adjustPan|adjustResize"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Searching" />
+
+    <Button
+        android:id="@+id/sreachtext"
+        android:layout_width="83dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="60dp"
+        android:text="sreach"
+        app:layout_constraintBottom_toTopOf="@+id/mRecycleVeiew"
+        app:layout_constraintEnd_toStartOf="@+id/camera"
+        app:layout_constraintStart_toEndOf="@+id/Searching"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+    <Button
+        android:id="@+id/camera"
+        android:layout_width="79dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="60dp"
+        android:text="CM"
+        app:layout_constraintBottom_toTopOf="@+id/mRecycleVeiew"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

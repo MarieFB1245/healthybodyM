@@ -58,6 +58,12 @@ class Home_User : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+        addfood.setOnClickListener{
+            val intent = Intent(this,selectlistfood_user::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+        }
     }
 
     private fun setupPieChart() {

@@ -8,7 +8,7 @@ import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
+
 import kotlinx.android.synthetic.main.activity_setting_user.*
 import java.security.acl.Group
 

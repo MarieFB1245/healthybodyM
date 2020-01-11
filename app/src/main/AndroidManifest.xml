@@ -9,12 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".edit_information"
+        <activity android:name=".savedatafood_user"
             android:theme="@style/AppTheme.NoActionbar"
-            >
-
-
-        </activity><!-- Theme.AppCompat.DayNight.NoActionBar -->
+            ></activity>
+        <activity
+            android:name=".selectlistfood_user"
+            android:theme="@style/AppTheme.NoActionbar"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name=".edit_information"
+            android:theme="@style/AppTheme.NoActionbar" /> <!-- Theme.AppCompat.DayNight.NoActionBar -->
         <activity
             android:name=".setting_user"
             android:theme="@style/AppTheme.NoActionbar" />
