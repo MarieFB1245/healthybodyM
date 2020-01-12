@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
+import android.widget.ImageView
 import com.example.healthy_body.model.modellistfood
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
@@ -28,6 +29,17 @@ var UID :String=""
         sreachtext.setOnClickListener {
             var searchtext = search.text.toString()
             loadfood(searchtext)
+        }
+
+
+        val arrow = findViewById<ImageView>(R.id.arrow)
+        val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
+        setSupportActionBar(tooltset)
+
+        arrow.setOnClickListener {
+            val intent = Intent(this, Home_User::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
         }
 
     }

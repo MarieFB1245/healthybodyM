@@ -92,7 +92,7 @@ class Register_Infirmation : AppCompatActivity() {
 }
     fun intent (uid: String){
         val intent = Intent(this, Totalkcal_User::class.java)
-        intent.putExtra("uid",uid)
+        intent.putExtra("UID",uid)
         startActivity(intent)
     }
 }

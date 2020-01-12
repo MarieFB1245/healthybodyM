@@ -53,7 +53,7 @@ class Login_user : AppCompatActivity() {
     }
     fun login(uid:String){
         val intent = Intent(this, Home_User::class.java)
-        intent.putExtra("uid",uid)
+        intent.putExtra("UID",uid)
         startActivity(intent)
     }
 

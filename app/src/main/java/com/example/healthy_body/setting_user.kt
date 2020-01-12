@@ -40,7 +40,7 @@ class setting_user : AppCompatActivity() {
 
         arrow.setOnClickListener {
             val intent = Intent(this, Home_User::class.java)
-            intent.putExtra("uid",UID)
+            intent.putExtra("UID",UID)
             startActivity(intent)
         }
 

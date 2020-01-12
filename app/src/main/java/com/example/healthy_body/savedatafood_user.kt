@@ -1,10 +1,12 @@
 package com.example.healthy_body
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.healthy_body.model.modelSelectFood
 import com.google.firebase.database.FirebaseDatabase
@@ -47,8 +49,18 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         add.setOnClickListener(this)
         sub.setOnClickListener(this)
         namefood.setText(nameFoodShow)
-        kcal.setText(kcalfoodShow)
+        Kcal.setText(kcalfoodShow)
 
+
+        val arrow = findViewById<ImageView>(R.id.arrow)
+        val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
+        setSupportActionBar(tooltset)
+
+        arrow.setOnClickListener {
+            val intent = Intent(this, selectlistfood_user::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+        }
 
         savelist.setOnClickListener {
             savetodata(nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDate,idfoodShow)

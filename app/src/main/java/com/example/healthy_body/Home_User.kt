@@ -29,7 +29,7 @@ class Home_User : AppCompatActivity() {
         setContentView(R.layout.activity_home__user)
         setupPieChart()
         myRef = FirebaseDatabase.getInstance().reference
-        var UID: String = intent.getStringExtra("uid")
+        var UID: String = intent.getStringExtra("UID")
         val TDEEshow = findViewById<TextView>(R.id.numberTDEE)
         val BMIshow = findViewById<TextView>(R.id.numberBMI)
         val BMRshow = findViewById<TextView>(R.id.numberBMR)

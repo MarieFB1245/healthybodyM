@@ -7,95 +7,153 @@
     tools:context=".savedatafood_user">
 
 
+    <include
+        android:id="@+id/searchView"
+        layout="@layout/barselect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
+
+    <TextView
+        android:id="@+id/textdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="วันที่"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/date"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
     <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
         android:text="date"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/namefood"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textdate"
+        app:layout_constraintTop_toTopOf="@+id/textdate" />
+
+    <TextView
+        android:id="@+id/textnamefood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="ชื่ออาหาร"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569" />
+        app:layout_constraintTop_toBottomOf="@+id/textdate" />
 
     <TextView
         android:id="@+id/namefood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="56dp"
         android:text="namefood"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/kcal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textnamefood"
+        app:layout_constraintTop_toTopOf="@+id/textnamefood" />
 
     <TextView
-        android:id="@+id/kcal"
+        android:id="@+id/textKcal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="kcal"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/amount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="เเคลอรี่"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textnamefood" />
+
+    <TextView
+        android:id="@+id/Kcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:text="Kcal"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textKcal"
+        app:layout_constraintTop_toTopOf="@+id/textKcal" />
+
+    <TextView
+        android:id="@+id/textamount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="จำนวน"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textKcal" />
 
     <TextView
         android:id="@+id/amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginStart="80dp"
         android:text="amount"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/tatal"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textamount"
+        app:layout_constraintTop_toTopOf="@+id/textamount" />
+
+    <Button
+        android:id="@+id/sub"
+        android:layout_width="50dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="30dp"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="@+id/amount"
+        app:layout_constraintEnd_toStartOf="@+id/add"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toEndOf="@+id/amount"
+        app:layout_constraintTop_toTopOf="@+id/amount" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="50dp"
+        android:layout_height="39dp"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="@+id/amount"
+        app:layout_constraintStart_toEndOf="@+id/sub"
+        app:layout_constraintTop_toTopOf="@+id/amount" />
+
+    <TextView
+        android:id="@+id/texttatalkcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
+        android:text="จำนวนเเคลอรี่"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textamount" />
 
     <TextView
         android:id="@+id/tatal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginStart="20dp"
         android:text="tatal"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/savelist"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-"
-        app:layout_constraintBottom_toBottomOf="@+id/amount"
-        app:layout_constraintEnd_toStartOf="@+id/add"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/amount" />
-
-    <Button
-        android:id="@+id/add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:text="+"
-        app:layout_constraintBottom_toBottomOf="@+id/amount"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/texttatalkcal"
+        app:layout_constraintTop_toTopOf="@+id/texttatalkcal" />
 
     <Button
         android:id="@+id/savelist"
-        android:layout_width="228dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="296dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="108dp"
+        android:gravity="center"
         android:text="savelist"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tatal" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

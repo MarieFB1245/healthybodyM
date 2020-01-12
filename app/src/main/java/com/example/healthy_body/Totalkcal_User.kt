@@ -23,7 +23,7 @@ class Totalkcal_User : AppCompatActivity() {
 
         val TDEEshow = findViewById<TextView>(R.id.statusname)
         val Statusshow = findViewById<TextView>(R.id.numberkcal)
-        var UID: String = intent.getStringExtra("uid")
+        var UID: String = intent.getStringExtra("UID")
 
    Log.d("information","uid intent:$UID")
 
@@ -51,7 +51,7 @@ class Totalkcal_User : AppCompatActivity() {
 
     fun startintent (UID:String){
         val intent = Intent(this, Home_User::class.java)
-        intent.putExtra("uid",UID)
+        intent.putExtra("UID",UID)
         startActivity(intent)
     }
 }
