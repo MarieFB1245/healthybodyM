@@ -37,18 +37,24 @@ class Login_user : AppCompatActivity() {
         }
 
         login.setOnClickListener {
+
             auth = FirebaseAuth.getInstance()
             var email = email.text.toString()
             var password = password.text.toString()
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
-                    var uid = FirebaseAuth.getInstance().uid?:""
-                    login(uid)
-                } else {
-                    Toast.makeText(this, "Fall Logged In", Toast.LENGTH_LONG).show()
+            if(email==""&&password==""){
+                Toast.makeText(this, "please in put email and password", Toast.LENGTH_LONG).show()
+            }else{
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
+                        var uid = FirebaseAuth.getInstance().uid?:""
+                        login(uid)
+                    } else {
+                        Toast.makeText(this, "Email and Password is not Correct", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
+
         }
     }
     fun login(uid:String){

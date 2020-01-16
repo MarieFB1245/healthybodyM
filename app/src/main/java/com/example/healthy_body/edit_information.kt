@@ -36,6 +36,7 @@ class edit_information : AppCompatActivity() {
         val inputheight = findViewById<EditText>(R.id.inputheight)
         val arrayAdaptergender = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,SPINNERLSTGENDER)
         val betterSpinnergender = findViewById(R.id.spinner_gender) as MaterialBetterSpinner
+
         betterSpinnergender.setAdapter(arrayAdaptergender)
 
         val arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,SPINNERLST)
@@ -87,7 +88,7 @@ class edit_information : AppCompatActivity() {
                     val genderE: String = betterSpinnergender.text.toString()
                     val betterSpinnerNostringE: String = betterSpinner.text.toString()
 
-                    val result = editinformation(
+                    var result = editinformation(
                         UID,
                         firstnameE,
                         lastnameE,
@@ -97,6 +98,8 @@ class edit_information : AppCompatActivity() {
                         genderE,
                         betterSpinnerNostringE
                     ).edit()
+
+                    Log.e("result","${result}")
 
 if (result == true) {
    pass(UID)
@@ -115,7 +118,7 @@ if (result == true) {
 
 fun pass (uid:String=""){
     val intent = Intent(this,Home_User::class.java)
-    intent.putExtra("uid",uid)
+    intent.putExtra("UID",uid)
     startActivity(intent)
 
 }

@@ -4,23 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bacckground_color"
+    android:background="#262626"
     android:id="@+id/r1"
     tools:context=".Login_user">
 
 
-        <!-- <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:text="Email"
-        app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"></TextView>-->
 
     <TextView
         android:id="@+id/H1"
@@ -42,8 +30,12 @@
     <EditText
         android:id="@+id/email"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40sp"
         android:hint="Email"
+        android:textColorHint="#F6F6F6"
+        android:paddingLeft="15dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/edit_text"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="@+id/password"
@@ -54,9 +46,13 @@
     <EditText
         android:id="@+id/password"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40sp"
+        android:paddingLeft="15dp"
         android:layout_marginBottom="20dp"
+        android:textColorHint="#F6F6F6"
+        android:background="@drawable/edit_text"
         android:hint="Password"
+        android:textColor="#ffffff"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="@+id/login"
@@ -69,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/H1"
         android:layout_marginBottom="120dp"
-        android:background="@drawable/button_register_style"
+        android:background="@drawable/button_login_style"
         android:text="register"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -84,6 +80,7 @@
         android:layout_below="@id/H1"
         android:layout_marginBottom="40dp"
         android:background="@drawable/button_login_style"
+        android:theme="@style/FlatButton"
         android:text="Login"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/register"

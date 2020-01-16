@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Register_Infirmation"
-    android:background="@drawable/bacckground_color">
+    android:background="#262626">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -13,16 +13,17 @@
         android:layout_centerHorizontal="true"
         >
         <TextView
+            android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register"
             android:textSize="30dp"
-
+            android:textColor="#ffffff"
             ></TextView>
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_marginTop="40sp"
+        android:layout_marginTop="50sp"
         android:id="@+id/namelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,12 +32,16 @@
 
         <EditText
             android:layout_weight="1"
+            android:paddingLeft="15dp"
             android:id="@+id/inputfirstname"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:hint="firstname"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:backgroundTint="#ffffff"
+            android:layout_height="40sp"
             ></EditText>
 
     </LinearLayout>
@@ -53,11 +58,15 @@
         <EditText
             android:id="@+id/inputLastname"
             android:layout_weight="1"
+            android:paddingLeft="15dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40sp"
             android:hint="Lastname"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:backgroundTint="#ffffff"
            ></EditText>
     </LinearLayout>
 
@@ -72,36 +81,35 @@
 
 
 
-        <EditText
-            android:id="@+id/inputage"
-            android:layout_weight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Age"
-            android:inputType="numberDecimal|numberSigned"
-            ></EditText>
+
 
         <EditText
             android:id="@+id/inputweight"
             android:layout_weight="1"
+            android:paddingLeft="15dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40sp"
             android:hint="Weight"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:backgroundTint="#ffffff"
             android:inputType="number"
            ></EditText>
 
         <EditText
             android:id="@+id/inputheight"
             android:layout_weight="1"
+            android:paddingLeft="15dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40sp"
             android:hint="Height"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:backgroundTint="#ffffff"
             android:inputType="number"
             ></EditText>
     </LinearLayout>
@@ -110,37 +118,44 @@
         android:id="@+id/layoutheight"
         android:layout_below="@+id/layoutweight"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45sp"
         android:layout_marginTop="30sp"
         >
-<RadioGroup
-    android:id="@+id/radiogroup"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    >
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ชาย"
+        <EditText
+            android:id="@+id/inputage"
+            android:paddingLeft="15dp"
             android:layout_weight="1"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            >
-        </RadioButton>
-
-        <RadioButton
-
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="หญิง"
+            android:layout_height="40sp"
+            android:hint="Age"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:backgroundTint="#ffffff"
+            android:inputType="numberDecimal|numberSigned"
+            ></EditText>
+
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            android:id="@+id/spinner_gender"
+            android:layout_width="match_parent"
+            android:background="@drawable/edit_text"
+            android:paddingLeft="15dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:hint="Gender"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            >
-        </RadioButton>
-</RadioGroup>
+            android:layout_alignParentStart="true"
+            app:met_primaryColor="#ffffff"
+            app:met_textColor="#ffffff"
+            app:met_textColorHint="#ffffff"
+            app:met_baseColor="#ffffff"
+
+            ></com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
+
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/layoutgender"
@@ -175,13 +190,17 @@
 
 <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
     android:id="@+id/android_material_desgn_spinner"
+    android:paddingLeft="15dp"
+    app:met_primaryColor="#ffffff"
+    app:met_textColor="#ffffff"
+    app:met_textColorHint="#ffffff"
+    app:met_baseColor="#ffffff"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="40sp"
     android:hint="Levelwork out"
     android:layout_marginLeft="25dp"
     android:layout_marginRight="25dp"
     android:layout_alignParentStart="true"
-    android:textColorHint="#05ab9a"
     ></com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
 
     </LinearLayout>
