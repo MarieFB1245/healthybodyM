@@ -27,8 +27,7 @@ class Register_Infirmation : AppCompatActivity() {
 
     private var myRef = FirebaseAuth.getInstance()
 
-    var email: String = "test"
-    var password: String = "test"
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +45,8 @@ class Register_Infirmation : AppCompatActivity() {
         val betterSpinnergender = findViewById(R.id.spinner_gender) as MaterialBetterSpinner
         betterSpinnergender.setAdapter(arrayAdaptergender)
 
-        //var email: String = intent.getStringExtra("email")
-      //  var password: String = intent.getStringExtra("password")
+        var email: String = intent.getStringExtra("email")
+        var password: String = intent.getStringExtra("password")
 
         registerbutton.setOnClickListener {
 
@@ -70,8 +69,8 @@ class Register_Infirmation : AppCompatActivity() {
 
 
 
-                if(textheight.getText().toString() =="" && textheight.getText().toString() =="" ){
-                    Toast.makeText(this, "Please in put height and weigth.", Toast.LENGTH_SHORT).show()
+                if(textheight.getText().toString() =="" && textheight.getText().toString() ==""&&textfirstname==""&&textlastname=="" ){
+                    Toast.makeText(this, "Please in put information in correct.", Toast.LENGTH_SHORT).show()
                 }else{
                     val height = java.lang.Float.valueOf(textheight.getText().toString())
                     val weigth = java.lang.Float.valueOf(textweigth.getText().toString())

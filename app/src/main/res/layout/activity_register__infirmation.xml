@@ -209,10 +209,11 @@
         android:layout_marginTop="30sp"
         android:id="@+id/registerbutton"
         android:text="Register"
+        android:textColor="#ffffff"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_below="@id/layoutlevelworkout"
-        android:background="@drawable/button_style"
+        android:background="@drawable/button_login_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </Button>

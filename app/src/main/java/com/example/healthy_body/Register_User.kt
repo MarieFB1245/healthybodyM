@@ -27,18 +27,19 @@ class Register_User : AppCompatActivity() {
           // myRef = FirebaseAuth.getInstance()
 
             if(email!=""&&password!=""&&conpassword!=""){
-                if(password==conpassword){
-                    saveusertodatabase(email,password)
-                    //myRef.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
-                      //  if (it.isSuccessful)
 
+              //  if( passwordInt < 6 && conpasswordInt < 6){
+                  //  Toast.makeText(this, "Please in put Password over 6 character.", Toast.LENGTH_SHORT).show()
+            //    }else{
+                   if(password==conpassword){
+                      saveusertodatabase(email,password)
 
-                   // }.addOnFailureListener {
-                     //   Log.d("Main","Error")
-                  // }
-               }else{
-                    Toast.makeText(this, "Password and ConfrimPassword is not correct.", Toast.LENGTH_SHORT).show()
-                }
+                   }
+            else{
+                       Toast.makeText(this, "Password and ConfrimPassword is not correct.", Toast.LENGTH_SHORT).show()
+                     }
+            //    }
+
             }else{
                 Toast.makeText(this, "Please in put Email and Password.", Toast.LENGTH_SHORT).show()
             }

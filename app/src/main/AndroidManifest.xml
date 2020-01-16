@@ -40,7 +40,11 @@
             android:name=".Login_user"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Home_User"
@@ -54,11 +58,7 @@
             android:name=".Register_Infirmation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" >
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+            </activity>
         <activity
             android:name=".Register_User"
             android:screenOrientation="portrait"

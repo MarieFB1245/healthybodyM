@@ -64,6 +64,9 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
 
         savelist.setOnClickListener {
             savetodata(nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDate,idfoodShow)
+            val intent = Intent(this,selectlistfood_user::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
         }
 
     }
