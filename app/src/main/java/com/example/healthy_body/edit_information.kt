@@ -88,23 +88,33 @@ class edit_information : AppCompatActivity() {
                     val genderE: String = betterSpinnergender.text.toString()
                     val betterSpinnerNostringE: String = betterSpinner.text.toString()
 
-                    var result = editinformation(
-                        UID,
-                        firstnameE,
-                        lastnameE,
-                        ageE,
-                        weightE,
-                        heightE,
-                        genderE,
-                        betterSpinnerNostringE
-                    ).edit()
+                    if (firstnameE != "" && lastnameE != "" && ageE != "" && weightE != "" && heightE != "" && genderE != "" && betterSpinnerNostringE != "") {
 
-                    Log.e("result","${result}")
+                        var result = editinformation(
+                            UID,
+                            firstnameE,
+                            lastnameE,
+                            ageE,
+                            weightE,
+                            heightE,
+                            genderE,
+                            betterSpinnerNostringE
+                        ).edit()
 
-if (result == true) {
-   pass(UID)
 
-}
+                        Log.e("result", "${result}")
+                        if (result == true) {
+
+                            pass(UID)
+                        }
+                    } else {
+                        Log.e("result", "Please in put information in correct.")
+
+
+                    }
+
+
+
 
             }
             }

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:text="name" />
         <LinearLayout
             android:layout_width="150dp"

@@ -24,13 +24,17 @@ class Register_User : AppCompatActivity() {
             val email = email.text.toString()
             val password = password.text.toString()
             val conpassword = conpassword.text.toString()
+
+            val passwordInt = password.length
+            val conpasswordInt = conpassword.length
+
           // myRef = FirebaseAuth.getInstance()
 
             if(email!=""&&password!=""&&conpassword!=""){
 
-              //  if( passwordInt < 6 && conpasswordInt < 6){
-                  //  Toast.makeText(this, "Please in put Password over 6 character.", Toast.LENGTH_SHORT).show()
-            //    }else{
+               if( passwordInt < 6 && conpasswordInt < 6){
+                    Toast.makeText(this, "Please in put Password over 6 character.", Toast.LENGTH_SHORT).show()
+                }else{
                    if(password==conpassword){
                       saveusertodatabase(email,password)
 
@@ -38,7 +42,7 @@ class Register_User : AppCompatActivity() {
             else{
                        Toast.makeText(this, "Password and ConfrimPassword is not correct.", Toast.LENGTH_SHORT).show()
                      }
-            //    }
+               }
 
             }else{
                 Toast.makeText(this, "Please in put Email and Password.", Toast.LENGTH_SHORT).show()
