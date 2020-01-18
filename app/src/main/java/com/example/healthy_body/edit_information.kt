@@ -15,8 +15,7 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
 import kotlinx.android.synthetic.main.activity_edit_information.*
 
 class edit_information : AppCompatActivity() {
-
-//var UID :String="WISbOJ5Q6TZ7cSCfuxBJyG5UlH93"
+    //var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     private lateinit var myRef: DatabaseReference
     internal var SPINNERLST = arrayOf("low workout","normal workout to 1-3 time a week","normal workout to 4-5 time a week",
         "heavy workout to 6-7 time a week","heaviest workout over to 2 time a day")
@@ -36,7 +35,6 @@ class edit_information : AppCompatActivity() {
         val inputheight = findViewById<EditText>(R.id.inputheight)
         val arrayAdaptergender = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,SPINNERLSTGENDER)
         val betterSpinnergender = findViewById(R.id.spinner_gender) as MaterialBetterSpinner
-
         betterSpinnergender.setAdapter(arrayAdaptergender)
 
         val arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,SPINNERLST)
@@ -45,7 +43,15 @@ class edit_information : AppCompatActivity() {
         val Level_Workout = betterSpinner.text.toString()
         myRef = FirebaseDatabase.getInstance().getReference("users").child("${UID}")
 
+        val arrow = findViewById<ImageView>(R.id.arrow)
+        val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
+        setSupportActionBar(tooltset)
 
+        arrow.setOnClickListener {
+            val intent = Intent(this, Home_User::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+        }
 
 
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {

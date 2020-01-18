@@ -4,28 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bacckground_color"
     tools:context=".edit_information">
-    <RelativeLayout
-        android:layout_width="wrap_content"
+
+    <include
+        android:id="@+id/searchView"
+        layout="@layout/app_editinformation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
+
+    <LinearLayout
+        android:layout_below="@id/searchView"
+        android:id="@+id/nametextlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30sp"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit Information"
-            android:textSize="30dp"
+            android:text="FirstName"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            >
+        </TextView>
 
-            ></TextView>
-    </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="40sp"
+        android:layout_below="@id/nametextlayout"
         android:id="@+id/namelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
 
         <EditText
             android:layout_weight="1"
@@ -35,17 +53,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="firstname"
+            android:textColor="#ffffff"
             ></EditText>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutage"
-        android:layout_below="@+id/namelayout"
+        android:layout_below="@id/namelayout"
+        android:id="@+id/lastnametextlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="30sp"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LastName"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        >
+    </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutage"
+        android:layout_below="@+id/lastnametextlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
         >
 
         <EditText
@@ -56,20 +93,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Lastname"
+            android:textColor="#ffffff"
             ></EditText>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutweight"
-        android:layout_below="@+id/layoutage"
+        android:layout_below="@id/layoutage"
+        android:id="@+id/weighttextlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="30sp"
         >
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Weight"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        >
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Height"
+            android:layout_weight="1"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            >
+        </TextView>
+    </LinearLayout>
 
 
 
+
+
+
+    <LinearLayout
+        android:id="@+id/layoutweight"
+        android:layout_below="@+id/weighttextlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
         <EditText
             android:id="@+id/inputweight"
             android:layout_weight="1"
@@ -79,6 +148,7 @@
             android:layout_height="wrap_content"
             android:hint="Weight"
             android:inputType="number"
+            android:textColor="#ffffff"
             ></EditText>
 
         <EditText
@@ -90,15 +160,45 @@
             android:layout_height="wrap_content"
             android:hint="Height"
             android:inputType="number"
+            android:textColor="#ffffff"
             ></EditText>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutheight"
-        android:layout_below="@+id/layoutweight"
+        android:layout_below="@id/layoutweight"
+        android:id="@+id/agetextlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginTop="30sp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Age"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_weight="1"
+            android:text="Gender"
+            android:textColor="#ffffff"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutheight"
+        android:layout_below="@+id/agetextlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         >
         <EditText
             android:id="@+id/inputage"
@@ -109,6 +209,7 @@
             android:layout_height="wrap_content"
             android:hint="Age"
             android:inputType="numberDecimal|numberSigned"
+            android:textColor="#ffffff"
             ></EditText>
 
         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
@@ -121,6 +222,7 @@
             android:layout_marginRight="25dp"
             android:layout_alignParentStart="true"
             android:textColorHint="#05ab9a"
+            app:met_textColor="#ffffff"
             ></com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
 
     </LinearLayout>
@@ -132,8 +234,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="30sp"
-        >
 
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_weight="1"
+            android:text="Levelwork out"
+            android:textColor="#ffffff"></TextView>
     </LinearLayout>
 
     <LinearLayout
@@ -165,6 +275,7 @@
             android:layout_marginRight="25dp"
             android:layout_alignParentStart="true"
             android:textColorHint="#05ab9a"
+            app:met_textColor="#ffffff"
             ></com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
 
     </LinearLayout>
@@ -177,7 +288,8 @@
         android:layout_marginLeft="25dp"
         android:layout_marginTop="30sp"
         android:layout_marginRight="25dp"
-        android:background="@drawable/button_style"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_login_style"
         android:text="Edit"></Button>
 
 

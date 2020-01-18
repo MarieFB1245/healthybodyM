@@ -11,17 +11,7 @@ import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.text.InputType
-
-
-
-
-
-
-
-
-
-
-
+import java.lang.Thread.sleep
 
 
 class Login_user : AppCompatActivity() {

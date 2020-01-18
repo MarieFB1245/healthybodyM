@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Register_User"
-    android:background="#262626">
+    android:background="@drawable/bacckground_color">
 
     <LinearLayout
         android:id="@+id/L0"
@@ -152,6 +152,7 @@
             android:textColor="#ffffff"
             android:layout_marginRight="30sp"
             android:layout_marginLeft="30sp"
+            android:paddingLeft="15dp"
             android:inputType="textPassword"
             ></EditText>
 
