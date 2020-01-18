@@ -7,22 +7,26 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import com.example.healthy_body.model.modellistfood
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.activity_home__user.*
 import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
 import kotlinx.android.synthetic.main.list_food.view.*
 
 class selectlistfood_user : AppCompatActivity() {
-
+    var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     val ref = FirebaseDatabase.getInstance().getReference("FOOD")
-var UID :String=""
+//var UID :String=""
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selectlistfood_user)
 
-        UID = intent.getStringExtra("UID")
+       // UID = intent.getStringExtra("UID")
         val adapter = GroupAdapter<ViewHolder>()
         mRecycleVeiew.adapter = adapter
         var search = findViewById<EditText>(R.id.Searching)
@@ -32,15 +36,26 @@ var UID :String=""
         }
 
 
+
+
         val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
-            val intent = Intent(this, Home_User::class.java)
+            val intent = Intent(this, home_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
         }
+
+        val imageView = findViewById<ImageView>(R.id.addfood) as ImageView
+        imageView.setOnClickListener {
+            val intent = Intent(this, addfood_user::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+        }
+
+
 
     }
 
@@ -126,4 +141,6 @@ var UID :String=""
             return R.layout.list_food
         }
     }
+
+
 }
