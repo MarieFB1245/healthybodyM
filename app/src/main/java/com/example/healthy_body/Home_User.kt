@@ -23,7 +23,7 @@ class Home_User : AppCompatActivity() {
     private val pnameFood = arrayOf("Kcal/Food", "Kcal/Workout")
     private lateinit var myRef: DatabaseReference
     private var myAut = FirebaseAuth.getInstance()
-    //val UID="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+   // val UID="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home__user)

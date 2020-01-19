@@ -44,6 +44,12 @@ class selectlistexcercise_user : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val imageView = findViewById<ImageView>(R.id.addexcercise) as ImageView
+        imageView.setOnClickListener {
+            val intent = Intent(this, addexcercise_user::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+        }
     }
     fun loadexcercise(s: String) {
         if (s != null) {

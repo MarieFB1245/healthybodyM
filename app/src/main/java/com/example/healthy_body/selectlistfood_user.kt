@@ -17,16 +17,17 @@ import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
 import kotlinx.android.synthetic.main.list_food.view.*
 
 class selectlistfood_user : AppCompatActivity() {
-    var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+   // var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     val ref = FirebaseDatabase.getInstance().getReference("FOOD")
-//var UID :String=""
+var UID :String?=""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selectlistfood_user)
 
-       // UID = intent.getStringExtra("UID")
+         UID = intent.getStringExtra("UID")
+        Log.e("UID =>","${UID}")
         val adapter = GroupAdapter<ViewHolder>()
         mRecycleVeiew.adapter = adapter
         var search = findViewById<EditText>(R.id.Searching)
@@ -39,11 +40,11 @@ class selectlistfood_user : AppCompatActivity() {
 
 
         val arrow = findViewById<ImageView>(R.id.arrow)
-        val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
+        val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar1)
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
-            val intent = Intent(this, home_user::class.java)
+            val intent = Intent(this, Home_User::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
         }

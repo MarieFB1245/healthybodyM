@@ -19,7 +19,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:text="ชื่ออาหาร"
         android:textColor="#ffffff"
         app:layout_constraintStart_toStartOf="@+id/editText"
@@ -27,12 +27,10 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         android:textColor="#ffffff"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -49,13 +47,11 @@
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:ems="10"
-        android:textColor="#ffffff"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:textColor="#ffffff"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -63,7 +59,6 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="32dp"
         android:text="จำนวน"
         android:textColor="#ffffff"
@@ -78,6 +73,7 @@
         android:layout_marginBottom="44dp"
         android:text="1"
         android:textColor="#ffffff"
+        android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="@+id/textView5"
@@ -87,9 +83,9 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/subbutton"
         android:text="-"
         android:textColor="#ffffff"
-        android:background="@drawable/subbutton"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintTop_toTopOf="@+id/textView6"
@@ -97,16 +93,16 @@
 
     <Button
         android:id="@+id/button4"
-        android:background="@drawable/addbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/addbutton"
         android:text="+"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView7"
@@ -120,12 +116,10 @@
 
     <EditText
         android:id="@+id/editText4"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         android:textColor="#ffffff"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -144,15 +138,14 @@
 
     <EditText
         android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_width="305dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="56dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="@+id/button5"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="@+id/button5"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
@@ -163,14 +156,13 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="168dp"
         android:background="@drawable/button_login_style"
-        android:text="Button"
+        android:text="ADDFOOD"
 
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText5"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

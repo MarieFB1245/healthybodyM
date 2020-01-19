@@ -58,4 +58,14 @@
         app:layout_constraintTop_toTopOf="@+id/Searching"
         app:layout_constraintVertical_bias="1.0" />
 
+    <ImageView
+        android:id="@+id/addexcercise"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/ic_add_circle_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintStart_toStartOf="parent"></ImageView>
 </androidx.constraintlayout.widget.ConstraintLayout>

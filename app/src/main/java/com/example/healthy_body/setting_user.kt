@@ -33,7 +33,7 @@ class setting_user : AppCompatActivity() {
 
 
 
-        var UID: String = intent.getStringExtra("uid")
+        var UID: String = intent.getStringExtra("UID")
         val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)

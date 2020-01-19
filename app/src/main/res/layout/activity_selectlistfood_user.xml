@@ -18,14 +18,14 @@
 
     <EditText
         android:id="@+id/Searching"
-        android:layout_width="211dp"
+        android:layout_width="200dp"
         android:layout_height="41dp"
         android:ems="10"
         android:hint="Searching"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/mRecycleVeiew"
         app:layout_constraintEnd_toStartOf="@+id/sreachtext"
-        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="@+id/searchView"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
         app:layout_constraintVertical_bias="0.48000002" />
