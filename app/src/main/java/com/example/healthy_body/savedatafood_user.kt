@@ -34,7 +34,7 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         nameFoodShowB = nameFoodShow
         kcalfoodShowB = kcalfoodShow
         val calendar = Calendar.getInstance()
-        var  currentDate = DateFormat.getDateInstance().format(calendar.time)
+        var currentDate = DateFormat.getDateInstance().format(calendar.time)
         var datetextview =  findViewById<TextView>(R.id.date)
         datetextview.setText(currentDate)
         var add =findViewById<Button>(R.id.add)
@@ -88,7 +88,6 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
 
         when (v?.id) {
             R.id.add -> {
-
                 sum = sum + 1
                 resultBig = sumkcal*sum
                 Log.d("sumkcal add =>","${sum}")
