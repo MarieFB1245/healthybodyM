@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.list_food.view.*
 class selectlistfood_user : AppCompatActivity() {
    // var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     val ref = FirebaseDatabase.getInstance().getReference("FOOD")
-var UID :String?=""
+var UID :String=""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +63,7 @@ var UID :String?=""
      fun loadfood(s: String) {
         if (s != null) {
             val firebaseSrarchQuery: Query =
-                ref.orderByChild("name_food").startAt(s).endAt(s + "\uf8ff")
+                ref.orderByChild("namefood").startAt(s).endAt(s + "\uf8ff")
             Log.d("firebaseSrarchQuery", "${firebaseSrarchQuery}")
             val adapter = GroupAdapter<ViewHolder>()
             firebaseSrarchQuery.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -79,7 +79,7 @@ var UID :String?=""
                         val fooditem = item as Food
                         val intent = Intent(view.context, savedatafood_user::class.java)
                         intent.putExtra("UID",UID)
-                        intent.putExtra("namefood", fooditem.food.name_food)
+                        intent.putExtra("namefood", fooditem.food.namefood)
                         intent.putExtra("kcalfood", fooditem.food.kcal)
                         intent.putExtra("id", fooditem.food.id_food)
                         startActivity(intent)
@@ -107,7 +107,7 @@ var UID :String?=""
                     adapter.setOnItemClickListener { item, view ->
                         val fooditem = item as Food
                         val intent = Intent(view.context, savedatafood_user::class.java)
-                        intent.putExtra("namefood", fooditem.food.name_food)
+                        intent.putExtra("namefood", fooditem.food.namefood)
                         intent.putExtra("kcalfood", fooditem.food.kcal)
                         intent.putExtra("id", fooditem.food.id_food)
                         startActivity(intent)
@@ -129,9 +129,9 @@ var UID :String?=""
     }
    inner class Food(val food: modellistfood) : Item<ViewHolder>() {
         override fun bind(viewHolder: ViewHolder, position: Int) {
-            Log.d("name_food", food.name_food)
+            Log.d("name_food", food.namefood)
             Log.d("kcal_String", food.kcal)
-            viewHolder.itemView.name.text = food.name_food
+            viewHolder.itemView.name.text = food.namefood
             viewHolder.itemView.kcal.text = food.kcal
             Log.d("viewHolder", "${viewHolder}")
 

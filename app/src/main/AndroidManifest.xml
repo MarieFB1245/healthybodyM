@@ -15,11 +15,7 @@
         <activity
             android:name=".addfood_user"
             android:theme="@style/AppTheme.NoActionbar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
 
@@ -56,7 +52,11 @@
             android:name=".Login_user"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Home_User"

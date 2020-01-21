@@ -138,7 +138,7 @@
     <EditText
         android:id="@+id/inputtypeunit"
         android:layout_width="305dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -156,7 +156,6 @@
         android:layout_marginBottom="168dp"
         android:background="@drawable/button_login_style"
         android:text="ADDFOOD"
-
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

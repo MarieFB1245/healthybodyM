@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.healthy_body.calculate.data
+import com.example.healthy_body.calculate.savemenufood
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -18,17 +21,22 @@ import kotlinx.android.synthetic.main.activity_savedatafood_user.*
 import kotlinx.android.synthetic.main.barselect.view.*
 
 class addfood_user : AppCompatActivity(), View.OnClickListener {
-     val UID="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+    //val UID="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     val ref = FirebaseDatabase.getInstance().getReference("FOOD")
     var sum  = 1
-    var resultBig :Int=0
-   // var UID :String=""
+    var amount :Int=1
+    var UID :String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addfood_user)
-       // UID = intent.getStringExtra("UID")
+        UID = intent.getStringExtra("UID")
        val amount = findViewById<TextView>(R.id.textView6)
        amount.setText("${sum}")
+
+       val inputname = findViewById<EditText>(R.id.inputname)
+       val inputkcal = findViewById<EditText>(R.id.inputkcal)
+       val inputunit = findViewById<EditText>(R.id.inputunit)
+       val inputtypeunit = findViewById<EditText>(R.id.inputtypeunit)
        var add =findViewById<Button>(R.id.add)
        var sub  = findViewById<Button>(R.id.sub)
 
@@ -44,76 +52,35 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
             intent.putExtra("UID", UID)
             startActivity(intent)
         }
-          /*  ref.addListenerForSingleValueEvent(object : ValueEventListener{
-                override fun onCancelled(p0: DatabaseError) {
+       ref.addListenerForSingleValueEvent(object:ValueEventListener{
+           override fun onCancelled(p0: DatabaseError) {
 
-                }
+           }
 
-                override fun onDataChange(p0: DataSnapshot) {
-                    if (p0.exists()) {
-                        println(p0)
-                        Log.e("data", "data notnull")
-                        for (list in p0.children) {
-                            val s = list!!.getValue(daat::class.java)
-                            val key = list!!.key
-                            var test = list!!.value.toString()
-                            var textiinfo = s!!.name
-
-                            val intkey = key!!.toInt()
-                            button.setOnClickListener {
-                                val name = name.text.toString()
-                                Log.d("nameuser in put", "${name}")
-                                if (name == textiinfo) {
-
-                                    val ref = FirebaseDatabase.getInstance().getReference("testnum")
-                                        .child(key)
-                                    Log.e("pass", "if")
-                                    Log.d("pass updatevalue", "${name}")
-                                    val childUpdates = HashMap<String, String>()
-                                    childUpdates.put("name", "${name}")
-                                    ref.updateChildren(childUpdates as Map<String, Any>)
+           override fun onDataChange(p0: DataSnapshot) {
+               for(list in p0.children){
+                   val s = list.getValue(data::class.java)
+                   val key = list!!.key
+                   var textiinfo = s!!.namefood
+                   println("textiinfo =>"+key.toString())
+                   println("textiinfo =>"+textiinfo.toString())
+               }
+           }
+       })
 
 
-                                } else {
-                                    Log.e("pass", "else")
-                                    val key = list!!.key
-                                    val intkey = key!!.toInt()
+       buttonaddfood.setOnClickListener {
+           val namefood = inputname.text.toString()
+           val kcal = inputkcal.text.toString()
+           val unit = inputunit.text.toString()
+           val unittype = inputtypeunit.text.toString()
 
-                                    println("textname => ${name}")
-                                    Log.d("pass setvalue", "${name}")
+           savemenufood(namefood,kcal,unit,unittype,this.amount).save()
 
-                                    val newkey = intkey + 1
-                                    val keystrig = newkey.toString()
-                                    ref.child("${keystrig}").child("name").setValue(name)
-                                }
-                            }
-                        }
-                    } else {
-                        Log.e("data", "data null")
-                        buttonaddfood.setOnClickListener {
-                            val namefood = inputname.text.toString()
-                            val kcal = inputkcal.text.toString()
-                            val unit = inputunit.text.toString()
-                            val typeunit = inputtypeunit.text.toString()
-
-
-                            /*   Log.e("pass", "${name}")
-                            Log.e("pass", "button")
-                            val key: Int = 0
-                            println("textname => ${name}")
-                            Log.d("pass setvalue", "${name}")
-                            val newkey = key + 1
-                            val keystrig = newkey.toString()
-                            ref.child("${keystrig}").child("name").setValue(name)*/
-
-
-                        }
-                    }
-                }
-            })*/
-
-
-
+           val intent = Intent(this, selectlistfood_user::class.java)
+           intent.putExtra("UID", UID)
+           startActivity(intent)
+       }
 
 
 
@@ -124,17 +91,21 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
         var subsum = 1
         when (v?.id) {
             R.id.add -> {
-                resultBig = resultBig + 1
-                Log.d("resultBig","$resultBig")
+                amount = amount + 1
+                Log.d("resultBig","$amount")
                // val textsum = reesult.toString()
-                textView6.setText("${resultBig}")
+                textView6.setText("${amount}")
 
             }
             R.id.sub -> {
-                resultBig = resultBig - subsum
-                Log.d("resultBig","$resultBig")
+                amount = amount - subsum
+
+                if(amount<=1){
+                    amount = 1
+                }
+                Log.d("resultBig","$amount")
                // val textsum = reesult.toString()
-                textView6.setText("${resultBig}")
+                textView6.setText("${amount}")
             }
             else -> {
             }

@@ -24,7 +24,9 @@ class selectlistexcercise_user : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selectlistexcercise_user)
 
-        UID = intent.getStringExtra("UID")
+      UID = intent.getStringExtra("UID")
+
+
         val adapter = GroupAdapter<ViewHolder>()
         mRecycleVeiew.adapter = adapter
         var search = findViewById<EditText>(R.id.Searching)
@@ -98,7 +100,7 @@ class selectlistexcercise_user : AppCompatActivity() {
                     adapter.setOnItemClickListener { item, view ->
                         val fooditem = item as selectlistfood_user.Food
                         val intent = Intent(view.context, savedatafood_user::class.java)
-                        intent.putExtra("namefood", fooditem.food.name_food)
+                        intent.putExtra("namefood", fooditem.food.namefood)
                         intent.putExtra("kcalfood", fooditem.food.kcal)
                         intent.putExtra("id", fooditem.food.id_food)
                         startActivity(intent)
