@@ -3,10 +3,16 @@ package com.example.healthy_body
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.ImageView
+import com.example.healthy_body.calculate.savemenuexcercise
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_addexcercise_user.*
 import kotlinx.android.synthetic.main.activity_home__user.*
 
 class addexcercise_user : AppCompatActivity() {
+
+    val ref = FirebaseDatabase.getInstance().getReference("EXCERCISE")
     var UID :String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,5 +27,15 @@ class addexcercise_user : AppCompatActivity() {
             intent.putExtra("UID",UID)
             startActivity(intent)
         }
+        val inputnameexcercise = findViewById<EditText>(R.id.inputnameexcercise)
+        val inputkcal = findViewById<EditText>(R.id.inputkcal)
+
+        buttonaddexceercisee.setOnClickListener {
+            val textnameEX = inputnameexcercise.text.toString()
+            val textkcal = inputkcal.text.toString()
+            savemenuexcercise(textnameEX,textkcal).saveex()
+
+        }
+
     }
 }
