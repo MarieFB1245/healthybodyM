@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bacckground_color"
     tools:context=".savedataexcercise_user">
 
 
@@ -23,6 +24,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:text="วันที่"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/date"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:text="date"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textdate"
         app:layout_constraintTop_toTopOf="@+id/textdate" />
@@ -46,6 +49,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:text="ชื่อกิจกกรม"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textdate" />
@@ -56,6 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="nameexcercise"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textnameexcercise"
         app:layout_constraintTop_toTopOf="@+id/textnameexcercise" />
@@ -67,6 +72,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:text="เเคลอรี่"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textnameexcercise" />
@@ -77,6 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
         android:text="Kcal"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textKcal"
         app:layout_constraintTop_toTopOf="@+id/textKcal" />
@@ -88,6 +95,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:text="จำนวนชั่วโมง"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textKcal" />
@@ -98,6 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="amount"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textamount"
         app:layout_constraintTop_toTopOf="@+id/textamount" />
@@ -107,7 +116,9 @@
         android:layout_width="50dp"
         android:layout_height="39dp"
         android:layout_marginStart="30dp"
+        android:textColor="#FFFFFF"
         android:text="-"
+        android:background="@drawable/subbutton"
         app:layout_constraintBottom_toBottomOf="@+id/amount"
         app:layout_constraintEnd_toStartOf="@+id/add"
         app:layout_constraintHorizontal_bias="0.36"
@@ -119,6 +130,8 @@
         android:layout_width="50dp"
         android:layout_height="39dp"
         android:text="+"
+        android:background="@drawable/addbutton"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/amount"
         app:layout_constraintStart_toEndOf="@+id/sub"
         app:layout_constraintTop_toTopOf="@+id/amount" />
@@ -130,6 +143,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="28dp"
         android:text="จำนวนเเคลอรี่"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textamount" />
@@ -141,6 +155,7 @@
         android:layout_marginStart="20dp"
         android:text="tatal"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/texttatalkcal"
         app:layout_constraintTop_toTopOf="@+id/texttatalkcal" />
 
@@ -151,6 +166,10 @@
         android:layout_marginTop="108dp"
         android:gravity="center"
         android:text="savelist"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_login_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tatal" />

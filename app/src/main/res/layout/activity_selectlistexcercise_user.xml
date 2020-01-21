@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/bacckground_color"
     android:layout_height="match_parent"
     tools:context=".selectlistexcercise_user">
 
@@ -10,7 +11,7 @@
 
     <include
         android:id="@+id/searchView"
-        layout="@layout/barselect"
+        layout="@layout/app_selectexcercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,6 +25,8 @@
         android:layout_height="41dp"
         android:ems="10"
         android:hint="Searching"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/mRecycleVeiew"
         app:layout_constraintEnd_toStartOf="@+id/sreachtext"
@@ -47,11 +50,11 @@
         app:layout_constraintTop_toBottomOf="@+id/searchView"
         app:layout_constraintVertical_bias="0.51" />
 
-    <Button
+    <ImageView
+        android:src="@drawable/ic_search_black_24dp"
         android:id="@+id/sreachtext"
-        android:layout_width="79dp"
-        android:layout_height="39dp"
-        android:text="sreach"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/Searching"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Searching"

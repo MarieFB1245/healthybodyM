@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bacckground_color"
     tools:context=".selectlistfood_user">
 
     <include
@@ -22,6 +23,8 @@
         android:layout_height="41dp"
         android:ems="10"
         android:hint="Searching"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/mRecycleVeiew"
         app:layout_constraintEnd_toStartOf="@+id/sreachtext"
@@ -45,7 +48,8 @@
         app:layout_constraintTop_toBottomOf="@+id/searchView"
         app:layout_constraintVertical_bias="0.51" />
 
-    <Button
+    <ImageView
+        android:src="@drawable/ic_search_black_24dp"
         android:id="@+id/sreachtext"
         android:layout_width="79dp"
         android:layout_height="39dp"
@@ -56,7 +60,8 @@
         app:layout_constraintTop_toTopOf="@+id/Searching"
         app:layout_constraintVertical_bias="1.0" />
 
-    <Button
+    <ImageView
+        android:src="@drawable/ic_camera_alt_black_24dp"
         android:id="@+id/camera"
         android:layout_width="74dp"
         android:layout_height="39dp"

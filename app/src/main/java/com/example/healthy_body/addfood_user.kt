@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import com.example.healthy_body.calculate.data
 import com.example.healthy_body.calculate.savemenufood
 import com.google.firebase.database.DataSnapshot
@@ -74,12 +71,17 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
            val kcal = inputkcal.text.toString()
            val unit = inputunit.text.toString()
            val unittype = inputtypeunit.text.toString()
+           if(namefood!= ""&&kcal!=""&&unit!=""&&unittype!=""&&this.amount!=null){
+               savemenufood(namefood,kcal,unit,unittype,this.amount).save()
+               val intent = Intent(this, selectlistfood_user::class.java)
+               intent.putExtra("UID", UID)
+               startActivity(intent)
+           }else{
+               Toast.makeText(this, "Please in put Information Food", Toast.LENGTH_SHORT).show()
+           }
 
-           savemenufood(namefood,kcal,unit,unittype,this.amount).save()
 
-           val intent = Intent(this, selectlistfood_user::class.java)
-           intent.putExtra("UID", UID)
-           startActivity(intent)
+
        }
 
 

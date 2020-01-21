@@ -22,6 +22,12 @@
         android:layout_height="49dp"
         android:id="@+id/bottonop"
         android:src="@drawable/ic_settings_black_24dp"></ImageView>
+    <ImageView
+        android:layout_width="57dp"
+        android:layout_height="49dp"
+        android:id="@+id/buttonRe"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_description_black_24dp"></ImageView>
 
 </RelativeLayout>
 

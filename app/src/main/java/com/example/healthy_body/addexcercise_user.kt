@@ -1,10 +1,15 @@
 package com.example.healthy_body
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import com.example.healthy_body.calculate.savemenuexcercise
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_addexcercise_user.*
@@ -32,8 +37,11 @@ class addexcercise_user : AppCompatActivity() {
         buttonaddexceercisee.setOnClickListener {
             val textnameEX = inputnameexcercise.text.toString()
             val textkcal = inputkcal.text.toString()
-            savemenuexcercise(textnameEX,textkcal).saveex()
-
+            if (textnameEX !=""&&textkcal!=""){
+                savemenuexcercise(textnameEX,textkcal).saveex()
+            }else{
+                Toast.makeText(this, "Please in put Information Excercise", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }

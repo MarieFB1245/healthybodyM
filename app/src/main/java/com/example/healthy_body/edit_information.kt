@@ -15,7 +15,7 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
 import kotlinx.android.synthetic.main.activity_edit_information.*
 
 class edit_information : AppCompatActivity() {
-    //var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+    var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     private lateinit var myRef: DatabaseReference
     internal var SPINNERLST = arrayOf("low workout","normal workout to 1-3 time a week","normal workout to 4-5 time a week",
         "heavy workout to 6-7 time a week","heaviest workout over to 2 time a day")
@@ -27,7 +27,7 @@ class edit_information : AppCompatActivity() {
 
 
 
-        var UID: String = intent.getStringExtra("UID")
+       // var UID: String = intent.getStringExtra("UID")
         val inputfirstname = findViewById<EditText>(R.id.inputfirstname)
         val inputLastname = findViewById<EditText>(R.id.inputLastname)
         val inputage = findViewById<EditText>(R.id.inputage)
@@ -106,15 +106,13 @@ class edit_information : AppCompatActivity() {
                             genderE,
                             betterSpinnerNostringE
                         ).edit()
-
-
                         Log.e("result", "${result}")
                         if (result == true) {
-
                             pass(UID)
                         }
                     } else {
-                        Log.e("result", "Please in put information in correct.")
+
+                   error()
 
 
                     }
@@ -138,5 +136,9 @@ fun pass (uid:String=""){
     startActivity(intent)
 
 }
+
+    fun error (){
+        Toast.makeText(this, "Please in put information in correct.", Toast.LENGTH_SHORT).show()
+    }
 
     }
