@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_home__user.*
 
 class addexcercise_user : AppCompatActivity() {
 
-    val ref = FirebaseDatabase.getInstance().getReference("EXCERCISE")
     var UID :String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
