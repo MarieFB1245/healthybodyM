@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.healthy_body.calculate.savetotalkcal
 import com.example.healthy_body.model.modelSelectFood
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_savedatafood_user.*
@@ -63,10 +64,13 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         }
 
         savelist.setOnClickListener {
+            val nametype :String= "FOOD"
             savetodata(nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDate,idfoodShow)
+            savetotalkcal(resultBig,nametype,UID).savetotal()
             val intent = Intent(this,selectlistfood_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+
         }
 
     }

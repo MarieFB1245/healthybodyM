@@ -24,24 +24,17 @@ class Totalkcal_User : AppCompatActivity() {
         val TDEEshow = findViewById<TextView>(R.id.statusname)
         val Statusshow = findViewById<TextView>(R.id.numberkcal)
         var UID: String = intent.getStringExtra("UID")
+        var status: String = intent.getStringExtra("status")
+        var TDEE: String = intent.getStringExtra("TDEE")
 
    Log.d("information","uid intent:$UID")
 
-        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
 
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                //val map = dataSnapshot.value as Map<*, *>?
-                val map1 = dataSnapshot.child("users").child(UID).value as Map<*, *>?
-                val status = map1!!["status"].toString()
-                val TDEE = map1["TDEE"].toString()
+
+
                 TDEEshow.text = status
                 Statusshow.text = TDEE
-            }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-
-            }
-        })
 
         start.setOnClickListener {
             startintent(UID)

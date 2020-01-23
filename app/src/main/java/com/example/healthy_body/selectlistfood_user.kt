@@ -17,9 +17,9 @@ import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
 import kotlinx.android.synthetic.main.list_food.view.*
 
 class selectlistfood_user : AppCompatActivity() {
-   // var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+    //var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     val ref = FirebaseDatabase.getInstance().getReference("FOOD")
-var UID :String=""
+    var UID :String=""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

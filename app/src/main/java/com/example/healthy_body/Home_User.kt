@@ -4,8 +4,11 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.widget.TextView
+import com.example.healthy_body.calculate.data
+import com.example.healthy_body.calculate.selectdata_totalkcal
+import com.example.healthy_body.calculate.totalkcallare
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -17,26 +20,35 @@ import java.util.ArrayList
 
 class Home_User : AppCompatActivity() {
 
-    private val Food = 0
-    private val Workout = 0
-    private val peercenData = intArrayOf(Food, Workout)
-    private val pnameFood = arrayOf("Kcal/Food", "Kcal/Workout")
+
     private lateinit var myRef: DatabaseReference
     private var myAut = FirebaseAuth.getInstance()
    // val UID="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home__user)
-        setupPieChart()
+
         myRef = FirebaseDatabase.getInstance().reference
         var UID: String = intent.getStringExtra("UID")
         val TDEEshow = findViewById<TextView>(R.id.numberTDEE)
         val BMIshow = findViewById<TextView>(R.id.numberBMI)
         val BMRshow = findViewById<TextView>(R.id.numberBMR)
 
+
         signout.setOnClickListener {
             signout()
         }
+
+        selectdata_totalkcal(UID).getdatatotal{excercise,food ->
+
+           var Food = food.toInt()
+           var  Workout = excercise.toInt()
+
+            setupPieChart(Food,Workout)
+}
+
+
+        Log.e("pass","selectdata_totalkcal")
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val map = dataSnapshot.value as Map<*, *>?
@@ -72,7 +84,11 @@ class Home_User : AppCompatActivity() {
         }
     }
 
-    private fun setupPieChart() {
+    private fun setupPieChart(Food:Int ,Workout:Int) {
+
+         val peercenData = intArrayOf(Food, Workout)
+         val pnameFood = arrayOf("Kcal/Food", "Kcal/Workout")
+
         val pieEntries = ArrayList<PieEntry>()
         for (i in peercenData.indices) {
             pieEntries.add(

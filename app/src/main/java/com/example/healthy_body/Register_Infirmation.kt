@@ -5,14 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import android.widget.Toast.LENGTH_LONG
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
 import kotlinx.android.synthetic.main.activity_register__infirmation.*
 import kotlin.math.pow
 import java.text.DecimalFormat
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.example.healthy_body.calculate.register
+import com.google.firebase.database.*
 
 
 class Register_Infirmation : AppCompatActivity() {
@@ -48,8 +48,12 @@ class Register_Infirmation : AppCompatActivity() {
         var email: String = intent.getStringExtra("email")
         var password: String = intent.getStringExtra("password")
 
+
         registerbutton.setOnClickListener {
 
+            var LENGTH_LONG  = 3500
+
+           val ss = Toast.makeText(this, "Process information...",  Toast.LENGTH_LONG)
 
             myRef = FirebaseAuth.getInstance()
             myRef.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
@@ -85,7 +89,24 @@ class Register_Infirmation : AppCompatActivity() {
                     }else{
                         register(uid,email,password,age,height,weigth,BMIS,gender,Level_Workout,textfirstname,textlastname).regis()
 
-                        intent(uid)
+                        val myRef = FirebaseDatabase.getInstance().reference
+                        myRef.addListenerForSingleValueEvent(object : ValueEventListener{
+                            override fun onCancelled(p0: DatabaseError) {
+
+                            }
+
+                            override fun onDataChange(p0: DataSnapshot) {
+                                val map1 = p0.child("users").child(uid).value as Map<*, *>? //ดึงข้อมูล มา จาด UID
+                                val status = map1!!["status"].toString()//วางค่า ที่ได้จาก dataSnapshot
+                                val TDEE = map1["TDEE"].toString()//วางค่า ที่ได้จาก dataSnapshot
+
+
+                                intent(uid,status,TDEE)
+                            }
+
+                        })
+
+
                     }
 
                 }
@@ -104,10 +125,15 @@ class Register_Infirmation : AppCompatActivity() {
 
 
 }
-    fun intent (uid: String){
+    fun intent (uid: String,status:String,TDEE:String){
+
+
         val intent = Intent(this, Totalkcal_User::class.java)
         intent.putExtra("UID",uid)
+        intent.putExtra("status",status)
+        intent.putExtra("TDEE",TDEE)
         startActivity(intent)
+
     }
 }
 
