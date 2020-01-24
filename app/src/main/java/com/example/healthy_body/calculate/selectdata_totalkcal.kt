@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class selectdata_totalkcal (val uid:String){
-    val sdf = SimpleDateFormat("dd-M-yyyy ")
+    val sdf = SimpleDateFormat("dd-M-yyyy")
     val currentDate = sdf.format(Date())
    val myRef = FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${uid}").child("$currentDate")
 

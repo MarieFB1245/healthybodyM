@@ -9,18 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".list_edit_food"
-            android:theme="@style/AppTheme.NoActionbar"
-            >
+        <activity android:name=".list_saveedit_food"></activity>
+        <activity
+            android:name=".list_edit_food"
+            android:theme="@style/AppTheme.NoActionbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".addexcercise_user"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".addfood_user"
-            android:theme="@style/AppTheme.NoActionbar"></activity>
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".savedataexcercise_user"
             android:screenOrientation="portrait"
@@ -38,32 +42,23 @@
             android:name=".selectlistfood_user"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".edit_information"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar"></activity> <!-- Theme.AppCompat.DayNight.NoActionBar -->
+            android:theme="@style/AppTheme.NoActionbar" /> <!-- Theme.AppCompat.DayNight.NoActionBar -->
         <activity
             android:name=".setting_user"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar"></activity>
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".Login_user"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionbar"></activity>
         <activity
             android:name=".Home_User"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar">
-
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionbar"></activity>
         <activity
             android:name=".Totalkcal_User"
             android:screenOrientation="portrait"

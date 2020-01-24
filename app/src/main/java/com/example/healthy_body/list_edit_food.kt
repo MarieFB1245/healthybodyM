@@ -26,20 +26,20 @@ class list_edit_food : AppCompatActivity() {
 
 
     private lateinit var ref: DatabaseReference
-   // val UID="mPJPyPSJDiXCDKBDQpn5QinolgW2"
+    val UID ="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     var calendar = Calendar.getInstance()
-    var UID :String=""
+   // var UID :String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_edit_food)
 
-        val myFormat = "dd-MM-yyyy"
+        val myFormat = "dd-M-yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         textcalendar!!.text = sdf.format(calendar.getTime())
-        //val date  = sdf.format(calendar.getTime())
-        var date :String = "22-1-2020"
-        Log.d("text", date.toString())
+        val datetext  = sdf.format(calendar.getTime())
+
+
         val adapter = GroupAdapter<ViewHolder>()
         recyclerView.adapter = adapter
 
@@ -54,7 +54,7 @@ class list_edit_food : AppCompatActivity() {
             startActivity(intent)
         }
 
-        loaddata(date)
+        loaddata(datetext)
 
 
 
@@ -77,6 +77,7 @@ class list_edit_food : AppCompatActivity() {
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)).show()
 
+
             }
 
 
@@ -85,19 +86,35 @@ class list_edit_food : AppCompatActivity() {
     }
 
     private fun loaddata(date :String) {
+        Log.e("date","${date}")
+
+
+
         val adapter = GroupAdapter<ViewHolder>()
-        ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD")
+        ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child(date)
         ref.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
-                Log.d("text", p0.toString())
+                Log.d("p0", p0.toString())
                 if(p0.exists()){
                     p0.children.forEach {
-                        Log.d("text", it.toString())
-                        val listfood = it.getValue()
+                        Log.d("DataSnapshot", it.toString())
+                        val listfood = it.getValue(dataselectfood::class.java)
                         Log.d("text", listfood.toString())
                         if (listfood != null) {
-                           // adapter.add(Food(listfood))
+                            adapter.add(Food(listfood))
                         }
+                    }
+                    adapter.setOnItemClickListener { item, view ->
+                        val fooditem = item as dataselectfood
+                        val intent = Intent(view.context, savedatafood_user::class.java)
+                        intent.putExtra("UID",UID)
+                        intent.putExtra("namefood", fooditem.nameFoodShowB)
+                        intent.putExtra("kcalfood", fooditem.kcalfoodShowB)
+                        intent.putExtra("resultBig", fooditem.resultBig)
+                        intent.putExtra("sum", fooditem.sum)
+                        intent.putExtra("sum", fooditem.date)
+                        intent.putExtra("id", fooditem.id)
+                        startActivity(intent)
                     }
                     recyclerView.adapter = adapter
                 }else{
@@ -127,9 +144,11 @@ class list_edit_food : AppCompatActivity() {
 
 
     private fun updateDateInView() {
-        val myFormat = "dd-MM-yyyy"
+        val myFormat = "dd-M-yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         textcalendar!!.text = sdf.format(calendar.getTime())
+        val data = sdf.format(calendar.getTime())
+        loaddata(data)
         Log.e("carenda","${sdf.format(calendar.getTime())}")
     }
 
@@ -137,7 +156,7 @@ class list_edit_food : AppCompatActivity() {
         Toast.makeText(this, "ไม่มีรายการอาหารที่เลือกไว้", Toast.LENGTH_LONG).show()
     }
 }
-class dataselectfood (val nameFoodShowB: String,val kcalfoodShowB: String,val resultBig: Int,val sum: Int,val date :String,id:String){
+class dataselectfood (val nameFoodShowB: String,val kcalfoodShowB: String,val resultBig: Int,val sum: Int,val date :String,val id:String){
     constructor():this("","",0,0,"","")
 
 }
