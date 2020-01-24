@@ -23,7 +23,7 @@ class Home_User : AppCompatActivity() {
 
     private lateinit var myRef: DatabaseReference
     private var myAut = FirebaseAuth.getInstance()
-   // val UID="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+   // val UID="mPJPyPSJDiXCDKBDQpn5QinolgW2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home__user)
@@ -65,7 +65,7 @@ class Home_User : AppCompatActivity() {
             }
         })
         bottonop.setOnClickListener {
-            val intent = Intent(this,edit_information::class.java)
+            val intent = Intent(this,setting_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
 

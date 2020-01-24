@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:gravity="center"
-    android:id="@+id/inputtext"
+    android:id="@+id/input"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,22 +16,30 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
             android:textSize="25dp"
+
             android:text="name" />
         <LinearLayout
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+            <TextView
+                android:id="@+id/kcal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:textSize="30dp"
 
-            <ImageView
+                android:text="kcal"/>
+            <TextView
                 android:id="@+id/numkcal"
                 android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_gravity="right"
-             android:paddingLeft="90sp"
-                android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:textSize="30dp"
+
+                android:text="kcal" />
         </LinearLayout>
 
     </LinearLayout>

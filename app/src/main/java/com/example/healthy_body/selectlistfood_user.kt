@@ -27,9 +27,11 @@ class selectlistfood_user : AppCompatActivity() {
         setContentView(R.layout.activity_selectlistfood_user)
 
          UID = intent.getStringExtra("UID")
+
         Log.e("UID =>","${UID}")
         val adapter = GroupAdapter<ViewHolder>()
         mRecycleVeiew.adapter = adapter
+
         var search = findViewById<EditText>(R.id.Searching)
         sreachtext.setOnClickListener {
             var searchtext = search.text.toString()
@@ -100,6 +102,7 @@ class selectlistfood_user : AppCompatActivity() {
                     p0.children.forEach {
                         Log.d("text", it.toString())
                         val food = it.getValue(modellistfood::class.java)
+                        Log.d("text", food.toString())
                         if (food != null) {
                             adapter.add(Food(food))
                         }
