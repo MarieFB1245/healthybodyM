@@ -9,16 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".list_saveedit_food"></activity>
+        <activity android:name=".list_saveedit_excercise"
+            android:theme="@style/AppTheme.NoActionbar"
+            ></activity>
+        <activity android:name=".list_edit_excercise"
+            android:theme="@style/AppTheme.NoActionbar"
+            />
+        <activity
+            android:name=".list_saveedit_food"
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".list_edit_food"
-            android:theme="@style/AppTheme.NoActionbar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".addexcercise_user"
             android:theme="@style/AppTheme.NoActionbar" />
@@ -54,11 +56,17 @@
         <activity
             android:name=".Login_user"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar"></activity>
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".Home_User"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar"></activity>
+            android:theme="@style/AppTheme.NoActionbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Totalkcal_User"
             android:screenOrientation="portrait"

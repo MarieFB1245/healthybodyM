@@ -9,45 +9,42 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.Toast
-import com.example.healthy_body.calculate.data
-import com.example.healthy_body.model.modellistfood
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_list_edit_food.*
-import kotlinx.android.synthetic.main.activity_savedatafood_user.*
-import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
 import kotlinx.android.synthetic.main.listselect_edit_food.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class list_edit_food : AppCompatActivity() {
-
+class list_edit_excercise : AppCompatActivity() {
 
     private lateinit var ref: DatabaseReference
-    val UID ="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+    //val UID ="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     var calendar = Calendar.getInstance()
-   // var UID :String=""
+    var UID :String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_edit_food)
+        setContentView(R.layout.activity_list_edit_excercise)
+
 
         val myFormat = "dd-M-yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         textcalendar!!.text = sdf.format(calendar.getTime())
         val datetext  = sdf.format(calendar.getTime())
 
-
         val adapter = GroupAdapter<ViewHolder>()
         recyclerView.adapter = adapter
 
-       // UID = intent.getStringExtra("UID")
+         UID = intent.getStringExtra("UID")
 
         val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
+
+
         arrow.setOnClickListener {
             val intent = Intent(this, Home_User::class.java)
             intent.putExtra("UID",UID)
@@ -55,8 +52,6 @@ class list_edit_food : AppCompatActivity() {
         }
 
         loaddata(datetext)
-
-
 
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
@@ -69,13 +64,14 @@ class list_edit_food : AppCompatActivity() {
         }
 
 
+
         textcalendar!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                DatePickerDialog(this@list_edit_food,
+                DatePickerDialog(this@list_edit_excercise,
                     dateSetListener,
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)).show()
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH)).show()
 
 
             }
@@ -84,18 +80,17 @@ class list_edit_food : AppCompatActivity() {
         })
 
     }
-
     private fun loaddata(date :String) {
         Log.e("date","${date}")
         val adapter = GroupAdapter<ViewHolder>()
-        ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child(date)
-        ref.addListenerForSingleValueEvent(object : ValueEventListener{
+        ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child(date)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 Log.d("p0", p0.toString())
                 if(p0.exists()){
                     p0.children.forEach {
                         Log.d("DataSnapshot", it.toString())
-                        val listfood = it.getValue(dataselectfood::class.java)
+                        val listfood = it.getValue(dataselectexcercise::class.java)
                         Log.d("text", listfood.toString())
                         if (listfood != null) {
                             adapter.add(Foodd(listfood))
@@ -104,14 +99,14 @@ class list_edit_food : AppCompatActivity() {
                     adapter.setOnItemClickListener { item, view ->
                         val itemf = item as Foodd
                         Log.e("fooditem","${itemf}")
-                        val intent = Intent(view.context, list_saveedit_food::class.java)
+                        val intent = Intent(view.context, list_saveedit_excercise::class.java)
                         intent.putExtra("UID",UID)
-                        intent.putExtra("date", itemf.food.date)
-                        intent.putExtra("nameFoodShowB", itemf.food.nameFoodShowB)
-                        intent.putExtra("resultBig", itemf.food.resultBig)
-                        intent.putExtra("sum", itemf.food.sum)
-                        intent.putExtra("id", itemf.food.id)
-                        intent.putExtra("kcalfoodShowB", itemf.food.kcalfoodShowB)
+                        intent.putExtra("date", itemf.excercise.date)
+                        intent.putExtra("nameExcerciseShowB", itemf.excercise.nameExcerciseShowB)
+                        intent.putExtra("resultBig", itemf.excercise.resultBig)
+                        intent.putExtra("sum", itemf.excercise.sum)
+                        intent.putExtra("id", itemf.excercise.id)
+                        intent.putExtra("kcalExcerciseShowB", itemf.excercise.kcalExcerciseShowB)
                         startActivity(intent)
                     }
                     recyclerView.adapter = adapter
@@ -123,12 +118,10 @@ class list_edit_food : AppCompatActivity() {
             override fun onCancelled(p0: DatabaseError) {}
         })
     }
-
-
-    inner class Foodd(val food: dataselectfood) : Item<ViewHolder>() {
+    inner class Foodd(val excercise: dataselectexcercise) : Item<ViewHolder>() {
         override fun bind(viewHolder: ViewHolder, position: Int) {
-            viewHolder.itemView.name.text= food.nameFoodShowB
-            viewHolder.itemView.kcal.text = food.kcalfoodShowB
+            viewHolder.itemView.name.text= excercise.nameExcerciseShowB
+            viewHolder.itemView.kcal.text = excercise.kcalExcerciseShowB
             Log.d("viewHolder", "${viewHolder}")
         }
 
@@ -137,9 +130,6 @@ class list_edit_food : AppCompatActivity() {
 
         }
     }
-
-
-
 
     private fun updateDateInView() {
         val myFormat = "dd-M-yyyy"
@@ -154,7 +144,7 @@ class list_edit_food : AppCompatActivity() {
         Toast.makeText(this, "ไม่มีรายการอาหารที่เลือกไว้", Toast.LENGTH_LONG).show()
     }
 }
-class dataselectfood (val nameFoodShowB: String,val kcalfoodShowB: String,val resultBig: Int,val sum: Int,val date :String,val id:String){
+class dataselectexcercise (val nameExcerciseShowB: String,val kcalExcerciseShowB: String,val resultBig: Int,val sum: Int,val date :String,val id:String){
     constructor():this("","",0,0,"","")
 
 }

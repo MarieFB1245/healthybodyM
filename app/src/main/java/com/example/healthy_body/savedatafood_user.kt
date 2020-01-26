@@ -65,8 +65,11 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
 
         savelist.setOnClickListener {
             val nametype :String= "FOOD"
+            val nametypeStatus :String = "SAVE"
+            val statusdoting :String = ""
+            val date =""
             savetodata(nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDate,idfoodShow)
-            savetotalkcal(resultBig,nametype,UID).savetotal()
+            savetotalkcal(resultBig,nametype,UID,statusdoting,nametypeStatus,date).savetotal()
             val intent = Intent(this,selectlistfood_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)

@@ -84,7 +84,7 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
     }
 
     fun savetodata(nameExcerciseShowB: String, kcalExcerciseShowB: String, resultBig: Int, sum: Int,currentDate:String,id:String) {
-        val sdf = SimpleDateFormat("dd-M-yyyy ")
+        val sdf = SimpleDateFormat("dd-M-yyyy")
         val currentDate = sdf.format(Date())
         Log.d("output","${currentDate}")
         val ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child("$currentDate").child("$id")

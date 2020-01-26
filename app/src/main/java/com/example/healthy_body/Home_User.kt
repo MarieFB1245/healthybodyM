@@ -23,13 +23,13 @@ class Home_User : AppCompatActivity() {
 
     private lateinit var myRef: DatabaseReference
     private var myAut = FirebaseAuth.getInstance()
-   // val UID="mPJPyPSJDiXCDKBDQpn5QinolgW2"
+    val UID="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home__user)
 
         myRef = FirebaseDatabase.getInstance().reference
-        var UID: String = intent.getStringExtra("UID")
+      // var UID: String = intent.getStringExtra("UID")
         val TDEEshow = findViewById<TextView>(R.id.numberTDEE)
         val BMIshow = findViewById<TextView>(R.id.numberBMI)
         val BMRshow = findViewById<TextView>(R.id.numberBMR)

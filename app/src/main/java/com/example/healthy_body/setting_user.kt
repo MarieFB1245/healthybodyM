@@ -67,13 +67,16 @@ class setting_user : AppCompatActivity() {
                   intent.putExtra("UID", UID)
                   startActivity(intent)
               }else if(textlistsetting.equals("อาหาร")){
-                  //val intent = Intent(view.context, list_edit_food::class.java)
-                //  intent.putExtra("UID", UID)
+                  val intent = Intent(view.context, list_edit_food::class.java)
+                   intent.putExtra("UID", UID)
                   startActivity(intent)
                 //  Toast.makeText(this, "อาหาร ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
               }
               else {
-                  Toast.makeText(this, "กิจกรรม ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
+                  val intent = Intent(view.context, list_edit_excercise::class.java)
+                  intent.putExtra("UID", UID)
+                  startActivity(intent)
+                  //Toast.makeText(this, "กิจกรรม ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
               }
 
 

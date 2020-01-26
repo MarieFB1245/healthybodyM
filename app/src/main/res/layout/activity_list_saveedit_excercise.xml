@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bacckground_color"
-    tools:context=".list_saveedit_food">
+    tools:context=".list_saveedit_excercise">
 
     <include
         android:id="@+id/searchView"
@@ -42,27 +42,27 @@
         app:layout_constraintTop_toTopOf="@+id/textdate" />
 
     <TextView
-        android:id="@+id/textnamefood"
+        android:id="@+id/textnameexcercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        android:text="ชื่ออาหาร"
+        android:text="ชื่อกิจกกรม"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textdate" />
 
     <TextView
-        android:id="@+id/namefood"
+        android:id="@+id/nameexcercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:text="namefood"
+        android:layout_marginStart="40dp"
+        android:text="nameexcercise"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textnamefood"
-        app:layout_constraintTop_toTopOf="@+id/textnamefood" />
+        app:layout_constraintStart_toEndOf="@+id/textnameexcercise"
+        app:layout_constraintTop_toTopOf="@+id/textnameexcercise" />
 
     <TextView
         android:id="@+id/textKcal"
@@ -74,7 +74,7 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textnamefood" />
+        app:layout_constraintTop_toBottomOf="@+id/textnameexcercise" />
 
     <TextView
         android:id="@+id/Kcal"
@@ -93,7 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        android:text="จำนวน"
+        android:text="จำนวนชั่วโมง"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +103,7 @@
         android:id="@+id/amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="24dp"
         android:text="amount"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -115,8 +115,8 @@
         android:layout_width="50dp"
         android:layout_height="39dp"
         android:layout_marginStart="30dp"
-        android:text="-"
         android:textColor="#FFFFFF"
+        android:text="-"
         android:background="@drawable/subbutton"
         app:layout_constraintBottom_toBottomOf="@+id/amount"
         app:layout_constraintEnd_toStartOf="@+id/add"
@@ -129,8 +129,8 @@
         android:layout_width="50dp"
         android:layout_height="39dp"
         android:text="+"
-        android:textColor="#FFFFFF"
         android:background="@drawable/addbutton"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/amount"
         app:layout_constraintStart_toEndOf="@+id/sub"
         app:layout_constraintTop_toTopOf="@+id/amount" />
@@ -153,24 +153,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="tatal"
-        android:textColor="#FFFFFF"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/texttatalkcal"
         app:layout_constraintTop_toTopOf="@+id/texttatalkcal" />
 
     <Button
-        android:id="@+id/Editlist"
+        android:id="@+id/savelist"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="25dp"
         android:layout_marginTop="108dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/button_login_style"
         android:gravity="center"
-        android:text="Editlist"
+        android:text="savelist"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:textColor="#FFFFFF"
+        android:background="@drawable/button_login_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tatal" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
