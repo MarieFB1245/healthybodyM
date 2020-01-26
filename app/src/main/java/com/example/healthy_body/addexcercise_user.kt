@@ -39,6 +39,9 @@ class addexcercise_user : AppCompatActivity() {
             val textkcal = inputkcal.text.toString()
             if (textnameEX !=""&&textkcal!=""){
                 savemenuexcercise(textnameEX,textkcal).saveex()
+                val intent = Intent(this, selectlistexcercise_user::class.java)
+                intent.putExtra("UID", UID)
+                startActivity(intent)
             }else{
                 Toast.makeText(this, "Please in put Information Excercise", Toast.LENGTH_SHORT).show()
             }
