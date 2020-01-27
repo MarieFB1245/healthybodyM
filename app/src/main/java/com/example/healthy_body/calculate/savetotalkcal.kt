@@ -90,7 +90,7 @@ if (nametype.equals("FOOD")){
 }
 
 else{
-    if (nametype.equals("SAVE")){
+    if (nametypeStatus.equals("SAVE")){
         val sdf = SimpleDateFormat("dd-M-yyyy")
         val currentDate = sdf.format(Date())
         val myRef = FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${uid}").child("$currentDate").child("TOTALEXCERCISE")

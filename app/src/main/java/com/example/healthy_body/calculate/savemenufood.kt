@@ -22,34 +22,42 @@ class savemenufood(var namefood:String="",val kcal:String="",val unit:String="",
             override fun onCancelled(p0: DatabaseError) {}
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
-                    for(list in p0.children){
+                    for(list in p0.children) {
                         val s = list!!.getValue(data::class.java)
                         val key = s!!.id_food
-                        val namefood =s!!.namefood
-                        val amount =s!!.amount
+                        val namefood = s!!.namefood
+                        val amount = s!!.amount
                         val kcal = s!!.kcal
-                        val util =s!!.unit
+                        val util = s!!.unit
                         val unittype = s!!.unittype
 
-                        if(namefoodS == namefood){
-                            val ref = FirebaseDatabase.getInstance().getReference("FOOD").child(key)
-                            val amount = amountS.toString()
-                            val childUpdates = HashMap<String, String>()
-                            childUpdates.put("namefood", "${namefoodS}")
-                            childUpdates.put("amount", "${amount}")
-                            childUpdates.put("kcal", "${kcalS}")
-                            childUpdates.put("utit", "${unitS}")
-                            childUpdates.put("unittype", "${unittypeS}")
-                            ref.updateChildren(childUpdates as Map<String, Any>)
-                        }else{
-                            val amount = amountS.toString()
-                            val key = list!!.key
-                            val intkey = key!!.toInt()
-                            val newkey = intkey + 1
-                            val id_food = newkey.toString()
-                            val model = modelsavefood(id_food,namefoodS,kcalS,unitS,unittypeS,amount)
-                            ref.child("${id_food}").setValue(model)
-                        }
+                        val ref = FirebaseDatabase.getInstance().getReference("FOOD")
+                        val q = ref.orderByKey().limitToLast(1)
+                        q.addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onCancelled(p0: DatabaseError) {
+                            }
+
+                            override fun onDataChange(p0: DataSnapshot) {
+                                for (list in p0.children) {
+                                    val s = list.getValue(data::class.java)
+                                    val stringkey = s!!.id_food
+                                    val intkey = stringkey!!.toInt()
+                                    val newkey = intkey + 1
+                                    val id_food = newkey.toString()
+                                    val model = modelsavefood(
+                                        id_food,
+                                        namefoodS,
+                                        kcalS,
+                                        unitS,
+                                        unittypeS,
+                                        amountS.toString()
+                                    )
+                                    ref.child("${id_food}").setValue(model)
+                                }
+
+
+                            }
+                        })
 
                     }
                 }else {

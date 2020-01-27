@@ -12,6 +12,9 @@ class savemenuexcercise(val textnameEx :String ="",val textkcal :String =""){
 
     val ref = FirebaseDatabase.getInstance().getReference("EXCERCISE")
 
+    var textnameex = textnameEx
+    var textkcalupdate = textkcal
+
     fun saveex (){
 
         ref.addListenerForSingleValueEvent(object : ValueEventListener{
@@ -20,35 +23,49 @@ class savemenuexcercise(val textnameEx :String ="",val textkcal :String =""){
 
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()) {
-                    for(list in p0.children){
+                     for(list in p0.children){
                         val s = list!!.getValue(dataex::class.java)
                         val idEx = s!!.id_excercise
                         var nameEx = s!!.name_excercise
                         val kcalEx = s!!.kcal
                         Log.e("nameEx","${nameEx}")
+                        Log.e("textinput","${textnameex}")
 
-                        if(textnameEx == nameEx){
-                            val ref = FirebaseDatabase.getInstance().getReference("EXCERCISE").child(idEx)
-                            val childUpdates = HashMap<String, String>()
-                            childUpdates.put("name_excercise", "${textnameEx}")
-                            childUpdates.put("kcal", "${textkcal}")
-                            ref.updateChildren(childUpdates as Map<String, Any>)
-                            nameEx=""
-                        }else{
-                            val key = list!!.key
-                            val intkey = key!!.toInt()
-                            val newkey = intkey + 1
-                            val id_food = newkey.toString()
-                            val model = dataex(id_food,textnameEx,textkcal)
-                            ref.child("${id_food}").setValue(model)
+                            val ref = FirebaseDatabase.getInstance().getReference("EXCERCISE")
+                            val q = ref.orderByKey().limitToLast(1)
+                            q.addListenerForSingleValueEvent(object :ValueEventListener{
+                                override fun onCancelled(p0: DatabaseError) {
+                                }
+                                override fun onDataChange(p0: DataSnapshot) {
+                                    Log.e("pass =>","ELSE")
+                                    Log.e("nameEx","${nameEx}")
+                                    for (list in p0.children){
+                                        val s = list.getValue(dataex::class.java)
+                                        Log.e("s =>","${s}")
+                                        val stringkey = s!!.id_excercise
+                                        val intkey = stringkey!!.toInt()
+                                        Log.e("intkey","${intkey}")
+                                        val newkey = intkey + 1
+                                        Log.e("newkey","${newkey}")
+                                        val id_food = newkey.toString()
+                                        val model = dataex(id_food,textnameEx,textkcal)
+                                        ref.child("${id_food}").setValue(model)
+                                    }
+
+
+
+                            }
+                            })
+
+
                         }
 
-                    }
+
                 }else{
                     val key: Int = 0
                     val newkey = key + 1
                     val id_excercise = newkey.toString()
-                    val model = dataex(id_excercise,textnameEx,textkcal)
+                    val model = dataex(id_excercise,textnameex,textkcalupdate)
                     ref.child("${id_excercise}").setValue(model)
                 }
             }
@@ -57,3 +74,17 @@ class savemenuexcercise(val textnameEx :String ="",val textkcal :String =""){
 
 }
 class dataex (val id_excercise:String ="",val name_excercise: String="",val kcal :String="" )
+
+
+/*dbRef = FirebaseDatabase.getInstance().getReference().child("testnum");
+Query lastQuery = dbRef.orderByKey().limitToLast(1);
+lastQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+        for(DataSnapshot data : dataSnapshot.getChildren())
+        {
+            String s = data.getValue(); // จะได้ค่า name: toon
+
+            String key = data.getKey(); //จะได้ค่าเป็น 2
+        }
+    }*/

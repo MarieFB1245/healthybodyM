@@ -73,8 +73,11 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
 
         savelist.setOnClickListener {
             val nametype :String= "EXCERCISE"
+            val nametypeStatus :String = "SAVE"
+            val statusdoting :String = ""
+            val date =""
             savetodata(nameExcerciseShowB,kcalExcerciseShowB,resultBig,sum,currentDate,idfoodShow)
-            savetotalkcal(resultBig,nametype,UID).savetotal()
+            savetotalkcal(resultBig,nametype,UID,statusdoting,nametypeStatus,date).savetotal()
             val intent = Intent(this,selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
