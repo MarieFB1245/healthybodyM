@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.healthy_body.calculate.savetotalkcal
 import com.google.firebase.database.DatabaseReference
@@ -60,6 +61,15 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
         textkcal.setText(kcalExcerciseShowB)
         textamount.setText("${sum}")
         texttotal.setText("${resultBig}")
+
+        val arrow = findViewById<ImageView>(R.id.arrow)
+        val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
+        setSupportActionBar(tooltset)
+        arrow.setOnClickListener {
+            val intent = Intent(this, list_edit_excercise::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+        }
 
         savelist.setOnClickListener {
             val nametype: String = "EXCERCISE"

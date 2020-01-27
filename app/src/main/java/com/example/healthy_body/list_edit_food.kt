@@ -26,9 +26,9 @@ class list_edit_food : AppCompatActivity() {
 
 
     private lateinit var ref: DatabaseReference
-    val UID ="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+
     var calendar = Calendar.getInstance()
-   // var UID :String=""
+    var UID :String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,13 +43,13 @@ class list_edit_food : AppCompatActivity() {
         val adapter = GroupAdapter<ViewHolder>()
         recyclerView.adapter = adapter
 
-       // UID = intent.getStringExtra("UID")
+        UID = intent.getStringExtra("UID")
 
         val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
         arrow.setOnClickListener {
-            val intent = Intent(this, Home_User::class.java)
+            val intent = Intent(this, setting_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
         }

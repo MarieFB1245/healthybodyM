@@ -46,7 +46,7 @@ class list_edit_excercise : AppCompatActivity() {
 
 
         arrow.setOnClickListener {
-            val intent = Intent(this, Home_User::class.java)
+            val intent = Intent(this, setting_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
         }

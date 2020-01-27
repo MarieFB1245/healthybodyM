@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.healthy_body.calculate.data
 import com.example.healthy_body.calculate.savetotalkcal
@@ -59,6 +60,15 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
         textkcal.setText(kcalfoodShowB)
         textamount.setText("${sum}")
         texttotal.setText("${resultBig}")
+
+        val arrow = findViewById<ImageView>(R.id.arrow)
+        val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
+        setSupportActionBar(tooltset)
+        arrow.setOnClickListener {
+            val intent = Intent(this, selectlistfood_user::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+        }
 
 
         Editlist.setOnClickListener {
