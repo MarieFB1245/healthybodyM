@@ -28,7 +28,7 @@ class Register_Infirmation : AppCompatActivity() {
     private var myRef = FirebaseAuth.getInstance()
 
 
-
+     /////test
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
