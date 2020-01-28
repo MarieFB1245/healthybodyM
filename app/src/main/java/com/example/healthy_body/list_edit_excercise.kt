@@ -91,7 +91,6 @@ var KEY :String=""
                     p0.children.forEach {
                         Log.d("DataSnapshot", it.toString())
                         val listfood = it.getValue(dataselectexcercise::class.java)
-                         KEY = it.getKey().toString()
                         Log.d("text", KEY)
                         if (listfood != null) {
                             adapter.add(Foodd(listfood))
@@ -101,7 +100,7 @@ var KEY :String=""
                         val itemf = item as Foodd
                         Log.e("fooditem","${itemf}")
                         val intent = Intent(view.context, list_saveedit_excercise::class.java)
-                        intent.putExtra("key",KEY)
+                        intent.putExtra("key",itemf.excercise.id_list)
                         intent.putExtra("UID",UID)
                         intent.putExtra("date", itemf.excercise.date)
                         intent.putExtra("nameExcerciseShowB", itemf.excercise.nameExcerciseShowB)
@@ -146,7 +145,7 @@ var KEY :String=""
         Toast.makeText(this, "ไม่มีรายการอาหารที่เลือกไว้", Toast.LENGTH_LONG).show()
     }
 }
-class dataselectexcercise (val nameExcerciseShowB: String,val kcalExcerciseShowB: String,val resultBig: Int,val sum: Int,val date :String,val id:String){
-    constructor():this("","",0,0,"","")
+class dataselectexcercise (val id_list :String, val nameExcerciseShowB: String,val kcalExcerciseShowB: String,val resultBig: Int,val sum: Int,val date :String,val id:String){
+    constructor():this("","","",0,0,"","")
 
 }

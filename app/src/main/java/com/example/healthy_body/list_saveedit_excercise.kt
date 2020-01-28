@@ -81,7 +81,7 @@ Log.e("KEY","${KEY}")
                     val nametype: String = "EXCERCISE"
                     val nametypeStatus: String = "Remove"
                     val statusdoting = ""
-                    val resultB =  delectdata(UID,nameExcerciseShowB, kcalExcerciseShowB, resultBig, sum, date, idfoodShow).deelect()
+                    val resultB =  delectdata(UID,nameExcerciseShowB, kcalExcerciseShowB, resultBig, sum, date, idfoodShow,KEY).deelect()
                     Log.e("resultB","${resultB}")
                     savetotalkcal(resultBig, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
 
