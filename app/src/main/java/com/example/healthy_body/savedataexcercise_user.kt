@@ -8,10 +8,14 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.healthy_body.calculate.dataex
 import com.example.healthy_body.calculate.savetotalkcal
 import com.example.healthy_body.model.modelSelectExcercise
 import com.example.healthy_body.model.modelSelectFood
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_savedataexcercise_user.*
 import kotlinx.android.synthetic.main.activity_savedatafood_user.*
 import kotlinx.android.synthetic.main.activity_savedatafood_user.Kcal
@@ -90,9 +94,40 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
         val sdf = SimpleDateFormat("dd-M-yyyy")
         val currentDate = sdf.format(Date())
         Log.d("output","${currentDate}")
-        val ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child("$currentDate").child("$id")
-        val settext = modelSelectExcercise(nameExcerciseShowB,kcalExcerciseShowB,resultBig,sum,currentDate,id)
-        ref.setValue(settext)
+        val ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child("$currentDate")
+        ref.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {}
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()) {
+                        val ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child("$currentDate")
+                        val q = ref.orderByKey().limitToLast(1)
+                        q.addListenerForSingleValueEvent(object :ValueEventListener{
+                            override fun onCancelled(p0: DatabaseError) {
+                            }
+                            override fun onDataChange(p0: DataSnapshot) {
+                                for (list in p0.children){
+                                    val s = list.getValue(dataex::class.java)
+                                    val d = list.getKey()
+                                    val intkey = d!!.toInt()
+                                    val newkey = intkey + 1
+                                    val id_list = newkey.toString()
+                                    val settext = modelSelectExcercise(id_list,nameExcerciseShowB,kcalExcerciseShowB,resultBig,sum,currentDate,id)
+                                    ref.child("${id_list}").setValue(settext)
+                                }
+
+
+
+                            }
+                        })
+                }else{
+                    val key: Int = 0
+                    val newkey = key + 1
+                    val id_list = newkey.toString()
+                    val settext = modelSelectExcercise(id_list,nameExcerciseShowB,kcalExcerciseShowB,resultBig,sum,currentDate,id)
+                    ref.child("${id_list}").setValue(settext)
+                }
+            }
+        })
 
     }
     override fun onClick(v: View?) {

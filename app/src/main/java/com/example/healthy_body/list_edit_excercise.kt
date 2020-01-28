@@ -24,7 +24,7 @@ class list_edit_excercise : AppCompatActivity() {
     //val UID ="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     var calendar = Calendar.getInstance()
     var UID :String=""
-
+var KEY :String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_edit_excercise)
@@ -91,7 +91,8 @@ class list_edit_excercise : AppCompatActivity() {
                     p0.children.forEach {
                         Log.d("DataSnapshot", it.toString())
                         val listfood = it.getValue(dataselectexcercise::class.java)
-                        Log.d("text", listfood.toString())
+                         KEY = it.getKey().toString()
+                        Log.d("text", KEY)
                         if (listfood != null) {
                             adapter.add(Foodd(listfood))
                         }
@@ -100,6 +101,7 @@ class list_edit_excercise : AppCompatActivity() {
                         val itemf = item as Foodd
                         Log.e("fooditem","${itemf}")
                         val intent = Intent(view.context, list_saveedit_excercise::class.java)
+                        intent.putExtra("key",KEY)
                         intent.putExtra("UID",UID)
                         intent.putExtra("date", itemf.excercise.date)
                         intent.putExtra("nameExcerciseShowB", itemf.excercise.nameExcerciseShowB)

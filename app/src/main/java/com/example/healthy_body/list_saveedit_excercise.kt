@@ -1,6 +1,7 @@
 package com.example.healthy_body
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import cn.pedant.SweetAlert.SweetAlertDialog
+import com.example.healthy_body.calculate.delectdata
 import com.example.healthy_body.calculate.savetotalkcal
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -29,14 +32,14 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
     var newsum: Int = 0
     var statusdoting: String = ""
     var date: String = ""
-
+var KEY :String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_saveedit_excercise)
         var add = findViewById<Button>(R.id.add)
         var sub = findViewById<Button>(R.id.sub)
-
+        KEY = intent.getStringExtra("key")
         UID = intent.getStringExtra("UID")
         nameExcerciseShowB = intent.getStringExtra("nameExcerciseShowB")
         kcalExcerciseShowB = intent.getStringExtra("kcalExcerciseShowB")
@@ -45,7 +48,7 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
         date = intent.getStringExtra("date")
         idfoodShow = intent.getStringExtra("id")
 
-
+Log.e("KEY","${KEY}")
         val textdate = findViewById<TextView>(R.id.date)
         val textanmefood = findViewById<TextView>(R.id.nameexcercise)
         val textkcal = findViewById<TextView>(R.id.Kcal)
@@ -63,13 +66,53 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
         texttotal.setText("${resultBig}")
 
         val arrow = findViewById<ImageView>(R.id.arrow)
+        val delect = findViewById<ImageView>(R.id.dalect)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
+        delect.setOnClickListener {
+            SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("คุณเเน่ใจ?")
+                .setContentText("ว่าต้องการลบรายการนี้!")
+                .setCancelText("ไม่ต้องการ!")
+                .setConfirmText("ต้องการ!")
+                .showCancelButton(true)
+                .setCancelClickListener { sDialog -> sDialog.cancel() }
+                .setConfirmClickListener {
+                    val nametype: String = "EXCERCISE"
+                    val nametypeStatus: String = "Remove"
+                    val statusdoting = ""
+                    val resultB =  delectdata(UID,nameExcerciseShowB, kcalExcerciseShowB, resultBig, sum, date, idfoodShow).deelect()
+                    Log.e("resultB","${resultB}")
+                    savetotalkcal(resultBig, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
+
+
+                    val pDialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                    pDialog.progressHelper.barColor = Color.parseColor("#A5DC86")
+                    pDialog.titleText = "กำลังทำการลบรายการ"
+                    pDialog.setCancelable(false)
+                    if (resultB.equals(true)){
+                        pDialog.setCancelable(true)
+                        pDialog
+      .setTitleText("ลบเรียบร้อยเเล้ว!")
+      .setContentText("ข้อมูลนี้จะไม่มีอยู่รายการของคุณ!").setConfirmText("ตกลง")
+      .setConfirmClickListener{
+          val intent = Intent(this, list_edit_excercise::class.java)
+      intent.putExtra("UID",UID)
+      startActivity(intent)}
+      .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+                    }
+                    pDialog.show()
+
+                }
+                .show()
+        }
         arrow.setOnClickListener {
             val intent = Intent(this, list_edit_excercise::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
         }
+
+
 
         savelist.setOnClickListener {
             val nametype: String = "EXCERCISE"
