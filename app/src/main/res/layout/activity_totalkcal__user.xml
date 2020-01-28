@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
-            android:text="Status :"
+            android:text="สถานะของคุณ :"
             android:textSize="30sp"
             >
         </TextView>
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
-            android:text="totalkcal to day : "
+            android:text="เเคลลอรี่ทังหมดต่อวัน : "
             android:textSize="30sp"
             >
         </TextView>
@@ -97,7 +97,7 @@
 
         <Button
             android:id="@+id/start"
-            android:text="start"
+            android:text="เริ่มการใช้งาน"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="#ffffff"

@@ -8,9 +8,14 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.healthy_body.calculate.dataex
 import com.example.healthy_body.calculate.savetotalkcal
+import com.example.healthy_body.model.modelSelectExcercise
 import com.example.healthy_body.model.modelSelectFood
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_savedatafood_user.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -81,9 +86,40 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         val sdf = SimpleDateFormat("dd-M-yyyy")
         val currentDater = sdf.format(Date())
         Log.d("output","${currentDate}")
-        val ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child("$currentDater").child("$id")
-        val settext = modelSelectFood(nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDater,id)
-        ref.setValue(settext)
+        val ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child("$currentDater")
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {}
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()) {
+                    val q = ref.orderByKey().limitToLast(1)
+                    q.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onCancelled(p0: DatabaseError) {
+                        }
+                        override fun onDataChange(p0: DataSnapshot) {
+                            for (list in p0.children){
+
+                                val d = list.getKey()
+                                val intkey = d!!.toInt()
+                                val newkey = intkey + 1
+                                val id_list = newkey.toString()
+                                val settext = modelSelectFood(id_list,nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDater,id)
+                                ref.child("${id_list}").setValue(settext)
+                            }
+
+
+
+                        }
+                    })
+                }else{
+                    val key: Int = 0
+                    val newkey = key + 1
+                    val id_list = newkey.toString()
+                    val settext = modelSelectFood(id_list,nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDater,id)
+                    ref.child("${id_list}").setValue(settext)
+                }
+            }
+        })
+
 
     }
     override fun onClick(v: View?) {
@@ -114,3 +150,4 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         }
     }
 }
+class datafood (val id:String ="",val nameFoodShowB: String="",val kcalfoodShowB :String="",val sum :Int, val resultBig : Int ,val date :String ,val id_list :String )

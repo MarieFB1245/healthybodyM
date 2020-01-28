@@ -47,7 +47,34 @@ class savetotalkcal (val kcal:Int ,val nametype : String="",val UID :String="",v
                         }
                     }
                 })
-            } else {
+            }else if(nametypeStatus.equals("Remove")){
+                myRef =
+                    FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${uid}")
+                        .child("$date")
+                        .child("TOTALFOOD")
+                myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onCancelled(p0: DatabaseError) {}
+                    override fun onDataChange(p0: DataSnapshot) {
+                        if (p0.exists()) {
+                            Log.e("pass =>", "IF")
+                            val data = p0!!.getValue()
+                            val kcaldata = data.toString()
+                            val kcaldataExcercise = kcaldata.toInt()
+                            var totalkcal = kcaldataExcercise - kcal
+                            if(totalkcal != 0){
+                                myRef.setValue(totalkcal)
+                            }else{
+                                myRef.removeValue()
+                            }
+
+                        }
+                    }
+                })
+            }
+
+
+
+            else {
                 myRef = FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${uid}")
                     .child("$date").child("TOTALFOOD")
                 myRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -128,7 +155,11 @@ class savetotalkcal (val kcal:Int ,val nametype : String="",val UID :String="",v
                             val kcaldata = data.toString()
                             val kcaldataExcercise = kcaldata.toInt()
                             var totalkcal = kcaldataExcercise - kcal
-                            myRef.setValue(totalkcal)
+                            if(totalkcal != 0){
+                                myRef.setValue(totalkcal)
+                            }else{
+                                myRef.removeValue()
+                            }
                         }
                     }
                 })

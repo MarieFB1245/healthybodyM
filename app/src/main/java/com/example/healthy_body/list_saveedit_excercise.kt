@@ -81,7 +81,7 @@ Log.e("KEY","${KEY}")
                     val nametype: String = "EXCERCISE"
                     val nametypeStatus: String = "Remove"
                     val statusdoting = ""
-                    val resultB =  delectdata(UID,nameExcerciseShowB, kcalExcerciseShowB, resultBig, sum, date, idfoodShow,KEY).deelect()
+                    val resultB =  delectdata(UID,nameExcerciseShowB, kcalExcerciseShowB, resultBig, sum, date, idfoodShow,KEY,nametype).deelect()
                     Log.e("resultB","${resultB}")
                     savetotalkcal(resultBig, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
 
@@ -117,9 +117,9 @@ Log.e("KEY","${KEY}")
         savelist.setOnClickListener {
             val nametype: String = "EXCERCISE"
             val nametypeStatus: String = "Edit"
-            updatetodata(nameExcerciseShowB, kcalExcerciseShowB, resultBig, sum, date, idfoodShow)
+            updatetodata(nameExcerciseShowB, kcalExcerciseShowB, resultBig, sum, date, idfoodShow,KEY)
             savetotalkcal(newsum, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
-            val intent = Intent(this, selectlistfood_user::class.java)
+            val intent = Intent(this, list_edit_excercise::class.java)
             intent.putExtra("UID", UID)
             startActivity(intent)
 
@@ -133,11 +133,11 @@ Log.e("KEY","${KEY}")
         resultBig: Int,
         sum: Int,
         currentDate: String,
-        idfoodShow: String
+        idfoodShow: String,
+        KEY:String
     ) {
 
-        val ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}")
-            .child("$currentDate").child("$idfoodShow")
+        val ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child("$currentDate").child("$KEY")
         val childUpdates = HashMap<String, Any>()
         childUpdates.put("sum", sum)
         childUpdates.put("resultBig", resultBig)

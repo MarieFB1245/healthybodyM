@@ -106,6 +106,7 @@ class list_edit_food : AppCompatActivity() {
                         Log.e("fooditem","${itemf}")
                         val intent = Intent(view.context, list_saveedit_food::class.java)
                         intent.putExtra("UID",UID)
+                        intent.putExtra("key", itemf.food.id_list)
                         intent.putExtra("date", itemf.food.date)
                         intent.putExtra("nameFoodShowB", itemf.food.nameFoodShowB)
                         intent.putExtra("resultBig", itemf.food.resultBig)
@@ -154,7 +155,7 @@ class list_edit_food : AppCompatActivity() {
         Toast.makeText(this, "ไม่มีรายการอาหารที่เลือกไว้", Toast.LENGTH_LONG).show()
     }
 }
-class dataselectfood (val nameFoodShowB: String,val kcalfoodShowB: String,val resultBig: Int,val sum: Int,val date :String,val id:String){
-    constructor():this("","",0,0,"","")
+class dataselectfood (val id_list :String, val nameFoodShowB: String,val kcalfoodShowB: String,val resultBig: Int,val sum: Int,val date :String,val id:String){
+    constructor():this("","","",0,0,"","")
 
 }
