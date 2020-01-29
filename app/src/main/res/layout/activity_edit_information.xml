@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FirstName"
+            android:text="ชื่อจริง"
             android:textColor="#ffffff"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
@@ -69,7 +69,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LastName"
+        android:text="นามสกุล"
         android:textColor="#ffffff"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
@@ -106,19 +106,19 @@
         android:layout_marginTop="20sp"
         >
         <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Weight"
+        android:text="น้ำหนัก"
         android:textColor="#ffffff"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         >
         </TextView>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Height"
+            android:text="ส่วนสูง"
             android:layout_weight="1"
             android:textColor="#ffffff"
             android:layout_marginLeft="25dp"
@@ -176,7 +176,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Age"
+            android:text="อายุ"
             android:textColor="#ffffff"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
@@ -189,7 +189,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_weight="1"
-            android:text="Gender"
+            android:text="เพศ"
             android:textColor="#ffffff"></TextView>
     </LinearLayout>
 
@@ -242,7 +242,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_weight="1"
-            android:text="Levelwork out"
+            android:text="ระดับการออกกำลังกาย"
             android:textColor="#ffffff"></TextView>
     </LinearLayout>
 
@@ -290,7 +290,7 @@
         android:layout_marginRight="25dp"
         android:textColor="#FFFFFF"
         android:background="@drawable/button_login_style"
-        android:text="Edit"></Button>
+        android:text="เเก้ไข"></Button>
 
 
 </RelativeLayout>

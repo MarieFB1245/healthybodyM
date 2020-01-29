@@ -62,13 +62,14 @@ class register(val uid:String,val email :String,val password :String,val age :Fl
         }
 
 
+
         if (gender == "ชาย") {
             val result = 66 + (13.7f * weigth) + (5 * height) - (6.8f * age)
             val BMR = Math.round(result)
             myRef.child("BMR").setValue(BMR)
 
             //หาค่า TDEE
-            if (Level_Workout == "low workout") {
+            if (Level_Workout == "น้อย หรือไม่ค่อยออกกำลังกาย") {
                 val resultTDEE = (BMR * 1.2)
                 val reTDEE = Math.round(resultTDEE)
                 val TDEE = reTDEE - 500
@@ -76,13 +77,13 @@ class register(val uid:String,val email :String,val password :String,val age :Fl
                 myRef.child("TDEE").setValue(TDEE)
 
 
-            } else if (Level_Workout == "normal workout to 1-3 time a week") {
+            } else if (Level_Workout == "ปานกลาง ออกกำลังกาย 1-3 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.375)
                 val reTDEE = Math.round(resultTDEE)
                 val TDEE = reTDEE - 500
                 myRef.child("TDEE").setValue(TDEE)
 
-            } else if (Level_Workout == "normal workout to 4-5 time a week") {
+            } else if (Level_Workout == "ปานกลาง ออกกำลังกาย 4-5 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.55)
                 val reTDEE = Math.round(resultTDEE)
                 val TDEE = reTDEE - 500
@@ -90,7 +91,7 @@ class register(val uid:String,val email :String,val password :String,val age :Fl
                 Log.d("information", "TDEE :$TDEE")
 
 
-            } else if (Level_Workout == "heavy workout to 6-7 time a week") {
+            } else if (Level_Workout == "หนัก ออกกำลังกาย 6-7 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.7)
                 val reTDEE = Math.round(resultTDEE)
                 val TDEE = reTDEE - 500
@@ -112,7 +113,7 @@ class register(val uid:String,val email :String,val password :String,val age :Fl
             myRef.child("BMR").setValue(BMR)
 
             //หาค่า TDEE
-            if (Level_Workout == "low workout") {
+            if (Level_Workout == "น้อย หรือไม่ค่อยออกกำลังกาย") {
                 val resultTDEE = (BMR * 1.2)
                 val reTDEE = Math.round(resultTDEE)
                 val TDEE = reTDEE - 500
@@ -120,20 +121,20 @@ class register(val uid:String,val email :String,val password :String,val age :Fl
                 Log.d("information", "TDEE :$TDEE")
 
 
-            } else if (Level_Workout == "normal workout to 1-3 time a week") {
+            } else if (Level_Workout == "ปานกลาง ออกกำลังกาย 1-3 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.375)
                 val reTDEE = Math.round(resultTDEE)
                 val TDEE = reTDEE - 500
                 myRef.child("TDEE").setValue(TDEE)
 
-            } else if (Level_Workout == "normal workout to 4-5 time a week") {
+            } else if (Level_Workout == "ปานกลาง ออกกำลังกาย 4-5 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.55)
                 val reTDEE = Math.round(resultTDEE)
                 val TDEE = reTDEE - 500
                 myRef.child("TDEE").setValue(TDEE)
 
 
-            } else if (Level_Workout == "heavy workout to 6-7 time a week") {
+            } else if (Level_Workout == "หนัก ออกกำลังกาย 6-7 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.7)
                 val reTDEE = Math.round(resultTDEE)
                 val TDEE = reTDEE - 500

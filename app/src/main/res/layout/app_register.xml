@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/app_bar"
-    android:background="@color/colorAccent"
+    android:background="@drawable/app_bar_back"
     >
 
     <RelativeLayout
@@ -22,9 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="เเก้ไขข้อมูลส่วนตัว"
+            android:text="สมัครสมาชิก"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textSize="24dp"
             android:textStyle="bold"/>
 

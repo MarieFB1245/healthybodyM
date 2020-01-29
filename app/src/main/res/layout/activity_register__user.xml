@@ -14,17 +14,14 @@
         android:layout_marginBottom="20sp"
         >
 
-        <TextView
+        <include
+            android:id="@+id/searchView"
+            layout="@layout/app_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:id="@+id/H1"
-            android:textColor="#ffffff"
-            android:textSize="30dp"
-            android:text="สมัครข้อมูล"
-            android:layout_marginRight="30sp"
-            android:layout_marginLeft="30sp"
-            ></TextView>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></include>
 
     </LinearLayout>
 
@@ -62,7 +59,7 @@
             android:id="@+id/email"
             android:layout_weight="1"
             android:paddingLeft="15dp"
-            android:textColorHint="#F6F6F6"
+            android:textColorHint="#a6a6a6"
             android:layout_height="40sp"
             android:textColor="#ffffff"
             android:layout_marginRight="30sp"
@@ -178,6 +175,35 @@
             android:layout_marginLeft="30sp"
             ></Button>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/L8"
+        android:layout_marginTop="40sp"
+        android:layout_below="@id/L7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+<TextView
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_margin="20dp"
+android:background="@drawable/color_step_register"
+    ></TextView>
+        <TextView
+        android:layout_width="20dp"
+            android:layout_margin="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/non_color_step_register"
+        ></TextView>
+        <TextView
+            android:layout_width="20dp"
+            android:layout_margin="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/non_color_step_register"
+            ></TextView>
     </LinearLayout>
 
 </RelativeLayout>

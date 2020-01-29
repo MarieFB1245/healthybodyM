@@ -17,8 +17,8 @@ import kotlinx.android.synthetic.main.activity_edit_information.*
 class edit_information : AppCompatActivity() {
     //var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     private lateinit var myRef: DatabaseReference
-    internal var SPINNERLST = arrayOf("low workout","normal workout to 1-3 time a week","normal workout to 4-5 time a week",
-        "heavy workout to 6-7 time a week","heaviest workout over to 2 time a day")
+    internal var SPINNERLST = arrayOf("น้อย หรือไม่ค่อยออกกำลังกาย","ปานกลาง ออกกำลังกาย 1-3 ครั้งต่อสัปดาห์","ปานกลาง ออกกำลังกาย 4-5 ครั้งต่อสัปดาห์",
+        "หนัก ออกกำลังกาย 6-7 ครั้งต่อสัปดาห์","หนักมาก ออกกำลังกายวันละ 2 ครั้งขึ้นไป")
     internal var SPINNERLSTGENDER = arrayOf("ชาย","หญิง")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

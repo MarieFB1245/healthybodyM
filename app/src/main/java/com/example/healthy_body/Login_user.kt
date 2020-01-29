@@ -11,6 +11,8 @@ import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.text.InputType
+import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+import cn.pedant.SweetAlert.SweetAlertDialog
 import java.lang.Thread.sleep
 
 
@@ -21,19 +23,27 @@ class Login_user : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_user)
+
         register.setOnClickListener{
             val intent = Intent(this, Register_User::class.java)
             startActivity(intent)
         }
 
-        login.setOnClickListener {
 
+
+        login.setOnClickListener {
             auth = FirebaseAuth.getInstance()
             var email = email.text.toString()
             var password = password.text.toString()
             if(email==""&&password==""){
-                Toast.makeText(this, "please in put email and password", Toast.LENGTH_LONG).show()
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("รหัสผิด")
+                    .setContentText("กรุณาใส่ อีเมล เเละ รหัสผ่าน ให้ถูกต้อง!")
+                    .setConfirmText("ตกลง")
+                    .show()
+
             }else{
+
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
                         Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()

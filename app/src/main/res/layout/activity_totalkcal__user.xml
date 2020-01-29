@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
-            android:text="เเคลลอรี่ทังหมดต่อวัน : "
+            android:text="เเคลลอรี่ทั้งหมดต่อวัน : "
             android:textSize="30sp"
             >
         </TextView>
@@ -108,4 +108,32 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/L8"
+        android:layout_marginTop="40sp"
+        android:layout_below="@id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/non_color_step_register"
+            ></TextView>
+        <TextView
+            android:layout_width="20dp"
+            android:layout_margin="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/non_color_step_register"
+            ></TextView>
+        <TextView
+            android:layout_width="20dp"
+            android:layout_margin="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/color_step_register"
+            ></TextView>
+    </LinearLayout>
 </RelativeLayout>

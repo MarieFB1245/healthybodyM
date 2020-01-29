@@ -8,22 +8,24 @@
     android:background="@drawable/bacckground_color">
 
     <RelativeLayout
+        android:id="@+id/bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         >
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/searchView"
+            layout="@layout/app_register"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="สมัครข้อมูล"
-            android:textSize="30dp"
-            android:textColor="#ffffff"
-            ></TextView>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></include>
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_marginTop="50sp"
+        android:layout_below="@+id/bar"
+        android:layout_marginTop="20dp"
         android:id="@+id/namelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,9 +41,8 @@
             android:layout_width="match_parent"
             android:hint="ชื่อจริง"
             android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:backgroundTint="#ffffff"
-            android:layout_height="40sp"
+            android:textColorHint="#a6a6a6"
+            android:layout_height="match_parent"
             ></EditText>
 
     </LinearLayout>
@@ -65,8 +66,7 @@
             android:layout_height="40sp"
             android:hint="นามสกุล"
             android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:backgroundTint="#ffffff"
+            android:textColorHint="#a6a6a6"
            ></EditText>
     </LinearLayout>
 
@@ -93,8 +93,7 @@
             android:layout_height="40sp"
             android:hint="น้ำหนัก เป็น กก."
             android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:backgroundTint="#ffffff"
+            android:textColorHint="#a6a6a6"
             android:inputType="number"
            ></EditText>
 
@@ -108,8 +107,7 @@
             android:layout_height="40sp"
             android:hint="ส่วนสูง เป็น ซม."
             android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:backgroundTint="#ffffff"
+            android:textColorHint="#a6a6a6"
             android:inputType="number"
             ></EditText>
     </LinearLayout>
@@ -131,8 +129,7 @@
             android:layout_height="40sp"
             android:hint="อายุ เป็น ปี"
             android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:backgroundTint="#ffffff"
+            android:textColorHint="#a6a6a6"
             android:inputType="numberDecimal|numberSigned"
             ></EditText>
 
@@ -149,8 +146,8 @@
             android:layout_alignParentStart="true"
             app:met_primaryColor="#ffffff"
             app:met_textColor="#ffffff"
-            app:met_textColorHint="#ffffff"
-            app:met_baseColor="#ffffff"
+            app:met_textColorHint="#a6a6a6"
+
 
             ></com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
 
@@ -192,9 +189,9 @@
     android:id="@+id/android_material_desgn_spinner"
     android:paddingLeft="15dp"
     app:met_primaryColor="#ffffff"
+    app:met_baseColor="#000000"
     app:met_textColor="#ffffff"
-    app:met_textColorHint="#ffffff"
-    app:met_baseColor="#ffffff"
+    app:met_textColorHint="#a6a6a6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:hint="ระดับการออกกำลังกาย"
@@ -218,5 +215,32 @@
         android:layout_height="wrap_content">
     </Button>
 
-
+    <LinearLayout
+        android:id="@+id/L8"
+        android:layout_marginTop="40sp"
+        android:layout_below="@id/registerbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/non_color_step_register"
+            ></TextView>
+        <TextView
+            android:layout_width="20dp"
+            android:layout_margin="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/color_step_register"
+            ></TextView>
+        <TextView
+            android:layout_width="20dp"
+            android:layout_margin="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/non_color_step_register"
+            ></TextView>
+    </LinearLayout>
 </RelativeLayout>
