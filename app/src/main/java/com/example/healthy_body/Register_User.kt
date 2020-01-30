@@ -64,7 +64,7 @@ class Register_User : AppCompatActivity() {
                         }
                         else{
                             SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText("รหัสผ่านไม่ตลงกัน")
+                                .setTitleText("รหัสผ่านไม่ตรงกัน")
                                 .setContentText("กรุณาใส่รหัสผ่านให้ถูกต้อง!")
                                 .setConfirmText("ตกลง")
                                 .show()

@@ -1,5 +1,6 @@
 package com.example.healthy_body
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -46,19 +47,26 @@ class Home_User : AppCompatActivity() {
 
             setupPieChart(Food,Workout)
 }
-
+        val progest  = ProgressDialog(this,R.style.MyTheme)
+        progest.setCancelable(false)
+        progest.show()
 
         Log.e("pass","selectdata_totalkcal")
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val map = dataSnapshot.value as Map<*, *>?
                 val map1 = dataSnapshot.child("users").child(UID).value as Map<*, *>?
                 val BMI = map1!!["bmis"].toString()
                 val BMR = map1!!["BMR"].toString()
                 val TDEE = map1["TDEE"].toString()
-                TDEEshow.text = TDEE
-                BMIshow.text = BMI
-                BMRshow.text = BMR
+                if(BMI !=""){
+                    progest.cancel()
+                    TDEEshow.text = TDEE
+                    BMIshow.text = BMI
+                    BMRshow.text = BMR
+                }
+
             }
             override fun onCancelled(databaseError: DatabaseError) {
 

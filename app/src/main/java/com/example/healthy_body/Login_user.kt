@@ -1,5 +1,6 @@
 package com.example.healthy_body
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,7 @@ import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.text.InputType
+import android.widget.ProgressBar
 import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
 import cn.pedant.SweetAlert.SweetAlertDialog
 import java.lang.Thread.sleep
@@ -31,6 +33,7 @@ class Login_user : AppCompatActivity() {
 
 
 
+
         login.setOnClickListener {
             auth = FirebaseAuth.getInstance()
             var email = email.text.toString()
@@ -43,14 +46,20 @@ class Login_user : AppCompatActivity() {
                     .show()
 
             }else{
-
+                val progest  = ProgressDialog(this,R.style.MyTheme)
+                progest.setCancelable(false)
+                progest.show()
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
+
                         var uid = FirebaseAuth.getInstance().uid?:""
                         login(uid)
                     } else {
-                        Toast.makeText(this, "Email and Password is not Correct", Toast.LENGTH_LONG).show()
+                        SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("รหัสผิด")
+                            .setContentText("กรุณาใส่ อีเมล เเละ รหัสผ่าน ให้ถูกต้อง!")
+                            .setConfirmText("ตกลง")
+                            .show()
                     }
                 }
             }
