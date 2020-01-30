@@ -24,13 +24,13 @@ class Home_User : AppCompatActivity() {
 
     private lateinit var myRef: DatabaseReference
     private var myAut = FirebaseAuth.getInstance()
-    //val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+    val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home__user)
 
         myRef = FirebaseDatabase.getInstance().reference
-       var UID: String = intent.getStringExtra("UID")
+      // var UID: String = intent.getStringExtra("UID")
         val TDEEshow = findViewById<TextView>(R.id.numberTDEE)
         val BMIshow = findViewById<TextView>(R.id.numberBMI)
         val BMRshow = findViewById<TextView>(R.id.numberBMR)
@@ -110,7 +110,7 @@ class Home_User : AppCompatActivity() {
         val colors = ArrayList<Int>()
 
         colors.add(Color.RED)
-        colors.add(Color.BLUE)
+        colors.add(Color.rgb(156,254,230))
         dataSet.colors = colors
         val data = PieData(dataSet)
         val chart = findViewById(R.id.chart) as PieChart

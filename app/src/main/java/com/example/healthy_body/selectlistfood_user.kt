@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.healthy_body.model.modellistfood
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.*
@@ -53,9 +54,17 @@ class selectlistfood_user : AppCompatActivity() {
 
         val imageView = findViewById<ImageView>(R.id.addfood) as ImageView
         imageView.setOnClickListener {
-            val intent = Intent(this, addfood_user::class.java)
+            SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("คุณต้องการบันทึกรายการเป็นส่วนตัวใหม?")
+                .setContentText("ถ้าไม่ตกลงรายการนี้จะถูกบันทึกในรายการที่ทุกคนเห็นได้")
+                .setCancelText("ฉันต้องการให้คนอื่นนเห็นด้วย")
+                .setConfirmText("ฉันต้องการเห็นคนเดียว")
+                .showCancelButton(true)
+                .setCancelClickListener { sDialog -> sDialog.cancel() }
+                .show()
+            /*val intent = Intent(this, addfood_user::class.java)
             intent.putExtra("UID",UID)
-            startActivity(intent)
+            startActivity(intent)*/
         }
 
 

@@ -15,6 +15,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/R1"
+
     >
 
     <ImageView
@@ -36,6 +37,10 @@
         android:layout_below="@id/R1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/background_object"
+        android:layout_marginRight="50sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50sp"
         >
     <com.github.mikephil.charting.charts.PieChart
         android:layout_centerHorizontal="true"
@@ -53,7 +58,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:weightSum="4"
+        android:background="@drawable/app_bar_back_up"
         android:orientation="horizontal"
+        android:layout_marginRight="15sp"
+        android:layout_marginLeft="15sp"
         >
     <TextView
         android:id="@+id/numberBMI"
@@ -63,7 +71,7 @@
         android:layout_weight="1"
         android:textColor="#FFFFFF"
         android:gravity="center_horizontal"
-        android:textSize="20sp"></TextView>
+        android:textSize="25sp"></TextView>
 
     <TextView
         android:id="@+id/numberBMR"
@@ -73,7 +81,7 @@
         android:textColor="#FFFFFF"
         android:gravity="center"
         android:layout_weight="1"
-        android:textSize="20sp"></TextView>
+        android:textSize="25sp"></TextView>
 
     <TextView
         android:id="@+id/numberTDEE"
@@ -83,7 +91,7 @@
         android:textColor="#FFFFFF"
         android:gravity="center"
         android:layout_weight="1"
-        android:textSize="20sp"></TextView>
+        android:textSize="25sp"></TextView>
     <TextView
         android:id="@+id/numberTargete"
         android:layout_width="match_parent"
@@ -92,7 +100,7 @@
         android:textColor="#FFFFFF"
         android:layout_weight="1"
         android:gravity="center"
-        android:textSize="20sp"></TextView>
+        android:textSize="25sp"></TextView>
     </LinearLayout>
 
     <LinearLayout
@@ -102,7 +110,9 @@
         android:weightSum="4"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-
+        android:background="@drawable/app_bar_back_down"
+        android:layout_marginRight="15sp"
+        android:layout_marginLeft="15sp"
         >
 
         <TextView
@@ -113,7 +123,7 @@
             android:gravity="center_horizontal"
             android:text="BMI"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"></TextView>
+            android:textSize="20sp"></TextView>
 
         <TextView
             android:id="@+id/textBMR"
@@ -123,7 +133,7 @@
             android:gravity="center_horizontal"
             android:text="BMR"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"></TextView>
+            android:textSize="20sp"></TextView>
 
 
     <TextView
@@ -134,7 +144,7 @@
         android:layout_weight="1"
         android:textColor="#FFFFFF"
         android:gravity="center_horizontal"
-        android:textSize="25sp"></TextView>
+        android:textSize="20sp"></TextView>
 
     <TextView
         android:id="@+id/texttarget"
@@ -144,7 +154,7 @@
         android:layout_weight="1"
         android:textColor="#FFFFFF"
         android:gravity="center_horizontal"
-        android:textSize="25sp"></TextView>
+        android:textSize="20sp"></TextView>
 
     </LinearLayout>
 
