@@ -9,12 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".list_saveedit_excercise"
+        <activity android:name=".addfood_user_private"
             android:theme="@style/AppTheme.NoActionbar"
             ></activity>
-        <activity android:name=".list_edit_excercise"
-            android:theme="@style/AppTheme.NoActionbar"
-            />
+        <activity
+            android:name=".selectelistfood_user_private"
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity
+            android:name=".list_saveedit_excercise"
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity
+            android:name=".list_edit_excercise"
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".list_saveedit_food"
             android:theme="@style/AppTheme.NoActionbar" />
@@ -44,7 +50,10 @@
             android:name=".selectlistfood_user"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan" >
+
+
+        </activity>
         <activity
             android:name=".edit_information"
             android:screenOrientation="portrait"
@@ -57,17 +66,18 @@
             android:name=".Login_user"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
             android:name=".Home_User"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Totalkcal_User"

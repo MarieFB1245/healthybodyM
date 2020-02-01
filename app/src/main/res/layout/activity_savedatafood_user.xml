@@ -10,7 +10,7 @@
 
     <include
         android:id="@+id/searchView"
-        layout="@layout/barselect"
+        layout="@layout/app_savedatafood_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
