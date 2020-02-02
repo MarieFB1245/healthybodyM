@@ -7,7 +7,6 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import com.example.healthy_body.model.modellistexcercise
-import com.example.healthy_body.model.modellistfood
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
@@ -15,51 +14,49 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
 import kotlinx.android.synthetic.main.list_food.view.*
 
-class selectlistexcercise_user : AppCompatActivity() {
+class selectlistexcercise_user_private : AppCompatActivity() {
 
-    val ref = FirebaseDatabase.getInstance().getReference("EXCERCISE")
+    //var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+
     var UID :String=""
-    var searchtext:String =""
+    var searchtext :String=""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_selectlistexcercise_user)
+        setContentView(R.layout.activity_selectlistexcercise_user_private)
 
-      UID = intent.getStringExtra("UID")
+        UID = intent.getStringExtra("UID")
 
-        loadexcercise(searchtext)
         val adapter = GroupAdapter<ViewHolder>()
         mRecycleVeiew.adapter = adapter
+        loadexcercise(searchtext)
+
         var search = findViewById<EditText>(R.id.Searching)
         sreachtext.setOnClickListener {
-             searchtext = search.text.toString()
+            searchtext = search.text.toString()
             loadexcercise(searchtext)
         }
 
 
         val arrow = findViewById<ImageView>(R.id.arrow)
-        val imagelist = findViewById<ImageView>(R.id.addprivate)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
             val intent = Intent(this, Home_User::class.java)
-            intent.putExtra("UID",UID)
+            intent.putExtra("UID", UID)
             startActivity(intent)
         }
 
-        val imageView = findViewById<ImageView>(R.id.addexcercise) as ImageView
+        val imageView = findViewById<ImageView>(R.id.addexcercise_private) as ImageView
         imageView.setOnClickListener {
-            val intent = Intent(this, addexcercise_user::class.java)
-            intent.putExtra("UID",UID)
+            val intent = Intent(this, addexcerciser_user_private::class.java)
+            intent.putExtra("UID", UID)
             startActivity(intent)
         }
-        imagelist.setOnClickListener {
-            val intent = Intent(this, selectlistexcercise_user_private::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent) }
-
     }
     fun loadexcercise(s: String) {
+        val ref = FirebaseDatabase.getInstance().getReference("DATA_PRIVATE_EXCERCISE").child("${UID}")
         if (s != null) {
             val firebaseSrarchQuery: Query =
                 ref.orderByChild("name_excercise").startAt(s).endAt(s + "\uf8ff")
@@ -141,7 +138,4 @@ class selectlistexcercise_user : AppCompatActivity() {
             return R.layout.list_food
         }
     }
-    }
-
-
-
+}

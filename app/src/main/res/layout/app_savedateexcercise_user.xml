@@ -22,20 +22,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="เลือกรายการกิจกรรม"
+            android:text="บันทึกรายการกิจกรรม"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24dp"
             android:textStyle="bold"/>
 
-        <ImageView
-            android:id="@+id/addprivate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/ic_playlist_add_black_24dp" />
 
 
     </RelativeLayout>
