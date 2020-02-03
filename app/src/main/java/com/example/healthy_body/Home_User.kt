@@ -3,10 +3,12 @@ package com.example.healthy_body
 import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import com.example.healthy_body.R.drawable.color_chart
 import com.example.healthy_body.calculate.data
 import com.example.healthy_body.calculate.selectdata_totalkcal
 import com.example.healthy_body.calculate.totalkcallare
@@ -14,6 +16,7 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_home__user.*
@@ -95,7 +98,7 @@ class Home_User : AppCompatActivity() {
     private fun setupPieChart(Food:Int ,Workout:Int) {
 
          val peercenData = intArrayOf(Food, Workout)
-         val pnameFood = arrayOf("Kcal/Food", "Kcal/Workout")
+         val pnameFood = arrayOf("อาหาร", "กิจกกรม")
 
         val pieEntries = ArrayList<PieEntry>()
         for (i in peercenData.indices) {
@@ -106,20 +109,22 @@ class Home_User : AppCompatActivity() {
                 )
             )//ค่าที่เก็บจะต้องเป็น array
         }
-        val dataSet = PieDataSet(pieEntries, "test")
-        val colors = ArrayList<Int>()
 
-        colors.add(Color.RED)
-        colors.add(Color.rgb(156,254,230))
+
+        val dataSet = PieDataSet(pieEntries, "KCAL")
+        val colors = ArrayList<Int>()
+        colors.add(Color.rgb(171,69,204))
+        colors.add(Color.rgb(51,102,255))
         dataSet.colors = colors
         val data = PieData(dataSet)
         val chart = findViewById(R.id.chart) as PieChart
-        chart.getDescription().setEnabled(false);
-        chart.getLegend().setEnabled(false);
+        chart.getDescription().setEnabled(false)
+        chart.getLegend().setEnabled(false)
         chart.data = data
         chart.isDrawHoleEnabled = false
+        chart.centerTextRadiusPercent
         chart.setCenterTextSizePixels(500f)
-        data.setValueTextSize(30f);
+        data.setValueTextSize(30f)
         chart.animateY(500)
         chart.invalidate()
 

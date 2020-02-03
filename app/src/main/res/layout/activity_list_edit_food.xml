@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bacckground_color"
     tools:context=".list_edit_food">
 
     <include
@@ -21,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
+        android:textColor="#FFFFFF"
         android:text="TextView"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@+id/searchView"

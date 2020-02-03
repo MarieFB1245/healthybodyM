@@ -17,6 +17,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
+            android:textColor="#FFFFFF"
             android:textSize="25dp"
             android:text="name" />
         <LinearLayout

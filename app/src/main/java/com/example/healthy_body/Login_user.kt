@@ -55,11 +55,13 @@ class Login_user : AppCompatActivity() {
                         var uid = FirebaseAuth.getInstance().uid?:""
                         login(uid)
                     } else {
+
                         SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("รหัสผิด")
-                            .setContentText("กรุณาใส่ อีเมล เเละ รหัสผ่าน ให้ถูกต้อง!")
+                            .setContentText("กรุณาใส่ อีเมล หรือ รหัสผ่าน ให้ถูกต้อง!")
                             .setConfirmText("ตกลง")
                             .show()
+                        progest.cancel()
                     }
                 }
             }

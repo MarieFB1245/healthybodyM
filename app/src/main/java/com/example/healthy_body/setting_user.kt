@@ -30,6 +30,8 @@ class setting_user : AppCompatActivity() {
         listset.add("ตั้งค่าข้อมูลส่วนตัว")
         listset.add("อาหาร")
         listset.add("กิจกรรม")
+        listset.add("อาหารของฉัน")
+        listset.add("กิจกรรมของฉัน")
 
 
          UID = intent.getStringExtra("UID")
