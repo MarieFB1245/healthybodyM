@@ -85,8 +85,10 @@ class setting_user : AppCompatActivity() {
                   //  Toast.makeText(this, "อาหาร ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
               }
               else {
+                  val intent = Intent(view.context, list_edit_excercise_private::class.java)
+                  intent.putExtra("UID", UID)
+                  startActivity(intent)
 
-                  Toast.makeText(this, "กิจกรรมส่วนตัว ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
               }
 
 

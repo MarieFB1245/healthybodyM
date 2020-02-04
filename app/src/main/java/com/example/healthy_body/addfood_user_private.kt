@@ -49,21 +49,7 @@ class addfood_user_private : AppCompatActivity(), View.OnClickListener {
             intent.putExtra("UID", UID)
             startActivity(intent)
         }
-        ref.addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
 
-            }
-
-            override fun onDataChange(p0: DataSnapshot) {
-                for(list in p0.children){
-                    val s = list.getValue(data::class.java)
-                    val key = list!!.key
-                    var textiinfo = s!!.namefood
-                    println("textiinfo =>"+key.toString())
-                    println("textiinfo =>"+textiinfo.toString())
-                }
-            }
-        })
 
 
         buttonaddfood.setOnClickListener {

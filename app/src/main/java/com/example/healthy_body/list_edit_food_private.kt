@@ -20,7 +20,7 @@ class list_edit_food_private : AppCompatActivity() {
 
     private lateinit var ref: DatabaseReference
 
-    var UID :String=""
+    var UID:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

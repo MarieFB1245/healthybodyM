@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.Toast
+import com.example.healthy_body.model.modelSelectExcercise_Private
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
@@ -59,7 +60,7 @@ class list_edit_excercise_private : AppCompatActivity() {
                 if(p0.exists()){
                     p0.children.forEach {
                         Log.d("DataSnapshot", it.toString())
-                        val listfood = it.getValue(dataselectexcercise::class.java)
+                        val listfood = it.getValue(modelSelectExcercise_Private::class.java)
                         Log.d("text", KEY)
                         if (listfood != null) {
                             adapter.add(Foodd(listfood))
@@ -69,14 +70,10 @@ class list_edit_excercise_private : AppCompatActivity() {
                         val itemf = item as Foodd
                         Log.e("fooditem","${itemf}")
                         val intent = Intent(view.context, list_saveedit_excercise_menu_private::class.java)
-                        intent.putExtra("key",itemf.excercise.id_list)
+                        intent.putExtra("id_excercise",itemf.excercise.id_excercise)
                         intent.putExtra("UID",UID)
-                        intent.putExtra("date", itemf.excercise.date)
-                        intent.putExtra("nameExcerciseShowB", itemf.excercise.nameExcerciseShowB)
-                        intent.putExtra("resultBig", itemf.excercise.resultBig)
-                        intent.putExtra("sum", itemf.excercise.sum)
-                        intent.putExtra("id", itemf.excercise.id)
-                        intent.putExtra("kcalExcerciseShowB", itemf.excercise.kcalExcerciseShowB)
+                        intent.putExtra("name_excercise", itemf.excercise.name_excercise)
+                        intent.putExtra("kcal", itemf.excercise.kcal)
                         startActivity(intent)
                     }
                     recyclerView.adapter = adapter
@@ -88,10 +85,10 @@ class list_edit_excercise_private : AppCompatActivity() {
             override fun onCancelled(p0: DatabaseError) {}
         })
     }
-    inner class Foodd(val excercise: dataselectexcercise) : Item<ViewHolder>() {
+    inner class Foodd(val excercise: modelSelectExcercise_Private) : Item<ViewHolder>() {
         override fun bind(viewHolder: ViewHolder, position: Int) {
-            viewHolder.itemView.name.text= excercise.nameExcerciseShowB
-            viewHolder.itemView.kcal.text = excercise.kcalExcerciseShowB
+            viewHolder.itemView.name.text= excercise.name_excercise
+            viewHolder.itemView.kcal.text = excercise.kcal
             Log.d("viewHolder", "${viewHolder}")
         }
 
