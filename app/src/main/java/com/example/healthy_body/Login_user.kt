@@ -12,10 +12,12 @@ import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.text.InputType
+import android.util.Log
 import android.widget.ProgressBar
 import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
 import cn.pedant.SweetAlert.SweetAlertDialog
 import java.lang.Thread.sleep
+import kotlin.math.log
 
 
 class Login_user : AppCompatActivity() {
@@ -38,6 +40,9 @@ class Login_user : AppCompatActivity() {
             auth = FirebaseAuth.getInstance()
             var email = email.text.toString()
             var password = password.text.toString()
+
+            Log.e("email =>","${email}")
+            Log.e("password =>","${password}")
             if(email==""&&password==""){
                 SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                     .setTitleText("รหัสผิด")

@@ -2,7 +2,7 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:id="@+id/app_bar"
-    android:background="@color/colorAccent"
+    android:background="@drawable/app_bar_back"
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,9 +18,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ADDEXCERCISE"
+            android:text="เพิ่มรายการกิจกรรม"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textSize="24dp"
             android:layout_marginTop="3dp"
             android:textAlignment="center" />

@@ -32,7 +32,7 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
     var newsum: Int = 0
     var statusdoting: String = ""
     var date: String = ""
-var KEY :String=""
+    var KEY :String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
