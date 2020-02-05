@@ -9,7 +9,7 @@ import com.google.firebase.database.ValueEventListener
 
 class savemenuexcercise_private(val UID :String ,val textnameEx :String ="",val textkcal :String =""){
 
-    val ref = FirebaseDatabase.getInstance().getReference("DATA_PRIVATE_EXCERCISE")
+    val ref = FirebaseDatabase.getInstance().getReference("DATA_PRIVATE_EXCERCISE").child("${UID}")
 
     var textnameex = textnameEx
     var textkcalupdate = textkcal
@@ -65,7 +65,7 @@ class savemenuexcercise_private(val UID :String ,val textnameEx :String ="",val 
                     val newkey = key + 1
                     val id_excercise = newkey.toString()
                     val model = dataex(id_excercise,textnameex,textkcalupdate)
-                    ref.child("${uid}").child("${id_excercise}").setValue(model)
+                    ref.child("${id_excercise}").setValue(model)
                 }
             }
         })

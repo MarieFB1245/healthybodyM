@@ -10,7 +10,7 @@ import com.google.firebase.database.ValueEventListener
 
 class savemenufood_private(val UID :String ,var namefood:String="",val kcal:String="",val unit:String="",val unittype:String="",val amount :Int){
 
-    val ref = FirebaseDatabase.getInstance().getReference("DATA_PRIVATE_FOOD")
+    val ref = FirebaseDatabase.getInstance().getReference("DATA_PRIVATE_FOOD").child("${UID}")
     val namefoodS = namefood
     val kcalS = kcal
     val unitS = unit
@@ -67,7 +67,7 @@ class savemenufood_private(val UID :String ,var namefood:String="",val kcal:Stri
                     val newkey = key + 1
                     val id_food = newkey.toString()
                     val model = modelsavefood(id_food,namefood,kcal,unit,unittype,amount)
-                    ref.child("${uid}").child("${id_food}").setValue(model)
+                    ref.child("${id_food}").setValue(model)
                 }
             }
         })
