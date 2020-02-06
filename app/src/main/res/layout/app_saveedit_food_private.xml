@@ -31,10 +31,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="เเก้ไขรายการอาหาร"
+            android:text="เเก้ไขรายการอาหารของฉัน"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="24dp"
+            android:textSize="23dp"
             android:textStyle="bold"/>
 
 
