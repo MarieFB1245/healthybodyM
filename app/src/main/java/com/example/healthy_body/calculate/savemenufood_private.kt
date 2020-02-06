@@ -32,7 +32,7 @@ class savemenufood_private(val UID :String ,var namefood:String="",val kcal:Stri
                         val util = s!!.unit
                         val unittype = s!!.unittype
 
-                        val ref = FirebaseDatabase.getInstance().getReference("DATA_PRIVATE_FOOD")
+                        val ref = FirebaseDatabase.getInstance().getReference("DATA_PRIVATE_FOOD").child("${uid}")
                         val q = ref.orderByKey().limitToLast(1)
                         q.addListenerForSingleValueEvent(object : ValueEventListener {
                             override fun onCancelled(p0: DatabaseError) {
@@ -53,7 +53,7 @@ class savemenufood_private(val UID :String ,var namefood:String="",val kcal:Stri
                                         unittypeS,
                                         amountS.toString()
                                     )
-                                    ref.child("${uid}").child("${id_food}").setValue(model)
+                                    ref.child("${id_food}").setValue(model)
                                 }
 
 

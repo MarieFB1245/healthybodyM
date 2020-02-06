@@ -29,6 +29,7 @@ class selectlistexcercise_user_private : AppCompatActivity() {
 
         val adapter = GroupAdapter<ViewHolder>()
         mRecycleVeiew.adapter = adapter
+
         loadexcercise(searchtext)
 
         var search = findViewById<EditText>(R.id.Searching)
@@ -72,7 +73,7 @@ class selectlistexcercise_user_private : AppCompatActivity() {
                         }
                     }
                     adapter.setOnItemClickListener { item, view ->
-                        val excerciseitem = item as selectlistexcercise_user.Excercise
+                        val excerciseitem = item as Excercise
                         val intent = Intent(view.context, savedataexcercise_user::class.java)
                         intent.putExtra("UID",UID)
                         intent.putExtra("nameexcercise", excerciseitem.excercise.name_excercise)
@@ -101,11 +102,12 @@ class selectlistexcercise_user_private : AppCompatActivity() {
                         }
                     }
                     adapter.setOnItemClickListener { item, view ->
-                        val fooditem = item as selectlistfood_user.Food
-                        val intent = Intent(view.context, savedatafood_user::class.java)
-                        intent.putExtra("namefood", fooditem.food.namefood)
-                        intent.putExtra("kcalfood", fooditem.food.kcal)
-                        intent.putExtra("id", fooditem.food.id_food)
+                        val excerciseitem= item as Excercise
+                        val intent = Intent(view.context, savedataexcercise_user::class.java)
+                        intent.putExtra("UID",UID)
+                        intent.putExtra("nameexcercise", excerciseitem.excercise.name_excercise)
+                        intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
+                        intent.putExtra("id", excerciseitem.excercise.id_excercise)
                         startActivity(intent)
                     }
                     mRecycleVeiew.adapter = adapter

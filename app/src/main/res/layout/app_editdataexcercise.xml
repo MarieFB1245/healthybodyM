@@ -31,11 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-<<<<<<< HEAD
             android:text="เเก้ไขรายการกิจกกรม"
-=======
-            android:text="เเก้ไขกิจกกรรม"
->>>>>>> ac4a1c784e0ebef4a3b5ee674d5c1ebc6c766e2a
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24dp"
