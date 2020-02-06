@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
+            android:textSize="23dp"
+           android:paddingLeft="10dp"
             android:textColor="#FFFFFF"
             android:text="name" />
         <LinearLayout

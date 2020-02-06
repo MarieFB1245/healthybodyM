@@ -35,7 +35,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_marginRight="10dp"
-            android:src="@drawable/ic_playlist_add_black_24dp" />
+            android:src="@drawable/ic_stars_black_24dp" />
 
 
     </RelativeLayout>
