@@ -1,12 +1,16 @@
 package com.example.healthy_body
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import cn.pedant.SweetAlert.SweetAlertDialog
+import com.example.healthy_body.calculate.process_image
 import com.example.healthy_body.model.modellistfood
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.*
@@ -17,12 +21,13 @@ import kotlinx.android.synthetic.main.activity_home__user.*
 import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
 import kotlinx.android.synthetic.main.barselect.*
 import kotlinx.android.synthetic.main.list_food.view.*
+import java.io.ByteArrayOutputStream
 
 class selectlistfood_user : AppCompatActivity() {
    // val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
     val ref = FirebaseDatabase.getInstance().getReference("FOOD")
     var UID :String=""
-
+ val CAMERA_REQUEST_CODE =0
     var searchtext :String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,9 +74,40 @@ class selectlistfood_user : AppCompatActivity() {
             intent.putExtra("UID",UID)
             startActivity(intent) }
 
+        camera.setOnClickListener {
+            val startcamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+            startActivityForResult(startcamera,CAMERA_REQUEST_CODE)
+        }
+
+        }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when(requestCode){
+            CAMERA_REQUEST_CODE ->{
+                if(resultCode == Activity.RESULT_OK && data != null){
+
+                    val dataimage  = (data.extras!!.get("data") as Bitmap)
+                    val stream = ByteArrayOutputStream()
+                    stream.close()
+                    Log.e("dataimage","${dataimage}")
+                    Log.e("dataimage","${requestCode}")
+                    Log.e("dataimage","${resultCode}")
+
+                 val  textimage=  process_image(dataimage).process()
+                    var search = findViewById<EditText>(R.id.Searching)
+                    search.setText(textimage)
+                    loadfood(textimage)
+                }
+
+            }else -> {
+            Log.e("ERROR","CAMERA")
+        }
         }
 
 
+    }
 
 
     fun loadfood(s: String) {
