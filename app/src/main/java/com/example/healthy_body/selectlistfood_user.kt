@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.list_food.view.*
 import java.io.ByteArrayOutputStream
 
 class selectlistfood_user : AppCompatActivity() {
-   // val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+    //val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
     val ref = FirebaseDatabase.getInstance().getReference("FOOD")
     var UID :String=""
  val CAMERA_REQUEST_CODE =0
@@ -93,12 +93,38 @@ class selectlistfood_user : AppCompatActivity() {
                     stream.close()
                     Log.e("dataimage","${dataimage}")
                     Log.e("dataimage","${requestCode}")
-                    Log.e("dataimage","${resultCode}")
+                    Log.e("dataimageq","${resultCode}")
 
-                 val  textimage=  process_image(dataimage).process()
-                    var search = findViewById<EditText>(R.id.Searching)
-                    search.setText(textimage)
-                    loadfood(textimage)
+                  process_image(dataimage).process{namefood ->
+                      var search = findViewById<EditText>(R.id.Searching)
+                      search.setText(namefood)
+                      loadfood(namefood)
+
+                      ref.orderByChild("namefood")
+                      ref.addListenerForSingleValueEvent(object : ValueEventListener{
+                          override fun onCancelled(p0: DatabaseError) {
+
+                          }
+
+                          override fun onDataChange(p0: DataSnapshot) {
+                              p0.children.forEach {
+                                  val food = it.getValue(modellistfood::class.java)
+                                  if(food!!.namefood == namefood) {
+                                      val intent = Intent(this@selectlistfood_user, savedatafood_user::class.java)
+                                      intent.putExtra("UID",UID)
+                                      intent.putExtra("namefood", food.namefood)
+                                      intent.putExtra("kcalfood", food.kcal)
+                                      intent.putExtra("id", food.id_food)
+                                      startActivity(intent)
+                                  }else{
+                                      Log.e("data","DON have")
+                                  }
+                              }
+                          }
+
+                      })
+                  }
+
                 }
 
             }else -> {
