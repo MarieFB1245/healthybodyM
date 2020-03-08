@@ -1,43 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="40dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/app_bar"
-    android:background="@drawable/app_bar_back"
-    >
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/arrow"
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:layout_alignParentLeft="true" />
-
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="เลือกรายการกิจกรรม"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp"
-            android:textStyle="bold"/>
-
-        <ImageView
-            android:id="@+id/addprivate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/ic_stars_black_24dp" />
+    android:background="@drawable/app_bar_back">
 
 
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/text"
+        app:layout_constraintEnd_toStartOf="@+id/text"
+        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text" />
 
-</androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@id/arrow"
+        android:text="เลือกรายการกิจกรรม"
+        android:textColor="#FFFFFF"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/listselect"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/arrow"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/addprivate"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/listselect"
+        android:src="@drawable/ic_stars_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/listselect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/listselect"
+        app:layout_constraintTop_toTopOf="@+id/listselect" />
+
+    <ImageView
+        android:id="@+id/listselect"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/addprivate"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/addprivate"
+        android:layout_toEndOf="@+id/text"
+        android:src="@drawable/ic_description_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/text"
+        app:layout_constraintEnd_toStartOf="@+id/addprivate"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/text"
+        app:layout_constraintTop_toTopOf="@+id/text"
+        app:layout_constraintVertical_bias="0.51" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

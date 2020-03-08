@@ -10,7 +10,7 @@
 
     <include
         android:id="@+id/searchView"
-        layout="@layout/app_barlist_food_private"
+        layout="@layout/app_barselectexcercise_private"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

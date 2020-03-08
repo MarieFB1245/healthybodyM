@@ -24,16 +24,16 @@ import kotlinx.android.synthetic.main.list_food.view.*
 import java.io.ByteArrayOutputStream
 
 class selectlistfood_user : AppCompatActivity() {
-    //val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+    val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
     val ref = FirebaseDatabase.getInstance().getReference("FOOD")
-    var UID :String=""
+   // var UID :String=""
  val CAMERA_REQUEST_CODE =0
     var searchtext :String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selectlistfood_user)
 
-         UID = intent.getStringExtra("UID")
+      //   UID = intent.getStringExtra("UID")
 
         Log.e("UID =>","${UID}")
         val adapter = GroupAdapter<ViewHolder>()

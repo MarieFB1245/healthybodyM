@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Home_User"
     android:id="@+id/home_user"
-    android:background="@drawable/bacckground_color"
+    android:background="@drawable/button_style"
     >
 
 
@@ -31,16 +31,22 @@
         android:src="@drawable/ic_description_black_24dp"></ImageView>
 
 </RelativeLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:layout_below="@+id/R1"
+    android:background="@drawable/bacckground_color"
+    >
 
     <RelativeLayout
         android:id="@+id/R2"
         android:layout_below="@id/R1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_object"
         android:layout_marginRight="50sp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="50sp"
+        android:elevation="20dp"
         >
     <com.github.mikephil.charting.charts.PieChart
         android:layout_centerHorizontal="true"
@@ -51,7 +57,120 @@
         ></com.github.mikephil.charting.charts.PieChart>
     </RelativeLayout>
 
+    /////////////////
+
     <LinearLayout
+        android:layout_marginTop="40sp"
+        android:id="@+id/R3"
+        android:layout_below="@id/R2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        >
+    <RelativeLayout
+        android:id="@+id/Rtext1"
+        android:layout_below="@id/R2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:background="@drawable/background_object"
+        android:elevation="20dp"
+        android:layout_marginLeft="15sp">
+        <TextView
+            android:id="@+id/numberBMI"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#FFFFFF"
+            android:gravity="center_horizontal"
+            android:textSize="25sp"></TextView>
+
+        <TextView
+            android:id="@+id/textBMI"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="BMI"
+            android:layout_below="@id/numberBMI"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"></TextView>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Rtext2"
+        android:layout_below="@id/R2"
+        android:layout_width="100dp"
+        android:layout_toRightOf="@id/Rtext1"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:background="@drawable/background_object"
+        android:layout_marginRight="15sp"
+        android:layout_marginLeft="15sp"
+        android:elevation="20dp">
+        <TextView
+            android:id="@+id/numberBMR"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#FFFFFF"
+            android:gravity="center_horizontal"
+            android:textSize="25sp"></TextView>
+
+        <TextView
+            android:id="@+id/textBMR"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="BMR"
+            android:layout_below="@id/numberBMR"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"></TextView>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Rtext3"
+        android:layout_below="@id/R2"
+        android:layout_width="100dp"
+        android:layout_toRightOf="@id/Rtext2"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:background="@drawable/background_object"
+        android:layout_marginRight="15sp"
+        android:elevation="20dp"
+        >
+        <TextView
+            android:id="@+id/numberTDEE"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#FFFFFF"
+            android:gravity="center_horizontal"
+            android:textSize="25sp"></TextView>
+
+        <TextView
+            android:id="@+id/textTDEE"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="TDEE"
+            android:layout_below="@id/numberTDEE"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"></TextView>
+
+
+    </RelativeLayout>
+    </LinearLayout>
+    //////////////////////////
+
+   <!-- <LinearLayout
         android:layout_marginTop="40sp"
         android:id="@+id/R3"
         android:layout_below="@id/R2"
@@ -63,15 +182,7 @@
         android:layout_marginRight="15sp"
         android:layout_marginLeft="15sp"
         >
-    <TextView
-        android:id="@+id/numberBMI"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:layout_weight="1"
-        android:textColor="#FFFFFF"
-        android:gravity="center_horizontal"
-        android:textSize="25sp"></TextView>
+
 
     <TextView
         android:id="@+id/numberBMR"
@@ -101,119 +212,113 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="25sp"></TextView>
-    </LinearLayout>
+    </LinearLayout>-->
 
-    <LinearLayout
-        android:id="@+id/R4"
-        android:layout_width="match_parent"
-        android:layout_below="@id/R3"
-        android:weightSum="4"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/app_bar_back_down"
-        android:layout_marginRight="15sp"
-        android:layout_marginLeft="15sp"
-        >
-
-        <TextView
-            android:id="@+id/textBMI"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="BMI"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"></TextView>
-
-        <TextView
-            android:id="@+id/textBMR"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="BMR"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"></TextView>
-
-
-    <TextView
-        android:id="@+id/textTDEE"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:text="TDEE"
-        android:layout_weight="1"
-        android:textColor="#FFFFFF"
-        android:gravity="center_horizontal"
-        android:textSize="20sp"></TextView>
-
-    <TextView
-        android:id="@+id/texttarget"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:text="Target"
-        android:layout_weight="1"
-        android:textColor="#FFFFFF"
-        android:gravity="center_horizontal"
-        android:textSize="20sp"></TextView>
-
-    </LinearLayout>
+    <!--  <LinearLayout
+         android:id="@+id/R4"
+         android:layout_width="match_parent"
+         android:layout_below="@id/R3"
+         android:weightSum="4"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:background="@drawable/app_bar_back_down"
+         android:layout_marginRight="15sp"
+         android:layout_marginLeft="15sp"
+         >
 
 
 
-    <LinearLayout
-        android:id="@+id/R5"
-        android:layout_width="match_parent"
-        android:layout_below="@id/R4"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20sp"
-        >
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/addfood"
-        android:text="AddFood"
-        android:layout_marginTop="30sp"
-        android:layout_weight="1"
-        android:layout_marginRight="30sp"
-        android:layout_marginLeft="30sp"
-        android:textColor="#ffffff"
-        android:background="@drawable/button_login_style"
-        ></Button>
+         <TextView
+             android:id="@+id/textBMR"
+             android:layout_width="70dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:gravity="center_horizontal"
+             android:text="BMR"
+             android:textColor="#FFFFFF"
+             android:textSize="20sp"></TextView>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/addworkout"
-        android:layout_weight="1"
-        android:text="addworkout"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="30sp"
-        android:layout_marginRight="30sp"
-        android:layout_marginLeft="30sp"
-        android:textColor="#ffffff"
-        android:background="@drawable/button_login_style"
-        ></Button>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/R6"
-        android:layout_width="match_parent"
-        android:layout_below="@id/R5"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20sp"
-        >
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/signout"
-        android:layout_weight="1"
-        android:text="signout"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30sp"
-        android:layout_marginLeft="30sp"
-        android:textColor="#ffffff"
-        android:background="@drawable/button_login_style"
-        ></Button>
-    </LinearLayout>
+
+     <TextView
+         android:id="@+id/textTDEE"
+         android:layout_width="70dp"
+         android:layout_height="wrap_content"
+         android:text="TDEE"
+         android:layout_weight="1"
+         android:textColor="#FFFFFF"
+         android:gravity="center_horizontal"
+         android:textSize="20sp"></TextView>
+
+     <TextView
+         android:id="@+id/texttarget"
+         android:layout_width="70dp"
+         android:layout_height="wrap_content"
+         android:text="Target"
+         android:layout_weight="1"
+         android:textColor="#FFFFFF"
+         android:gravity="center_horizontal"
+         android:textSize="20sp"></TextView>
+
+     </LinearLayout>-->
+
+
+
+     <LinearLayout
+         android:id="@+id/R5"
+         android:layout_width="match_parent"
+         android:layout_below="@id/R3"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:layout_marginTop="20sp"
+         >
+     <Button
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:id="@+id/addfood"
+         android:text="เพิ่มรายการอาหาร"
+         android:layout_marginTop="25sp"
+         android:layout_weight="1"
+         android:layout_marginRight="30sp"
+         android:layout_marginLeft="30sp"
+         android:textColor="#ffffff"
+         android:background="@drawable/button_login_style"
+         ></Button>
+
+     <Button
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:id="@+id/addworkout"
+         android:layout_weight="1"
+         android:text="เพิ่มรายการกิจกกรรม"
+         android:textSize="13dp"
+         android:layout_alignParentRight="true"
+         android:layout_marginTop="25sp"
+         android:layout_marginRight="30sp"
+         android:layout_marginLeft="30sp"
+         android:textColor="#ffffff"
+         android:background="@drawable/button_login_style"
+         ></Button>
+     </LinearLayout>
+     <LinearLayout
+         android:id="@+id/R6"
+         android:layout_width="match_parent"
+         android:layout_below="@id/R5"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:layout_marginTop="20sp"
+         >
+     <Button
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:id="@+id/signout"
+         android:layout_weight="1"
+         android:text="ออกจากระบบ"
+         android:layout_alignParentRight="true"
+         android:layout_marginRight="30sp"
+         android:layout_marginLeft="30sp"
+         android:textColor="#ffffff"
+         android:background="@drawable/button_login_style"
+         ></Button>
+     </LinearLayout>
 </RelativeLayout>
+ </RelativeLayout>

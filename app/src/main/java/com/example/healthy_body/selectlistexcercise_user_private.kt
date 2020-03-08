@@ -44,7 +44,7 @@ class selectlistexcercise_user_private : AppCompatActivity() {
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
-            val intent = Intent(this, Home_User::class.java)
+            val intent = Intent(this, selectlistexcercise_user::class.java)
             intent.putExtra("UID", UID)
             startActivity(intent)
         }
