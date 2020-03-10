@@ -1,6 +1,7 @@
 package com.example.healthy_body
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
@@ -18,14 +19,21 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_home__user.*
+import kotlinx.android.synthetic.main.activity_list_edit_food.*
 import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
 import kotlinx.android.synthetic.main.barselect.*
+import kotlinx.android.synthetic.main.dialod_list.*
 import kotlinx.android.synthetic.main.list_food.view.*
+import kotlinx.android.synthetic.main.list_food.view.kcal
+import kotlinx.android.synthetic.main.list_food.view.name
+import kotlinx.android.synthetic.main.listselect_edit_food.view.*
 import java.io.ByteArrayOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 class selectlistfood_user : AppCompatActivity() {
     val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
-    val ref = FirebaseDatabase.getInstance().getReference("FOOD")
+    var ref = FirebaseDatabase.getInstance().getReference("FOOD")
    // var UID :String=""
  val CAMERA_REQUEST_CODE =0
     var searchtext :String=""
@@ -38,6 +46,7 @@ class selectlistfood_user : AppCompatActivity() {
         Log.e("UID =>","${UID}")
         val adapter = GroupAdapter<ViewHolder>()
         mRecycleVeiew.adapter = adapter
+
 
         loadfood(searchtext)
 
@@ -80,7 +89,51 @@ class selectlistfood_user : AppCompatActivity() {
             startActivityForResult(startcamera,CAMERA_REQUEST_CODE)
         }
 
+
+        listselect.setOnClickListener {
+            val dialog = Dialog(this)
+            dialog.setCancelable(false)
+            dialog.setContentView(R.layout.dialod_list)
+
+
+            var calendar = Calendar.getInstance()
+            val myFormat = "dd-M-yyyy"
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            val date  = sdf.format(calendar.getTime())
+            Log.e("date","${date}")
+            var adapters = GroupAdapter<ViewHolder>()
+            ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child(date)
+            ref.addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(p0: DataSnapshot) {
+                    Log.d("p0", p0.toString())
+                    if(p0.exists()){
+                        p0.children.forEach {
+                            Log.d("DataSnapshot", it.toString())
+                            val listfood = it.getValue(dataselectfood::class.java)
+                            Log.d("text", listfood.toString())
+                            if (listfood != null) {
+                                adapters.add(Foodlist(listfood))
+
+                            }
+                            dialog.recyclerView2.adapter = adapters
+                        }
+
+                    }else{
+
+                    }
+
+                }
+                override fun onCancelled(p0: DatabaseError) {}
+            })
+            dialog.imagebutton_cancel.setOnClickListener {
+                dialog.cancel()
+            }
+            dialog.show()
         }
+
+        }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -229,6 +282,19 @@ class selectlistfood_user : AppCompatActivity() {
 
         override fun getLayout(): Int {
             return R.layout.list_food
+        }
+    }
+
+    inner class Foodlist(val listfood: dataselectfood) : Item<ViewHolder>() {
+        override fun bind(viewHolder: ViewHolder, position: Int) {
+            viewHolder.itemView.name.text= listfood.nameFoodShowB
+            viewHolder.itemView.kcal.text = listfood.kcalfoodShowB
+            Log.d("viewHolder", "${viewHolder}")
+        }
+
+        override fun getLayout(): Int {
+            return R.layout.listfood_show
+
         }
     }
 
