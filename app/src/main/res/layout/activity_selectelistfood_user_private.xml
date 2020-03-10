@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bacckground_color"
+    android:background="@drawable/all_background"
     tools:context=".selectelistfood_user_private">
 
 
@@ -51,30 +51,16 @@
         app:layout_constraintVertical_bias="0.51" />
 
     <ImageView
-        android:src="@drawable/ic_search_black_24dp"
         android:id="@+id/sreachtext"
         android:layout_width="79dp"
         android:layout_height="39dp"
+        android:src="@drawable/ic_search_black_24dp"
         android:text="sreach"
         app:layout_constraintBottom_toBottomOf="@+id/Searching"
-        app:layout_constraintEnd_toStartOf="@+id/camera"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Searching"
         app:layout_constraintTop_toTopOf="@+id/Searching"
         app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:src="@drawable/ic_camera_alt_black_24dp"
-        android:id="@+id/camera"
-        android:layout_width="74dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="8dp"
-        android:text="CM"
-        app:layout_constraintBottom_toBottomOf="@+id/Searching"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/sreachtext"
-        app:layout_constraintTop_toTopOf="@+id/sreachtext"
-        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/addfood"

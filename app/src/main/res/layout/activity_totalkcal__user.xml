@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Totalkcal_User"
     android:gravity="center"
-    android:background="@drawable/bacckground_color">
+    android:background="@drawable/all_background">
 
     <LinearLayout
         android:layout_width="match_parent"

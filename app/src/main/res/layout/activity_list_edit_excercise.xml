@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bacckground_color"
+    android:background="@drawable/all_background"
     tools:context=".list_edit_excercise">
 
     <include

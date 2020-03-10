@@ -1,6 +1,7 @@
 package com.example.healthy_body
 
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,8 @@ import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.healthy_body.calculate.data
+import com.example.healthy_body.calculate.dateselect_totalvalue
+import com.example.healthy_body.calculate.selectdata_totalkcal
 import com.example.healthy_body.model.modellistfood
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
@@ -54,9 +57,20 @@ class list_edit_food : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+
         loaddata(datetext)
 
 
+
+
+        selectdata_totalkcal(UID).getdatatotal{ excercise, food ->
+
+            var Food = food.toInt()
+            var  Workout = excercise.toInt()
+
+            numbertotalkcal.setText(food)
+        }
 
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
@@ -86,6 +100,10 @@ class list_edit_food : AppCompatActivity() {
     }
 
     private fun loaddata(date :String) {
+        val progest  = ProgressDialog(this,R.style.MyTheme)
+        progest.setCancelable(false)
+        progest.show()
+
         Log.e("date","${date}")
         val adapter = GroupAdapter<ViewHolder>()
         ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child(date)
@@ -100,6 +118,7 @@ class list_edit_food : AppCompatActivity() {
                         if (listfood != null) {
                             adapter.add(Foodd(listfood))
                         }
+                        progest.cancel()
                     }
                     adapter.setOnItemClickListener { item, view ->
                         val itemf = item as Foodd
@@ -117,6 +136,7 @@ class list_edit_food : AppCompatActivity() {
                     }
                     recyclerView.adapter = adapter
                 }else{
+                    progest.cancel()
                     show()
                 }
 
@@ -148,6 +168,10 @@ class list_edit_food : AppCompatActivity() {
         textcalendar!!.text = sdf.format(calendar.getTime())
         val data = sdf.format(calendar.getTime())
         loaddata(data)
+
+        //ส่งค่า UID and date  ไป เเล้ว callback กลับมา food excersice
+
+      //  dateselect_totalvalue(UID,data).callvalue()
 
     }
 

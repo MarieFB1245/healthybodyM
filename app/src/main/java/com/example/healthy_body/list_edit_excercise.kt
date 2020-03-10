@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.Toast
+import com.example.healthy_body.calculate.selectdata_totalkcal
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
@@ -62,7 +63,13 @@ var KEY :String=""
                 updateDateInView()
             }
         }
+        selectdata_totalkcal(UID).getdatatotal{ excercise, food ->
 
+            var Food = food.toInt()
+            var  Workout = excercise.toInt()
+
+            numbertotalkcal.setText(Workout)
+        }
 
 
         textcalendar!!.setOnClickListener(object : View.OnClickListener {

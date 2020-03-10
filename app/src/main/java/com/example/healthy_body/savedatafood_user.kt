@@ -142,6 +142,10 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
                 resultBig = resultBig - sumkcalsub
                 Log.d("sumkcal sub =>","${resultBig}")
                 Log.d("sum","${sum}")
+                if(sum<=1){
+                    sum = 1
+                    resultBig=sumkcalsub
+                }
                 amount.setText("$sum")
                 tatal.setText("$resultBig")
             }
