@@ -32,7 +32,7 @@ class list_edit_food : AppCompatActivity() {
 
     var calendar = Calendar.getInstance()
     var UID :String=""
-
+    var adapter = GroupAdapter<ViewHolder>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_edit_food)
@@ -105,18 +105,24 @@ class list_edit_food : AppCompatActivity() {
         progest.show()
 
         Log.e("date","${date}")
-        val adapter = GroupAdapter<ViewHolder>()
+
+        recyclerView?.adapter?.notifyDataSetChanged()
+        adapter.clear()
         ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child(date)
         ref.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 Log.d("p0", p0.toString())
+                recyclerView?.adapter?.notifyDataSetChanged()
+                adapter.clear()
                 if(p0.exists()){
+                    adapter.clear()
                     p0.children.forEach {
                         Log.d("DataSnapshot", it.toString())
                         val listfood = it.getValue(dataselectfood::class.java)
                         Log.d("text", listfood.toString())
                         if (listfood != null) {
                             adapter.add(Foodd(listfood))
+
                         }
                         progest.cancel()
                     }
@@ -136,17 +142,18 @@ class list_edit_food : AppCompatActivity() {
                     }
                     recyclerView.adapter = adapter
                 }else{
+                    Log.e("error","don have")
                     progest.cancel()
+                    adapter.clear()
                     show()
                 }
-
             }
             override fun onCancelled(p0: DatabaseError) {}
         })
     }
 
 
-    inner class Foodd(val food: dataselectfood) : Item<ViewHolder>() {
+    inner class Foodd(var food: dataselectfood) : Item<ViewHolder>() {
         override fun bind(viewHolder: ViewHolder, position: Int) {
             viewHolder.itemView.name.text= food.nameFoodShowB
             viewHolder.itemView.kcal.text = food.kcalfoodShowB
@@ -171,11 +178,14 @@ class list_edit_food : AppCompatActivity() {
 
         //ส่งค่า UID and date  ไป เเล้ว callback กลับมา food excersice
 
-      //  dateselect_totalvalue(UID,data).callvalue()
+        dateselect_totalvalue(UID,data).callvalue{excercise,food ->
+            numbertotalkcal.setText(food)
+        }
 
     }
 
     private fun show(){
+
         Toast.makeText(this, "ไม่มีรายการอาหารที่เลือกไว้", Toast.LENGTH_LONG).show()
     }
 }

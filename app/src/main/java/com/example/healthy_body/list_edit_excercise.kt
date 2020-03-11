@@ -1,6 +1,7 @@
 package com.example.healthy_body
 
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.Toast
+import com.example.healthy_body.calculate.dateselect_totalvalue
 import com.example.healthy_body.calculate.selectdata_totalkcal
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
@@ -26,6 +28,7 @@ class list_edit_excercise : AppCompatActivity() {
     var calendar = Calendar.getInstance()
     var UID :String=""
 var KEY :String=""
+    var adapter = GroupAdapter<ViewHolder>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_edit_excercise)
@@ -55,6 +58,11 @@ var KEY :String=""
         loaddata(datetext)
 
 
+
+        selectdata_totalkcal(UID).getdatatotal{ excercise, food ->
+            numbertotalkcal.setText(excercise)
+        }
+
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
             override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
                 calendar.set(Calendar.YEAR, year)
@@ -63,14 +71,6 @@ var KEY :String=""
                 updateDateInView()
             }
         }
-        selectdata_totalkcal(UID).getdatatotal{ excercise, food ->
-
-            var Food = food.toInt()
-            var  Workout = excercise.toInt()
-
-            numbertotalkcal.setText(Workout)
-        }
-
 
         textcalendar!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -89,7 +89,10 @@ var KEY :String=""
     }
     private fun loaddata(date :String) {
         Log.e("date","${date}")
-        val adapter = GroupAdapter<ViewHolder>()
+        val progest  = ProgressDialog(this,R.style.MyTheme)
+        progest.setCancelable(false)
+        progest.show()
+        adapter.clear()
         ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child(date)
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
@@ -102,6 +105,7 @@ var KEY :String=""
                         if (listfood != null) {
                             adapter.add(Foodd(listfood))
                         }
+                        progest.cancel()
                     }
                     adapter.setOnItemClickListener { item, view ->
                         val itemf = item as Foodd
@@ -119,6 +123,9 @@ var KEY :String=""
                     }
                     recyclerView.adapter = adapter
                 }else{
+                    adapter.clear()
+                    progest.cancel()
+
                     show()
                 }
 
@@ -145,6 +152,9 @@ var KEY :String=""
         textcalendar!!.text = sdf.format(calendar.getTime())
         val data = sdf.format(calendar.getTime())
         loaddata(data)
+        dateselect_totalvalue(UID,data).callvalue{ excercise, food ->
+            numbertotalkcal.setText(excercise)
+        }
 
     }
 
