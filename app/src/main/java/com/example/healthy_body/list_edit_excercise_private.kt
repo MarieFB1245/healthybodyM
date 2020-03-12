@@ -14,7 +14,10 @@ import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.activity_list_edit_excercise_private.*
 import kotlinx.android.synthetic.main.activity_list_edit_food.*
+import kotlinx.android.synthetic.main.activity_list_edit_food.recyclerView
+import kotlinx.android.synthetic.main.activity_list_edit_food_private.*
 import kotlinx.android.synthetic.main.listselect_edit_food.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -46,7 +49,11 @@ class list_edit_excercise_private : AppCompatActivity() {
         loaddata()
 
 
-
+        addexcercise.setOnClickListener {
+            val intent = Intent(this, addexcerciser_user_private::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+        }
 
 
     }

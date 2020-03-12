@@ -13,6 +13,8 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_list_edit_food.*
+import kotlinx.android.synthetic.main.activity_list_edit_food.recyclerView
+import kotlinx.android.synthetic.main.activity_list_edit_food_private.*
 import kotlinx.android.synthetic.main.listselect_edit_food.view.*
 import java.util.*
 
@@ -40,6 +42,13 @@ class list_edit_food_private : AppCompatActivity() {
             startActivity(intent)
         }
         loaddata()
+
+
+        addfood.setOnClickListener {
+            val intent = Intent(this, addfood_user_private::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+        }
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.healthy_body
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,11 +14,15 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
+import kotlinx.android.synthetic.main.app_selectexcercise.*
+import kotlinx.android.synthetic.main.dialod_list.*
 import kotlinx.android.synthetic.main.list_food.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class selectlistexcercise_user : AppCompatActivity() {
 
-    val ref = FirebaseDatabase.getInstance().getReference("EXCERCISE")
+    var ref = FirebaseDatabase.getInstance().getReference("EXCERCISE")
     var UID :String=""
     var searchtext:String =""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +62,45 @@ class selectlistexcercise_user : AppCompatActivity() {
             val intent = Intent(this, selectlistexcercise_user_private::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent) }
+
+        listselect.setOnClickListener {
+            val dialog = Dialog(this)
+            dialog.setCancelable(false)
+            dialog.setContentView(R.layout.dialod_list)
+
+
+            var calendar = Calendar.getInstance()
+            val myFormat = "dd-M-yyyy"
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            val date  = sdf.format(calendar.getTime())
+            Log.e("date","${date}")
+            var adapters = GroupAdapter<ViewHolder>()
+            ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child(date)
+            ref.addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(p0: DataSnapshot) {
+                    Log.d("p0", p0.toString())
+                    if(p0.exists()){
+                        p0.children.forEach {
+                            Log.d("DataSnapshot", it.toString())
+                            val excercise = it.getValue(dataselectexcercise::class.java)
+                            if (excercise != null) {
+                                adapters.add(Excerciselist(excercise))
+                            }
+                            dialog.recyclerView2.adapter = adapters
+                        }
+
+                    }else{
+
+                    }
+
+                }
+                override fun onCancelled(p0: DatabaseError) {}
+            })
+            dialog.imagebutton_cancel.setOnClickListener {
+                dialog.cancel()
+            }
+            dialog.show()
+        }
 
     }
     fun loadexcercise(s: String) {
@@ -139,6 +183,20 @@ class selectlistexcercise_user : AppCompatActivity() {
 
         override fun getLayout(): Int {
             return R.layout.list_food
+        }
+    }
+
+    inner class Excerciselist(val excercise: dataselectexcercise) : Item<ViewHolder>() {
+        override fun bind(viewHolder: ViewHolder, position: Int) {
+            viewHolder.itemView.name.text = excercise.nameExcerciseShowB
+            viewHolder.itemView.kcal.text = excercise.kcalExcerciseShowB
+            Log.d("viewHolder", "${viewHolder}")
+
+
+        }
+
+        override fun getLayout(): Int {
+            return R.layout.listexcaecise_show
         }
     }
     }
