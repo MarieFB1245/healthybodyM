@@ -44,5 +44,9 @@
         <item name="android:topDark">@android:color/transparent</item>
     </style>
 
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/blue_btn_bg_color</item>
+
+    </style>
 
 </resources>
