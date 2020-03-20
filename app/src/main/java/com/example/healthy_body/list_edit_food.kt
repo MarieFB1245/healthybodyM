@@ -86,6 +86,7 @@ class list_edit_food : AppCompatActivity() {
         textcalendar!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 DatePickerDialog(this@list_edit_food,
+                    R.style.DialogTheme,
                     dateSetListener,
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),

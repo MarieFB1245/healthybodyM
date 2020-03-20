@@ -43,7 +43,11 @@ class Home_User : AppCompatActivity() {
         signout.setOnClickListener {
             signout()
         }
-
+        buttonRe.setOnClickListener {
+            val intent = Intent(this,dashboard_user::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+        }
         selectdata_totalkcal(UID).getdatatotal{excercise,food ->
 
            var Food = food.toInt()
