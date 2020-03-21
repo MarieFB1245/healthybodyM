@@ -16,14 +16,14 @@ import kotlinx.android.synthetic.main.activity_dashboard_user.*
 
 class dashboard_user : AppCompatActivity() {
     lateinit var ref: DatabaseReference
-    var UID :String=""
+    var UID :String="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard_user)
 
 
 
-        UID = intent.getStringExtra("UID")
+       // UID = intent.getStringExtra("UID")
 
         ref = FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${UID}")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -56,12 +56,12 @@ class dashboard_user : AppCompatActivity() {
 
 
                         var bardataset = BarDataSet(totalfood,"TOTALFOOD")
-                        bardataset.setColors(Color.GRAY)
-
+                        bardataset.setColors(Color.rgb(171,69,204))
+                        bardataset.setValueTextColor(Color.WHITE)
 
                         var bardatasets = BarDataSet(totalexcercise,"TOTALEXCERCISE")
-                        bardatasets.setColors(Color.GRAY)
-
+                        bardatasets.setColors(Color.rgb(51,102,255))
+                        bardatasets.setValueTextColor(Color.WHITE)
 
 
 
@@ -81,8 +81,8 @@ class dashboard_user : AppCompatActivity() {
                         var bardata = BarData(bardatasets,bardataset)
                         barChartView.setData(bardata)
 
+                        barChartView.getXAxis().setTextColor(Color.WHITE);
                         val yAxis = barChartView.getAxisLeft()
-
                         yAxis.setDrawGridLines(false)
 
                         val barSpace = 0.05f
@@ -96,17 +96,18 @@ class dashboard_user : AppCompatActivity() {
                         barChartView.getXAxis().setAxisMaximum(0+barChartView.getBarData().getGroupWidth(groupspace,barSpace)*j)
                         barChartView.getAxisLeft().setAxisMinimum(0f)
                         barChartView.animateY(500)
+
+                        barChartView.setExtraOffsets(0f,0f,0f,10f)
                         barChartView.groupBars(0f,groupspace,barSpace)
                         barChartView.description.setEnabled(false)
                         barChartView.invalidate()
+barChartView.setBackgroundResource(R.drawable.all_background)
 
 
-
-
-
-
-
-
+                        barChartView.getAxisLeft().setTextColor(Color.WHITE); // left y-axis
+                        barChartView.getAxisRight().setTextColor(Color.WHITE)
+                        barChartView.getXAxis().setTextColor(Color.WHITE);
+                        barChartView.getLegend().setTextColor(Color.WHITE);
                         seetdata(bardataset,bardatasets)
                         j=j+1
                     }
