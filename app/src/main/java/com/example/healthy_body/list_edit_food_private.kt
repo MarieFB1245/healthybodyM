@@ -45,7 +45,7 @@ class list_edit_food_private : AppCompatActivity() {
 
 
         addfood.setOnClickListener {
-            val intent = Intent(this, addfood_user_private::class.java)
+            val intent = Intent(this, addfood_user_private_Bsetting::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
         }

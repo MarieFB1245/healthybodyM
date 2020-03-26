@@ -9,29 +9,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dashboard_user">
+        <activity android:name=".addfood_user_private_Bsetting"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionbar"
+            ></activity>
+        <activity
+            android:name=".addexcercise_user_private_Bsetting"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity
+            android:name=".dashboard_user"
+            android:theme="@style/AppTheme.NoActionbar" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <activity
             android:name=".list_saveedit_excercise_menu_private"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".model.modelSelectExcercise_Private"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".list_edit_excercise_private"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".list_saveedit_food_menu_private"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".list_edit_food_private"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".addexcerciser_user_private"
@@ -41,27 +55,35 @@
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".addfood_user_private"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".selectelistfood_user_private"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".list_saveedit_excercise"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".list_edit_excercise"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".list_saveedit_food"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".list_edit_food"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".addexcercise_user"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".addfood_user"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".savedataexcercise_user"
@@ -80,7 +102,7 @@
             android:name=".selectlistfood_user"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".edit_information"
             android:screenOrientation="portrait"
@@ -98,7 +120,7 @@
         <activity
             android:name=".Home_User"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar"></activity>
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".Totalkcal_User"
             android:screenOrientation="portrait"

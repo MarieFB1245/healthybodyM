@@ -41,8 +41,8 @@ class savetotalkcal (val kcal:Int ,val nametype : String="",val UID :String="",v
 
                         } else {
                             Log.e("pass =>", "else")
-
                             myRef.setValue(kcal)
+                            addcalenda(currentDate)
 
                         }
                     }
@@ -137,6 +137,7 @@ class savetotalkcal (val kcal:Int ,val nametype : String="",val UID :String="",v
                                 Log.e("ERROR =>", "update")
                             }
                         } else {
+                            addcalenda(currentDate)
                             myRef.setValue(kcal)
                         }
                     }
@@ -204,6 +205,15 @@ class savetotalkcal (val kcal:Int ,val nametype : String="",val UID :String="",v
 
 
         }
+    }
+
+    private fun addcalenda(currentDate: String) {
+
+        myRef = FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${uid}")
+            .child("$currentDate").child("DATE")
+
+        myRef.setValue(currentDate)
+
     }
 }
 

@@ -50,7 +50,7 @@ class list_edit_excercise_private : AppCompatActivity() {
 
 
         addexcercise.setOnClickListener {
-            val intent = Intent(this, addexcerciser_user_private::class.java)
+            val intent = Intent(this, addexcercise_user_private_Bsetting::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
         }

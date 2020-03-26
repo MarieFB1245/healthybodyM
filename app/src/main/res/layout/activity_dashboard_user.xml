@@ -3,12 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/all_background"
     android:layout_height="match_parent"
     tools:context=".dashboard_user">
-
+    <include
+        android:id="@+id/searchView"
+        layout="@layout/app_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barChartView"
+        android:layout_below="@id/searchView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="-2dp"
