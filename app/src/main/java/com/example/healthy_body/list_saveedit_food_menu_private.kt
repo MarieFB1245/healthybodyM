@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_list_saveedit_food_menu_private.*
 
 class list_saveedit_food_menu_private : AppCompatActivity(), View.OnClickListener {
 
-
+    private var doubleBackToExitPressedOnce = false
     var nameFoodShow: String = ""
     var kcalfoodShow: String = ""
     var amount: String = ""
@@ -168,5 +168,17 @@ var  total :Int = 0
             else -> {
             }
         }
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, list_edit_food_private::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+
     }
 }

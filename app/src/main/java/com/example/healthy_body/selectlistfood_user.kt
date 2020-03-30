@@ -33,6 +33,7 @@ import java.util.*
 
 class selectlistfood_user : AppCompatActivity() {
  //   val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+ private var doubleBackToExitPressedOnce = false
     var ref = FirebaseDatabase.getInstance().getReference("FOOD")
     var UID :String=""
  val CAMERA_REQUEST_CODE =0
@@ -298,5 +299,16 @@ class selectlistfood_user : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
 
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, Home_User::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+
+    }
 }

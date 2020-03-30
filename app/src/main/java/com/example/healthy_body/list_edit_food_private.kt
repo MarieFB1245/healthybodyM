@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.listselect_edit_food.view.*
 import java.util.*
 
 class list_edit_food_private : AppCompatActivity() {
-
+    private var doubleBackToExitPressedOnce = false
     private lateinit var ref: DatabaseReference
 
     var UID:String=""
@@ -90,6 +90,19 @@ class list_edit_food_private : AppCompatActivity() {
             }
             override fun onCancelled(p0: DatabaseError) {}
         })
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, setting_user::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+
+
     }
     inner class Foodprivate(val food: modelSelectFood_Private) : Item<ViewHolder>() {
         override fun bind(viewHolder: ViewHolder, position: Int) {

@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.list_food.view.*
 class selectlistexcercise_user_private : AppCompatActivity() {
 
     //var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
-
+    private var doubleBackToExitPressedOnce = false
     var UID :String=""
     var searchtext :String=""
 
@@ -139,5 +139,18 @@ class selectlistexcercise_user_private : AppCompatActivity() {
         override fun getLayout(): Int {
             return R.layout.list_food
         }
+    }
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, selectlistexcercise_user::class.java)
+        intent.putExtra("UID", UID)
+        startActivity(intent)
+
     }
 }

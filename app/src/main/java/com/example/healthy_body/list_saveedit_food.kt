@@ -24,7 +24,7 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
-
+    private var doubleBackToExitPressedOnce = false
     var nameFoodShowB: String = ""
     var kcalfoodShowB: String = ""
     var sum = 0
@@ -175,6 +175,18 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
 
             }
         }
+
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, list_edit_food::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
 
     }
 }

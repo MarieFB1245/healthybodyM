@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_savedatafood_user.*
 
 class addfood_user_private : AppCompatActivity(), View.OnClickListener {
     //val UID="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+    private var doubleBackToExitPressedOnce = false
     val ref = FirebaseDatabase.getInstance().getReference("DATA_PRIVATE_FOOD")
     var sum  = 1
     var amount :Int=1
@@ -107,5 +108,17 @@ class addfood_user_private : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
 
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, selectlistfood_user::class.java)
+        intent.putExtra("UID", UID)
+        startActivity(intent)
+
+
+    }
 }

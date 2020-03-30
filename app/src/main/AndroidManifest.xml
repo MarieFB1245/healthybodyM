@@ -21,11 +21,7 @@
             android:name=".dashboard_user"
             android:theme="@style/AppTheme.NoActionbar" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".list_saveedit_excercise_menu_private"
@@ -116,6 +112,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Home_User"

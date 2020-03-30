@@ -23,7 +23,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class list_edit_excercise_private : AppCompatActivity() {
-
+    private var doubleBackToExitPressedOnce = false
     private lateinit var ref: DatabaseReference
     //val UID ="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     var calendar = Calendar.getInstance()
@@ -103,8 +103,21 @@ class list_edit_excercise_private : AppCompatActivity() {
             return R.layout.listselect_edit_food
 
         }
-    }
 
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, setting_user::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+
+
+    }
 
     private fun show(){
         Toast.makeText(this, "ไม่มีรายการอาหารที่เลือกไว้", Toast.LENGTH_LONG).show()

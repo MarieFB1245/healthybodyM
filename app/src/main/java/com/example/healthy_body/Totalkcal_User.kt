@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_totalkcal__user.*
 class Totalkcal_User : AppCompatActivity() {
 
     private lateinit var myRef: DatabaseReference
-
+    private var doubleBackToExitPressedOnce = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_totalkcal__user)
@@ -47,4 +47,6 @@ class Totalkcal_User : AppCompatActivity() {
         intent.putExtra("UID",UID)
         startActivity(intent)
     }
+
+
 }

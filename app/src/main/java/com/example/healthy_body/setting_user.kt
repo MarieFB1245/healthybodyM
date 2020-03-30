@@ -7,6 +7,7 @@ import android.util.Log
 
 import android.widget.ImageView
 import android.widget.Toast
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.healthy_body.model.modellistfood
 
 import com.xwray.groupie.GroupAdapter
@@ -22,6 +23,7 @@ import kotlinx.android.synthetic.main.list_food.view.*
 class setting_user : AppCompatActivity() {
 
 
+    private var doubleBackToExitPressedOnce = false
     val listset: ArrayList<String> = ArrayList()
     var UID :String=""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +52,20 @@ class setting_user : AppCompatActivity() {
         my_recycler_view.adapter = adapter
 
         loadfood()
+
+
+    }
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, Home_User::class.java)
+        intent.putExtra("UID", UID)
+        startActivity(intent)
 
 
     }

@@ -36,8 +36,9 @@ import com.example.healthy_body.model.User
 
 class dashboard_user : AppCompatActivity() {
      lateinit var ref: DatabaseReference
-    var UID :String="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
-   //var UID :String=""
+    private var doubleBackToExitPressedOnce = false
+ //   var UID :String="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+   var UID :String=""
     var calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +48,7 @@ class dashboard_user : AppCompatActivity() {
         val datetext  = sdf.format(calendar.getTime())
 
 
-       // UID = intent.getStringExtra("UID")
+        UID = intent.getStringExtra("UID")
 
 
         val arrow = findViewById<ImageView>(R.id.arrow)
@@ -207,6 +208,19 @@ class dashboard_user : AppCompatActivity() {
             override fun onCancelled(p0: DatabaseError) {}
         })
 
+
+
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, Home_User::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
 
 
     }

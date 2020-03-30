@@ -16,6 +16,8 @@ import kotlinx.android.synthetic.main.activity_edit_information.*
 
 class edit_information : AppCompatActivity() {
     //var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+    var UID: String =""
+    private var doubleBackToExitPressedOnce = false
     private lateinit var myRef: DatabaseReference
     internal var SPINNERLST = arrayOf("น้อย หรือไม่ค่อยออกกำลังกาย","ปานกลาง ออกกำลังกาย 1-3 ครั้งต่อสัปดาห์","ปานกลาง ออกกำลังกาย 4-5 ครั้งต่อสัปดาห์",
         "หนัก ออกกำลังกาย 6-7 ครั้งต่อสัปดาห์","หนักมาก ออกกำลังกายวันละ 2 ครั้งขึ้นไป")
@@ -27,7 +29,7 @@ class edit_information : AppCompatActivity() {
 
 
 
-        var UID: String = intent.getStringExtra("UID")
+         UID = intent.getStringExtra("UID")
         val inputfirstname = findViewById<EditText>(R.id.inputfirstname)
         val inputLastname = findViewById<EditText>(R.id.inputLastname)
         val inputage = findViewById<EditText>(R.id.inputage)
@@ -136,7 +138,19 @@ fun pass (uid:String=""){
     startActivity(intent)
 
 }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
 
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, setting_user::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+
+
+    }
     fun error (){
         Toast.makeText(this, "Please in put information in correct.", Toast.LENGTH_SHORT).show()
     }

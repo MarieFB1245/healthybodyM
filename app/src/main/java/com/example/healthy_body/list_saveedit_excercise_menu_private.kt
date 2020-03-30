@@ -14,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_addexcercise_user.*
 
 class list_saveedit_excercise_menu_private : AppCompatActivity() {
+    private var doubleBackToExitPressedOnce = false
     var UID :String=""
     var id_excercise :String=""
     var name_excercise :String=""
@@ -103,5 +104,18 @@ class list_saveedit_excercise_menu_private : AppCompatActivity() {
         childUpdates.put("kcal", textkcal)
         childUpdates.put("name_excercise", textnameEX)
         ref.updateChildren(childUpdates as Map<String, Any>)
+    }
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, selectlistexcercise_user::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+
     }
 }

@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_addexcercise_user.*
 import kotlinx.android.synthetic.main.activity_home__user.*
 
 class addexcercise_user : AppCompatActivity() {
-
+    private var doubleBackToExitPressedOnce = false
     var UID :String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +46,19 @@ class addexcercise_user : AppCompatActivity() {
                 Toast.makeText(this, "Please in put Information Excercise", Toast.LENGTH_SHORT).show()
             }
         }
+
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, selectlistexcercise_user::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+
 
     }
 }

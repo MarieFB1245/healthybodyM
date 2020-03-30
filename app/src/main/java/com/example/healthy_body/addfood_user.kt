@@ -22,7 +22,7 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
     //val UID="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     internal var SPINNERLST = arrayOf("อาหารจานเดี่ยว/กับข้าว","เครื่องดื่ม","ขนม/ของหวาน",
         "ผลไม้")
-
+    private var doubleBackToExitPressedOnce = false
 
     val ref = FirebaseDatabase.getInstance().getReference("FOOD")
     var sum  = 1
@@ -124,5 +124,18 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
             else -> {
             }
         }
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, selectlistfood_user::class.java)
+        intent.putExtra("UID", UID)
+        startActivity(intent)
+
+
     }
 }

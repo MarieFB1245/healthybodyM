@@ -12,7 +12,7 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
 import kotlinx.android.synthetic.main.activity_addfood_user.*
 
 class addfood_user_private_Bsetting : AppCompatActivity(), View.OnClickListener  {
-
+    private var doubleBackToExitPressedOnce = false
     //val UID="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     val ref = FirebaseDatabase.getInstance().getReference("DATA_PRIVATE_FOOD")
     var sum  = 1
@@ -102,5 +102,18 @@ class addfood_user_private_Bsetting : AppCompatActivity(), View.OnClickListener 
             else -> {
             }
         }
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, list_edit_food_private::class.java)
+        intent.putExtra("UID", UID)
+        startActivity(intent)
+
+
     }
 }

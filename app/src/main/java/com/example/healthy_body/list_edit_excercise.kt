@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class list_edit_excercise : AppCompatActivity() {
-
+    private var doubleBackToExitPressedOnce = false
     private lateinit var ref: DatabaseReference
     //val UID ="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
     var calendar = Calendar.getInstance()
@@ -162,6 +162,20 @@ var KEY :String=""
 
     private fun show(){
         Toast.makeText(this, "ไม่มีรายการอาหารที่เลือกไว้", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, setting_user::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+
+
     }
 }
 class dataselectexcercise (val id_list :String, val nameExcerciseShowB: String,val kcalExcerciseShowB: String,val resultBig: Int,val sum: Int,val date :String,val id:String){

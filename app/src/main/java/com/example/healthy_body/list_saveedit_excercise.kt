@@ -22,7 +22,7 @@ import java.util.*
 
 class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
 
-
+    private var doubleBackToExitPressedOnce = false
     var nameExcerciseShowB: String = ""
     var kcalExcerciseShowB: String = ""
     var sum = 0
@@ -181,5 +181,18 @@ Log.e("KEY","${KEY}")
 
             }
         }
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, list_edit_excercise::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+
+
     }
 }

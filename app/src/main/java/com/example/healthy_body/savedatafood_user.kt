@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class savedatafood_user : AppCompatActivity(), View.OnClickListener {
+    private var doubleBackToExitPressedOnce = false
     var nameFoodShowB :String=""
     var kcalfoodShowB :String=""
     var sum = 1
@@ -152,6 +153,18 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
             else -> {
             }
         }
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, selectlistfood_user::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+
     }
 }
 class datafood (val id:String ="",val nameFoodShowB: String="",val kcalfoodShowB :String="",val sum :Int, val resultBig : Int ,val date :String ,val id_list :String )

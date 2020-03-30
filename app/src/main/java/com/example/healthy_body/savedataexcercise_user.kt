@@ -27,7 +27,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
-
+    private var doubleBackToExitPressedOnce = false
     var nameExcerciseShowB :String=""
     var kcalExcerciseShowB :String=""
     var sum = 1
@@ -157,5 +157,17 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
             else -> {
             }
         }
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        val intent = Intent(this, selectlistfood_user::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+
     }
 }

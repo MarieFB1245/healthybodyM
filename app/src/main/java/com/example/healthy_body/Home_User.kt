@@ -6,10 +6,14 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.healthy_body.R.drawable.color_chart
 import com.example.healthy_body.calculate.data
+import com.example.healthy_body.calculate.delectdata_private_excercise
 import com.example.healthy_body.calculate.selectdata_totalkcal
 import com.example.healthy_body.calculate.totalkcallare
 import com.github.mikephil.charting.charts.PieChart
@@ -24,7 +28,7 @@ import java.util.ArrayList
 
 class Home_User : AppCompatActivity() {
 
-
+    private var doubleBackToExitPressedOnce = false
     private lateinit var myRef: DatabaseReference
     private var myAut = FirebaseAuth.getInstance()
     //val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
@@ -98,7 +102,37 @@ class Home_User : AppCompatActivity() {
             intent.putExtra("UID",UID)
             startActivity(intent)
         }
+
+
+
+
+
     }
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+            .setTitleText("คุณเเน่ใจ?")
+            .setContentText("ว่าต้องการออกจากระบบ!")
+            .setCancelText("ไม่ต้องการ!")
+            .setConfirmText("ต้องการ!")
+            .showCancelButton(true)
+            .setCancelClickListener { sDialog -> sDialog.cancel() }
+            .setConfirmClickListener {
+                val intent = Intent(this, Login_user::class.java)
+                myAut.signOut()
+                startActivity(intent)
+            }
+            .show()
+
+
+    }
+
 
     private fun setupPieChart(Food:Int ,Workout:Int) {
 

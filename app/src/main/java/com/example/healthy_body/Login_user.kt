@@ -8,7 +8,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login_user.*
 import android.text.method.PasswordTransformationMethod
-import androidx.core.app.ComponentActivity.ExtraData
+
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.text.InputType
@@ -18,10 +18,15 @@ import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
 import cn.pedant.SweetAlert.SweetAlertDialog
 import java.lang.Thread.sleep
 import kotlin.math.log
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 
 class Login_user : AppCompatActivity() {
-
+    private var doubleBackToExitPressedOnce = false
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,6 +83,26 @@ class Login_user : AppCompatActivity() {
         intent.putExtra("UID",uid)
         startActivity(intent)
     }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
 
+        this.doubleBackToExitPressedOnce = true
+        SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+            .setTitleText("คุณเเน่ใจ?")
+            .setContentText("ว่าต้องการออกจากแอพลิเคชัน!")
+            .setCancelText("ไม่ต้องการ!")
+            .setConfirmText("ต้องการ!")
+            .showCancelButton(true)
+            .setCancelClickListener { sDialog -> sDialog.cancel() }
+            .setConfirmClickListener {
+                finish()
+            }
+            .show()
+
+
+    }
 
 }
