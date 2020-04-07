@@ -55,6 +55,7 @@ class list_edit_food : AppCompatActivity() {
             val intent = Intent(this, setting_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
 
@@ -140,6 +141,7 @@ class list_edit_food : AppCompatActivity() {
                         intent.putExtra("id", itemf.food.id)
                         intent.putExtra("kcalfoodShowB", itemf.food.kcalfoodShowB)
                         startActivity(intent)
+                        finish()
                     }
                     recyclerView.adapter = adapter
                 }else{
@@ -199,7 +201,7 @@ class list_edit_food : AppCompatActivity() {
         val intent = Intent(this, setting_user::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
 
     }
 }

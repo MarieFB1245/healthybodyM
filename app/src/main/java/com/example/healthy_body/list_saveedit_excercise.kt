@@ -98,7 +98,9 @@ Log.e("KEY","${KEY}")
       .setConfirmClickListener{
           val intent = Intent(this, list_edit_excercise::class.java)
       intent.putExtra("UID",UID)
-      startActivity(intent)}
+      startActivity(intent)
+          finish()
+      }
       .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
                     }
                     pDialog.show()
@@ -110,6 +112,7 @@ Log.e("KEY","${KEY}")
             val intent = Intent(this, list_edit_excercise::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
 
@@ -122,7 +125,7 @@ Log.e("KEY","${KEY}")
             val intent = Intent(this, list_edit_excercise::class.java)
             intent.putExtra("UID", UID)
             startActivity(intent)
-
+            finish()
         }
 
     }
@@ -192,7 +195,7 @@ Log.e("KEY","${KEY}")
         val intent = Intent(this, list_edit_excercise::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
 
     }
 }

@@ -47,6 +47,7 @@ class selectlistexcercise_user_private : AppCompatActivity() {
             val intent = Intent(this, selectlistexcercise_user::class.java)
             intent.putExtra("UID", UID)
             startActivity(intent)
+            finish()
         }
 
         val imageView = findViewById<ImageView>(R.id.addexcercise_private) as ImageView
@@ -54,6 +55,7 @@ class selectlistexcercise_user_private : AppCompatActivity() {
             val intent = Intent(this, addexcerciser_user_private::class.java)
             intent.putExtra("UID", UID)
             startActivity(intent)
+            finish()
         }
     }
     fun loadexcercise(s: String) {
@@ -109,6 +111,7 @@ class selectlistexcercise_user_private : AppCompatActivity() {
                         intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
                         intent.putExtra("id", excerciseitem.excercise.id_excercise)
                         startActivity(intent)
+                        finish()
                     }
                     mRecycleVeiew.adapter = adapter
                 }
@@ -151,6 +154,6 @@ class selectlistexcercise_user_private : AppCompatActivity() {
         val intent = Intent(this, selectlistexcercise_user::class.java)
         intent.putExtra("UID", UID)
         startActivity(intent)
-
+        finish()
     }
 }

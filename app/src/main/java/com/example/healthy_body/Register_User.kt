@@ -30,6 +30,7 @@ class Register_User : AppCompatActivity() {
         arrow.setOnClickListener {
             val intent = Intent(this, Login_user::class.java)
             startActivity(intent)
+            finish()
         }
 
         val button1 = findViewById(R.id.button1) as Button
@@ -90,6 +91,7 @@ class Register_User : AppCompatActivity() {
         intent.putExtra("email",email)
 intent.putExtra("password",password)
                 startActivity(intent)
+        finish()
 
     }
     fun isEmailValid(email: CharSequence): Boolean {

@@ -36,6 +36,7 @@ class list_saveedit_excercise_menu_private : AppCompatActivity() {
             val intent = Intent(this, selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
         val inputnameexcercise = findViewById<EditText>(R.id.inputnameexcercise)
@@ -71,7 +72,9 @@ class list_saveedit_excercise_menu_private : AppCompatActivity() {
                             .setConfirmClickListener{
                                 val intent = Intent(this, list_edit_food_private::class.java)
                                 intent.putExtra("UID",UID)
-                                startActivity(intent)}
+                                startActivity(intent)
+                                finish()
+                            }
                             .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
                     }
                     pDialog.show()
@@ -90,6 +93,7 @@ class list_saveedit_excercise_menu_private : AppCompatActivity() {
                 val intent = Intent(this, list_edit_excercise_private::class.java)
                 intent.putExtra("UID", UID)
                 startActivity(intent)
+                finish()
             }else{
                 Toast.makeText(this, "Please in put Information Excercise", Toast.LENGTH_SHORT).show()
             }
@@ -116,6 +120,6 @@ class list_saveedit_excercise_menu_private : AppCompatActivity() {
         val intent = Intent(this, selectlistexcercise_user::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
     }
 }

@@ -40,6 +40,7 @@ class Register_Infirmation : AppCompatActivity() {
         arrow.setOnClickListener {
             val intent = Intent(this, Register_User::class.java)
             startActivity(intent)
+            finish()
         }
 
 
@@ -139,7 +140,7 @@ class Register_Infirmation : AppCompatActivity() {
         intent.putExtra("status",status)
         intent.putExtra("TDEE",TDEE)
         startActivity(intent)
-
+        finish()
     }
 }
 

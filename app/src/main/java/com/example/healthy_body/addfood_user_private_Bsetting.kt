@@ -52,6 +52,7 @@ class addfood_user_private_Bsetting : AppCompatActivity(), View.OnClickListener 
             val intent = Intent(this, list_edit_food_private::class.java)
             intent.putExtra("UID", UID)
             startActivity(intent)
+            finish()
         }
 
 
@@ -66,6 +67,7 @@ class addfood_user_private_Bsetting : AppCompatActivity(), View.OnClickListener 
                 val intent = Intent(this, selectlistfood_user::class.java)
                 intent.putExtra("UID", UID)
                 startActivity(intent)
+                finish()
             }else{
                 Toast.makeText(this, "Please in put Information Food", Toast.LENGTH_SHORT).show()
             }
@@ -113,7 +115,7 @@ class addfood_user_private_Bsetting : AppCompatActivity(), View.OnClickListener 
         val intent = Intent(this, list_edit_food_private::class.java)
         intent.putExtra("UID", UID)
         startActivity(intent)
-
+        finish()
 
     }
 }

@@ -53,6 +53,7 @@ class edit_information : AppCompatActivity() {
             val intent = Intent(this, setting_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
 
@@ -136,7 +137,7 @@ fun pass (uid:String=""){
     val intent = Intent(this,Home_User::class.java)
     intent.putExtra("UID",uid)
     startActivity(intent)
-
+    finish()
 }
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -148,7 +149,7 @@ fun pass (uid:String=""){
         val intent = Intent(this, setting_user::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
 
     }
     fun error (){

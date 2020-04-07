@@ -46,6 +46,7 @@ class Totalkcal_User : AppCompatActivity() {
         val intent = Intent(this, Home_User::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
+        finish()
     }
 
 

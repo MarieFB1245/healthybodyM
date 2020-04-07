@@ -82,6 +82,7 @@ class list_edit_excercise_private : AppCompatActivity() {
                         intent.putExtra("name_excercise", itemf.excercise.name_excercise)
                         intent.putExtra("kcal", itemf.excercise.kcal)
                         startActivity(intent)
+                        finish()
                     }
                     recyclerView.adapter = adapter
                 }else{
@@ -115,7 +116,7 @@ class list_edit_excercise_private : AppCompatActivity() {
         val intent = Intent(this, setting_user::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
 
     }
 

@@ -59,6 +59,7 @@ class dashboard_user : AppCompatActivity() {
             val intent = Intent(this, Home_User::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
         ref = FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${UID}")
 
@@ -221,7 +222,7 @@ class dashboard_user : AppCompatActivity() {
         val intent = Intent(this, Home_User::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
 
     }
 }

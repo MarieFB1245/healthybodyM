@@ -21,8 +21,8 @@ import kotlin.math.log
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
-
+import android.os.Handler
+import kotlinx.android.synthetic.main.dialod_list.*
 
 
 class Login_user : AppCompatActivity() {
@@ -56,7 +56,7 @@ class Login_user : AppCompatActivity() {
                     .show()
 
             }else{
-                val progest  = ProgressDialog(this,R.style.MyTheme)
+                var progest  = ProgressDialog(this,R.style.MyTheme)
                 progest.setCancelable(false)
                 progest.show()
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
@@ -82,6 +82,7 @@ class Login_user : AppCompatActivity() {
         val intent = Intent(this, Home_User::class.java)
         intent.putExtra("UID",uid)
         startActivity(intent)
+        finish()
     }
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -96,8 +97,13 @@ class Login_user : AppCompatActivity() {
             .setCancelText("ไม่ต้องการ!")
             .setConfirmText("ต้องการ!")
             .showCancelButton(true)
-            .setCancelClickListener { sDialog -> sDialog.cancel() }
+            .setCancelClickListener { sDialog -> sDialog.cancel()
+                this.doubleBackToExitPressedOnce = false
+
+
+            }
             .setConfirmClickListener {
+
                 finish()
             }
             .show()

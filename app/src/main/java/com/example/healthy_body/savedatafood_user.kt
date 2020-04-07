@@ -67,6 +67,7 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this, selectlistfood_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
         savelist.setOnClickListener {
@@ -79,7 +80,7 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this,selectlistfood_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
-
+            finish()
         }
 
     }
@@ -164,7 +165,7 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         val intent = Intent(this, selectlistfood_user::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
     }
 }
 class datafood (val id:String ="",val nameFoodShowB: String="",val kcalfoodShowB :String="",val sum :Int, val resultBig : Int ,val date :String ,val id_list :String )

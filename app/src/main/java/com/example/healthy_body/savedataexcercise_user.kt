@@ -73,6 +73,7 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
             val intent = Intent(this, selectlistfood_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
         savelist.setOnClickListener {
@@ -85,6 +86,7 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
             val intent = Intent(this,selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
 
@@ -168,6 +170,6 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
         val intent = Intent(this, selectlistfood_user::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
     }
 }

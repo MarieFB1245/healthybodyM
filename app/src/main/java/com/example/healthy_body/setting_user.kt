@@ -45,6 +45,7 @@ class setting_user : AppCompatActivity() {
             val intent = Intent(this, Home_User::class.java)
              intent.putExtra("UID", UID)
             startActivity(intent)
+            finish()
         }
 
         val adapter = GroupAdapter<ViewHolder>()
@@ -66,7 +67,7 @@ class setting_user : AppCompatActivity() {
         val intent = Intent(this, Home_User::class.java)
         intent.putExtra("UID", UID)
         startActivity(intent)
-
+        finish()
 
     }
 
@@ -84,26 +85,31 @@ class setting_user : AppCompatActivity() {
                   val intent = Intent(view.context, edit_information::class.java)
                   intent.putExtra("UID", UID)
                   startActivity(intent)
+                  finish()
               }else if(textlistsetting.equals("อาหาร")){
                   val intent = Intent(view.context, list_edit_food::class.java)
                    intent.putExtra("UID", UID)
                   startActivity(intent)
+                  finish()
                 //  Toast.makeText(this, "อาหาร ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
               }else if(textlistsetting.equals("กิจกรรม")){
                   val intent = Intent(view.context, list_edit_excercise::class.java)
                   intent.putExtra("UID", UID)
                   startActivity(intent)
+                  finish()
                   //  Toast.makeText(this, "อาหาร ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
               }else if(textlistsetting.equals("อาหารของฉัน")){
                   val intent = Intent(view.context, list_edit_food_private::class.java)
                   intent.putExtra("UID", UID)
                   startActivity(intent)
+                  finish()
                   //  Toast.makeText(this, "อาหาร ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
               }
               else {
                   val intent = Intent(view.context, list_edit_excercise_private::class.java)
                   intent.putExtra("UID", UID)
                   startActivity(intent)
+                  finish()
 
               }
 

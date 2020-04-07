@@ -40,6 +40,7 @@ class list_edit_food_private : AppCompatActivity() {
             val intent = Intent(this, setting_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
         loaddata()
 
@@ -48,6 +49,7 @@ class list_edit_food_private : AppCompatActivity() {
             val intent = Intent(this, addfood_user_private_Bsetting::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -81,6 +83,7 @@ class list_edit_food_private : AppCompatActivity() {
                         intent.putExtra("unittype", itemf.food.unittype)
                         intent.putExtra("kcal", itemf.food.kcal)
                         startActivity(intent)
+                        finish()
                     }
                     recyclerView.adapter = adapter
                 }else{
@@ -101,7 +104,7 @@ class list_edit_food_private : AppCompatActivity() {
         val intent = Intent(this, setting_user::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
 
     }
     inner class Foodprivate(val food: modelSelectFood_Private) : Item<ViewHolder>() {

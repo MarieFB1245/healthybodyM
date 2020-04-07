@@ -26,6 +26,7 @@ class addexcercise_user_private_Bsetting : AppCompatActivity() {
             val intent = Intent(this, list_edit_excercise_private::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
         val inputnameexcercise = findViewById<EditText>(R.id.inputnameexcercise)
         val inputkcal = findViewById<EditText>(R.id.inputkcal)
@@ -38,6 +39,7 @@ class addexcercise_user_private_Bsetting : AppCompatActivity() {
                 val intent = Intent(this, selectlistexcercise_user::class.java)
                 intent.putExtra("UID", UID)
                 startActivity(intent)
+                finish()
             }else{
                 Toast.makeText(this, "Please in put Information Excercise", Toast.LENGTH_SHORT).show()
             }
@@ -56,7 +58,7 @@ class addexcercise_user_private_Bsetting : AppCompatActivity() {
         val intent = Intent(this, list_edit_excercise_private::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
 
     }
 }

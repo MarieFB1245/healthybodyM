@@ -53,6 +53,7 @@ var KEY :String=""
             val intent = Intent(this, setting_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
         loaddata(datetext)
@@ -122,6 +123,7 @@ var KEY :String=""
                         intent.putExtra("id", itemf.excercise.id)
                         intent.putExtra("kcalExcerciseShowB", itemf.excercise.kcalExcerciseShowB)
                         startActivity(intent)
+                        finish()
                     }
                     recyclerView.adapter = adapter
                 }else{
@@ -174,7 +176,7 @@ var KEY :String=""
         val intent = Intent(this, setting_user::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
 
     }
 }

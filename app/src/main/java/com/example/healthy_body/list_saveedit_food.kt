@@ -97,7 +97,9 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
                             .setConfirmClickListener{
                                 val intent = Intent(this, list_edit_food::class.java)
                                 intent.putExtra("UID",UID)
-                                startActivity(intent)}
+                                startActivity(intent)
+                                finish()
+                            }
                             .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
                     }
                     pDialog.show()
@@ -113,6 +115,7 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this, list_edit_food::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
 
@@ -124,6 +127,7 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this,list_edit_food::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
 
         }
 
@@ -187,6 +191,6 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
         val intent = Intent(this, list_edit_food::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
     }
 }

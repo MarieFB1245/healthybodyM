@@ -43,15 +43,18 @@ class Home_User : AppCompatActivity() {
         val BMRshow = findViewById<TextView>(R.id.numberBMR
         )
 
-
         signout.setOnClickListener {
             signout()
+            finish()
         }
+
         buttonRe.setOnClickListener {
             val intent = Intent(this,dashboard_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
+
         selectdata_totalkcal(UID).getdatatotal{excercise,food ->
 
            var Food = food.toInt()
@@ -59,13 +62,13 @@ class Home_User : AppCompatActivity() {
 
             setupPieChart(Food,Workout)
 }
+
         val progest  = ProgressDialog(this,R.style.MyTheme)
         progest.setCancelable(false)
         progest.show()
 
         Log.e("pass","selectdata_totalkcal")
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
-
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val map = dataSnapshot.value as Map<*, *>?
                 val map1 = dataSnapshot.child("users").child(UID).value as Map<*, *>?
@@ -88,22 +91,21 @@ class Home_User : AppCompatActivity() {
             val intent = Intent(this,setting_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
-
+            finish()
         }
         addworkout.setOnClickListener {
             val intent = Intent(this,selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
-
+            finish()
         }
 
         addfood.setOnClickListener{
             val intent = Intent(this,selectlistfood_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
-
-
 
 
 
@@ -122,11 +124,14 @@ class Home_User : AppCompatActivity() {
             .setCancelText("ไม่ต้องการ!")
             .setConfirmText("ต้องการ!")
             .showCancelButton(true)
-            .setCancelClickListener { sDialog -> sDialog.cancel() }
+            .setCancelClickListener { sDialog -> sDialog.cancel()
+                this.doubleBackToExitPressedOnce = false
+            }
             .setConfirmClickListener {
                 val intent = Intent(this, Login_user::class.java)
                 myAut.signOut()
                 startActivity(intent)
+                finish()
             }
             .show()
 
@@ -148,7 +153,6 @@ class Home_User : AppCompatActivity() {
                 )
             )//ค่าที่เก็บจะต้องเป็น array
         }
-
 
         val dataSet = PieDataSet(pieEntries, "KCAL")
         val colors = ArrayList<Int>()

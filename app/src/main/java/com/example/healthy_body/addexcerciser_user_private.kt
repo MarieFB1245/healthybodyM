@@ -38,6 +38,7 @@ class addexcerciser_user_private : AppCompatActivity() {
                 val intent = Intent(this, selectlistexcercise_user::class.java)
                 intent.putExtra("UID", UID)
                 startActivity(intent)
+                finish()
             }else{
                 Toast.makeText(this, "Please in put Information Excercise", Toast.LENGTH_SHORT).show()
             }
@@ -54,7 +55,7 @@ class addexcerciser_user_private : AppCompatActivity() {
         val intent = Intent(this, selectlistexcercise_user::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
 
     }
 }

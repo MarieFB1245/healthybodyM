@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_home__user.*
 class addexcercise_user : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
     var UID :String=""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addexcercise_user)
@@ -30,6 +31,7 @@ class addexcercise_user : AppCompatActivity() {
             val intent = Intent(this, selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
         val inputnameexcercise = findViewById<EditText>(R.id.inputnameexcercise)
         val inputkcal = findViewById<EditText>(R.id.inputkcal)
@@ -42,6 +44,7 @@ class addexcercise_user : AppCompatActivity() {
                 val intent = Intent(this, selectlistexcercise_user::class.java)
                 intent.putExtra("UID", UID)
                 startActivity(intent)
+                finish()
             }else{
                 Toast.makeText(this, "Please in put Information Excercise", Toast.LENGTH_SHORT).show()
             }
@@ -58,7 +61,7 @@ class addexcercise_user : AppCompatActivity() {
         val intent = Intent(this, selectlistexcercise_user::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
 
     }
 }

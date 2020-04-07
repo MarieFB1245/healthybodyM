@@ -52,12 +52,15 @@ class selectelistfood_user_private : AppCompatActivity() {
             val intent = Intent(this, selectlistfood_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
         imageadd.setOnClickListener {
             val intent = Intent(this, addfood_user_private::class.java)
             intent.putExtra("UID",UID)
-            startActivity(intent) }
+            startActivity(intent)
+            finish()
+        }
 
     }
 
@@ -90,6 +93,7 @@ class selectelistfood_user_private : AppCompatActivity() {
                         intent.putExtra("kcalfood", fooditem.food.kcal)
                         intent.putExtra("id", fooditem.food.id_food)
                         startActivity(intent)
+                        finish()
                     }
                     mRecycleVeiew.adapter = adapter
                 }
@@ -119,6 +123,7 @@ class selectelistfood_user_private : AppCompatActivity() {
                         intent.putExtra("kcalfood", fooditem.food.kcal)
                         intent.putExtra("id", fooditem.food.id_food)
                         startActivity(intent)
+                        finish()
                     }
                     mRecycleVeiew.adapter = adapter
                 }
@@ -160,6 +165,6 @@ class selectelistfood_user_private : AppCompatActivity() {
         val intent = Intent(this, selectlistfood_user::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
     }
 }

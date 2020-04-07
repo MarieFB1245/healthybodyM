@@ -57,11 +57,14 @@ class selectlistexcercise_user : AppCompatActivity() {
             val intent = Intent(this, addexcercise_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
         imagelist.setOnClickListener {
             val intent = Intent(this, selectlistexcercise_user_private::class.java)
             intent.putExtra("UID",UID)
-            startActivity(intent) }
+            startActivity(intent)
+            finish()
+        }
 
         listselect.setOnClickListener {
             val dialog = Dialog(this)
@@ -126,6 +129,7 @@ class selectlistexcercise_user : AppCompatActivity() {
                         intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
                         intent.putExtra("id", excerciseitem.excercise.id_excercise)
                         startActivity(intent)
+                        finish()
                     }
                     mRecycleVeiew.adapter = adapter
                 }
@@ -154,6 +158,7 @@ class selectlistexcercise_user : AppCompatActivity() {
                         intent.putExtra("kcalfood", fooditem.food.kcal)
                         intent.putExtra("id", fooditem.food.id_food)
                         startActivity(intent)
+                        finish()
                     }
                     mRecycleVeiew.adapter = adapter
                 }
@@ -210,7 +215,7 @@ class selectlistexcercise_user : AppCompatActivity() {
         val intent = Intent(this, Home_User::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
     }
     }
 

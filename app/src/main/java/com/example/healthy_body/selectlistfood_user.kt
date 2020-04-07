@@ -254,6 +254,7 @@ class selectlistfood_user : AppCompatActivity() {
                         intent.putExtra("kcalfood", fooditem.food.kcal)
                         intent.putExtra("id", fooditem.food.id_food)
                         startActivity(intent)
+                        finish()
                     }
                     mRecycleVeiew.adapter = adapter
                 }
@@ -309,6 +310,6 @@ class selectlistfood_user : AppCompatActivity() {
         val intent = Intent(this, Home_User::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
     }
 }

@@ -76,6 +76,7 @@ var textamountF :String=""
             val intent = Intent(this, list_edit_food_private::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
         val delect = findViewById<ImageView>(R.id.dalect)
@@ -106,7 +107,9 @@ var textamountF :String=""
                             .setConfirmClickListener{
                                 val intent = Intent(this, list_edit_food_private::class.java)
                                 intent.putExtra("UID",UID)
-                                startActivity(intent)}
+                                startActivity(intent)
+                                finish()
+                            }
                             .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
                     }
                     pDialog.show()
@@ -127,7 +130,7 @@ var textamountF :String=""
                   val intent = Intent(this,list_edit_food_private::class.java)
                   intent.putExtra("UID",UID)
                   startActivity(intent)
-
+            finish()
               }
 
 
@@ -179,6 +182,6 @@ var  total :Int = 0
         val intent = Intent(this, list_edit_food_private::class.java)
         intent.putExtra("UID",UID)
         startActivity(intent)
-
+        finish()
     }
 }
