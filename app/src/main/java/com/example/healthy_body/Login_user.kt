@@ -16,13 +16,8 @@ import android.util.Log
 import android.widget.ProgressBar
 import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
 import cn.pedant.SweetAlert.SweetAlertDialog
-import java.lang.Thread.sleep
-import kotlin.math.log
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.os.Handler
-import kotlinx.android.synthetic.main.dialod_list.*
+
+import java.util.regex.Pattern
 
 
 class Login_user : AppCompatActivity() {
@@ -48,6 +43,9 @@ class Login_user : AppCompatActivity() {
 
             Log.e("email =>","${email}")
             Log.e("password =>","${password}")
+
+
+
             if(email==""&&password==""){
                 SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                     .setTitleText("รหัสผิด")
@@ -56,24 +54,25 @@ class Login_user : AppCompatActivity() {
                     .show()
 
             }else{
-                var progest  = ProgressDialog(this,R.style.MyTheme)
-                progest.setCancelable(false)
-                progest.show()
-                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-                    if (it.isSuccessful) {
+                    var progest  = ProgressDialog(this,R.style.MyTheme)
+                    progest.setCancelable(false)
+                    progest.show()
+                    auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                        if (it.isSuccessful) {
 
-                        var uid = FirebaseAuth.getInstance().uid?:""
-                        login(uid)
-                    } else {
-
-                        SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("รหัสผิด")
-                            .setContentText("กรุณาใส่ อีเมล หรือ รหัสผ่าน ให้ถูกต้อง!")
-                            .setConfirmText("ตกลง")
-                            .show()
-                        progest.cancel()
+                            var uid = FirebaseAuth.getInstance().uid?:""
+                            login(uid)
+                        } else {
+                            SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("รหัสผิด")
+                                .setContentText("กรุณาใส่ อีเมล หรือ รหัสผ่าน ให้ถูกต้อง!")
+                                .setConfirmText("ตกลง")
+                                .show()
+                            progest.cancel()
+                        }
                     }
-                }
+
+
             }
 
         }
