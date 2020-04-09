@@ -17,9 +17,12 @@ import android.widget.ImageView
 import cn.pedant.SweetAlert.SweetAlertDialog
 
 
+
+
 class Register_User : AppCompatActivity() {
 
     private var myRef = FirebaseAuth.getInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +38,10 @@ class Register_User : AppCompatActivity() {
 
         val button1 = findViewById(R.id.button1) as Button
         button1.setOnClickListener {
+            var emailPattern ="^[a-zA-Z0-9_+&*-]+(?:\\."+
+                    "[a-zA-Z0-9_+&*-]+)*@" +
+                    "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                    "A-Z]{2,7}$"
             val email = email.text.toString()
             val password = password.text.toString()
             val conpassword = conpassword.text.toString()
@@ -45,7 +52,7 @@ class Register_User : AppCompatActivity() {
           // myRef = FirebaseAuth.getInstance()
 
             if(email!=""&&password!=""&&conpassword!=""){
-                if(!isEmailValid(email)){
+                if(!emailPattern.toRegex().matches(email)){
                     SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                         .setTitleText("เกิดข้อผิดพลาด")
                         .setContentText("กรุณาใส่ อีเมล ให้ถูกต้อง!")
