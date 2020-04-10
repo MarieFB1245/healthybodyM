@@ -7,12 +7,14 @@ import android.util.Log
 import android.view.TextureView
 import android.view.View
 import android.widget.TextView
+import cn.pedant.SweetAlert.SweetAlertDialog
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_register__infirmation.*
 import kotlinx.android.synthetic.main.activity_totalkcal__user.*
 
 class Totalkcal_User : AppCompatActivity() {
-
+    private var myAut = FirebaseAuth.getInstance()
     private lateinit var myRef: DatabaseReference
     private var doubleBackToExitPressedOnce = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +50,31 @@ class Totalkcal_User : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
 
+        this.doubleBackToExitPressedOnce = true
+        SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+            .setTitleText("คุณเเน่ใจ?")
+            .setContentText("ว่าต้องการออกจากระบบ!")
+            .setCancelText("ไม่ต้องการ!")
+            .setConfirmText("ต้องการ!")
+            .showCancelButton(true)
+            .setCancelClickListener { sDialog -> sDialog.cancel()
+                this.doubleBackToExitPressedOnce = false
+            }
+            .setConfirmClickListener {
+                val intent = Intent(this, Login_user::class.java)
+                myAut.signOut()
+                startActivity(intent)
+                finish()
+            }
+            .show()
+
+
+    }
 
 }

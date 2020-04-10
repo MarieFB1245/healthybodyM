@@ -20,7 +20,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog
 
 
 class Register_User : AppCompatActivity() {
-
+    private var doubleBackToExitPressedOnce = false
     private var myRef = FirebaseAuth.getInstance()
 
 
@@ -104,6 +104,32 @@ intent.putExtra("password",password)
     fun isEmailValid(email: CharSequence): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
 
+        this.doubleBackToExitPressedOnce = true
+        SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+            .setTitleText("คุณเเน่ใจ?")
+            .setContentText("ว่าต้องการออกจากแอพลิเคชัน!")
+            .setCancelText("ไม่ต้องการ!")
+            .setConfirmText("ต้องการ!")
+            .showCancelButton(true)
+            .setCancelClickListener { sDialog -> sDialog.cancel()
+                this.doubleBackToExitPressedOnce = false
+
+
+            }
+            .setConfirmClickListener {
+                val intent = Intent(this, Login_user::class.java)
+                startActivity(intent)
+                finish()
+            }
+            .show()
+
+
+    }
 }
 

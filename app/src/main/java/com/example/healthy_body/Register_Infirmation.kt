@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import android.widget.Toast.LENGTH_LONG
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
 import kotlinx.android.synthetic.main.activity_register__infirmation.*
 import kotlin.math.pow
@@ -16,7 +17,7 @@ import com.google.firebase.database.*
 
 
 class Register_Infirmation : AppCompatActivity() {
-
+    private var doubleBackToExitPressedOnce = false
     internal var SPINNERLST = arrayOf("น้อย หรือไม่ค่อยออกกำลังกาย","ปานกลาง ออกกำลังกาย 1-3 ครั้งต่อสัปดาห์","ปานกลาง ออกกำลังกาย 4-5 ครั้งต่อสัปดาห์",
         "หนัก ออกกำลังกาย 6-7 ครั้งต่อสัปดาห์","หนักมาก ออกกำลังกายวันละ 2 ครั้งขึ้นไป")
 
@@ -106,9 +107,8 @@ class Register_Infirmation : AppCompatActivity() {
                                 val map1 = p0.child("users").child(uid).value as Map<*, *>? //ดึงข้อมูล มา จาด UID
                                 val status = map1!!["status"].toString()//วางค่า ที่ได้จาก dataSnapshot
                                 val TDEE = map1["TDEE"].toString()//วางค่า ที่ได้จาก dataSnapshot
-
-
                                 intent(uid,status,TDEE)
+                                finish()
                             }
 
                         })
@@ -132,6 +132,34 @@ class Register_Infirmation : AppCompatActivity() {
 
 
 }
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+            .setTitleText("คุณเเน่ใจ?")
+            .setContentText("ว่าต้องการออกจากแอพลิเคชัน!")
+            .setCancelText("ไม่ต้องการ!")
+            .setConfirmText("ต้องการ!")
+            .showCancelButton(true)
+            .setCancelClickListener { sDialog -> sDialog.cancel()
+                this.doubleBackToExitPressedOnce = false
+
+
+            }
+            .setConfirmClickListener {
+                val intent = Intent(this, Register_User::class.java)
+                startActivity(intent)
+                finish()
+            }
+            .show()
+
+
+    }
+
     fun intent (uid: String,status:String,TDEE:String){
 
 
