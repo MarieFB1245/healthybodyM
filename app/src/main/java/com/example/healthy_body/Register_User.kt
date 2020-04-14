@@ -111,23 +111,10 @@ intent.putExtra("password",password)
         }
 
         this.doubleBackToExitPressedOnce = true
-        SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-            .setTitleText("คุณเเน่ใจ?")
-            .setContentText("ว่าต้องการออกจากแอพลิเคชัน!")
-            .setCancelText("ไม่ต้องการ!")
-            .setConfirmText("ต้องการ!")
-            .showCancelButton(true)
-            .setCancelClickListener { sDialog -> sDialog.cancel()
-                this.doubleBackToExitPressedOnce = false
-
-
-            }
-            .setConfirmClickListener {
                 val intent = Intent(this, Login_user::class.java)
                 startActivity(intent)
                 finish()
-            }
-            .show()
+
 
 
     }
