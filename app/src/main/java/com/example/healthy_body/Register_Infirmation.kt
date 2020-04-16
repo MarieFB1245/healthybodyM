@@ -1,5 +1,6 @@
 package com.example.healthy_body
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -58,7 +59,9 @@ class Register_Infirmation : AppCompatActivity() {
 
 
         registerbutton.setOnClickListener {
-
+            val progest  = ProgressDialog(this,R.style.MyTheme)
+            progest.setCancelable(false)
+            progest.show()
             var LENGTH_LONG  = 3500
 
            val ss = Toast.makeText(this, "Process information...",  Toast.LENGTH_LONG)
@@ -92,6 +95,7 @@ class Register_Infirmation : AppCompatActivity() {
                     val BMIS = df.format(totalBMI)
                     var gender  = betterSpinnergender.text.toString()
                     var uid = FirebaseAuth.getInstance().uid?:""
+
                     if(email ==""&&password==""&&age==null&&height==null&&weigth==null&&BMIS==""&&gender==""&&Level_Workout==""&&textfirstname==""&&textlastname==""){
                         Toast.makeText(this, "Please in put information in correct.", Toast.LENGTH_SHORT).show()
                     }else{
@@ -108,6 +112,7 @@ class Register_Infirmation : AppCompatActivity() {
                                 val status = map1!!["status"].toString()//วางค่า ที่ได้จาก dataSnapshot
                                 val TDEE = map1["TDEE"].toString()//วางค่า ที่ได้จาก dataSnapshot
                                 intent(uid,status,TDEE)
+                                progest.cancel()
                                 finish()
                             }
 
