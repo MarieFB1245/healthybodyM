@@ -19,20 +19,19 @@ class connect_user : AppCompatActivity() {
         setContentView(R.layout.activity_connect_user)
 
             if (haveNetwork()){
-                Timer("secon", false).schedule(5000) {
+
                     Intent()
 
-                }
 
             } else if (!haveNetwork()) {
 
-                val test = SweetAlertDialog(this@connect_user, SweetAlertDialog.ERROR_TYPE)
-                test.setTitleText("เกิดข้อผิดพลาด")
-                test.setContentText("กรุณาตรวจสอบอินเทอร์เน็ตของคุณ!")
-                test.setConfirmText("ตกลง")
-                test.setCancelable(false)
-                test.setConfirmClickListener { finish() }
-                test.show()
+                val Dialog = SweetAlertDialog(this@connect_user, SweetAlertDialog.ERROR_TYPE)
+                Dialog.setTitleText("เกิดข้อผิดพลาด")
+                Dialog.setContentText("กรุณาตรวจสอบอินเทอร์เน็ตของคุณ!")
+                Dialog.setConfirmText("ตกลง")
+                Dialog.setCancelable(false)
+                Dialog.setConfirmClickListener { finish() }
+                Dialog.show()
 
             }
 
@@ -72,6 +71,7 @@ class connect_user : AppCompatActivity() {
 
         this.doubleBackToExitPressedOnce = false
         finish()
+
 
 
 
