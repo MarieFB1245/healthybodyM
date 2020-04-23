@@ -87,6 +87,9 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
     fun savetodata(nameFoodShowB: String, kcalfoodShowB: String, resultBig: Int, sum: Int,currentDate:String,id:String) {
         val sdf = SimpleDateFormat("dd-M-yyyy")
         val currentDater = sdf.format(Date())
+        val date = SimpleDateFormat("dd-M-yyyy").parse("${currentDater}")
+        val testtime = date.time
+
         Log.d("output","${currentDate}")
         val ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child("$currentDater")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -125,25 +128,19 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
 
     }
     override fun onClick(v: View?) {
-        Log.d("kcalfoodShow","${nameFoodShowB}")
-        Log.d("kcalfoodShow","${kcalfoodShowB}")
         var sumkcalsub = kcalfoodShowB.toInt()
-        Log.d("kcalfoodShow","${sumkcalsub}")
         var sumkcal = kcalfoodShowB.toInt()
 
         when (v?.id) {
             R.id.add -> {
                 sum = sum + 1
                 resultBig = sumkcal*sum
-                Log.d("sumkcal add =>","${sum}")
                 amount.setText("$sum")
                 tatal.setText("$resultBig")
             }
             R.id.sub -> {
                 sum = sum - 1
                 resultBig = resultBig - sumkcalsub
-                Log.d("sumkcal sub =>","${resultBig}")
-                Log.d("sum","${sum}")
                 if(sum<=1){
                     sum = 1
                     resultBig=sumkcalsub

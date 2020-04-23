@@ -37,8 +37,8 @@ import com.example.healthy_body.model.User
 class dashboard_user : AppCompatActivity() {
      lateinit var ref: DatabaseReference
     private var doubleBackToExitPressedOnce = false
- //   var UID :String="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
-   var UID :String=""
+   var UID :String="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+   //var UID :String=""
     var calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,7 @@ class dashboard_user : AppCompatActivity() {
         val datetext  = sdf.format(calendar.getTime())
 
 
-        UID = intent.getStringExtra("UID")
+//        UID = intent.getStringExtra("UID")
 
 
         val arrow = findViewById<ImageView>(R.id.arrow)
@@ -64,9 +64,17 @@ class dashboard_user : AppCompatActivity() {
         ref = FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${UID}")
 
 
+        //เเก้เเล้ว filter
 
-        ref.orderByChild("DATE").addListenerForSingleValueEvent(object : ValueEventListener {
-            @RequiresApi(Build.VERSION_CODES.O)
+
+      //  val currentDater = sdf.format(Date())
+      //  val date = SimpleDateFormat("dd-M-yyyy").parse("$currentDater")
+      //  val testtime = date.time
+      //  val tests = testtime.toString()
+
+           // .orderByChild("TimeStamp").startAt("1575133200000")
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
                     var j=0
@@ -86,7 +94,7 @@ class dashboard_user : AppCompatActivity() {
                         var group2 = listfood!!.TOTALEXCERCISE.toFloat()
 
 
-                        Log.e("j","${j}")
+
                         totalfood.add(BarEntry(j.toFloat(), group1.toFloat()))
                         totalexcercise.add(BarEntry(j.toFloat(), group2))
 
@@ -104,20 +112,21 @@ class dashboard_user : AppCompatActivity() {
 
 
 
-                       // val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-M-yyyy")
+
                         day.add("${listfood!!.DATE}")
 
-                      /*  val result = day.sortedByDescending {
-                            LocalDate.parse(it, dateTimeFormatter)
-                        }*/
-
-                        //Log.e("testfood","${testfood}")
                         Log.e("totalfood","${totalfood}")
                         Log.e("group1","${group1}")
-                      //  Log.e("time","${result}")
+
+
+
                         Log.e("day","$day")
-                        val xAxis = barChartView.getXAxis()
+
+                        var xAxis = barChartView.getXAxis()
+
                         xAxis.setValueFormatter(IndexAxisValueFormatter(day))
+                        xAxis.setAvoidFirstLastClipping(true)
+
                         xAxis.setDrawAxisLine(true)
                         xAxis.setDrawGridLines(false)
                         xAxis.setCenterAxisLabels(true)
@@ -166,16 +175,15 @@ class dashboard_user : AppCompatActivity() {
 
 
 
-
                         barChartView.getXAxis().setAxisMinimum(0f)
-                        barChartView.getXAxis().setAxisMaximum(0+barChartView.getBarData().getGroupWidth(groupspace,barSpace)*j)
+                        barChartView.getXAxis().setAxisMaximum(0+barChartView.getBarData().getGroupWidth(groupspace,barSpace)*j+1)
                         barChartView.getAxisLeft().setAxisMinimum(0f)
                         barChartView.animateY(500)
 
                         barChartView.setExtraOffsets(0f,0f,0f,10f)
                         barChartView.groupBars(0f,groupspace,barSpace)
                         barChartView.description.setEnabled(false)
-                        barChartView.invalidate()
+
                         barChartView.setBackgroundResource(R.drawable.all_background)
 
 
@@ -183,8 +191,11 @@ class dashboard_user : AppCompatActivity() {
                         barChartView.getAxisRight().setTextColor(Color.WHITE)
                         barChartView.getXAxis().setTextColor(Color.WHITE);
                         barChartView.getLegend().setTextColor(Color.WHITE);
+
                         seetdata(bardataset,bardatasets)
                         j=j+1
+                        Log.e("j","$j")
+                        barChartView.invalidate()
                     }
 
 
@@ -226,7 +237,7 @@ class dashboard_user : AppCompatActivity() {
 
     }
 }
-
+//var TimeStamp:String =""    /* Model */
 data class totalkcallare (var TOTALEXCERCISE:Int=0 ,var TOTALFOOD: Int=0 ,var DATE :String="")
 
 
