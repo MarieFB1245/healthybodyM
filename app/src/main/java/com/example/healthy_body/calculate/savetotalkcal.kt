@@ -209,10 +209,19 @@ class savetotalkcal (val kcal:Int ,val nametype : String="",val UID :String="",v
 
     private fun addcalenda(currentDate: String) {
 
+        val sdf = SimpleDateFormat("dd-M-yyyy")
+        val currentDater = sdf.format(Date())
+        val date = SimpleDateFormat("dd-M-yyyy").parse("$currentDater")
+        val timeLong = date.time
+        val timeString = timeLong.toString()
+
         myRef = FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${uid}")
             .child("$currentDate").child("DATE")
-
         myRef.setValue(currentDate)
+
+        myRef = FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${uid}")
+            .child("$currentDate").child("TimeStamp")
+        myRef.setValue(timeString)
 
     }
 }

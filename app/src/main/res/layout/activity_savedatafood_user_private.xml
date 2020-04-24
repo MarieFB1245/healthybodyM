@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/all_background"
-    tools:context=".savedataexcercise_user">
+    tools:context=".savedatafood_user_private">
 
 
     <include
         android:id="@+id/searchView"
-        layout="@layout/app_savedateexcercise_user"
+        layout="@layout/app_savedatafood_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,27 +43,27 @@
         app:layout_constraintTop_toTopOf="@+id/textdate" />
 
     <TextView
-        android:id="@+id/textnameexcercise"
+        android:id="@+id/textnamefood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        android:text="ชื่อกิจกกรม"
+        android:text="ชื่ออาหาร"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textdate" />
 
     <TextView
-        android:id="@+id/nameexcercise"
+        android:id="@+id/namefood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:text="nameexcercise"
+        android:layout_marginStart="56dp"
+        android:text="namefood"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textnameexcercise"
-        app:layout_constraintTop_toTopOf="@+id/textnameexcercise" />
+        app:layout_constraintStart_toEndOf="@+id/textnamefood"
+        app:layout_constraintTop_toTopOf="@+id/textnamefood" />
 
     <TextView
         android:id="@+id/textKcal"
@@ -75,7 +75,7 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textnameexcercise" />
+        app:layout_constraintTop_toBottomOf="@+id/textnamefood" />
 
     <TextView
         android:id="@+id/Kcal"
@@ -94,17 +94,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        android:text="จำนวนชั่วโมง"
+        android:text="จำนวน"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textKcal" />
 
     <TextView
-        android:id="@+id/amount"
+        android:id="@+id/amounts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
+        android:layout_marginStart="80dp"
         android:text="amount"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -116,25 +116,25 @@
         android:layout_width="70dp"
         android:layout_height="39dp"
         android:layout_marginStart="30dp"
-        android:textColor="#FFFFFF"
         android:text="-"
+        android:textColor="#FFFFFF"
         android:background="@drawable/subbutton"
-        app:layout_constraintBottom_toBottomOf="@+id/amount"
+        app:layout_constraintBottom_toBottomOf="@+id/amounts"
         app:layout_constraintEnd_toStartOf="@+id/add"
         app:layout_constraintHorizontal_bias="0.36"
-        app:layout_constraintStart_toEndOf="@+id/amount"
-        app:layout_constraintTop_toTopOf="@+id/amount" />
+        app:layout_constraintStart_toEndOf="@+id/amounts"
+        app:layout_constraintTop_toTopOf="@+id/amounts" />
 
     <Button
         android:id="@+id/add"
         android:layout_width="70dp"
         android:layout_height="39dp"
         android:text="+"
-        android:background="@drawable/addbutton"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/amount"
+        android:background="@drawable/addbutton"
+        app:layout_constraintBottom_toBottomOf="@+id/amounts"
         app:layout_constraintStart_toEndOf="@+id/sub"
-        app:layout_constraintTop_toTopOf="@+id/amount" />
+        app:layout_constraintTop_toTopOf="@+id/amounts" />
 
     <TextView
         android:id="@+id/texttatalkcal"
@@ -149,13 +149,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textamount" />
 
     <TextView
-        android:id="@+id/tatal"
+        android:id="@+id/tatals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="tatal"
-        android:textSize="20sp"
         android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/texttatalkcal"
         app:layout_constraintTop_toTopOf="@+id/texttatalkcal" />
 
@@ -166,15 +166,13 @@
         android:layout_marginTop="108dp"
         android:gravity="center"
         android:text="savelist"
+        android:background="@drawable/button_login_style"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:textColor="#FFFFFF"
-        android:background="@drawable/button_login_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tatal" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/tatals" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

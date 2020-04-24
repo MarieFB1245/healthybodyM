@@ -9,24 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addfood_user_private_Bsetting"
+        <activity android:name=".savedataexcercise_user_private"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar"
             ></activity>
+        <activity android:name=".savedatafood_user_private"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionbar"
+            />
+        <activity
+            android:name=".addfood_user_private_Bsetting"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".addexcercise_user_private_Bsetting"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".dashboard_user"
-            android:theme="@style/AppTheme.NoActionbar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".list_saveedit_excercise_menu_private"
             android:screenOrientation="portrait"
@@ -114,10 +115,7 @@
         <activity
             android:name=".Login_user"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar">
-
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".Home_User"
             android:screenOrientation="portrait"
@@ -137,14 +135,14 @@
         <activity
             android:name=".connect_user"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar" >
+            android:theme="@style/AppTheme.NoActionbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-
-            >
-
-        </activity>
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"

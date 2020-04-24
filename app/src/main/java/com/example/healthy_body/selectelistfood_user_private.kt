@@ -87,7 +87,7 @@ class selectelistfood_user_private : AppCompatActivity() {
                     }
                     adapter.setOnItemClickListener { item, view ->
                         val fooditem = item as Food
-                        val intent = Intent(view.context, savedatafood_user::class.java)
+                        val intent = Intent(view.context, savedatafood_user_private::class.java)
                         intent.putExtra("UID",UID)
                         intent.putExtra("namefood", fooditem.food.namefood)
                         intent.putExtra("kcalfood", fooditem.food.kcal)

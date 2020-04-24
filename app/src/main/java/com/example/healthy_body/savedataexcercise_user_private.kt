@@ -11,52 +11,57 @@ import android.widget.TextView
 import com.example.healthy_body.calculate.dataex
 import com.example.healthy_body.calculate.savetotalkcal
 import com.example.healthy_body.model.modelSelectExcercise
-import com.example.healthy_body.model.modelSelectFood
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_savedataexcercise_user.*
+import kotlinx.android.synthetic.main.activity_savedataexcercise_user.Kcal
+import kotlinx.android.synthetic.main.activity_savedataexcercise_user.nameexcercise
+import kotlinx.android.synthetic.main.activity_savedataexcercise_user.savelist
+import kotlinx.android.synthetic.main.activity_savedataexcercise_user_private.*
 import kotlinx.android.synthetic.main.activity_savedatafood_user.*
+import kotlinx.android.synthetic.main.activity_savedatafood_user_private.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class savedatafood_user : AppCompatActivity(), View.OnClickListener {
+class savedataexcercise_user_private : AppCompatActivity(),View.OnClickListener {
     private var doubleBackToExitPressedOnce = false
-    var nameFoodShowB :String=""
-    var kcalfoodShowB :String=""
+    var nameExcerciseShowB :String=""
+    var kcalExcerciseShowB :String=""
     var sum = 1
     var resultBig :Int=0
     var UID :String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_savedatafood_user)
+        setContentView(R.layout.activity_savedataexcercise_user_private)
 
         supportActionBar?.title ="Show Select Food"
         UID = intent.getStringExtra("UID")
-        var nameFoodShow: String = intent.getStringExtra("namefood")
-        var kcalfoodShow: String = intent.getStringExtra("kcalfood")
+        var nameExcerciseShow: String = intent.getStringExtra("nameexcercise")
+        var kcalExcerciseShow: String = intent.getStringExtra("kcalexcercise")
         var idfoodShow: String = intent.getStringExtra("id")
 
-        nameFoodShowB = nameFoodShow
-        kcalfoodShowB = kcalfoodShow
+        nameExcerciseShowB = nameExcerciseShow
+        kcalExcerciseShowB = kcalExcerciseShow
         val calendar = Calendar.getInstance()
-        var currentDate = DateFormat.getDateInstance().format(calendar.time)
+        var  currentDate = DateFormat.getDateInstance().format(calendar.time)
         var datetextview =  findViewById<TextView>(R.id.date)
         datetextview.setText(currentDate)
         var add =findViewById<Button>(R.id.add)
         var sub  = findViewById<Button>(R.id.sub)
-        val amount = findViewById<TextView>(R.id.amount)
-        val tatal = findViewById<TextView>(R.id.tatal)
+        val amount = findViewById<TextView>(R.id.amounts)
+        val tatal = findViewById<TextView>(R.id.tatals)
 
-        var sumkcal = kcalfoodShowB.toInt()
+        var sumkcal = kcalExcerciseShowB.toInt()
         resultBig = sumkcal
         amount.setText("${sum}")
         tatal.setText("$sumkcal")
         add.setOnClickListener(this)
         sub.setOnClickListener(this)
-        namefood.setText(nameFoodShow)
-        Kcal.setText(kcalfoodShow)
+        nameexcercise.setText(nameExcerciseShow)
+        Kcal.setText(kcalExcerciseShow)
 
 
         val arrow = findViewById<ImageView>(R.id.arrow)
@@ -71,44 +76,41 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         }
 
         savelist.setOnClickListener {
-            val nametype :String= "FOOD"
+            val nametype :String= "EXCERCISE"
             val nametypeStatus :String = "SAVE"
             val statusdoting :String = ""
             val date =""
-            savetodata(nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDate,idfoodShow)
+            savetodata(nameExcerciseShowB,kcalExcerciseShowB,resultBig,sum,currentDate,idfoodShow)
             savetotalkcal(resultBig,nametype,UID,statusdoting,nametypeStatus,date).savetotal()
-            val intent = Intent(this,selectlistfood_user::class.java)
+            val intent = Intent(this,selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
             finish()
         }
 
     }
-    fun savetodata(nameFoodShowB: String, kcalfoodShowB: String, resultBig: Int, sum: Int,currentDate:String,id:String) {
+    fun savetodata(nameExcerciseShowB: String, kcalExcerciseShowB: String, resultBig: Int, sum: Int,currentDate:String,id:String) {
         val sdf = SimpleDateFormat("dd-M-yyyy")
-        val currentDater = sdf.format(Date())
-        val date = SimpleDateFormat("dd-M-yyyy").parse("${currentDater}")
-        val testtime = date.time
-        val timeLong = date.time
-        val timeString = timeLong.toString()
+        val currentDate = sdf.format(Date())
         Log.d("output","${currentDate}")
-        val ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child("$currentDater")
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+        val ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child("$currentDate")
+        ref.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {}
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()) {
+                    val ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child("$currentDate")
                     val q = ref.orderByKey().limitToLast(1)
-                    q.addListenerForSingleValueEvent(object : ValueEventListener {
+                    q.addListenerForSingleValueEvent(object :ValueEventListener{
                         override fun onCancelled(p0: DatabaseError) {
                         }
                         override fun onDataChange(p0: DataSnapshot) {
                             for (list in p0.children){
-
+                                val s = list.getValue(dataex::class.java)
                                 val d = list.getKey()
                                 val intkey = d!!.toInt()
                                 val newkey = intkey + 1
                                 val id_list = newkey.toString()
-                                val settext = modelSelectFood(id_list,nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDater,id)
+                                val settext = modelSelectExcercise(id_list,nameExcerciseShowB,kcalExcerciseShowB,resultBig,sum,currentDate,id)
                                 ref.child("${id_list}").setValue(settext)
                             }
 
@@ -120,35 +122,36 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
                     val key: Int = 0
                     val newkey = key + 1
                     val id_list = newkey.toString()
-                    val settext = modelSelectFood(id_list,nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDater,id)
-                    ref.child("${id_list}").setValue(settext)
+                    val settext = modelSelectExcercise(id_list,nameExcerciseShowB,kcalExcerciseShowB,resultBig,sum,currentDate,id)
                     ref.child("${id_list}").setValue(settext)
                 }
             }
         })
 
-
     }
     override fun onClick(v: View?) {
-        var sumkcalsub = kcalfoodShowB.toInt()
-        var sumkcal = kcalfoodShowB.toInt()
+        Log.d("kcalfoodShow","${nameExcerciseShowB}")
+        Log.d("kcalfoodShow","${kcalExcerciseShowB}")
+        var sumkcalsub = kcalExcerciseShowB.toInt()
+        Log.d("kcalfoodShow","${sumkcalsub}")
+        var sumkcal = kcalExcerciseShowB.toInt()
 
         when (v?.id) {
             R.id.add -> {
+
                 sum = sum + 1
                 resultBig = sumkcal*sum
-                amount.setText("$sum")
-                tatal.setText("$resultBig")
+                Log.d("sumkcal add =>","${sum}")
+                amounts.setText("$sum")
+                tatals.setText("$resultBig")
             }
             R.id.sub -> {
                 sum = sum - 1
                 resultBig = resultBig - sumkcalsub
-                if(sum<=1){
-                    sum = 1
-                    resultBig=sumkcalsub
-                }
-                amount.setText("$sum")
-                tatal.setText("$resultBig")
+                Log.d("sumkcal sub =>","${resultBig}")
+                Log.d("sum","${sum}")
+                amounts.setText("$sum")
+                tatals.setText("$resultBig")
             }
             else -> {
             }
@@ -167,4 +170,3 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         finish()
     }
 }
-class datafood (val id:String ="",val nameFoodShowB: String="",val kcalfoodShowB :String="",val sum :Int, val resultBig : Int ,val date :String ,val id_list :String )

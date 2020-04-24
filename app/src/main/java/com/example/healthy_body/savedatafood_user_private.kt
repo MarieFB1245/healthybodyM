@@ -8,29 +8,33 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.healthy_body.calculate.dataex
 import com.example.healthy_body.calculate.savetotalkcal
-import com.example.healthy_body.model.modelSelectExcercise
 import com.example.healthy_body.model.modelSelectFood
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_savedatafood_user.*
+import kotlinx.android.synthetic.main.activity_savedatafood_user.Kcal
+import kotlinx.android.synthetic.main.activity_savedatafood_user.namefood
+import kotlinx.android.synthetic.main.activity_savedatafood_user.savelist
+import kotlinx.android.synthetic.main.activity_savedatafood_user_private.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class savedatafood_user : AppCompatActivity(), View.OnClickListener {
+class savedatafood_user_private : AppCompatActivity(), View.OnClickListener {
+
     private var doubleBackToExitPressedOnce = false
     var nameFoodShowB :String=""
     var kcalfoodShowB :String=""
     var sum = 1
     var resultBig :Int=0
     var UID :String=""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_savedatafood_user)
+        setContentView(R.layout.activity_savedatafood_user_private)
 
         supportActionBar?.title ="Show Select Food"
         UID = intent.getStringExtra("UID")
@@ -46,13 +50,13 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         datetextview.setText(currentDate)
         var add =findViewById<Button>(R.id.add)
         var sub  = findViewById<Button>(R.id.sub)
-        val amount = findViewById<TextView>(R.id.amount)
-        val tatal = findViewById<TextView>(R.id.tatal)
+        val amount = findViewById<TextView>(R.id.amounts)
+        val tatal = findViewById<TextView>(R.id.tatals)
 
         var sumkcal = kcalfoodShowB.toInt()
         resultBig = sumkcal
-        amount.setText("${sum}")
-        tatal.setText("$sumkcal")
+        amounts.setText("${sum}")
+        tatals.setText("$sumkcal")
         add.setOnClickListener(this)
         sub.setOnClickListener(this)
         namefood.setText(nameFoodShow)
@@ -64,7 +68,7 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
-            val intent = Intent(this, selectlistfood_user::class.java)
+            val intent = Intent(this, selectelistfood_user_private::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
             finish()
@@ -82,6 +86,7 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
             finish()
         }
+
 
     }
     fun savetodata(nameFoodShowB: String, kcalfoodShowB: String, resultBig: Int, sum: Int,currentDate:String,id:String) {
@@ -137,8 +142,8 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
             R.id.add -> {
                 sum = sum + 1
                 resultBig = sumkcal*sum
-                amount.setText("$sum")
-                tatal.setText("$resultBig")
+                amounts.setText("$sum")
+                tatals.setText("$resultBig")
             }
             R.id.sub -> {
                 sum = sum - 1
@@ -147,8 +152,8 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
                     sum = 1
                     resultBig=sumkcalsub
                 }
-                amount.setText("$sum")
-                tatal.setText("$resultBig")
+                amounts.setText("$sum")
+                tatals.setText("$resultBig")
             }
             else -> {
             }
@@ -167,4 +172,4 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         finish()
     }
 }
-class datafood (val id:String ="",val nameFoodShowB: String="",val kcalfoodShowB :String="",val sum :Int, val resultBig : Int ,val date :String ,val id_list :String )
+

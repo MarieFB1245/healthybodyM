@@ -37,8 +37,8 @@ import com.example.healthy_body.model.User
 class dashboard_user : AppCompatActivity() {
      lateinit var ref: DatabaseReference
     private var doubleBackToExitPressedOnce = false
-   var UID :String="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
-   //var UID :String=""
+  // var UID :String="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+   var UID :String=""
     var calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,7 @@ class dashboard_user : AppCompatActivity() {
         val datetext  = sdf.format(calendar.getTime())
 
 
-//        UID = intent.getStringExtra("UID")
+        UID = intent.getStringExtra("UID")
 
 
         val arrow = findViewById<ImageView>(R.id.arrow)
@@ -67,13 +67,13 @@ class dashboard_user : AppCompatActivity() {
         //เเก้เเล้ว filter
 
 
-      //  val currentDater = sdf.format(Date())
-      //  val date = SimpleDateFormat("dd-M-yyyy").parse("$currentDater")
-      //  val testtime = date.time
-      //  val tests = testtime.toString()
+        val currentDater = sdf.format(Date())
+        val date = SimpleDateFormat("dd-M-yyyy").parse("$currentDater")
+        val testtime = date.time
+       val tests = testtime.toString()
 
-           // .orderByChild("TimeStamp").startAt("1575133200000")
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+
+        ref .orderByChild("TimeStamp").startAt("1575133200000").addListenerForSingleValueEvent(object : ValueEventListener {
 
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
@@ -237,8 +237,8 @@ class dashboard_user : AppCompatActivity() {
 
     }
 }
-//var TimeStamp:String =""    /* Model */
-data class totalkcallare (var TOTALEXCERCISE:Int=0 ,var TOTALFOOD: Int=0 ,var DATE :String="")
+//  /* Model */
+data class totalkcallare (var TOTALEXCERCISE:Int=0 ,var TOTALFOOD: Int=0 ,var DATE :String="",var TimeStamp:String =""  )
 
 
 

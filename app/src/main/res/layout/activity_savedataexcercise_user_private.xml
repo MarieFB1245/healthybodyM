@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/all_background"
-    tools:context=".savedataexcercise_user">
-
+    tools:context=".savedataexcercise_user_private">
 
     <include
         android:id="@+id/searchView"
@@ -173,8 +172,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tatal" />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
