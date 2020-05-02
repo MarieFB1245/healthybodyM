@@ -1,5 +1,6 @@
 package com.example.healthy_body
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -31,14 +32,22 @@ import com.github.mikephil.charting.components.LimitLine
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.healthy_body.model.User
+import kotlinx.android.synthetic.main.app_dashboard.*
 
 
 class dashboard_user : AppCompatActivity() {
-     lateinit var ref: DatabaseReference
+    var monthYearStr: String=""
+
+    internal var sdf = SimpleDateFormat("M-yyyy")
+    internal var input = SimpleDateFormat("yyyy-MM-dd")
+
+
+    lateinit var ref: DatabaseReference
     private var doubleBackToExitPressedOnce = false
-  // var UID :String="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
-   var UID :String=""
+   var UID :String="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+   //var UID :String=""
     var calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +57,53 @@ class dashboard_user : AppCompatActivity() {
         val datetext  = sdf.format(calendar.getTime())
 
 
-        UID = intent.getStringExtra("UID")
+      // UID = intent.getStringExtra("UID")
+
+        val yeartext = calendar.get(Calendar.YEAR)
+        val monthtext = calendar.get(Calendar.MONTH)+1
+
+
+        Log.e("textdayfirst","$monthtext")
+
+        if(monthtext == 1||monthtext == 3||monthtext == 5||monthtext == 7||monthtext == 8||monthtext == 10||monthtext == 12){
+
+            val textdayfirst =  "1"+"-"+monthtext.toString()+"-"+yeartext.toString()
+            val textdaylast =  "31"+"-"+monthtext.toString()+"-"+yeartext.toString()
+            Log.e("textdayfirst","$textdayfirst")
+            Log.e("textdayfirst","$textdaylast")
+
+            setdate(textdayfirst ,textdaylast)
+
+        }else if (monthtext == 2){
+
+            val textdayfirst =  "1"+"-"+monthtext.toString()+"-"+yeartext.toString()
+            val textdaylast =  "29"+"-"+monthtext.toString()+"-"+yeartext.toString()
+            Log.e("textdayfirst","$textdayfirst")
+            Log.e("textdayfirst","$textdaylast")
+
+            setdate(textdayfirst ,textdaylast)
+
+
+
+        }else{
+
+            val textdayfirst =  "1"+"-"+monthtext.toString()+"-"+yeartext.toString()
+            val textdaylast =  "30"+"-"+monthtext.toString()+"-"+yeartext.toString()
+            Log.e("textdayfirst","$textdayfirst")
+            Log.e("textdayfirst","$textdaylast")
+
+            setdate(textdayfirst ,textdaylast)
+
+
+        }
+
+        /*   val currentDater = sdf.format(Date())
+           val date = SimpleDateFormat("dd-M-yyyy").parse("$currentDater")
+           val testtime = date.time
+           val tests = testtime.toString()
+   */
+
+
 
 
         val arrow = findViewById<ImageView>(R.id.arrow)
@@ -61,19 +116,73 @@ class dashboard_user : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        monthyaerselect.setOnClickListener {
+            val pickerDialog = datepickerdialog()
+            pickerDialog.setListener(DatePickerDialog.OnDateSetListener { datePicker, year, month, i2 ->
+                monthYearStr = year.toString() + "-" + (month + 1) + "-" + i2
+
+                val year = year
+                val month =  month
+
+                if(month == 1 ||month == 3 ||month == 5 ||month == 7 ||month == 8 ||month == 10 ||month == 12){
+                    val textdayfirst =  "1"+"-"+month.toString()+"-"+year.toString()
+                    val textdaylast =  "31"+"-"+month.toString()+"-"+year.toString()
+                    Log.e("textdayfirst","$textdayfirst")
+                    Log.e("textdayfirst","$textdaylast")
+
+                    setdate(textdayfirst ,textdaylast)
+                }else if (month == 2){
+                    val textdayfirst =  "1"+"-"+month.toString()+"-"+year.toString()
+                    val textdaylast =  "29"+"-"+month.toString()+"-"+year.toString()
+                    Log.e("textdayfirst","$textdayfirst")
+                    Log.e("textdayfirst","$textdaylast")
+
+                    setdate(textdayfirst ,textdaylast)
+                }else{
+
+                    val textdayfirst =  "1"+"-"+month.toString()+"-"+year.toString()
+                    val textdaylast =  "30"+"-"+month.toString()+"-"+year.toString()
+                    Log.e("textdayfirst","$textdayfirst")
+                    Log.e("textdayfirst","$textdaylast")
+
+                    setdate(textdayfirst ,textdaylast)
+
+                }
+
+            })
+            pickerDialog.show(supportFragmentManager, "MonthYearPickerDialog")
+        }
+
+
+
+
+
+
+    }
+
+    private fun setdate(textdayfirst: String="", textdaylast: String="") {
+
+        var datefrist = SimpleDateFormat("dd-M-yyyy").parse("$textdayfirst")
+        var testtimefrist = datefrist.time
+        var testsfrist = testtimefrist.toString()
+        Log.e("textdayfirst","$testsfrist")
+        var datelast = SimpleDateFormat("dd-M-yyyy").parse("$textdaylast")
+        var testtimelast = datelast.time
+        var testslast = testtimelast.toString()
+        Log.e("textdayfirst","$testslast")
+
+        loaddatachar(testsfrist,testslast)
+
+
+    }
+
+    private fun loaddatachar(testsfrist: String="", testslast: String="") {
+
+
+
         ref = FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${UID}")
-
-
-        //เเก้เเล้ว filter
-
-
-        val currentDater = sdf.format(Date())
-        val date = SimpleDateFormat("dd-M-yyyy").parse("$currentDater")
-        val testtime = date.time
-       val tests = testtime.toString()
-
-
-        ref .orderByChild("TimeStamp").startAt("1575133200000").addListenerForSingleValueEvent(object : ValueEventListener {
+        ref.orderByChild("TimeStamp").startAt(testsfrist).endAt(testslast).addListenerForSingleValueEvent(object : ValueEventListener {
 
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
@@ -148,7 +257,7 @@ class dashboard_user : AppCompatActivity() {
 
                                 Log.e("p0","${p0}")
 
-                              val textTDEE = p0.getValue(Userlimit::class.java)
+                                val textTDEE = p0.getValue(Userlimit::class.java)
                                 var maxCapacity = textTDEE!!.TDEE
                                 val ll = LimitLine(maxCapacity!!.toFloat(), "TDEE")
                                 ll.setTextColor(Color.WHITE)
@@ -192,7 +301,6 @@ class dashboard_user : AppCompatActivity() {
                         barChartView.getXAxis().setTextColor(Color.WHITE);
                         barChartView.getLegend().setTextColor(Color.WHITE);
 
-                        seetdata(bardataset,bardatasets)
                         j=j+1
                         Log.e("j","$j")
                         barChartView.invalidate()
@@ -204,25 +312,24 @@ class dashboard_user : AppCompatActivity() {
 
 
                 }else{
-                    Log.e("error","don have")
+                    SweetAlertDialog(this@dashboard_user, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("ไม่พบข้อมูล!")
+                        .setContentText("กรุณากรอกข้อมูลให้ถูกต้อง")
+                        .setConfirmText("ตกลง")
+                        .showCancelButton(false)
+                        .setCancelClickListener { sDialog -> sDialog.cancel()
+                        }
+                        .show()
                 }
             }
 
-            private fun seetdata(bardataset: BarDataSet,bardatasets:BarDataSet) {
-                Log.e("bardataset","${bardataset}")
-                Log.e("bardatasets","${bardatasets}")
 
 
-
-
-            }
 
             override fun onCancelled(p0: DatabaseError) {}
         })
-
-
-
     }
+
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
