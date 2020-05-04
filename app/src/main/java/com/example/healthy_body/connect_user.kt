@@ -11,6 +11,12 @@ import android.widget.Toast
 import cn.pedant.SweetAlert.SweetAlertDialog
 import java.util.*
 import kotlin.concurrent.schedule
+import kotlin.concurrent.timerTask
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 class connect_user : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
@@ -21,6 +27,8 @@ class connect_user : AppCompatActivity() {
             if (haveNetwork()){
 
                     Intent()
+
+
 
 
             } else if (!haveNetwork()) {
@@ -63,14 +71,17 @@ class connect_user : AppCompatActivity() {
         finish()
     }
 
+
+
     override fun onBackPressed() {
+
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
             return
         }
 
         this.doubleBackToExitPressedOnce = false
-        finish()
+
 
 
 

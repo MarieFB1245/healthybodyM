@@ -32,6 +32,7 @@ import com.github.mikephil.charting.components.LimitLine
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.core.view.isVisible
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.healthy_body.model.User
 import kotlinx.android.synthetic.main.app_dashboard.*
@@ -46,8 +47,8 @@ class dashboard_user : AppCompatActivity() {
 
     lateinit var ref: DatabaseReference
     private var doubleBackToExitPressedOnce = false
-   var UID :String="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
-   //var UID :String=""
+  // var UID :String="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+   var UID :String=""
     var calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +58,7 @@ class dashboard_user : AppCompatActivity() {
         val datetext  = sdf.format(calendar.getTime())
 
 
-      // UID = intent.getStringExtra("UID")
+       UID = intent.getStringExtra("UID")
 
         val yeartext = calendar.get(Calendar.YEAR)
         val monthtext = calendar.get(Calendar.MONTH)+1
@@ -185,7 +186,10 @@ class dashboard_user : AppCompatActivity() {
         ref.orderByChild("TimeStamp").startAt(testsfrist).endAt(testslast).addListenerForSingleValueEvent(object : ValueEventListener {
 
             override fun onDataChange(p0: DataSnapshot) {
+                Log.d("DataSnapshot", p0.toString())
                 if(p0.exists()){
+
+
                     var j=0
 
                     val totalfood = ArrayList<BarEntry>()
@@ -283,7 +287,6 @@ class dashboard_user : AppCompatActivity() {
                         bardata.setBarWidth(0.30f)
 
 
-
                         barChartView.getXAxis().setAxisMinimum(0f)
                         barChartView.getXAxis().setAxisMaximum(0+barChartView.getBarData().getGroupWidth(groupspace,barSpace)*j+1)
                         barChartView.getAxisLeft().setAxisMinimum(0f)
@@ -303,7 +306,10 @@ class dashboard_user : AppCompatActivity() {
 
                         j=j+1
                         Log.e("j","$j")
+                        barChartView.isVisible=true
                         barChartView.invalidate()
+
+
                     }
 
 
@@ -312,6 +318,7 @@ class dashboard_user : AppCompatActivity() {
 
 
                 }else{
+                    barChartView.isVisible=false
                     SweetAlertDialog(this@dashboard_user, SweetAlertDialog.ERROR_TYPE)
                         .setTitleText("ไม่พบข้อมูล!")
                         .setContentText("กรุณากรอกข้อมูลให้ถูกต้อง")
