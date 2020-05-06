@@ -50,7 +50,7 @@ var KEY :String=""
 
 
         arrow.setOnClickListener {
-            val intent = Intent(this, setting_user::class.java)
+            val intent = Intent(this, Home_User::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
             finish()

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/red_button_background"
+    tools:context=".HOME_listfood_Fragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/R1"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+
+        android:background="@drawable/red_button_background"
+        >
+        <RelativeLayout
+            android:id="@+id/a"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/Linone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+        <TextView
+            android:id="@+id/TVam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="จำนวนรายการที่เลือก"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/TVcal"
+            android:layout_below="@+id/TVam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="เเคลทั้งหมด"
+            ></TextView>
+        </LinearLayout>
+
+            <LinearLayout
+            android:id="@+id/Lintwo"
+            android:layout_toRightOf="@id/Linone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/amtwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                ></TextView>
+
+
+            <TextView
+                android:id="@+id/caltwo"
+                android:layout_below="@+id/TVam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                ></TextView>
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Linthree"
+                android:layout_toRightOf="@id/Lintwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/TVamtwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="รายการ"
+                    ></TextView>
+                <TextView
+                    android:id="@+id/TVcaltwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="kcal"
+                    ></TextView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/Linfour"
+               android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                android:paddingRight="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/food"
+                    ></ImageView>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/tt"
+            android:layout_below="@id/a"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#b3b3b3"
+            android:layout_margin="10dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/tt"
+            android:id="@+id/fragListRecycleVeiew"
+            app_mt_speechMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.51" />
+
+    </RelativeLayout>
+</ScrollView>

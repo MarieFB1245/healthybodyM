@@ -37,7 +37,7 @@ class list_edit_food_private : AppCompatActivity() {
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
         arrow.setOnClickListener {
-            val intent = Intent(this, setting_user::class.java)
+            val intent = Intent(this, Home_User::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
             finish()

@@ -36,76 +36,136 @@ class Home_User : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home__user)
 
-        myRef = FirebaseDatabase.getInstance().reference
         var UID: String = intent.getStringExtra("UID")
-        val TDEEshow = findViewById<TextView>(R.id.numberTDEE)
-        val BMIshow = findViewById<TextView>(R.id.numberBMI)
-        val BMRshow = findViewById<TextView>(R.id.numberBMR
-        )
 
-        signout.setOnClickListener {
-            signout()
-            finish()
-        }
 
-        buttonRe.setOnClickListener {
-            val intent = Intent(this,dashboard_user::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
-        }
 
-        selectdata_totalkcal(UID).getdatatotal{excercise,food ->
+        val textFragment = HOME_Fragment()
+        val bundle = Bundle()
+        bundle.putString("UID",UID)
+        textFragment.setArguments(bundle)
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
 
-           var Food = food.toInt()
-           var  Workout = excercise.toInt()
+        transaction.replace(R.id.fragment_container,textFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+        bottom_navigation.menu.getItem(0).isEnabled = false
 
-            setupPieChart(Food,Workout)
-}
 
-        val progest  = ProgressDialog(this,R.style.MyTheme)
-        progest.setCancelable(false)
-        progest.show()
 
-        Log.e("pass","selectdata_totalkcal")
-        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val map = dataSnapshot.value as Map<*, *>?
-                val map1 = dataSnapshot.child("users").child(UID).value as Map<*, *>?
-                val BMI = map1!!["bmis"].toString()
-                val BMR = map1!!["BMR"].toString()
-                val TDEE = map1["TDEE"].toString()
-                if(BMI !=""){
-                    progest.cancel()
-                    TDEEshow.text = TDEE
-                    BMIshow.text = BMI
-                    BMRshow.text = BMR
-                }
+        bottom_navigation.setOnNavigationItemSelectedListener {item ->
+            when(item.itemId){
+                R.id.item1 ->{
+                    bottom_navigation.menu.getItem(0).isEnabled = false
+                    bottom_navigation.menu.getItem(1).isEnabled = true
+                    val textFragment = HOME_Fragment()
+                    val bundle = Bundle()
+                    bundle.putString("UID",UID)
+                    textFragment.setArguments(bundle)
+                    val manager = supportFragmentManager
+                    val transaction = manager.beginTransaction()
+
+                    transaction.replace(R.id.fragment_container,textFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+
+                    return@setOnNavigationItemSelectedListener true
+
+                }R.id.item2 -> {
+                bottom_navigation.menu.getItem(1).isEnabled = false
+                bottom_navigation.menu.getItem(0).isEnabled = true
+               val textFragment = SETTING_Fragment()
+                val manager = supportFragmentManager
+                val transaction = manager.beginTransaction()
+                val bundle = Bundle()
+                bundle.putString("UID",UID)
+                textFragment.setArguments(bundle)
+                transaction.replace(R.id.fragment_container,textFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+                return@setOnNavigationItemSelectedListener true
+            }else ->{
+                false
+            }
+
 
             }
-            override fun onCancelled(databaseError: DatabaseError) {
 
-            }
-        })
-        bottonop.setOnClickListener {
-            val intent = Intent(this,setting_user::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
-        }
-        addworkout.setOnClickListener {
-            val intent = Intent(this,selectlistexcercise_user::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
+
         }
 
-        addfood.setOnClickListener{
-            val intent = Intent(this,selectlistfood_user::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
-        }
+
+        /* myRef = FirebaseDatabase.getInstance().reference
+         var UID: String = intent.getStringExtra("UID")
+         val TDEEshow = findViewById<TextView>(R.id.numberTDEE)
+         val BMIshow = findViewById<TextView>(R.id.numberBMI)
+         val BMRshow = findViewById<TextView>(R.id.numberBMR
+         )
+
+         signout.setOnClickListener {
+             signout()
+             finish()
+         }
+
+         buttonRe.setOnClickListener {
+             val intent = Intent(this,dashboard_user::class.java)
+             intent.putExtra("UID",UID)
+             startActivity(intent)
+             finish()
+         }
+
+         selectdata_totalkcal(UID).getdatatotal{excercise,food ->
+
+            var Food = food.toInt()
+            var  Workout = excercise.toInt()
+
+             setupPieChart(Food,Workout)
+ }
+
+         val progest  = ProgressDialog(this,R.style.MyTheme)
+         progest.setCancelable(false)
+         progest.show()
+
+         Log.e("pass","selectdata_totalkcal")
+         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                 val map = dataSnapshot.value as Map<*, *>?
+                 val map1 = dataSnapshot.child("users").child(UID).value as Map<*, *>?
+                 val BMI = map1!!["bmis"].toString()
+                 val BMR = map1!!["BMR"].toString()
+                 val TDEE = map1["TDEE"].toString()
+                 if(BMI !=""){
+                     progest.cancel()
+                     TDEEshow.text = TDEE
+                     BMIshow.text = BMI
+                     BMRshow.text = BMR
+                 }
+
+             }
+             override fun onCancelled(databaseError: DatabaseError) {
+
+             }
+         })
+         bottonop.setOnClickListener {
+             val intent = Intent(this,setting_user::class.java)
+             intent.putExtra("UID",UID)
+             startActivity(intent)
+             finish()
+         }
+         addworkout.setOnClickListener {
+             val intent = Intent(this,selectlistexcercise_user::class.java)
+             intent.putExtra("UID",UID)
+             startActivity(intent)
+             finish()
+         }
+
+         addfood.setOnClickListener{
+             val intent = Intent(this,selectlistfood_user::class.java)
+             intent.putExtra("UID",UID)
+             startActivity(intent)
+             finish()
+         }*/
 
 
 
@@ -138,7 +198,7 @@ class Home_User : AppCompatActivity() {
 
     }
 
-
+/*
     private fun setupPieChart(Food:Int ,Workout:Int) {
 
          val peercenData = intArrayOf(Food, Workout)
@@ -177,5 +237,5 @@ class Home_User : AppCompatActivity() {
         val intent = Intent(this, Login_user::class.java)
         myAut.signOut()
         startActivity(intent)
-    }
+    }*/
 }

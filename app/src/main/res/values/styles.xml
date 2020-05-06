@@ -48,4 +48,13 @@
         <item name="colorAccent">@color/colorcarenda</item>
     </style>
 
+
+    <style name="navTextInactive" parent="@style/TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="navTextActive" parent="@style/TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">15sp</item>
+    </style>
+
 </resources>
