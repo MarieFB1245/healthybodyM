@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import cn.pedant.SweetAlert.SweetAlertDialog
@@ -31,12 +32,12 @@ class Home_User : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
     private lateinit var myRef: DatabaseReference
     private var myAut = FirebaseAuth.getInstance()
-    //val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+    val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home__user)
 
-        var UID: String = intent.getStringExtra("UID")
+       // var UID: String = intent.getStringExtra("UID")
 
 
 
@@ -57,6 +58,7 @@ class Home_User : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener {item ->
             when(item.itemId){
                 R.id.item1 ->{
+                    home_user.setBackgroundResource(R.drawable.backgroud_status )
                     bottom_navigation.menu.getItem(0).isEnabled = false
                     bottom_navigation.menu.getItem(1).isEnabled = true
                     val textFragment = HOME_Fragment()
@@ -73,6 +75,7 @@ class Home_User : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
 
                 }R.id.item2 -> {
+                home_user.setBackgroundResource(R.drawable.backgroud_status )
                 bottom_navigation.menu.getItem(1).isEnabled = false
                 bottom_navigation.menu.getItem(0).isEnabled = true
                val textFragment = SETTING_Fragment()

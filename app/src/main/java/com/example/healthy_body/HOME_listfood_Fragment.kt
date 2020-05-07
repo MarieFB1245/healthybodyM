@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.healthy_body.calculate.dateselect_totalvalue
 import com.example.healthy_body.calculate.selectdata_totalkcal
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
@@ -47,8 +48,9 @@ class HOME_listfood_Fragment : Fragment() {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_home_listfood_, container, false)
         val UID = arguments!!.getString("UID")
+        val Timeargument = arguments!!.getString("time")
         myRef = FirebaseDatabase.getInstance().reference
-
+Log.e("timeagument_listfood",Timeargument)
         val progest  = ProgressDialog(this@HOME_listfood_Fragment.context,R.style.MyTheme)
         progest.setCancelable(false)
         progest.show()
@@ -59,7 +61,7 @@ class HOME_listfood_Fragment : Fragment() {
         var adapters = GroupAdapter<ViewHolder>()
         //mRecycleVeiew.adapter = adapters
 
-        myRef = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID.toString()}").child("$currentDate")
+        myRef = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID.toString()}").child("${Timeargument.toString()}")
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.d("p0", dataSnapshot.toString())
@@ -79,12 +81,14 @@ class HOME_listfood_Fragment : Fragment() {
 
 
                     }
-                    selectdata_totalkcal(UID.toString()).getdatatotal{ excercise, food ->
+
+                    dateselect_totalvalue(UID.toString(),Timeargument.toString()).callvalue{ excercise, food ->
                         var Food = food.toInt()
                         var  Workout = excercise.toInt()
-                        v.caltwo.setText(Food.toString())
+                        v.caltwo.setText(Workout.toString())
                         progest.cancel()
                     }
+
 
                 }else{
                     progest.cancel()

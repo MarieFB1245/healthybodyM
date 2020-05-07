@@ -10,12 +10,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.healthy_body.calculate.dateselect_totalvalue
 import com.example.healthy_body.calculate.selectdata_totalkcal
 import com.example.healthy_body.model.modellistexcercise
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.activity_list_edit_food.*
 import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
 import kotlinx.android.synthetic.main.fragment_home_listexcersice_.*
 import kotlinx.android.synthetic.main.fragment_home_listfood_.view.*
@@ -51,7 +53,8 @@ class HOME_listexcersice_Fragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_home_listexcersice_, container, false)
         val UID = arguments!!.getString("UID")
          myRef = FirebaseDatabase.getInstance().reference
-
+        val Timeargument = arguments!!.getString("time")
+        Log.e("timeagument_listexcercise",Timeargument)
         val progest  = ProgressDialog(this.context,R.style.MyTheme)
         progest.setCancelable(false)
         progest.show()
@@ -62,7 +65,7 @@ class HOME_listexcersice_Fragment : Fragment() {
         val currentDate = sdf.format(Date())
         var adapters = GroupAdapter<ViewHolder>()
         //mRecycleVeiew.adapter = adapters
-        myRef = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID.toString()}").child("$currentDate")
+        myRef = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID.toString()}").child("${Timeargument.toString()}")
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.d("p0", dataSnapshot.toString())
@@ -81,12 +84,14 @@ class HOME_listexcersice_Fragment : Fragment() {
 
 
                     }
-                    selectdata_totalkcal(UID.toString()).getdatatotal{ excercise, food ->
+
+                    dateselect_totalvalue(UID.toString(),Timeargument.toString()).callvalue{ excercise, food ->
                         var Food = food.toInt()
                         var  Workout = excercise.toInt()
                         v.caltwo.setText(Workout.toString())
                         progest.cancel()
                     }
+
 
                 }else{
                     progest.cancel()

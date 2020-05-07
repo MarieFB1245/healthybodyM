@@ -2,9 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/red_button_background"
+    android:background="@drawable/background_object"
     tools:context=".HOME_listfood_Fragment">
 
 
@@ -16,7 +16,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
 
-        android:background="@drawable/red_button_background"
+
         >
         <RelativeLayout
             android:id="@+id/a"

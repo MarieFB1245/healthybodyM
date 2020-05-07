@@ -6,12 +6,14 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.isVisible
+import com.example.healthy_body.calculate.dateselect_totalvalue
 import com.example.healthy_body.calculate.selectdata_totalkcal
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -19,6 +21,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_home_listfood_.*
+import kotlinx.android.synthetic.main.fragment_home_listfood_.view.*
 import kotlinx.android.synthetic.main.fragment_home_status_.*
 import kotlinx.android.synthetic.main.fragment_home_status_.view.*
 import java.util.ArrayList
@@ -46,6 +49,8 @@ class HOME_status_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var UID = arguments!!.getString("UID")
+        val Timeargument = arguments!!.getString("time")
+        Log.e("timeagument_status",Timeargument)
         val progest  = ProgressDialog(this@HOME_status_Fragment.context,R.style.MyTheme)
         progest.setCancelable(false)
         progest.show()
@@ -73,8 +78,7 @@ class HOME_status_Fragment : Fragment() {
         val BMIshow = v.findViewById<TextView>(R.id.numBMI)
         val BMRshow = v.findViewById<TextView>(R.id.numBMR)
 
-        selectdata_totalkcal(UID.toString()).getdatatotal{ excercise, food ->
-
+        dateselect_totalvalue(UID.toString(),Timeargument.toString()).callvalue{ excercise, food ->
             var Food = food.toInt()
             var  Workout = excercise.toInt()
 
@@ -113,10 +117,7 @@ class HOME_status_Fragment : Fragment() {
                 chart.animateY(500)
                 chart.invalidate()
             }
-
-
         }
-
 
 
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {

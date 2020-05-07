@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/R1"
-        android:background="@drawable/red_button_background"
+        android:background="@drawable/background_object"
         >
 
         <RelativeLayout
@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ค่าปริมาณที่ใช้เเต่ละวัน"
-                    android:textColor="#ffffff"
+                    android:textColor="#000"
                     android:textSize="12dp"
                     ></TextView>
 
@@ -75,7 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(TDEE)"
-                    android:textColor="#ffffff"
+                    android:textColor="#a6a6a6"
                     android:textSize="10dp"
                     ></TextView>
             </LinearLayout>
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:layout_weight="1"
-                    android:textColor="#ffffff"
+                    android:textColor="#000"
                     android:gravity="center_horizontal"
                     android:textSize="20dp"
                     ></TextView>
@@ -103,7 +103,7 @@
                     android:text="kcal"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:textColor="#ffffff"
+                    android:textColor="#000"
                     android:textSize="20dp"
                     ></TextView>
             </LinearLayout>
@@ -131,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ค่าปริมาณพลังงานพื้นฐาน"
-                    android:textColor="#ffffff"
+                    android:textColor="#000"
                     android:textSize="12dp"
                     ></TextView>
 
@@ -142,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(BMR)"
-                    android:textColor="#ffffff"
+                    android:textColor="#a6a6a6"
                     android:textSize="10dp"
                     ></TextView>
             </LinearLayout>
@@ -159,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:layout_weight="1"
-                    android:textColor="#ffffff"
+                    android:textColor="#000"
                     android:gravity="center_horizontal"
                     android:textSize="20dp"
                     ></TextView>
@@ -170,7 +170,7 @@
                     android:text="kcal"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:textColor="#ffffff"
+                    android:textColor="#000"
                     android:textSize="20dp"
                     ></TextView>
             </LinearLayout>
@@ -198,7 +198,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ค่าดัชนีมวลกาย "
-                    android:textColor="#ffffff"
+                    android:textColor="#000"
                     android:textSize="12dp"
                     ></TextView>
 
@@ -209,7 +209,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(BMI)"
-                    android:textColor="#ffffff"
+                    android:textColor="#a6a6a6"
                     android:textSize="10dp"
                     ></TextView>
             </LinearLayout>
@@ -227,7 +227,7 @@
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:layout_weight="1"
-                    android:textColor="#ffffff"
+                    android:textColor="#000"
                     android:gravity="center_horizontal"
                     android:textSize="20dp"
                     ></TextView>

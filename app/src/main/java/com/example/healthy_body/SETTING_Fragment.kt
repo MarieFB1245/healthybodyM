@@ -94,7 +94,7 @@ class SETTING_Fragment : Fragment() {
 
 
             }
-            v.aamy_recycler_view.adapter = adapter
+            v.setting_user.adapter = adapter
         }
 
         return v

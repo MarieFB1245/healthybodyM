@@ -71,7 +71,7 @@ class editinformation(val UID:String,val firstname :String ,val lastname : Strin
             if (Level_Workout == "น้อย หรือไม่ค่อยออกกำลังกาย") {
                 val resultTDEE = (BMR * 1.2)
                 val reTDEE = Math.round(resultTDEE)
-                val TDEE = reTDEE - 500
+                val TDEE = reTDEE
                 val childUpdates = HashMap<String, Long>()
                 childUpdates.put("TDEE", TDEE)
                 myRef.updateChildren(childUpdates as Map<String, Any>)
@@ -80,7 +80,7 @@ class editinformation(val UID:String,val firstname :String ,val lastname : Strin
             } else if (Level_Workout == "ปานกลาง ออกกำลังกาย 1-3 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.375)
                 val reTDEE = Math.round(resultTDEE)
-                val TDEE = reTDEE - 500
+                val TDEE = reTDEE
                 val childUpdates = HashMap<String, Long>()
                 childUpdates.put("TDEE", TDEE)
                 myRef.updateChildren(childUpdates as Map<String, Any>)
@@ -89,7 +89,7 @@ class editinformation(val UID:String,val firstname :String ,val lastname : Strin
             } else if (Level_Workout == "ปานกลาง ออกกำลังกาย 4-5 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.55)
                 val reTDEE = Math.round(resultTDEE)
-                val TDEE = reTDEE - 500
+                val TDEE = reTDEE
                 myRef.child("TDEE").setValue(TDEE)
                 val childUpdates = HashMap<String, Long>()
                 childUpdates.put("TDEE", TDEE)
@@ -99,7 +99,7 @@ class editinformation(val UID:String,val firstname :String ,val lastname : Strin
             } else if (Level_Workout == "หนัก ออกกำลังกาย 6-7 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.7)
                 val reTDEE = Math.round(resultTDEE)
-                val TDEE = reTDEE - 500
+                val TDEE = reTDEE
                 val childUpdates = HashMap<String, Long>()
                 childUpdates.put("TDEE", TDEE)
                 myRef.updateChildren(childUpdates as Map<String, Any>)
@@ -108,7 +108,7 @@ class editinformation(val UID:String,val firstname :String ,val lastname : Strin
             } else {
                 val resultTDEE = (BMR * 1.9)
                 val reTDEE = Math.round(resultTDEE)
-                val TDEE = reTDEE - 500
+                val TDEE = reTDEE
                 val childUpdates = HashMap<String, Long>()
                 childUpdates.put("TDEE", TDEE)
                 myRef.updateChildren(childUpdates as Map<String, Any>)
@@ -129,7 +129,7 @@ class editinformation(val UID:String,val firstname :String ,val lastname : Strin
             if (Level_Workout ==  "น้อย หรือไม่ค่อยออกกำลังกาย") {
                 val resultTDEE = (BMR * 1.2)
                 val reTDEE = Math.round(resultTDEE)
-                val TDEE = reTDEE - 500
+                val TDEE = reTDEE
                 val childUpdates = HashMap<String, Long>()
                 childUpdates.put("TDEE", TDEE)
                 myRef.updateChildren(childUpdates as Map<String, Any>)
@@ -138,7 +138,7 @@ class editinformation(val UID:String,val firstname :String ,val lastname : Strin
             } else if (Level_Workout == "ปานกลาง ออกกำลังกาย 1-3 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.375)
                 val reTDEE = Math.round(resultTDEE)
-                val TDEE = reTDEE - 500
+                val TDEE = reTDEE
                 val childUpdates = HashMap<String, Long>()
                 childUpdates.put("TDEE", TDEE)
                 myRef.updateChildren(childUpdates as Map<String, Any>)
@@ -147,7 +147,7 @@ class editinformation(val UID:String,val firstname :String ,val lastname : Strin
             } else if (Level_Workout == "ปานกลาง ออกกำลังกาย 4-5 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.55)
                 val reTDEE = Math.round(resultTDEE)
-                val TDEE = reTDEE - 500
+                val TDEE = reTDEE
                 val childUpdates = HashMap<String, Long>()
                 childUpdates.put("TDEE", TDEE)
                 myRef.updateChildren(childUpdates as Map<String, Any>)
@@ -156,7 +156,7 @@ class editinformation(val UID:String,val firstname :String ,val lastname : Strin
             } else if (Level_Workout == "หนัก ออกกำลังกาย 6-7 ครั้งต่อสัปดาห์") {
                 val resultTDEE = (BMR * 1.7)
                 val reTDEE = Math.round(resultTDEE)
-                val TDEE = reTDEE - 500
+                val TDEE = reTDEE
                 val childUpdates = HashMap<String, Long>()
                 childUpdates.put("TDEE", TDEE)
                 myRef.updateChildren(childUpdates as Map<String, Any>)
@@ -165,7 +165,7 @@ class editinformation(val UID:String,val firstname :String ,val lastname : Strin
             } else {
                 val resultTDEE = (BMR * 1.9)
                 val reTDEE = Math.round(resultTDEE)
-                val TDEE = reTDEE - 500
+                val TDEE = reTDEE
                 val childUpdates = HashMap<String, Long>()
                 childUpdates.put("TDEE", TDEE)
                 myRef.updateChildren(childUpdates as Map<String, Any>)

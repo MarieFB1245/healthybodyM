@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Home_User"
     android:id="@+id/home_user"
-    android:background="@drawable/all_background"
+    android:background="@drawable/backgroud_status"
     >
 
     <LinearLayout
