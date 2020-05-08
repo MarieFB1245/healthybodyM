@@ -85,7 +85,7 @@ Log.e("timeagument_listfood",Timeargument)
                     dateselect_totalvalue(UID.toString(),Timeargument.toString()).callvalue{ excercise, food ->
                         var Food = food.toInt()
                         var  Workout = excercise.toInt()
-                        v.caltwo.setText(Workout.toString())
+                        v.caltwo.setText(Food.toString())
                         progest.cancel()
                     }
 
@@ -129,7 +129,7 @@ Log.e("timeagument_listfood",Timeargument)
     class Foodlist(val listfood: dataselectfood) : Item<ViewHolder>() {
         override fun bind(viewHolder: ViewHolder, position: Int) {
             viewHolder.itemView.name.text= listfood.nameFoodShowB
-            viewHolder.itemView.kcal.text = listfood.kcalfoodShowB
+            viewHolder.itemView.kcal.text = listfood.resultBig.toString()
             Log.d("viewHolder", "${viewHolder}")
         }
 

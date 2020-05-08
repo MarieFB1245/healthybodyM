@@ -52,6 +52,8 @@ var KEY :String=""
         arrow.setOnClickListener {
             val intent = Intent(this, Home_User::class.java)
             intent.putExtra("UID",UID)
+            val callbackAc ="1"
+            intent.putExtra("callbackAc",callbackAc)
             startActivity(intent)
             finish()
         }
@@ -173,8 +175,10 @@ var KEY :String=""
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, setting_user::class.java)
+        val intent = Intent(this, Home_User::class.java)
         intent.putExtra("UID",UID)
+        val callbackAc ="1"
+        intent.putExtra("callbackAc",callbackAc)
         startActivity(intent)
         finish()
 

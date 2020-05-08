@@ -109,7 +109,11 @@
         <activity
             android:name=".edit_information"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar" /> <!-- Theme.AppCompat.DayNight.NoActionBar -->
+            android:theme="@style/AppTheme.NoActionbar" >
+
+
+
+        </activity> <!-- Theme.AppCompat.DayNight.NoActionBar -->
         <activity
             android:name=".setting_user"
             android:screenOrientation="portrait"
@@ -123,11 +127,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
@@ -137,7 +137,10 @@
         <activity
             android:name=".Register_Infirmation"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar" />
+            android:theme="@style/AppTheme.NoActionbar" >
+
+
+        </activity>
         <activity
             android:name=".Register_User"
             android:screenOrientation="portrait"
@@ -147,7 +150,11 @@
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
 

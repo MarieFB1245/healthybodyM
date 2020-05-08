@@ -39,6 +39,8 @@ class list_edit_food_private : AppCompatActivity() {
         arrow.setOnClickListener {
             val intent = Intent(this, Home_User::class.java)
             intent.putExtra("UID",UID)
+            val callbackAc ="1"
+            intent.putExtra("callbackAc",callbackAc)
             startActivity(intent)
             finish()
         }
@@ -101,8 +103,10 @@ class list_edit_food_private : AppCompatActivity() {
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, setting_user::class.java)
+        val intent = Intent(this, Home_User::class.java)
         intent.putExtra("UID",UID)
+        val callbackAc ="1"
+        intent.putExtra("callbackAc",callbackAc)
         startActivity(intent)
         finish()
 

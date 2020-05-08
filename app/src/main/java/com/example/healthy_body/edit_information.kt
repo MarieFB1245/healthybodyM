@@ -15,7 +15,7 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
 import kotlinx.android.synthetic.main.activity_edit_information.*
 
 class edit_information : AppCompatActivity() {
-    //var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
+   // var UID :String="VkIK2UI7lyaH9y0qoLlDLaeRbyM2"
     var UID: String =""
     private var doubleBackToExitPressedOnce = false
     private lateinit var myRef: DatabaseReference
@@ -50,8 +50,11 @@ class edit_information : AppCompatActivity() {
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
+
             val intent = Intent(this, Home_User::class.java)
             intent.putExtra("UID",UID)
+            val callbackAc ="1"
+            intent.putExtra("callbackAc",callbackAc)
             startActivity(intent)
             finish()
         }
@@ -135,6 +138,8 @@ class edit_information : AppCompatActivity() {
 
 fun pass (uid:String=""){
     val intent = Intent(this,Home_User::class.java)
+    val callbackAc ="1"
+    intent.putExtra("callbackAc",callbackAc)
     intent.putExtra("UID",uid)
     startActivity(intent)
     finish()
@@ -146,7 +151,9 @@ fun pass (uid:String=""){
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, setting_user::class.java)
+        val intent = Intent(this, Home_User::class.java)
+        val callbackAc ="1"
+        intent.putExtra("callbackAc",callbackAc)
         intent.putExtra("UID",UID)
         startActivity(intent)
         finish()

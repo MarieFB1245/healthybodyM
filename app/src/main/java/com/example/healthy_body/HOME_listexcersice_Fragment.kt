@@ -20,7 +20,10 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_list_edit_food.*
 import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
 import kotlinx.android.synthetic.main.fragment_home_listexcersice_.*
+import kotlinx.android.synthetic.main.fragment_home_listexcersice_.view.*
 import kotlinx.android.synthetic.main.fragment_home_listfood_.view.*
+import kotlinx.android.synthetic.main.fragment_home_listfood_.view.amtwo
+import kotlinx.android.synthetic.main.fragment_home_listfood_.view.fragListRecycleVeiew
 import kotlinx.android.synthetic.main.list_food.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -88,7 +91,7 @@ class HOME_listexcersice_Fragment : Fragment() {
                     dateselect_totalvalue(UID.toString(),Timeargument.toString()).callvalue{ excercise, food ->
                         var Food = food.toInt()
                         var  Workout = excercise.toInt()
-                        v.caltwo.setText(Workout.toString())
+                        v.caltwoEx.setText(Workout.toString())
                         progest.cancel()
                     }
 
@@ -127,7 +130,7 @@ class HOME_listexcersice_Fragment : Fragment() {
     inner class Excerciselist(val excercise: dataselectexcercise) : Item<ViewHolder>() {
         override fun bind(viewHolder: ViewHolder, position: Int) {
             viewHolder.itemView.name.text = excercise.nameExcerciseShowB
-            viewHolder.itemView.kcal.text = excercise.kcalExcerciseShowB
+            viewHolder.itemView.kcal.text = excercise.resultBig.toString()
             Log.d("viewHolder", "${viewHolder}")
 
 

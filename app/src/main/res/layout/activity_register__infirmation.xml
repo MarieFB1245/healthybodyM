@@ -22,15 +22,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"></include>
     </RelativeLayout>
-
+    <ScrollView
+        android:layout_below="@id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/Rd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
     <LinearLayout
-        android:layout_below="@+id/bar"
         android:layout_marginTop="20dp"
         android:id="@+id/namelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:text="ชื่อจริง"
+            android:paddingLeft="15dp"
+            android:textColor="#ffffff"
+            android:id="@+id/TVFname"
+            >
+        </TextView>
 
         <EditText
             android:layout_weight="1"
@@ -52,9 +70,20 @@
         android:layout_below="@+id/namelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginTop="30sp"
         >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:text="นามสกุล"
+            android:paddingLeft="15dp"
+            android:textColor="#ffffff"
+            android:id="@+id/TVLname"
+            >
+        </TextView>
 
         <EditText
             android:id="@+id/inputLastname"
@@ -69,9 +98,8 @@
             android:textColorHint="#a6a6a6"
            ></EditText>
     </LinearLayout>
-
     <LinearLayout
-        android:id="@+id/layoutweight"
+        android:id="@+id/TVweightandheight"
         android:layout_below="@+id/layoutage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,10 +107,42 @@
         android:layout_marginTop="30sp"
         >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:text="น้ำหนัก"
+            android:layout_weight="1"
+            android:paddingLeft="15dp"
+            android:textColor="#ffffff"
+            android:id="@+id/TVWlayoutweight"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:text="ส่วนสูง"
+            android:layout_weight="1"
+            android:paddingLeft="15dp"
+            android:textColor="#ffffff"
+            android:id="@+id/TVHeight"
+            >
+        </TextView>
+    </LinearLayout>
 
 
 
+    <LinearLayout
+        android:id="@+id/layoutweight"
+        android:layout_below="@+id/TVweightandheight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
 
+        >
         <EditText
             android:id="@+id/inputweight"
             android:layout_weight="1"
@@ -112,12 +172,48 @@
             ></EditText>
     </LinearLayout>
 
+
     <LinearLayout
-        android:id="@+id/layoutheight"
+        android:id="@+id/TVlayoutweight"
         android:layout_below="@+id/layoutweight"
         android:layout_width="match_parent"
-        android:layout_height="45sp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginTop="30sp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:text="อายุ"
+            android:layout_weight="1"
+            android:paddingLeft="15dp"
+            android:textColor="#ffffff"
+            android:id="@+id/TVAge"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:text="เพศ"
+            android:layout_weight="1"
+            android:paddingLeft="15dp"
+            android:textColor="#ffffff"
+            android:id="@+id/TVGender"
+            >
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutheight"
+        android:layout_below="@+id/TVlayoutweight"
+        android:layout_width="match_parent"
+        android:layout_height="45sp"
+
         >
         <EditText
             android:id="@+id/inputage"
@@ -153,9 +249,8 @@
 
     </LinearLayout>
 
-
     <LinearLayout
-        android:id="@+id/layoutgender"
+        android:id="@+id/TVLevelworkout"
         android:layout_below="@+id/layoutheight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -163,11 +258,25 @@
         android:layout_marginTop="30sp"
         >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:text="ระดับการออกกำลังกาย"
+            android:layout_weight="1"
+            android:paddingLeft="15dp"
+            android:textColor="#ffffff"
+            android:id="@+id/TVLevelworkou"
+            >
+        </TextView>
+
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/textlayoutlevelworkout"
-        android:layout_below="@+id/layoutgender"
+        android:layout_below="@+id/TVLevelworkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -243,4 +352,6 @@
             android:background="@drawable/non_color_step_register"
             ></TextView>
     </LinearLayout>
+    </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

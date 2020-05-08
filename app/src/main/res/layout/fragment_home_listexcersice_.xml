@@ -55,15 +55,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0"
+                    android:gravity="center"
                     ></TextView>
 
 
                 <TextView
-                    android:id="@+id/caltwo"
+                    android:id="@+id/caltwoEx"
                     android:layout_below="@+id/TVam"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0"
+                    android:gravity="center"
                     ></TextView>
             </LinearLayout>
 
