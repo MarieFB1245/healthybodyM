@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import androidx.core.view.isVisible
 import com.example.healthy_body.calculate.dateselect_totalvalue
 import kotlinx.android.synthetic.main.activity_list_edit_food.*
 import kotlinx.android.synthetic.main.activity_savedatafood_user.*
@@ -80,6 +81,7 @@ class HOME_Fragment : Fragment() {
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         var data = sdf.format(calendar.getTime())
         timeselect_Fragment=data
+        v.line1.isVisible = true
         v.list_food_fragment.setTextColor(Color.parseColor("#808080"))
         v.status_information_fragment.setTextColor(Color.WHITE)
         v.list_excersice_fragment.setTextColor(Color.parseColor("#808080"))
@@ -98,6 +100,9 @@ Log.e("time","$timeselect_Fragment")
 
 
         v.status_information_fragment.setOnClickListener {
+            v.line1.isVisible = true
+            v.line2.isVisible = false
+            v.line3.isVisible = false
             val relativeLayout = activity!!.findViewById(R.id.home_user) as RelativeLayout
             relativeLayout.setBackgroundResource(R.drawable.backgroud_status )
             v.status_information_fragment.setEnabled(false)
@@ -120,7 +125,9 @@ Log.e("time","$timeselect_Fragment")
 
         }
         v.list_food_fragment.setOnClickListener {
-
+            v.line1.isVisible = false
+            v.line2.isVisible = true
+            v.line3.isVisible = false
          val relativeLayout = activity!!.findViewById(R.id.home_user) as RelativeLayout
             relativeLayout.setBackgroundResource(R.drawable.background_listfood)
 
@@ -146,6 +153,9 @@ Log.e("time","$timeselect_Fragment")
         }
 
         v.list_excersice_fragment.setOnClickListener {
+            v.line1.isVisible = false
+            v.line2.isVisible = false
+            v.line3.isVisible = true
             val relativeLayout = activity!!.findViewById(R.id.home_user) as RelativeLayout
             relativeLayout.setBackgroundResource(R.drawable.background_listexcercise)
             v.list_excersice_fragment.setEnabled(false)

@@ -25,6 +25,7 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_home__user.*
+import kotlinx.android.synthetic.main.fragment_home_.*
 import java.util.ArrayList
 
 class Home_User : AppCompatActivity() {
@@ -32,14 +33,14 @@ class Home_User : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
     private lateinit var myRef: DatabaseReference
     private var myAut = FirebaseAuth.getInstance()
-    //val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+   val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home__user)
 
-       var UID: String = intent.getStringExtra("UID")
+       //var UID: String = intent.getStringExtra("UID")
 
-if( intent.getStringExtra("callbackAc")==null){
+if(intent.getStringExtra("callbackAc")==null){
     val textFragment = HOME_Fragment()
     val bundle = Bundle()
     bundle.putString("UID",UID)
@@ -81,7 +82,7 @@ if( intent.getStringExtra("callbackAc")==null){
                     textFragment.setArguments(bundle)
                     val manager = supportFragmentManager
                     val transaction = manager.beginTransaction()
-
+                    transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right,R.anim.slide_in_right, R.anim.slide_out_left);
                     transaction.replace(R.id.fragment_container,textFragment)
                     transaction.addToBackStack(null)
                     transaction.commit()
@@ -98,6 +99,7 @@ if( intent.getStringExtra("callbackAc")==null){
                 val bundle = Bundle()
                 bundle.putString("UID",UID)
                 textFragment.setArguments(bundle)
+                transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,R.anim.slide_in_right, R.anim.slide_out_left);
                 transaction.replace(R.id.fragment_container,textFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()

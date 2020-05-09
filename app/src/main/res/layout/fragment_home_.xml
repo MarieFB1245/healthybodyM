@@ -35,40 +35,100 @@
 
     </RelativeLayout>
 
+
+
+
+
     <LinearLayout
         android:id="@+id/Layoutselect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/R1"
-        android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:id="@+id/line1"
+                android:visibility="invisible"
+                android:background="#ffff" ></RelativeLayout>
         <TextView
             android:id="@+id/status_information_fragment"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="สถานะของฉัน"
-            android:textColor="#ffffff"
             android:layout_weight="1"
            />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:visibility="invisible"
+                android:id="@+id/line2"
+                android:background="#ffff" ></RelativeLayout>
         <TextView
             android:id="@+id/list_food_fragment"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="รายการอาหาร"
             android:gravity="center"
             android:layout_weight="1"
-           />
 
+           />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:visibility="invisible"
+                android:id="@+id/line3"
+                android:background="#ffff" ></RelativeLayout>
         <TextView
             android:id="@+id/list_excersice_fragment"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_weight="1"
             android:text="รายการกิจกรรม"
            />
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/fragment_container"

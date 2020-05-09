@@ -84,9 +84,11 @@ class HOME_status_Fragment : Fragment() {
 
             if(Food==null && Workout == null){
                 val chart = v.findViewById(R.id.chart) as PieChart
-                chart.isVisible
+                pieimage.isVisible = true
 
             }else{
+                pieimage.isVisible = false
+                chart.isVisible = true
                 val peercenData = intArrayOf(Food, Workout)
                 val pnameFood = arrayOf("อาหาร", "กิจกกรม")
 

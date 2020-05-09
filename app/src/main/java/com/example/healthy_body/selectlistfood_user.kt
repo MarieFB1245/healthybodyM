@@ -6,10 +6,13 @@ import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.provider.MediaStore
 import android.util.Log
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.core.view.isVisible
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.healthy_body.calculate.process_image
 import com.example.healthy_body.model.modellistfood
@@ -46,6 +49,18 @@ class selectlistfood_user : AppCompatActivity() {
 
         Log.e("UID =>","${UID}")
         val adapter = GroupAdapter<ViewHolder>()
+        if (intent.getStringExtra("nametypeStatus") != null){
+            baranimation.isVisible =true
+            val slide_down = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_down)
+            slide_down.setFillAfter(true)
+            baranimation.startAnimation(slide_down);
+
+            Handler().postDelayed({
+                val slide_up = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_up)
+                baranimation.startAnimation(slide_up);
+                baranimation.isVisible = false
+            }, 3000)
+        }
         mRecycleVeiew.adapter = adapter
 
 

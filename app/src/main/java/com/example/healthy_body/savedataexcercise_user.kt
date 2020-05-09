@@ -85,6 +85,7 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
             savetotalkcal(resultBig,nametype,UID,statusdoting,nametypeStatus,date).savetotal()
             val intent = Intent(this,selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
+            intent.putExtra("nametypeStatus",nametypeStatus)
             startActivity(intent)
             finish()
         }

@@ -83,6 +83,7 @@ class savedatafood_user_private : AppCompatActivity(), View.OnClickListener {
             savetotalkcal(resultBig,nametype,UID,statusdoting,nametypeStatus,date).savetotal()
             val intent = Intent(this,selectlistfood_user::class.java)
             intent.putExtra("UID",UID)
+            intent.putExtra("nametypeStatus",nametypeStatus)
             startActivity(intent)
             finish()
         }
