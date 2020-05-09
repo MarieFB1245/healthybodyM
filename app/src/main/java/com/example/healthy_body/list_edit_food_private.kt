@@ -119,7 +119,7 @@ class list_edit_food_private : AppCompatActivity() {
         }
 
         override fun getLayout(): Int {
-            return R.layout.listselect_edit_food
+            return R.layout.listselect_edit_food_private
 
         }
     }

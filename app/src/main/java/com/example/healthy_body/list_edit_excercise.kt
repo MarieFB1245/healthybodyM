@@ -3,6 +3,8 @@ package com.example.healthy_body
 import android.app.DatePickerDialog
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.ColorFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,7 +18,10 @@ import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.activity_list_edit_excercise.*
 import kotlinx.android.synthetic.main.activity_list_edit_food.*
+import kotlinx.android.synthetic.main.activity_list_edit_food.recyclerView
+import kotlinx.android.synthetic.main.activity_list_edit_food.textcalendar
 import kotlinx.android.synthetic.main.listselect_edit_food.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -48,7 +53,7 @@ var KEY :String=""
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
 
-
+        callendaimageEX.setColorFilter(Color.parseColor("#b3b3b3"))
         arrow.setOnClickListener {
             val intent = Intent(this, Home_User::class.java)
             intent.putExtra("UID",UID)
@@ -63,7 +68,7 @@ var KEY :String=""
 
 
         selectdata_totalkcal(UID).getdatatotal{ excercise, food ->
-            numbertotalkcal.setText(excercise)
+            numbertotalkcalEX.setText(excercise)
         }
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
@@ -75,7 +80,7 @@ var KEY :String=""
             }
         }
 
-        textcalendar!!.setOnClickListener(object : View.OnClickListener {
+        callendaimageEX!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 DatePickerDialog(this@list_edit_excercise,
                     R.style.DialogTheme,
@@ -159,7 +164,7 @@ var KEY :String=""
         val data = sdf.format(calendar.getTime())
         loaddata(data)
         dateselect_totalvalue(UID,data).callvalue{ excercise, food ->
-            numbertotalkcal.setText(excercise)
+            numbertotalkcalEX.setText(excercise)
         }
 
     }

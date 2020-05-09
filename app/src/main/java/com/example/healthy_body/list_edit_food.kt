@@ -3,6 +3,7 @@ package com.example.healthy_body
 import android.app.DatePickerDialog
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -47,7 +48,7 @@ class list_edit_food : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         UID = intent.getStringExtra("UID")
-
+        callendaimage.setColorFilter(Color.parseColor("#b3b3b3"))
         val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
@@ -72,7 +73,7 @@ class list_edit_food : AppCompatActivity() {
             var Food = food.toInt()
             var  Workout = excercise.toInt()
 
-            numbertotalkcal.setText(food)
+            numbertotalkcalFOOD.setText(food)
         }
 
 
@@ -86,7 +87,7 @@ class list_edit_food : AppCompatActivity() {
         }
 
 
-        textcalendar!!.setOnClickListener(object : View.OnClickListener {
+        callendaimage!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 DatePickerDialog(this@list_edit_food,
                     R.style.DialogTheme,
@@ -184,7 +185,7 @@ class list_edit_food : AppCompatActivity() {
         //ส่งค่า UID and date  ไป เเล้ว callback กลับมา food excersice
 
         dateselect_totalvalue(UID,data).callvalue{excercise,food ->
-            numbertotalkcal.setText(food)
+            numbertotalkcalFOOD.setText(food)
         }
 
     }

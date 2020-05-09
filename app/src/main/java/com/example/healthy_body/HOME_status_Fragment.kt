@@ -82,11 +82,13 @@ class HOME_status_Fragment : Fragment() {
             var Food = food.toInt()
             var  Workout = excercise.toInt()
 
-            if(Food==null && Workout == null){
+            if(Food== 0 && Workout == 0){
                 val chart = v.findViewById(R.id.chart) as PieChart
-                pieimage.isVisible = true
+                pieimage.isVisible
+                chart.isVisible = false
 
             }else{
+
                 pieimage.isVisible = false
                 chart.isVisible = true
                 val peercenData = intArrayOf(Food, Workout)
