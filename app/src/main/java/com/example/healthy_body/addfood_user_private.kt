@@ -48,7 +48,7 @@ class addfood_user_private : AppCompatActivity(), View.OnClickListener {
 
         add.setOnClickListener(this)
         sub.setOnClickListener(this)
-
+        inputkcal.setTransformationMethod(null)
 
         val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)

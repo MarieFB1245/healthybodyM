@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,27 +17,88 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></include>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="750dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="16dp"
-        android:windowSoftInputMode="adjustPan|adjustResize"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchView"
+        android:background="@drawable/background_object"
+        android:layout_margin="20dp"
+        >
 
-    <ImageView
-        android:id="@+id/addexcercise"
-        android:layout_width="69dp"
-        android:layout_height="69dp"
-        android:layout_marginBottom="24dp"
-        android:src="@drawable/ic_add_circle_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
-        app:layout_constraintStart_toStartOf="parent"></ImageView>
+        <LinearLayout
+            android:id="@+id/List_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="รายการทั้งหมด"
+                ></TextView>
+            <TextView
+                android:id="@+id/list_num_ex"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textSize="20dp"
+                android:text="0"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textSize="15dp"
+                android:text="รายการ"
+                ></TextView>
+
+            <ImageView
+                android:id="@+id/addexcercise"
+                android:layout_weight="1"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:src="@drawable/ic_add_circle_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.935"
+                app:layout_constraintStart_toStartOf="parent"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tt"
+            android:layout_below="@id/List_edit"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#b3b3b3"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_below="@id/tt"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

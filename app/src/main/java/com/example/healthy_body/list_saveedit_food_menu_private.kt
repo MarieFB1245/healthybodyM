@@ -64,7 +64,7 @@ var textamountF :String=""
         textunit.setText(unit)
         texttypeunit.setText(unittype)
 
-
+        kcal.setTransformationMethod(null)
 
 
 

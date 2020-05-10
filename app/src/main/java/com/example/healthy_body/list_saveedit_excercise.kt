@@ -48,6 +48,7 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
         date = intent.getStringExtra("date")
         idfoodShow = intent.getStringExtra("id")
 
+
 Log.e("KEY","${KEY}")
         val textdate = findViewById<TextView>(R.id.date)
         val textanmefood = findViewById<TextView>(R.id.nameexcercise)

@@ -23,7 +23,7 @@ class list_saveedit_excercise_menu_private : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_saveedit_excercise_menu_private)
 
-
+        inputkcal.setTransformationMethod(null)
         UID = intent.getStringExtra("UID")
         id_excercise = intent.getStringExtra("id_excercise")
         name_excercise = intent.getStringExtra("name_excercise")
@@ -33,7 +33,7 @@ class list_saveedit_excercise_menu_private : AppCompatActivity() {
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
         arrow.setOnClickListener {
-            val intent = Intent(this, selectlistexcercise_user::class.java)
+            val intent = Intent(this, list_edit_excercise_private::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
             finish()
@@ -41,7 +41,7 @@ class list_saveedit_excercise_menu_private : AppCompatActivity() {
 
         val inputnameexcercise = findViewById<EditText>(R.id.inputnameexcercise)
         val inputkcal = findViewById<EditText>(R.id.inputkcal)
-
+        inputkcal.setTransformationMethod(null)
         inputnameexcercise.setText(name_excercise)
         inputkcal.setText(kcal)
 
@@ -70,7 +70,7 @@ class list_saveedit_excercise_menu_private : AppCompatActivity() {
                             .setTitleText("ลบเรียบร้อยเเล้ว!")
                             .setContentText("ข้อมูลนี้จะไม่มีอยู่รายการของคุณ!").setConfirmText("ตกลง")
                             .setConfirmClickListener{
-                                val intent = Intent(this, list_edit_food_private::class.java)
+                                val intent = Intent(this, list_edit_excercise_private::class.java)
                                 intent.putExtra("UID",UID)
                                 startActivity(intent)
                                 finish()

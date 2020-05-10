@@ -38,7 +38,7 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
         val arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,SPINNERLST)
         val betterSpinner = findViewById(R.id.inputtypefood) as MaterialBetterSpinner
         betterSpinner.setAdapter(arrayAdapter)
-
+        inputkcal.setTransformationMethod(null)
 
 
 

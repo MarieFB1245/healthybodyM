@@ -51,7 +51,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="numberPassword"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="@+id/buttonaddexceercisee"
         app:layout_constraintHorizontal_bias="0.0"

@@ -30,6 +30,8 @@ class addfood_user_private_Bsetting : AppCompatActivity(), View.OnClickListener 
         val amount = findViewById<TextView>(R.id.textView6)
         amount.setText("${sum}")
 
+
+        inputkcal.setTransformationMethod(null)
         val arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,SPINNERLST)
         val betterSpinner = findViewById(R.id.inputtypefood) as MaterialBetterSpinner
         betterSpinner.setAdapter(arrayAdapter)
@@ -64,7 +66,7 @@ class addfood_user_private_Bsetting : AppCompatActivity(), View.OnClickListener 
             val typefood = betterSpinner.text.toString()
             if(namefood!= ""&&kcal!=""&&unit!=""&&typefood!=""&&this.amount!=null){
                 savemenufood_private(UID,namefood,kcal,unit,typefood,this.amount).save()
-                val intent = Intent(this, selectlistfood_user::class.java)
+                val intent = Intent(this, list_edit_food_private::class.java)
                 intent.putExtra("UID", UID)
                 startActivity(intent)
                 finish()

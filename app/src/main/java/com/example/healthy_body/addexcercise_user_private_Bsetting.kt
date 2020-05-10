@@ -18,7 +18,7 @@ class addexcercise_user_private_Bsetting : AppCompatActivity() {
 
 
         UID = intent.getStringExtra("UID")
-
+        inputkcal.setTransformationMethod(null)
         val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)

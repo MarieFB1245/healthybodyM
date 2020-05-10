@@ -22,7 +22,7 @@ class addexcercise_user : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addexcercise_user)
-
+        inputkcal.setTransformationMethod(null)
         UID = intent.getStringExtra("UID")
         val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)

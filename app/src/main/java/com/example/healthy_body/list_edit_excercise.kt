@@ -147,7 +147,7 @@ var KEY :String=""
     inner class Foodd(val excercise: dataselectexcercise) : Item<ViewHolder>() {
         override fun bind(viewHolder: ViewHolder, position: Int) {
             viewHolder.itemView.name.text= excercise.nameExcerciseShowB
-            viewHolder.itemView.kcal.text = excercise.kcalExcerciseShowB
+            viewHolder.itemView.kcal.text = excercise.resultBig.toString()
             Log.d("viewHolder", "${viewHolder}")
         }
 

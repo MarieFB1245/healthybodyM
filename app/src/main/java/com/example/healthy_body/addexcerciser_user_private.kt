@@ -29,7 +29,7 @@ class addexcerciser_user_private : AppCompatActivity() {
         }
         val inputnameexcercise = findViewById<EditText>(R.id.inputnameexcercise)
         val inputkcal = findViewById<EditText>(R.id.inputkcal)
-
+        inputkcal.setTransformationMethod(null)
         buttonaddexceercisee.setOnClickListener {
             val textnameEX = inputnameexcercise.text.toString()
             val textkcal = inputkcal.text.toString()

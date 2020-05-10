@@ -23,7 +23,7 @@ class list_edit_food_private : AppCompatActivity() {
     private lateinit var ref: DatabaseReference
 
     var UID:String=""
-
+    var listcout :Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_edit_food_private)
@@ -72,6 +72,10 @@ class list_edit_food_private : AppCompatActivity() {
                         if (listfood != null) {
                             adapter.add(Foodprivate(listfood))
                         }
+
+                        listcout= listcout + 1
+                        list_num_food.setText(listcout.toString())
+
                     }
                     adapter.setOnItemClickListener { item, view ->
                         val itemf = item as Foodprivate

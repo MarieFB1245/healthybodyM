@@ -29,7 +29,7 @@ class list_edit_excercise_private : AppCompatActivity() {
     var calendar = Calendar.getInstance()
     var UID :String=""
     var KEY :String=""
-
+    var listcout :Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +74,9 @@ class list_edit_excercise_private : AppCompatActivity() {
                         if (listfood != null) {
                             adapter.add(Foodd(listfood))
                         }
+                        listcout= listcout + 1
+                        list_num_ex.setText(listcout.toString())
+
                     }
                     adapter.setOnItemClickListener { item, view ->
                         val itemf = item as Foodd

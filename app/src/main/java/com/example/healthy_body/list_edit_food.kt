@@ -162,7 +162,7 @@ class list_edit_food : AppCompatActivity() {
     inner class Foodd(var food: dataselectfood) : Item<ViewHolder>() {
         override fun bind(viewHolder: ViewHolder, position: Int) {
             viewHolder.itemView.name.text= food.nameFoodShowB
-            viewHolder.itemView.kcal.text = food.kcalfoodShowB
+            viewHolder.itemView.kcal.text = food.resultBig.toString()
             Log.d("viewHolder", "${viewHolder}")
         }
 
