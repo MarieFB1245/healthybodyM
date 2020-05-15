@@ -76,7 +76,7 @@ class selectlistexcercise_user_private : AppCompatActivity() {
                     }
                     adapter.setOnItemClickListener { item, view ->
                         val excerciseitem = item as Excercise
-                        val intent = Intent(view.context, savedataexcercise_user::class.java)
+                        val intent = Intent(view.context, savedataexcercise_user_private::class.java)
                         intent.putExtra("UID",UID)
                         intent.putExtra("nameexcercise", excerciseitem.excercise.name_excercise)
                         intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)

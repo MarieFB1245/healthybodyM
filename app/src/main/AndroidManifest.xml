@@ -120,6 +120,8 @@
             android:name=".Home_User"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar">
+
+
         </activity>
         <activity
             android:name=".Totalkcal_User"

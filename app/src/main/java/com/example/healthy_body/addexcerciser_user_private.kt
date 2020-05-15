@@ -35,7 +35,7 @@ class addexcerciser_user_private : AppCompatActivity() {
             val textkcal = inputkcal.text.toString()
             if (textnameEX !=""&&textkcal!=""){
                 savemenuexcercise_private(UID,textnameEX,textkcal).saveex()
-                val intent = Intent(this, selectlistexcercise_user::class.java)
+                val intent = Intent(this, selectlistexcercise_user_private::class.java)
                 intent.putExtra("UID", UID)
                 startActivity(intent)
                 finish()

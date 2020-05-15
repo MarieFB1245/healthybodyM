@@ -100,7 +100,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textKcal" />
 
     <TextView
-        android:id="@+id/amount"
+        android:id="@+id/amountnum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
@@ -118,11 +118,11 @@
         android:textColor="#FFFFFF"
         android:text="-"
         android:background="@drawable/subbutton"
-        app:layout_constraintBottom_toBottomOf="@+id/amount"
+        app:layout_constraintBottom_toBottomOf="@+id/amountnum"
         app:layout_constraintEnd_toStartOf="@+id/add"
         app:layout_constraintHorizontal_bias="0.36"
-        app:layout_constraintStart_toEndOf="@+id/amount"
-        app:layout_constraintTop_toTopOf="@+id/amount" />
+        app:layout_constraintStart_toEndOf="@+id/amountnum"
+        app:layout_constraintTop_toTopOf="@+id/amountnum" />
 
     <Button
         android:id="@+id/add"
@@ -131,9 +131,9 @@
         android:text="+"
         android:background="@drawable/addbutton"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/amount"
+        app:layout_constraintBottom_toBottomOf="@+id/amountnum"
         app:layout_constraintStart_toEndOf="@+id/sub"
-        app:layout_constraintTop_toTopOf="@+id/amount" />
+        app:layout_constraintTop_toTopOf="@+id/amountnum" />
 
     <TextView
         android:id="@+id/texttatalkcal"

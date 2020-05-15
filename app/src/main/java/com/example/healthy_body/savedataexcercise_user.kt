@@ -70,7 +70,7 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
-            val intent = Intent(this, selectlistfood_user::class.java)
+            val intent = Intent(this, selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
             finish()

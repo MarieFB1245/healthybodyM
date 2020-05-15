@@ -43,6 +43,7 @@ class savedataexcercise_user_private : AppCompatActivity(),View.OnClickListener 
         var kcalExcerciseShow: String = intent.getStringExtra("kcalexcercise")
         var idfoodShow: String = intent.getStringExtra("id")
 
+
         nameExcerciseShowB = nameExcerciseShow
         kcalExcerciseShowB = kcalExcerciseShow
         val calendar = Calendar.getInstance()
@@ -51,8 +52,8 @@ class savedataexcercise_user_private : AppCompatActivity(),View.OnClickListener 
         datetextview.setText(currentDate)
         var add =findViewById<Button>(R.id.add)
         var sub  = findViewById<Button>(R.id.sub)
-        val amount = findViewById<TextView>(R.id.amounts)
-        val tatal = findViewById<TextView>(R.id.tatals)
+        var amount = findViewById<TextView>(R.id.amountnum)
+        var tatal = findViewById<TextView>(R.id.tatal)
 
         var sumkcal = kcalExcerciseShowB.toInt()
         resultBig = sumkcal
@@ -69,7 +70,7 @@ class savedataexcercise_user_private : AppCompatActivity(),View.OnClickListener 
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
-            val intent = Intent(this, selectlistfood_user::class.java)
+            val intent = Intent(this, selectlistexcercise_user_private::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
             finish()
@@ -136,23 +137,28 @@ class savedataexcercise_user_private : AppCompatActivity(),View.OnClickListener 
         var sumkcalsub = kcalExcerciseShowB.toInt()
         Log.d("kcalfoodShow","${sumkcalsub}")
         var sumkcal = kcalExcerciseShowB.toInt()
-
+        var amount = findViewById<TextView>(R.id.amountnum)
+        var tatal = findViewById<TextView>(R.id.tatal)
         when (v?.id) {
             R.id.add -> {
 
                 sum = sum + 1
                 resultBig = sumkcal*sum
                 Log.d("sumkcal add =>","${sum}")
-                amounts.setText("$sum")
-                tatals.setText("$resultBig")
+                amount.setText("$sum")
+                tatal.setText("$resultBig")
             }
             R.id.sub -> {
+
                 sum = sum - 1
                 resultBig = resultBig - sumkcalsub
-                Log.d("sumkcal sub =>","${resultBig}")
-                Log.d("sum","${sum}")
-                amounts.setText("$sum")
-                tatals.setText("$resultBig")
+
+                if(sum<=1){
+                    sum = 1
+                    resultBig=sumkcalsub
+                }
+                amount.setText("$sum")
+                tatal.setText("$resultBig")
             }
             else -> {
             }
