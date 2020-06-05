@@ -37,6 +37,7 @@
            ></TextView>
 
             <TextView
+                android:id="@+id/weight"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="79"
@@ -77,9 +78,10 @@
             android:paddingLeft="10dp"
             ></TextView>
             <TextView
+                android:id="@+id/Level_Eat_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ปกติ"
+                android:text="ไม่มีข้อมูล"
                 android:layout_weight="1.5"
                 ></TextView>
             <TextView
@@ -105,9 +107,10 @@
             android:layout_weight="0.9"
             ></TextView>
             <TextView
+                android:id="@+id/volume_Eat_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1200"
+                android:text="0"
                 android:layout_weight="1.5"
                 ></TextView>
             <TextView
@@ -133,9 +136,10 @@
             android:text="ปริมาณเเคลอรี่เผาผาญวันนี้"
             ></TextView>
             <TextView
+                android:id="@+id/volume_Excercise_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1300"
+                android:text="0"
                 android:layout_weight="1.5"
                 ></TextView>
             <TextView
@@ -161,9 +165,10 @@
                 android:paddingLeft="10dp"
                 android:text="ปริมาณเเคลอรี่วันนี้"></TextView>
             <TextView
+                android:id="@+id/Total_volume_kcal_todate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="-100"
+                android:text="0"
                 android:layout_weight="1.5"
                 ></TextView>
             <TextView
@@ -179,11 +184,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginBottom="5dp"
             >
             <TextView
+                android:id="@+id/textset"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="น้ำหนักวันนี้"
+                android:text=""
+                android:visibility="invisible"
                 android:paddingLeft="20dp"
                 ></TextView>
         </LinearLayout>

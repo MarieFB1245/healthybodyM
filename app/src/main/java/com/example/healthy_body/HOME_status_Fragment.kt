@@ -35,7 +35,8 @@ class HOME_status_Fragment : Fragment() {
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
     private lateinit var myRef: DatabaseReference
-
+var sumfood :Int =0
+    var sumexcercise:Int=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -81,6 +82,10 @@ class HOME_status_Fragment : Fragment() {
         dateselect_totalvalue(UID.toString(),Timeargument.toString()).callvalue{ excercise, food ->
             var Food = food.toInt()
             var  Workout = excercise.toInt()
+
+            sumfood = Food
+            sumexcercise = Workout
+
 
             if(Food== 0 && Workout == 0){
                 val chart = v.findViewById(R.id.chart) as PieChart
@@ -137,6 +142,31 @@ class HOME_status_Fragment : Fragment() {
                     BMIshow.text = BMI
                     BMRshow.text = BMR
                 }
+                var result = sumfood-sumexcercise
+
+                weight.setText(map1!!["weigth"].toString())
+                volume_Eat_number.setText(sumfood.toString())
+                volume_Excercise_number.setText(sumexcercise.toString())
+                Total_volume_kcal_todate.setText(result.toString())
+if(sumfood == 0 && sumexcercise == 0 ){
+    textset.isVisible = false
+}else{
+    if(sumfood == 0){
+        textset.setText("(คุณขาดการประทานอาหารจะเป็นอันตรายกับตัวคุณ)")
+        textset.isVisible = true
+        textset.setTextColor(Color.parseColor("#ff0000"))
+    }else{
+        if(result < 0 ){
+            textset.setText("(คุณเผาผลาณปริมาณที่รับเเคลลอรี่วันนี้ได้หมด)")
+            textset.isVisible = true
+            textset.setTextColor(Color.parseColor("#33cc33"))
+        }else{
+            textset.setText("(คุณเผาผลาณปริมาณที่รับเเคลลอรี่วันนี้ได้ไม่หมด)")
+            textset.isVisible = true
+            textset.setTextColor(Color.parseColor("#ff0000"))
+        }
+    }
+}
 
             }
             override fun onCancelled(databaseError: DatabaseError) {
