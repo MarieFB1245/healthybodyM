@@ -11,8 +11,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
+import androidx.core.view.marginBottom
+import androidx.core.view.marginLeft
 import com.example.healthy_body.calculate.dateselect_totalvalue
 import com.example.healthy_body.calculate.selectdata_totalkcal
 import com.github.mikephil.charting.charts.PieChart
@@ -25,6 +28,9 @@ import kotlinx.android.synthetic.main.fragment_home_listfood_.view.*
 import kotlinx.android.synthetic.main.fragment_home_status_.*
 import kotlinx.android.synthetic.main.fragment_home_status_.view.*
 import java.util.ArrayList
+import android.widget.RelativeLayout
+
+
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -57,7 +63,9 @@ var sumfood :Int =0
         progest.show()
         val v = inflater.inflate(R.layout.fragment_home_status_, container, false)
         myRef = FirebaseDatabase.getInstance().reference
+v.update_kg.setOnClickListener{
 
+}
         v.addworkout.setOnClickListener {
             val intent = Intent(this.context,selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
@@ -73,8 +81,8 @@ var sumfood :Int =0
         }
 
 
-
-
+       // val r1 = v.findViewById<LinearLayout>(R.id.volumekalTodate)
+      //  val params = r1.layoutParams as LinearLayout
         val TDEEshow = v.findViewById<TextView>(R.id.numTDEE)
         val BMIshow = v.findViewById<TextView>(R.id.numBMI)
         val BMRshow = v.findViewById<TextView>(R.id.numBMR)
@@ -148,25 +156,79 @@ var sumfood :Int =0
                 volume_Eat_number.setText(sumfood.toString())
                 volume_Excercise_number.setText(sumexcercise.toString())
                 Total_volume_kcal_todate.setText(result.toString())
+
+                if(sumfood==0){
+                    Level_Eat_status.setText("ไม่มีข้อมูล")
+                }else{
+                    if(sumfood < BMR.toInt()){
+                        Level_Eat_status.setText("ระดับต่ำกว่าเกณ")
+                        Level_Eat_status.setTextColor(Color.parseColor("#ff0000"))
+                        if(result > BMR.toInt() && result < TDEE.toInt()&& result < sumfood){
+                            Level_Eat_status.setText("ระดับปกติ")
+                            Level_Eat_status.setTextColor(Color.parseColor("#33cc33"))
+                        }
+                    }else if(sumfood > BMR.toInt() && sumfood < TDEE.toInt() ){
+                        Level_Eat_status.setText("ระดับปกติ")
+                        Level_Eat_status.setTextColor(Color.parseColor("#33cc33"))
+                        if(result > BMR.toInt() && result < TDEE.toInt()){
+                            Level_Eat_status.setText("ระดับปกติ")
+                            Level_Eat_status.setTextColor(Color.parseColor("#33cc33"))
+                        }
+                    }else{
+                        Level_Eat_status.setText("ระดับสูงกว่าเกณที่กำหนด")
+                        Level_Eat_status.setTextColor(Color.parseColor("#ff0000"))
+
+                        if(result < sumfood && result > BMR.toInt() && result < TDEE.toInt()){
+                            Level_Eat_status.setText("ระดับปกติ")
+                            Level_Eat_status.setTextColor(Color.parseColor("#33cc33"))
+                        }
+                        if(result > BMR.toInt() && result < TDEE.toInt()){
+                            Level_Eat_status.setText("ระดับปกติ")
+                            Level_Eat_status.setTextColor(Color.parseColor("#33cc33"))
+                        }
+                        if(result < BMR.toInt()){
+                            Level_Eat_status.setText("ระดับปกติ")
+                            Level_Eat_status.setTextColor(Color.parseColor("#33cc33"))
+                        }
+                    }
+                }
+
+
+
 if(sumfood == 0 && sumexcercise == 0 ){
     textset.isVisible = false
+
 }else{
     if(sumfood == 0){
         textset.setText("(คุณขาดการประทานอาหารจะเป็นอันตรายกับตัวคุณ)")
         textset.isVisible = true
         textset.setTextColor(Color.parseColor("#ff0000"))
-    }else{
+
+    }
+    else{
         if(result < 0 ){
             textset.setText("(คุณเผาผลาณปริมาณที่รับเเคลลอรี่วันนี้ได้หมด)")
             textset.isVisible = true
             textset.setTextColor(Color.parseColor("#33cc33"))
+
         }else{
             textset.setText("(คุณเผาผลาณปริมาณที่รับเเคลลอรี่วันนี้ได้ไม่หมด)")
             textset.isVisible = true
             textset.setTextColor(Color.parseColor("#ff0000"))
+            if (sumexcercise == 0 ) {
+                textset.setText("(คุณรับประทานอาหารมากเกินไป)")
+                textset.isVisible = true
+                textset.setTextColor(Color.parseColor("#ff0000"))
+                if (sumfood < BMR.toInt()) {
+                    textset.setText("คุณรับประทานอาหารน้อยเกินไป")
+                    textset.setTextColor(Color.parseColor("#ff0000"))
+
+                }
+            }
         }
     }
 }
+
 
             }
             override fun onCancelled(databaseError: DatabaseError) {

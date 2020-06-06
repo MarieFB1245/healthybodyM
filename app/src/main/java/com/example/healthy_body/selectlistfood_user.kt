@@ -222,6 +222,7 @@ class selectlistfood_user : AppCompatActivity() {
                         }
                     }
                         adapter.setOnItemClickListener { item, view ->
+                            Log.e("item","$item")
                             val fooditem = item as Food
                             val intent = Intent(view.context, savedatafood_user::class.java)
                             intent.putExtra("UID",UID)
@@ -263,6 +264,7 @@ class selectlistfood_user : AppCompatActivity() {
                         }
                     }
                     adapter.setOnItemClickListener { item, view ->
+                        Log.e("item","$item")
                         val fooditem = item as Food
                         val intent = Intent(view.context, savedatafood_user::class.java)
                         intent.putExtra("namefood", fooditem.food.namefood)
