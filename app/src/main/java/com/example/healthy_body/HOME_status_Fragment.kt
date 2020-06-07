@@ -1,5 +1,6 @@
 package com.example.healthy_body
 
+import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -29,7 +31,11 @@ import kotlinx.android.synthetic.main.fragment_home_status_.*
 import kotlinx.android.synthetic.main.fragment_home_status_.view.*
 import java.util.ArrayList
 import android.widget.RelativeLayout
-
+import com.example.healthy_body.calculate.editinformation
+import kotlinx.android.synthetic.main.list_update_age.*
+import android.content.Intent.getIntent
+import android.content.Intent.getIntent
+import android.os.Handler
 
 
 private const val ARG_PARAM1 = "param1"
@@ -58,14 +64,13 @@ var sumfood :Int =0
         var UID = arguments!!.getString("UID")
         val Timeargument = arguments!!.getString("time")
         Log.e("timeagument_status",Timeargument)
+
         val progest  = ProgressDialog(this@HOME_status_Fragment.context,R.style.MyTheme)
         progest.setCancelable(false)
         progest.show()
         val v = inflater.inflate(R.layout.fragment_home_status_, container, false)
         myRef = FirebaseDatabase.getInstance().reference
-v.update_kg.setOnClickListener{
 
-}
         v.addworkout.setOnClickListener {
             val intent = Intent(this.context,selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
@@ -139,7 +144,6 @@ v.update_kg.setOnClickListener{
 
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val map = dataSnapshot.value as Map<*, *>?
                 val map1 = dataSnapshot.child("users").child(UID.toString()).value as Map<*, *>?
                 val BMI = map1!!["bmis"].toString()
                 val BMR = map1!!["BMR"].toString()
@@ -236,6 +240,71 @@ if(sumfood == 0 && sumexcercise == 0 ){
             }
         })
 
+
+
+        v.update_kg.setOnClickListener{
+            val dialog = Dialog(this@HOME_status_Fragment.requireContext(),R.style.DialogTheme)
+            dialog.setCancelable(false)
+            dialog.setContentView(R.layout.list_update_age)
+            dialog.show()
+            dialog.input_weigth.setTransformationMethod(null)
+            val inputkcal = dialog.findViewById<EditText>(R.id.input_weigth)
+
+            dialog.button_confream.setOnClickListener {
+
+                val numberFloat = inputkcal.text.toString()
+if (numberFloat == ""){
+    dialog.cancel()
+}else{
+    myRef.addListenerForSingleValueEvent(object :ValueEventListener{
+        override fun onCancelled(p0: DatabaseError) {
+        }
+
+        override fun onDataChange(p0: DataSnapshot) {
+            val map1 = p0.child("users").child(UID.toString()).value as Map<*, *>?
+            val firstnameE = map1!!["textfirstname"].toString()
+            val lastnameE = map1!!["textlastname"].toString()
+            val age = map1!!["age"].toString()
+            val heightE = map1!!["height"].toString()
+            val genderE = map1["gender"].toString()
+            val betterSpinnerNostringE = map1!!["level_Workout"].toString()
+
+
+
+            var result = editinformation(
+                UID.toString(),
+                firstnameE,
+                lastnameE,
+                age,
+                numberFloat,
+                heightE,
+                genderE,
+                betterSpinnerNostringE
+            ).edit()
+        }
+
+    })
+
+    dialog.cancel()
+    val progest  = ProgressDialog(this@HOME_status_Fragment.context,R.style.MyTheme)
+    progest.setCancelable(false)
+    progest.show()
+
+    Handler().postDelayed({
+        val ft = fragmentManager!!.beginTransaction()
+        ft.detach(this).attach(this).commit()
+        dialog.input_weigth.setText(numberFloat)
+        progest.cancel()
+    }, 2000)
+
+}
+
+            }
+
+            dialog.button_cancel.setOnClickListener {
+                dialog.cancel()
+            }
+        }
 
         return v
     }

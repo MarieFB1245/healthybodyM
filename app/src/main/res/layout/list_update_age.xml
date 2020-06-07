@@ -6,6 +6,8 @@
         android:id="@+id/FHeadtext"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_height="wrap_content">
     <TextView
         android:layout_width="match_parent"
@@ -21,6 +23,8 @@
         android:layout_below="@id/FHeadtext"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="match_parent"
@@ -35,11 +39,15 @@
         android:layout_below="@id/SHeadtext"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_height="wrap_content">
         <EditText
+            android:id="@+id/input_weigth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="น้ำหนัก (กก.)"
+            android:inputType="numberPassword"
             ></EditText>
     </LinearLayout>
 
@@ -49,14 +57,18 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/button_confream"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ตกลง"
             android:layout_weight="1"
             ></Button>
         <Button
+            android:id="@+id/button_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ยกเลิก"
