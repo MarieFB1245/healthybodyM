@@ -36,6 +36,7 @@ import kotlinx.android.synthetic.main.list_update_age.*
 import android.content.Intent.getIntent
 import android.content.Intent.getIntent
 import android.os.Handler
+import com.github.mikephil.charting.formatter.PercentFormatter
 
 
 private const val ARG_PARAM1 = "param1"
@@ -134,9 +135,12 @@ var sumfood :Int =0
                 chart.data = data
                 chart.isDrawHoleEnabled = false
                 chart.centerTextRadiusPercent
+               // chart.setUsePercentValues(true);
                 chart.setCenterTextSizePixels(500f)
                 data.setValueTextSize(30f)
                 chart.animateY(500)
+               // data.setValueFormatter(PercentFormatter(chart))
+
                 chart.invalidate()
             }
         }

@@ -111,7 +111,8 @@ class Register_Infirmation : AppCompatActivity() {
                                 val map1 = p0.child("users").child(uid).value as Map<*, *>? //ดึงข้อมูล มา จาด UID
                                 val status = map1!!["status"].toString()//วางค่า ที่ได้จาก dataSnapshot
                                 val TDEE = map1["TDEE"].toString()//วางค่า ที่ได้จาก dataSnapshot
-                                intent(uid,status,TDEE)
+                                val BMR = map1["BMR"].toString()
+                                intent(uid,status,TDEE,BMR)
                                 progest.cancel()
                                 finish()
                             }
@@ -152,13 +153,14 @@ class Register_Infirmation : AppCompatActivity() {
 
     }
 
-    fun intent (uid: String,status:String,TDEE:String){
+    fun intent (uid: String,status:String,TDEE:String,BMR:String){
 
 
         val intent = Intent(this, Totalkcal_User::class.java)
         intent.putExtra("UID",uid)
         intent.putExtra("status",status)
         intent.putExtra("TDEE",TDEE)
+        intent.putExtra("BMR",BMR)
         startActivity(intent)
         finish()
     }

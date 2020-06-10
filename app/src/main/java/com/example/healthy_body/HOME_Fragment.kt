@@ -32,6 +32,7 @@ class HOME_Fragment : Fragment() {
     var timeselect_Fragment:String=""
     private var Numberfragment: String="0"
     var UID :String?=""
+    var number_add = 0
     private val listener: OnFragmentInteractionListener? = null
     var calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,6 +83,7 @@ class HOME_Fragment : Fragment() {
         var data = sdf.format(calendar.getTime())
         timeselect_Fragment=data
         v.line1.isVisible = true
+        v.addmenu.isVisible = false
         v.list_food_fragment.setTextColor(Color.parseColor("#808080"))
         v.status_information_fragment.setTextColor(Color.WHITE)
         v.list_excersice_fragment.setTextColor(Color.parseColor("#808080"))
@@ -100,6 +102,7 @@ Log.e("time","$timeselect_Fragment")
 
 
         v.status_information_fragment.setOnClickListener {
+            v.addmenu.isVisible = false
             v.line1.isVisible = true
             v.line2.isVisible = false
             v.line3.isVisible = false
@@ -125,11 +128,14 @@ Log.e("time","$timeselect_Fragment")
 
         }
         v.list_food_fragment.setOnClickListener {
+           v.addmenu.isVisible = true
+            v.addmenu.setText("เพิ่มรายการอาหาร")
+            number_add = 1
             v.line1.isVisible = false
             v.line2.isVisible = true
             v.line3.isVisible = false
          val relativeLayout = activity!!.findViewById(R.id.home_user) as RelativeLayout
-            relativeLayout.setBackgroundResource(R.drawable.background_listfood)
+            relativeLayout.setBackgroundResource(R.drawable.backgroud_status )
 
 
             v.list_food_fragment.setEnabled(false)
@@ -153,11 +159,14 @@ Log.e("time","$timeselect_Fragment")
         }
 
         v.list_excersice_fragment.setOnClickListener {
+            v.addmenu.isVisible = true
+            v.addmenu.setText("เพิ่มรายการกิจกกรม")
+            number_add = 2
             v.line1.isVisible = false
             v.line2.isVisible = false
             v.line3.isVisible = true
             val relativeLayout = activity!!.findViewById(R.id.home_user) as RelativeLayout
-            relativeLayout.setBackgroundResource(R.drawable.background_listexcercise)
+            relativeLayout.setBackgroundResource(R.drawable.backgroud_status )
             v.list_excersice_fragment.setEnabled(false)
             v.list_food_fragment.setEnabled(true)
             v.status_information_fragment.setEnabled(true)
@@ -177,6 +186,19 @@ Log.e("time","$timeselect_Fragment")
             transaction.addToBackStack(null)
             transaction.commit()
         }
+v.addmenu.setOnClickListener {
+    if (number_add == 1){
+        val intent = Intent(this.requireContext(),selectlistfood_user::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+    }else{
+        val intent = Intent(this.requireContext(),selectlistexcercise_user::class.java)
+        intent.putExtra("UID",UID)
+        startActivity(intent)
+    }
+
+}
+
 
         return v
     }

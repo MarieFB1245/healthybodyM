@@ -15,14 +15,167 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></include>
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barChartView"
-        android:layout_below="@id/searchView"
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/searchView"
+    >
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:id="@+id/R1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="-2dp"
-        android:visibility="invisible"
-        android:background="@android:color/darker_gray"></com.github.mikephil.charting.charts.BarChart>
+        android:background="@drawable/background_object"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        >
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:layout_centerHorizontal="true"
+            android:id="@+id/chart"
+            android:innerRadius="100dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+
+            ></com.github.mikephil.charting.charts.PieChart>
+        <LinearLayout
+            android:id="@+id/L1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_below="@id/chart"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="40px"
+                android:text="ผลสรุปของเดือน"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="40px"
+                android:textStyle="bold"
+                android:text="มิถุนายน"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="40px"
+                android:layout_weight="1"
+                android:text="2563">
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/L2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_below="@id/L1"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="ปริมาณรับเเคลอรี่ทั้งหมด"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="700000"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="kcal">
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/L3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_below="@id/L2"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="ปริมาณเผาผลานเเคลอรี่ทั้งหมด"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="600000"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="kcal">
+                ></TextView>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/R2"
+        android:layout_width="match_parent"
+        android:layout_below="@id/R1"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_object"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        >
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChartView"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="250dp"
+            android:background="@android:color/darker_gray"></com.github.mikephil.charting.charts.BarChart>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+</ScrollView>
 
 
 

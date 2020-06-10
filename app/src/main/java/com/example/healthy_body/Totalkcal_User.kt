@@ -26,24 +26,23 @@ class Totalkcal_User : AppCompatActivity() {
         val TDEEshow = findViewById<TextView>(R.id.statusname)
         val numberkcalBMR = findViewById<TextView>(R.id.numberkcalBMR)
         val numberkcalTDEE = findViewById<TextView>(R.id.numberkcalTDEE)
-       // var UID: String = intent.getStringExtra("UID")
-     //   var status: String = intent.getStringExtra("status")
-      //  var TDEE: String = intent.getStringExtra("TDEE")
+        var UID: String = intent.getStringExtra("UID")
+       var status: String = intent.getStringExtra("status")
+       var TDEE: String = intent.getStringExtra("TDEE")
+        var BMR: String = intent.getStringExtra("BMR")
 
  //  Log.d("information","uid intent:$UID")
 
 
 
 
-              //  TDEEshow.text = status
-               // numberkcalBMR.text = TDEE
-        TDEEshow.text = "ปกติ"
-        numberkcalBMR.text = "2010"
-        numberkcalTDEE.text = "2010"
+        TDEEshow.text = status
+        numberkcalBMR.text = BMR
+        numberkcalTDEE.text = TDEE
 
-      /*  start.setOnClickListener {
+       start.setOnClickListener {
             startintent(UID)
-        }*/
+        }
 
     }
 

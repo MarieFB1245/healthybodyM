@@ -133,6 +133,19 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_below="@id/Layoutselect"
-        android:orientation="horizontal" />
+        android:orientation="vertical"
+        >
+        <Button
+            android:id="@+id/addmenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/button_login_style"
+            android:text="เพิ่มรายการอาหาร"
+            android:layout_marginBottom="10dp"
+            android:textColor="#ffffff"></Button>
+    </LinearLayout>
 
 </RelativeLayout>

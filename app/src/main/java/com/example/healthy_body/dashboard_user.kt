@@ -245,6 +245,7 @@ class dashboard_user : AppCompatActivity() {
                         xAxis.setCenterAxisLabels(true)
                         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
                         xAxis.setGranularity(1f)
+                        xAxis.setLabelRotationAngle(-30f);
                         xAxis.setGranularityEnabled(true)
                         barChartView.setDragEnabled(true)
                         barChartView.setVisibleXRangeMaximum(5f)
@@ -263,9 +264,13 @@ class dashboard_user : AppCompatActivity() {
 
                                 val textTDEE = p0.getValue(Userlimit::class.java)
                                 var maxCapacity = textTDEE!!.TDEE
+                                var lowCapacity = textTDEE!!.BMR
                                 val ll = LimitLine(maxCapacity!!.toFloat(), "TDEE")
-                                ll.setTextColor(Color.WHITE)
+                                val l2 = LimitLine(lowCapacity!!.toFloat(), "BMR")
+                                ll.setTextColor(Color.BLACK)
+                                l2.setTextColor(Color.BLACK)
                                 barChartView.getAxisLeft().addLimitLine(ll)
+                                barChartView.getAxisLeft().addLimitLine(l2)
                             }
 
                         })
@@ -296,13 +301,13 @@ class dashboard_user : AppCompatActivity() {
                         barChartView.groupBars(0f,groupspace,barSpace)
                         barChartView.description.setEnabled(false)
 
-                        barChartView.setBackgroundResource(R.drawable.all_background)
+                        barChartView.setBackgroundResource(R.color.myPeach)
 
 
-                        barChartView.getAxisLeft().setTextColor(Color.WHITE); // left y-axis
-                        barChartView.getAxisRight().setTextColor(Color.WHITE)
-                        barChartView.getXAxis().setTextColor(Color.WHITE);
-                        barChartView.getLegend().setTextColor(Color.WHITE);
+                        barChartView.getAxisLeft().setTextColor(Color.BLACK); // left y-axis
+                        barChartView.getAxisRight().setTextColor(Color.BLACK)
+                        barChartView.getXAxis().setTextColor(Color.BLACK);
+                        barChartView.getLegend().setTextColor(Color.BLACK);
 
                         j=j+1
                         Log.e("j","$j")
