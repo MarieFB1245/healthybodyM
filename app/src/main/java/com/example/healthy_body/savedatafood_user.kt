@@ -1,13 +1,17 @@
 package com.example.healthy_body
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import com.example.healthy_body.calculate.dataex
 import com.example.healthy_body.calculate.savetotalkcal
 import com.example.healthy_body.model.modelSelectExcercise
@@ -17,6 +21,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_savedatafood_user.*
+import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -71,17 +76,28 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         }
 
         savelist.setOnClickListener {
+            val progest  = ProgressDialog(this@savedatafood_user,R.style.MyTheme)
+            progest.setCancelable(false)
+            progest.show()
+
+            var numberadd :Int = 1
             val nametype :String= "FOOD"
             val nametypeStatus :String = "SAVE"
             val statusdoting :String = ""
             val date =""
             savetodata(nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDate,idfoodShow)
             savetotalkcal(resultBig,nametype,UID,statusdoting,nametypeStatus,date).savetotal()
-            val intent = Intent(this,selectlistfood_user::class.java)
-            intent.putExtra("UID",UID)
-            intent.putExtra("nametypeStatus",nametypeStatus)
-            startActivity(intent)
-            finish()
+            Handler().postDelayed({
+                progest.cancel()
+                val intent = Intent(this,selectlistfood_user::class.java)
+                intent.putExtra("number",numberadd.toString())
+                intent.putExtra("UID",UID)
+                intent.putExtra("nametypeStatus",nametypeStatus)
+                startActivity(intent)
+                finish()
+            }, 1500)
+
+
         }
 
     }

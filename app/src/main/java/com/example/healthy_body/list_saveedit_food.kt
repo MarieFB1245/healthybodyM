@@ -35,9 +35,12 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
     var statusdoting :String = ""
     var date :String = ""
     var KEY :String = ""
+    var numberbackpage:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_saveedit_food)
+if (intent.getStringExtra("numberbackpage")!=null) numberbackpage = intent.getStringExtra("numberbackpage")
+
         var add = findViewById<Button>(R.id.add)
         var sub = findViewById<Button>(R.id.sub)
         KEY = intent.getStringExtra("key")
@@ -95,10 +98,20 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
                             .setTitleText("ลบเรียบร้อยเเล้ว!")
                             .setContentText("ข้อมูลนี้จะไม่มีอยู่รายการของคุณ!").setConfirmText("ตกลง")
                             .setConfirmClickListener{
-                                val intent = Intent(this, list_edit_food::class.java)
-                                intent.putExtra("UID",UID)
-                                startActivity(intent)
-                                finish()
+                                if(numberbackpage =="1"){
+                                    val backtohome = "homeselectfood"
+                                    val intent = Intent(this, Home_User::class.java)
+                                    intent.putExtra("UID",UID)
+                                    intent.putExtra("backtohome","$backtohome")
+                                    startActivity(intent)
+                                    finish()
+                                }else{
+                                    val intent = Intent(this, list_edit_food::class.java)
+                                    intent.putExtra("UID",UID)
+                                    startActivity(intent)
+                                    finish()
+                                }
+
                             }
                             .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
                     }
@@ -112,10 +125,20 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
         arrow.setOnClickListener {
-            val intent = Intent(this, list_edit_food::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
+            if(numberbackpage =="1"){
+                val backtohome = "homeselectfood"
+                val intent = Intent(this, Home_User::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("backtohome","$backtohome")
+                startActivity(intent)
+                finish()
+            }else{
+                val intent = Intent(this, list_edit_food::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+            }
+
         }
 
 
@@ -124,11 +147,19 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
             val nametypeStatus :String = "Edit"
             updatetodata(nameFoodShowB,kcalfoodShowB,resultBig,sum,date,idfoodShow,KEY)
             savetotalkcal(newsum,nametype,UID,statusdoting,nametypeStatus,date).savetotal()
-            val intent = Intent(this,list_edit_food::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
-
+            if(numberbackpage =="1"){
+                val backtohome = "homeselectfood"
+                val intent = Intent(this, Home_User::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("backtohome","$backtohome")
+                startActivity(intent)
+                finish()
+            }else{
+                val intent = Intent(this, list_edit_food::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+            }
         }
 
     }
@@ -188,9 +219,18 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, list_edit_food::class.java)
-        intent.putExtra("UID",UID)
-        startActivity(intent)
-        finish()
+        if(numberbackpage =="1"){
+            val backtohome = "homeselectfood"
+            val intent = Intent(this, Home_User::class.java)
+            intent.putExtra("UID",UID)
+            intent.putExtra("backtohome","$backtohome")
+            startActivity(intent)
+            finish()
+        }else{
+            val intent = Intent(this, list_edit_food::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+            finish()
+        }
     }
 }

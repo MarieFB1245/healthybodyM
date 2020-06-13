@@ -18,6 +18,8 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_selectlistfood_user.*
 import kotlinx.android.synthetic.main.app_selectexcercise.*
+import kotlinx.android.synthetic.main.app_selectexcercise.listselect
+import kotlinx.android.synthetic.main.barselect.*
 import kotlinx.android.synthetic.main.dialod_list.*
 import kotlinx.android.synthetic.main.list_food.view.*
 import java.text.SimpleDateFormat
@@ -122,7 +124,41 @@ class selectlistexcercise_user : AppCompatActivity() {
             dialog.show()
         }
 
+        loadlistnumber()
+
     }
+
+    private fun loadlistnumber() {
+        var number = 0
+        var calendar = Calendar.getInstance()
+        val myFormat = "dd-M-yyyy"
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        val date  = sdf.format(calendar.getTime())
+        Log.e("date","${date}")
+        var adapters = GroupAdapter<ViewHolder>()
+        ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child(date)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                Log.d("p0", p0.toString())
+                if(p0.exists()){
+                    buttonexcercisenumber.isVisible = true
+                    p0.children.forEach {
+                        Log.d("DataSnapshot", it.toString())
+                        val excercise = it.getValue(dataselectexcercise::class.java)
+                        number = number +1
+                        buttonexcercisenumber.setText("$number")
+                    }
+
+                }else{
+                    buttonexcercisenumber.isVisible = false
+                }
+
+            }
+            override fun onCancelled(p0: DatabaseError) {}
+        })
+
+    }
+
     fun loadexcercise(s: String) {
         if (s != null) {
             val firebaseSrarchQuery: Query =

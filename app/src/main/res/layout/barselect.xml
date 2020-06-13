@@ -51,6 +51,20 @@
         app:layout_constraintStart_toEndOf="@+id/listselect"
         app:layout_constraintTop_toTopOf="@+id/listselect" />
 
+    <Button
+        android:id="@+id/buttonfoodnumber"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="13dp"
+        android:background="@drawable/nontification"
+        android:text="1"
+        app:layout_constraintEnd_toStartOf="@+id/addprivate"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/text"
+        app:layout_constraintTop_toTopOf="@+id/listselect" />
+
     <ImageView
         android:id="@+id/listselect"
         android:layout_width="42dp"
@@ -66,6 +80,8 @@
         app:layout_constraintStart_toEndOf="@+id/text"
         app:layout_constraintTop_toTopOf="@+id/text"
         app:layout_constraintVertical_bias="0.51" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

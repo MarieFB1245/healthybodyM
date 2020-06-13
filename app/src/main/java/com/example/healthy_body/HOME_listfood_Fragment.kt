@@ -2,6 +2,7 @@ package com.example.healthy_body
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -50,7 +51,7 @@ class HOME_listfood_Fragment : Fragment() {
         val UID = arguments!!.getString("UID")
         val Timeargument = arguments!!.getString("time")
         myRef = FirebaseDatabase.getInstance().reference
-Log.e("timeagument_listfood",Timeargument)
+//Log.e("timeagument_listfood",Timeargument)
         val progest  = ProgressDialog(this@HOME_listfood_Fragment.context,R.style.MyTheme)
         progest.setCancelable(false)
         progest.show()
@@ -75,6 +76,23 @@ Log.e("timeagument_listfood",Timeargument)
                             adapters.add(Foodlist(listfood))
                            listcout= listcout + 1
 
+                        }
+                        adapters.setOnItemClickListener { item, view ->
+                           val numberbackpage = "1"
+                            val itemf = item as Foodlist
+                            Log.e("fooditem","${itemf}")
+                            val intent = Intent(view.context, list_saveedit_food::class.java)
+                            intent.putExtra("UID",UID)
+                            intent.putExtra("numberbackpage",numberbackpage)
+                            intent.putExtra("key", itemf.listfood.id_list)
+                            intent.putExtra("date", itemf.listfood.date)
+                            intent.putExtra("nameFoodShowB", itemf.listfood.nameFoodShowB)
+                            intent.putExtra("resultBig", itemf.listfood.resultBig)
+                            intent.putExtra("sum", itemf.listfood.sum)
+                            intent.putExtra("id", itemf.listfood.id)
+                            intent.putExtra("kcalfoodShowB", itemf.listfood.kcalfoodShowB)
+                            startActivity(intent)
+                            getActivity()!!.finish()
                         }
                         v.amtwo.setText(listcout.toString())
                         v.fragListRecycleVeiew.adapter = adapters

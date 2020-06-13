@@ -32,6 +32,7 @@ class HOME_Fragment : Fragment() {
     var timeselect_Fragment:String=""
     private var Numberfragment: String="0"
     var UID :String?=""
+    var backtohome:String?=""
     var number_add = 0
     private val listener: OnFragmentInteractionListener? = null
     var calendar = Calendar.getInstance()
@@ -46,7 +47,7 @@ class HOME_Fragment : Fragment() {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_home_, container, false)
          UID = arguments!!.getString("UID")
-
+        backtohome = arguments!!.getString("backtohome")
         v.buttonRe.setOnClickListener {
             val intent = Intent(this.context,dashboard_user::class.java)
             intent.putExtra("UID",UID)
@@ -78,27 +79,94 @@ class HOME_Fragment : Fragment() {
 
 
         })
-        val myFormat = "dd-M-yyyy"
-        val sdf = SimpleDateFormat(myFormat, Locale.US)
-        var data = sdf.format(calendar.getTime())
-        timeselect_Fragment=data
-        v.line1.isVisible = true
-        v.addmenu.isVisible = false
-        v.list_food_fragment.setTextColor(Color.parseColor("#808080"))
-        v.status_information_fragment.setTextColor(Color.WHITE)
-        v.list_excersice_fragment.setTextColor(Color.parseColor("#808080"))
-        val textFragment = HOME_status_Fragment()
-        val bundle = Bundle()
-        bundle.putString("UID","$UID")
-        bundle.putString("time","$timeselect_Fragment")
-        textFragment.setArguments(bundle)
-        val transaction = childFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container,textFragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-        Numberfragment = "0"
-        v.status_information_fragment.setEnabled(false)
+
+if(backtohome==null){
+    val myFormat = "dd-M-yyyy"
+    val sdf = SimpleDateFormat(myFormat, Locale.US)
+    var data = sdf.format(calendar.getTime())
+    timeselect_Fragment=data
+    v.line1.isVisible = true
+    v.addmenu.isVisible = false
+    v.list_food_fragment.setTextColor(Color.parseColor("#808080"))
+    v.status_information_fragment.setTextColor(Color.WHITE)
+    v.list_excersice_fragment.setTextColor(Color.parseColor("#808080"))
+    val textFragment = HOME_status_Fragment()
+    val bundle = Bundle()
+    bundle.putString("UID","$UID")
+    bundle.putString("time","$timeselect_Fragment")
+    textFragment.setArguments(bundle)
+    val transaction = childFragmentManager.beginTransaction()
+    transaction.replace(R.id.fragment_container,textFragment)
+    transaction.addToBackStack(null)
+    transaction.commit()
+    Numberfragment = "0"
+    v.status_information_fragment.setEnabled(false)
+}else if(backtohome == "homeselectfood"){
+    val myFormat = "dd-M-yyyy"
+    val sdf = SimpleDateFormat(myFormat, Locale.US)
+    var data = sdf.format(calendar.getTime())
+    timeselect_Fragment=data
+    v.addmenu.isVisible = true
+    v.addmenu.setText("เพิ่มรายการอาหาร")
+    number_add = 1
+    v.line1.isVisible = false
+    v.line2.isVisible = true
+    v.line3.isVisible = false
+    val relativeLayout = activity!!.findViewById(R.id.home_user) as RelativeLayout
+    relativeLayout.setBackgroundResource(R.drawable.backgroud_status )
+    v.list_food_fragment.setEnabled(false)
+    v.status_information_fragment.setEnabled(true)
+    v.list_excersice_fragment.setEnabled(true)
+    Numberfragment = "1"
+    v.list_food_fragment.setTextColor(Color.WHITE)
+    v.status_information_fragment.setTextColor(Color.parseColor("#808080"))
+    v.list_excersice_fragment.setTextColor(Color.parseColor("#808080"))
+    val textFragment = HOME_listfood_Fragment()
+    val bundle = Bundle()
+    bundle.putString("UID","$UID")
+    bundle.putString("time","$timeselect_Fragment")
+    textFragment.setArguments(bundle)
+    val transaction = childFragmentManager.beginTransaction()
+    transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,R.anim.slide_in_left, R.anim.slide_out_right);
+    transaction.replace(R.id.fragment_container,textFragment)
+    transaction.addToBackStack(null)
+    transaction.commit()
+}else{
+    val myFormat = "dd-M-yyyy"
+    val sdf = SimpleDateFormat(myFormat, Locale.US)
+    var data = sdf.format(calendar.getTime())
+    timeselect_Fragment=data
+    v.addmenu.isVisible = true
+    v.addmenu.setText("เพิ่มรายการกิจกกรม")
+    number_add = 2
+    v.line1.isVisible = false
+    v.line2.isVisible = false
+    v.line3.isVisible = true
+    val relativeLayout = activity!!.findViewById(R.id.home_user) as RelativeLayout
+    relativeLayout.setBackgroundResource(R.drawable.backgroud_status )
+    v.list_excersice_fragment.setEnabled(false)
+    v.list_food_fragment.setEnabled(true)
+    v.status_information_fragment.setEnabled(true)
+    Numberfragment = "2"
+    v.list_food_fragment.setTextColor(Color.parseColor("#808080"))
+    v.status_information_fragment.setTextColor(Color.parseColor("#808080"))
+    v.list_excersice_fragment.setTextColor(Color.WHITE)
+    val textFragment = HOME_listexcersice_Fragment()
+    val bundle = Bundle()
+    bundle.putString("time","$timeselect_Fragment")
+    bundle.putString("UID","$UID")
+    bundle.putString("time","$timeselect_Fragment")
+    textFragment.setArguments(bundle)
+    val transaction = childFragmentManager.beginTransaction()
+    transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,R.anim.slide_in_right, R.anim.slide_out_left);
+    transaction.replace(R.id.fragment_container,textFragment)
+    transaction.addToBackStack(null)
+    transaction.commit()
+}
+
 Log.e("time","$timeselect_Fragment")
+
+
 
 
         v.status_information_fragment.setOnClickListener {

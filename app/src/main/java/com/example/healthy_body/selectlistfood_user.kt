@@ -2,6 +2,7 @@ package com.example.healthy_body
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
@@ -41,11 +42,44 @@ class selectlistfood_user : AppCompatActivity() {
     var UID :String=""
  val CAMERA_REQUEST_CODE =0
     var searchtext :String=""
+    //private val numbermassen :Int
+    val texttest = "test"
+var text:String=""
+    private var numtext:String =""
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selectlistfood_user)
 
         UID = intent.getStringExtra("UID")
+
+
+      /* val sharedPreferences = getSharedPreferences("numbermeesed",MODE_PRIVATE)
+        val edittor = sharedPreferences.edit()
+        edittor.putInt("number",numbermassen)
+        edittor.apply()*/
+
+/*if(intent.getStringExtra("number") == null){
+    buttonfoodnumber.isVisible = false
+    val num = sharedPreferences.getInt("number",0)
+    Log.e("numif","$num")
+}else{
+    buttonfoodnumber.isVisible = true
+    var num = sharedPreferences.getInt("number",0)
+    var numberstring = intent.getStringExtra("number")
+    num = num + numberstring.toInt()
+    buttonfoodnumber.setText("$num")
+    Log.e("numbermassen","$numbermassen")
+    Log.e("numelse","$num")
+    edittor.putInt("number",num)
+    edittor.apply()
+
+
+}*/
+
 
         Log.e("UID =>","${UID}")
         val adapter = GroupAdapter<ViewHolder>()
@@ -106,11 +140,13 @@ class selectlistfood_user : AppCompatActivity() {
         }
 
 
+
+
+
         listselect.setOnClickListener {
             val dialog = Dialog(this)
             dialog.setCancelable(false)
             dialog.setContentView(R.layout.dialod_list)
-
 
             var calendar = Calendar.getInstance()
             val myFormat = "dd-M-yyyy"
@@ -145,9 +181,46 @@ class selectlistfood_user : AppCompatActivity() {
                 dialog.cancel()
             }
             dialog.show()
-        }
+
 
         }
+        loadlistnumber()
+
+
+
+    }
+
+    private fun loadlistnumber() {
+        var number = 0
+        var calendar = Calendar.getInstance()
+        val myFormat = "dd-M-yyyy"
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        val date  = sdf.format(calendar.getTime())
+        Log.e("date","${date}")
+        var adapters = GroupAdapter<ViewHolder>()
+        ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child(date)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                Log.d("p0", p0.toString())
+                if(p0.exists()){
+                    buttonfoodnumber.isVisible = true
+                    p0.children.forEach {
+                        Log.d("DataSnapshot", it.toString())
+                        val listfood = it.getValue(dataselectfood::class.java)
+                        Log.d("text", listfood.toString())
+                        number = number +1
+                        buttonfoodnumber.setText("$number")
+                    }
+
+                }else{
+                    buttonfoodnumber.isVisible = false
+
+                }
+
+            }
+            override fun onCancelled(p0: DatabaseError) {}
+        })
+    }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -329,4 +402,8 @@ class selectlistfood_user : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+
+
+
 }

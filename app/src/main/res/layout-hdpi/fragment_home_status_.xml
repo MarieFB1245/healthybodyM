@@ -33,12 +33,14 @@
            android:layout_width="wrap_content"
            android:layout_height="match_parent"
            android:text="น้ำหนักวันนี้"
+                 android:textStyle="bold"
            android:gravity="center"
            android:layout_weight="1"
            ></TextView>
 
             <TextView
                 android:id="@+id/weight"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="79"
@@ -50,6 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="kg"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:layout_weight="1"
                 ></TextView>
@@ -97,7 +100,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ปริมารับเเคลอรี่วันนี้"
+            android:text="ปริมาณรับเเคลอรี่วันนี้"
             android:paddingLeft="10dp"
             android:layout_weight="0.9"
             ></TextView>
@@ -106,6 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0"
+                android:gravity="center"
                 android:layout_weight="1.5"
                 ></TextView>
             <TextView
@@ -135,6 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0"
+                android:gravity="center"
                 android:layout_weight="1.5"
                 ></TextView>
             <TextView
@@ -165,6 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0"
+                android:gravity="center"
                 android:layout_weight="1.5"
                 ></TextView>
             <TextView
@@ -177,7 +183,7 @@
         <LinearLayout
             android:id="@+id/TEXTShow"
             android:layout_below="@id/volumekalTodate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginBottom="5dp"
@@ -189,7 +195,8 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:text=""
-                android:visibility="invisible"></TextView>
+                android:visibility="invisible"
+               ></TextView>
         </LinearLayout>
     </RelativeLayout>
 

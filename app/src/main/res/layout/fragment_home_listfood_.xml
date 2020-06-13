@@ -18,103 +18,106 @@
 
 
         >
+
+
         <RelativeLayout
             android:id="@+id/a"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/Linone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
             >
-        <TextView
-            android:id="@+id/TVam"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="จำนวนรายการที่เลือก"
-            ></TextView>
-
-        <TextView
-            android:id="@+id/TVcal"
-            android:layout_below="@+id/TVam"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="เเคลทั้งหมด"
-            ></TextView>
-        </LinearLayout>
 
             <LinearLayout
-            android:id="@+id/Lintwo"
-            android:layout_toRightOf="@id/Linone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:id="@+id/amtwo"
-                android:layout_width="match_parent"
+                android:id="@+id/Linone"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
-                android:gravity="center"
-                ></TextView>
+                android:gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/TVam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="จำนวนรายการที่เลือก"></TextView>
 
-            <TextView
-                android:id="@+id/caltwo"
-                android:layout_below="@+id/TVam"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:gravity="center"
-                ></TextView>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/TVcal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TVam"
+                    android:text="เเคลทั้งหมด"></TextView>
+            </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/Linthree"
-                android:layout_toRightOf="@id/Lintwo"
+                android:id="@+id/Lintwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/Linone"
                 android:orientation="vertical"
+                android:gravity="center_vertical"
+
                 >
+
+                <TextView
+                    android:id="@+id/amtwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0"></TextView>
+
+
+                <TextView
+                    android:id="@+id/caltwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TVam"
+                    android:gravity="center"
+                    android:text="0"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/Linthree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/Lintwo"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/TVamtwo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="รายการ"
-                    ></TextView>
+                    android:text="รายการ"></TextView>
+
                 <TextView
                     android:id="@+id/TVcaltwo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="kcal"
-                    ></TextView>
+                    android:text="kcal"></TextView>
             </LinearLayout>
 
 
             <LinearLayout
                 android:id="@+id/Linfour"
-               android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_marginLeft="20dp"
                 android:orientation="vertical"
-                android:paddingRight="10dp"
-                >
+                android:paddingRight="10dp">
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/food"
-                    ></ImageView>
+                    android:src="@drawable/food"></ImageView>
             </LinearLayout>
 
         </RelativeLayout>
-
-
 
         <LinearLayout
             android:id="@+id/tt"

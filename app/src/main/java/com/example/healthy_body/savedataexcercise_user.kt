@@ -1,8 +1,10 @@
 package com.example.healthy_body
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -77,17 +79,24 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
         }
 
         savelist.setOnClickListener {
+
             val nametype :String= "EXCERCISE"
             val nametypeStatus :String = "SAVE"
             val statusdoting :String = ""
             val date =""
             savetodata(nameExcerciseShowB,kcalExcerciseShowB,resultBig,sum,currentDate,idfoodShow)
             savetotalkcal(resultBig,nametype,UID,statusdoting,nametypeStatus,date).savetotal()
+            val progest  = ProgressDialog(this@savedataexcercise_user,R.style.MyTheme)
+            progest.setCancelable(false)
+            progest.show()
+            Handler().postDelayed({
+                progest.cancel()
             val intent = Intent(this,selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
             intent.putExtra("nametypeStatus",nametypeStatus)
             startActivity(intent)
             finish()
+            }, 1500)
         }
 
 

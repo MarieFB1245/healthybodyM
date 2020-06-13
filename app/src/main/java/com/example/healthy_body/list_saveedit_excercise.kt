@@ -33,6 +33,7 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
     var statusdoting: String = ""
     var date: String = ""
     var KEY :String=""
+    var numberbackpage :String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,7 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
         var add = findViewById<Button>(R.id.add)
         var sub = findViewById<Button>(R.id.sub)
         KEY = intent.getStringExtra("key")
+        numberbackpage = intent.getStringExtra("numberbackpage")
         UID = intent.getStringExtra("UID")
         nameExcerciseShowB = intent.getStringExtra("nameExcerciseShowB")
         kcalExcerciseShowB = intent.getStringExtra("kcalExcerciseShowB")
@@ -49,7 +51,6 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
         idfoodShow = intent.getStringExtra("id")
 
 
-Log.e("KEY","${KEY}")
         val textdate = findViewById<TextView>(R.id.date)
         val textanmefood = findViewById<TextView>(R.id.nameexcercise)
         val textkcal = findViewById<TextView>(R.id.Kcal)
@@ -97,10 +98,21 @@ Log.e("KEY","${KEY}")
       .setTitleText("ลบเรียบร้อยเเล้ว!")
       .setContentText("ข้อมูลนี้จะไม่มีอยู่รายการของคุณ!").setConfirmText("ตกลง")
       .setConfirmClickListener{
-          val intent = Intent(this, list_edit_excercise::class.java)
-      intent.putExtra("UID",UID)
-      startActivity(intent)
+          if(numberbackpage =="2"){
+          val backtohome = "homeselectexcercise"
+          val intent = Intent(this, Home_User::class.java)
+          intent.putExtra("UID",UID)
+          intent.putExtra("backtohome","$backtohome")
+          startActivity(intent)
           finish()
+      }else{
+          val intent = Intent(this, list_edit_excercise::class.java)
+          intent.putExtra("UID",UID)
+          startActivity(intent)
+          finish()
+      }
+
+
       }
       .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
                     }
@@ -110,10 +122,19 @@ Log.e("KEY","${KEY}")
                 .show()
         }
         arrow.setOnClickListener {
-            val intent = Intent(this, list_edit_excercise::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
+            if(numberbackpage =="2"){
+                val backtohome = "homeselectexcercise"
+                val intent = Intent(this, Home_User::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("backtohome","$backtohome")
+                startActivity(intent)
+                finish()
+            }else{
+                val intent = Intent(this, list_edit_excercise::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+            }
         }
 
 
@@ -123,10 +144,19 @@ Log.e("KEY","${KEY}")
             val nametypeStatus: String = "Edit"
             updatetodata(nameExcerciseShowB, kcalExcerciseShowB, resultBig, sum, date, idfoodShow,KEY)
             savetotalkcal(newsum, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
-            val intent = Intent(this, list_edit_excercise::class.java)
-            intent.putExtra("UID", UID)
-            startActivity(intent)
-            finish()
+            if(numberbackpage =="2"){
+                val backtohome = "homeselectexcercise"
+                val intent = Intent(this, Home_User::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("backtohome","$backtohome")
+                startActivity(intent)
+                finish()
+            }else{
+                val intent = Intent(this, list_edit_excercise::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+            }
         }
 
     }
@@ -193,10 +223,19 @@ Log.e("KEY","${KEY}")
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, list_edit_excercise::class.java)
-        intent.putExtra("UID",UID)
-        startActivity(intent)
-        finish()
+        if(numberbackpage =="2"){
+            val backtohome = "homeselectexcercise"
+            val intent = Intent(this, Home_User::class.java)
+            intent.putExtra("UID",UID)
+            intent.putExtra("backtohome","$backtohome")
+            startActivity(intent)
+            finish()
+        }else{
+            val intent = Intent(this, list_edit_excercise::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+            finish()
+        }
 
     }
 }

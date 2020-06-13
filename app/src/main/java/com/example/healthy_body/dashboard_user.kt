@@ -9,9 +9,6 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.model.GradientColor
 import com.google.firebase.database.*
@@ -34,8 +31,15 @@ import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import androidx.core.view.isVisible
 import cn.pedant.SweetAlert.SweetAlertDialog
+import com.example.healthy_body.calculate.select_month_and_year
 import com.example.healthy_body.model.User
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.formatter.PercentFormatter
+import kotlinx.android.synthetic.main.activity_dashboard_user.chart
 import kotlinx.android.synthetic.main.app_dashboard.*
+import kotlinx.android.synthetic.main.fragment_home_status_.*
+import java.time.Year
 
 
 class dashboard_user : AppCompatActivity() {
@@ -62,6 +66,13 @@ class dashboard_user : AppCompatActivity() {
 
         val yeartext = calendar.get(Calendar.YEAR)
         val monthtext = calendar.get(Calendar.MONTH)+1
+
+        select_month_and_year(yeartext,monthtext).selectdate{Year, Month ->
+
+            yearTH.setText("$Year")
+            MonthTH.setText("$Month")
+        }
+
 
 
         Log.e("textdayfirst","$monthtext")
@@ -126,6 +137,14 @@ class dashboard_user : AppCompatActivity() {
                 val year = year
                 val month =  month
 
+
+                select_month_and_year(year,month).selectdate{Year, Month ->
+
+                    yearTH.setText("$Year")
+                    MonthTH.setText("$Month")
+                }
+
+
                 if(month == 1 ||month == 3 ||month == 5 ||month == 7 ||month == 8 ||month == 10 ||month == 12){
                     val textdayfirst =  "1"+"-"+month.toString()+"-"+year.toString()
                     val textdaylast =  "31"+"-"+month.toString()+"-"+year.toString()
@@ -180,8 +199,8 @@ class dashboard_user : AppCompatActivity() {
 
     private fun loaddatachar(testsfrist: String="", testslast: String="") {
 
-
-
+        var totalFood =0
+        var totalExcercise =0
         ref = FirebaseDatabase.getInstance().getReference("TOTALKCAL").child("${UID}")
         ref.orderByChild("TimeStamp").startAt(testsfrist).endAt(testslast).addListenerForSingleValueEvent(object : ValueEventListener {
 
@@ -204,12 +223,53 @@ class dashboard_user : AppCompatActivity() {
 
 
                         var group1= listfood!!.TOTALFOOD
-                        var group2 = listfood!!.TOTALEXCERCISE.toFloat()
+                        var group2 = listfood!!.TOTALEXCERCISE
 
+                         totalFood = totalFood + group1
+                        totalExcercise = totalExcercise + group2
 
+                        kcalFood.setText("$totalFood")
+                        kcalExcercise.setText("$totalExcercise")
+
+                        Log.e("totalF","$totalFood")
+                        Log.e("totalE","$totalExcercise")
 
                         totalfood.add(BarEntry(j.toFloat(), group1.toFloat()))
-                        totalexcercise.add(BarEntry(j.toFloat(), group2))
+                        totalexcercise.add(BarEntry(j.toFloat(), group2.toFloat()))
+
+                        R1.isVisible=true
+                        chart.isVisible = true
+                        val peercenData = intArrayOf(totalFood, totalExcercise)
+                        val pnameFood = arrayOf("อาหาร", "กิจกกรม")
+
+                        val pieEntries = java.util.ArrayList<PieEntry>()
+                        for (i in peercenData.indices) {
+                            pieEntries.add(
+                                PieEntry(
+                                    peercenData[i].toFloat(),
+                                    pnameFood[i]
+                                )
+                            )//ค่าที่เก็บจะต้องเป็น array
+                        }
+
+                        val dataSet = PieDataSet(pieEntries, "KCAL")
+                        val colors = java.util.ArrayList<Int>()
+                        colors.add(Color.rgb(171,69,204))
+                        colors.add(Color.rgb(51,102,255))
+                        dataSet.colors = colors
+                        val data = PieData(dataSet)
+                        val chart = findViewById(R.id.chart) as PieChart
+                        chart.getDescription().setEnabled(false)
+                        chart.getLegend().setEnabled(false)
+                        chart.data = data
+                        chart.isDrawHoleEnabled = false
+                        chart.centerTextRadiusPercent
+                        chart.setCenterTextSizePixels(500f)
+                        data.setValueTextSize(20f)
+                        chart.animateY(500)
+                         chart.setUsePercentValues(true);
+                        data.setValueFormatter(PercentFormatter(chart))
+                        chart.invalidate()
 
 
 
@@ -291,7 +351,6 @@ class dashboard_user : AppCompatActivity() {
                         val groupspace = 0.30f
                         bardata.setBarWidth(0.30f)
 
-
                         barChartView.getXAxis().setAxisMinimum(0f)
                         barChartView.getXAxis().setAxisMaximum(0+barChartView.getBarData().getGroupWidth(groupspace,barSpace)*j+1)
                         barChartView.getAxisLeft().setAxisMinimum(0f)
@@ -323,6 +382,8 @@ class dashboard_user : AppCompatActivity() {
 
 
                 }else{
+                    R1.isVisible=false
+                    chart.isVisible=false
                     barChartView.isVisible=false
                     SweetAlertDialog(this@dashboard_user, SweetAlertDialog.ERROR_TYPE)
                         .setTitleText("ไม่พบข้อมูล!")

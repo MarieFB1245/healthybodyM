@@ -135,10 +135,11 @@ var sumfood :Int =0
                 chart.data = data
                 chart.isDrawHoleEnabled = false
                 chart.centerTextRadiusPercent
-               // chart.setUsePercentValues(true);
+
                 chart.setCenterTextSizePixels(500f)
                 data.setValueTextSize(30f)
                 chart.animateY(500)
+                // chart.setUsePercentValues(true);
                // data.setValueFormatter(PercentFormatter(chart))
 
                 chart.invalidate()
@@ -214,11 +215,15 @@ if(sumfood == 0 && sumexcercise == 0 ){
 
     }
     else{
-        if(result < 0 ){
+        if(result < -1000 ){
+            textset.setText("(คุณออกกำลังกายมากเกินไปจะเป็นอันตรายได้)")
+            textset.isVisible = true
+            textset.setTextColor(Color.parseColor("#ff0000"))
+
+        }else if(result < 0){
             textset.setText("(คุณเผาผลาณปริมาณที่รับเเคลลอรี่วันนี้ได้หมด)")
             textset.isVisible = true
             textset.setTextColor(Color.parseColor("#33cc33"))
-
         }else{
             textset.setText("(คุณเผาผลาณปริมาณที่รับเเคลลอรี่วันนี้ได้ไม่หมด)")
             textset.isVisible = true
@@ -228,7 +233,7 @@ if(sumfood == 0 && sumexcercise == 0 ){
                 textset.isVisible = true
                 textset.setTextColor(Color.parseColor("#ff0000"))
                 if (sumfood < BMR.toInt()) {
-                    textset.setText("คุณรับประทานอาหารน้อยเกินไป")
+                    textset.setText("(คุณรับประทานอาหารน้อยเกินไป)")
                     textset.setTextColor(Color.parseColor("#ff0000"))
 
                 }

@@ -82,6 +82,23 @@ class HOME_listexcersice_Fragment : Fragment() {
                             listcout= listcout + 1
 
                         }
+                        adapters.setOnItemClickListener { item, view ->
+                            val numberbackpage = "2"
+                            val itemf = item as Excerciselist
+                            Log.e("fooditem","${itemf}")
+                            val intent = Intent(view.context, list_saveedit_excercise::class.java)
+                            intent.putExtra("key",itemf.excercise.id_list)
+                            intent.putExtra("UID",UID)
+                            intent.putExtra("numberbackpage",numberbackpage)
+                            intent.putExtra("date", itemf.excercise.date)
+                            intent.putExtra("nameExcerciseShowB", itemf.excercise.nameExcerciseShowB)
+                            intent.putExtra("resultBig", itemf.excercise.resultBig)
+                            intent.putExtra("sum", itemf.excercise.sum)
+                            intent.putExtra("id", itemf.excercise.id)
+                            intent.putExtra("kcalExcerciseShowB", itemf.excercise.kcalExcerciseShowB)
+                            startActivity(intent)
+                            getActivity()!!.finish()
+                        }
                         v.amtwo.setText(listcout.toString())
                         v.fragListRecycleVeiew.adapter = adapters
 
@@ -89,7 +106,7 @@ class HOME_listexcersice_Fragment : Fragment() {
                     }
 
                     dateselect_totalvalue(UID.toString(),Timeargument.toString()).callvalue{ excercise, food ->
-                        var Food = food.toInt()
+                       // var Food = food.toInt()
                         var  Workout = excercise.toInt()
                         v.caltwoEx.setText(Workout.toString())
                         progest.cancel()

@@ -66,6 +66,7 @@
                 android:textSize="40px"
                 android:text="ผลสรุปของเดือน"></TextView>
             <TextView
+                android:id="@+id/MonthTH"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -74,13 +75,14 @@
                 android:textStyle="bold"
                 android:text="มิถุนายน"></TextView>
             <TextView
+                android:id="@+id/yearTH"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textSize="40px"
                 android:layout_weight="1"
-                android:text="2563">
+                android:text="0000">
                 ></TextView>
         </LinearLayout>
 
@@ -101,11 +103,12 @@
                 android:text="ปริมาณรับเเคลอรี่ทั้งหมด"></TextView>
 
             <TextView
+                android:id="@+id/kcalFood"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="700000"></TextView>
+                android:text="0"></TextView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -133,11 +136,12 @@
                 android:text="ปริมาณเผาผลานเเคลอรี่ทั้งหมด"></TextView>
 
             <TextView
+                android:id="@+id/kcalExcercise"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="600000"></TextView>
+                android:text="0"></TextView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

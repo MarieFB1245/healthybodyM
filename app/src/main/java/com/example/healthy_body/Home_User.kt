@@ -34,24 +34,44 @@ class Home_User : AppCompatActivity() {
     private lateinit var myRef: DatabaseReference
     private var myAut = FirebaseAuth.getInstance()
     val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+  // val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home__user)
 
     //   var UID: String = intent.getStringExtra("UID")
 
+
 if(intent.getStringExtra("callbackAc")==null){
+if(intent.getStringExtra("backtohome")==null){
     val textFragment = HOME_Fragment()
     val bundle = Bundle()
     bundle.putString("UID",UID)
     textFragment.setArguments(bundle)
     val manager = supportFragmentManager
     val transaction = manager.beginTransaction()
-
     transaction.replace(R.id.fragment_container,textFragment)
     transaction.addToBackStack(null)
     transaction.commit()
     bottom_navigation.menu.getItem(0).isEnabled = false
+
+}else{
+    var backtohome: String = intent.getStringExtra("backtohome")
+    val textFragment = HOME_Fragment()
+    val bundle = Bundle()
+    bundle.putString("UID",UID)
+    bundle.putString("backtohome",backtohome)
+    textFragment.setArguments(bundle)
+    val manager = supportFragmentManager
+    val transaction = manager.beginTransaction()
+    transaction.replace(R.id.fragment_container,textFragment)
+    transaction.addToBackStack(null)
+    transaction.commit()
+    bottom_navigation.menu.getItem(0).isEnabled = false
+}
+
+
+
 }else{
     val textFragment = SETTING_Fragment()
     val bundle = Bundle()
