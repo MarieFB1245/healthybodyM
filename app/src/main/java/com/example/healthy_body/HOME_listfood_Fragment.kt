@@ -75,8 +75,8 @@ class HOME_listfood_Fragment : Fragment() {
                         if (listfood != null) {
                             adapters.add(Foodlist(listfood))
                            listcout= listcout + 1
-
                         }
+
                         adapters.setOnItemClickListener { item, view ->
                            val numberbackpage = "1"
                             val itemf = item as Foodlist

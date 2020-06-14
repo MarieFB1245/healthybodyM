@@ -47,7 +47,7 @@ class selectlistfood_user : AppCompatActivity() {
 var text:String=""
     private var numtext:String =""
 
-
+var back_home_add:String =""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,32 +57,16 @@ var text:String=""
         UID = intent.getStringExtra("UID")
 
 
-      /* val sharedPreferences = getSharedPreferences("numbermeesed",MODE_PRIVATE)
-        val edittor = sharedPreferences.edit()
-        edittor.putInt("number",numbermassen)
-        edittor.apply()*/
-
-/*if(intent.getStringExtra("number") == null){
-    buttonfoodnumber.isVisible = false
-    val num = sharedPreferences.getInt("number",0)
-    Log.e("numif","$num")
-}else{
-    buttonfoodnumber.isVisible = true
-    var num = sharedPreferences.getInt("number",0)
-    var numberstring = intent.getStringExtra("number")
-    num = num + numberstring.toInt()
-    buttonfoodnumber.setText("$num")
-    Log.e("numbermassen","$numbermassen")
-    Log.e("numelse","$num")
-    edittor.putInt("number",num)
-    edittor.apply()
-
-
-}*/
+        if(intent.getStringExtra("back_home_add")!=null) back_home_add = intent.getStringExtra("back_home_add")
 
 
         Log.e("UID =>","${UID}")
+        Log.e("back_home_add =>","${back_home_add}")
+
         val adapter = GroupAdapter<ViewHolder>()
+        mRecycleVeiew.adapter = adapter
+
+
         if (intent.getStringExtra("nametypeStatus") != null){
             baranimation.isVisible =true
             val slide_down = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_down)
@@ -95,7 +79,9 @@ var text:String=""
                 baranimation.isVisible = false
             }, 3000)
         }
-        mRecycleVeiew.adapter = adapter
+
+
+
 
 
         loadfood(searchtext)
@@ -103,6 +89,7 @@ var text:String=""
         var search = findViewById<EditText>(R.id.Searching)
         sreachtext.setOnClickListener {
              searchtext = search.text.toString()
+            Log.e("searchtext","$searchtext")
             loadfood(searchtext)
         }
 
@@ -117,26 +104,69 @@ var text:String=""
 
 
         imagelist.setOnClickListener {
-            val intent = Intent(this,selectelistfood_user_private::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
+            if(back_home_add !=""){
+                val backtohome = "homeselectfood"
+                val intent = Intent(this, selectelistfood_user_private::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("backtohome",backtohome)
+                startActivity(intent)
+                finish()
+
+            }else{
+
+                val intent = Intent(this, selectelistfood_user_private::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+
+            }
+
         }
 
         arrow.setOnClickListener {
-            val intent = Intent(this, Home_User::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
+            if(back_home_add !=""){
+                val backtohome = "homeselectfood"
+                val intent = Intent(this, Home_User::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("backtohome",backtohome)
+                startActivity(intent)
+                finish()
+
+            }else{
+
+                val intent = Intent(this, Home_User::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+
+            }
+
         }
 
         imageadd.setOnClickListener {
-            val intent = Intent(this, addfood_user::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent) }
+            if(back_home_add !=""){
+                val backtohome = "homeselectfood"
+                val intent = Intent(this, addfood_user::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("backtohome",backtohome)
+                startActivity(intent)
+                finish()
+
+            }else{
+
+                val intent = Intent(this, addfood_user::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+
+            }
+           }
 
         camera.setOnClickListener {
-            val startcamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
+            val startcamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult(startcamera,CAMERA_REQUEST_CODE)
+
         }
 
 
@@ -154,7 +184,7 @@ var text:String=""
             val date  = sdf.format(calendar.getTime())
             Log.e("date","${date}")
             var adapters = GroupAdapter<ViewHolder>()
-            ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child(date)
+           val ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child(date)
             ref.addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(p0: DataSnapshot) {
                     Log.d("p0", p0.toString())
@@ -198,7 +228,7 @@ var text:String=""
         val date  = sdf.format(calendar.getTime())
         Log.e("date","${date}")
         var adapters = GroupAdapter<ViewHolder>()
-        ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child(date)
+       val ref = FirebaseDatabase.getInstance().getReference("SELECTFOOD").child("${UID}").child(date)
         ref.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 Log.d("p0", p0.toString())
@@ -240,7 +270,8 @@ var text:String=""
                   process_image(dataimage).process{namefood ->
                       var search = findViewById<EditText>(R.id.Searching)
                       search.setText(namefood)
-                      loadfood(namefood)
+                      //loadfood(namefood)
+                      Log.e("name","$namefood")
 
                       ref.orderByChild("namefood")
                       ref.addListenerForSingleValueEvent(object : ValueEventListener{
@@ -252,14 +283,33 @@ var text:String=""
                               p0.children.forEach {
                                   val food = it.getValue(modellistfood::class.java)
                                   if(food!!.namefood == namefood) {
-                                      val intent = Intent(this@selectlistfood_user, savedatafood_user::class.java)
-                                      intent.putExtra("UID",UID)
-                                      intent.putExtra("namefood", food.namefood)
-                                      intent.putExtra("kcalfood", food.kcal)
-                                      intent.putExtra("id", food.id_food)
-                                      startActivity(intent)
+                                      if(back_home_add !=""){
+
+                                          val backtohome = "homeselectfood"
+                                          val intent = Intent(this@selectlistfood_user, savedatafood_user::class.java)
+                                          intent.putExtra("UID",UID)
+                                          intent.putExtra("backtohome",backtohome)
+                                          intent.putExtra("namefood", food.namefood)
+                                          intent.putExtra("kcalfood", food.kcal)
+                                          intent.putExtra("id", food.id_food)
+                                          startActivity(intent)
+                                          finish()
+
+                                      }else{
+
+                                          val intent = Intent(this@selectlistfood_user, savedatafood_user::class.java)
+                                          intent.putExtra("UID",UID)
+                                          intent.putExtra("namefood", food.namefood)
+                                          intent.putExtra("kcalfood", food.kcal)
+                                          intent.putExtra("id", food.id_food)
+                                          startActivity(intent)
+
+                                      }
+
+
                                   }else{
                                       Log.e("data","DON have")
+
                                   }
                               }
                           }
@@ -288,21 +338,32 @@ var text:String=""
                 override fun onDataChange(p0: DataSnapshot) {
                     if(p0.exists()){
                         p0.children.forEach {
-                        Log.d("text", it.toString())
-                        val food = it.getValue(modellistfood::class.java)
-                        if (food != null) {
-                            adapter.add(Food(food))
+                            Log.d("text", it.toString())
+                            val food = it.getValue(modellistfood::class.java)
+                            if (food != null) {
+                                adapter.add(Food(food))
+                            }
                         }
-                    }
                         adapter.setOnItemClickListener { item, view ->
-                            Log.e("item","$item")
                             val fooditem = item as Food
-                            val intent = Intent(view.context, savedatafood_user::class.java)
-                            intent.putExtra("UID",UID)
-                            intent.putExtra("namefood", fooditem.food.namefood)
-                            intent.putExtra("kcalfood", fooditem.food.kcal)
-                            intent.putExtra("id", fooditem.food.id_food)
-                            startActivity(intent)
+                            if(back_home_add !=""){
+                                val backtohome ="homeselectfood"
+                                val intent = Intent(view.context,savedatafood_user::class.java)
+                                intent.putExtra("UID",UID)
+                                intent.putExtra("backtohome",backtohome)
+                                intent.putExtra("namefood", fooditem.food.namefood)
+                                intent.putExtra("kcalfood", fooditem.food.kcal)
+                                intent.putExtra("id", fooditem.food.id_food)
+                                startActivity(intent)
+                            }else{
+                                val intent = Intent(view.context, savedatafood_user::class.java)
+                                intent.putExtra("UID",UID)
+                                intent.putExtra("namefood", fooditem.food.namefood)
+                                intent.putExtra("kcalfood", fooditem.food.kcal)
+                                intent.putExtra("id", fooditem.food.id_food)
+                                startActivity(intent)
+                            }
+
                         }
                         mRecycleVeiew.adapter = adapter
                     }else{
@@ -337,14 +398,24 @@ var text:String=""
                         }
                     }
                     adapter.setOnItemClickListener { item, view ->
-                        Log.e("item","$item")
                         val fooditem = item as Food
-                        val intent = Intent(view.context, savedatafood_user::class.java)
-                        intent.putExtra("namefood", fooditem.food.namefood)
-                        intent.putExtra("kcalfood", fooditem.food.kcal)
-                        intent.putExtra("id", fooditem.food.id_food)
-                        startActivity(intent)
-                        finish()
+                        if(back_home_add !=""){
+                            val backtohome ="homeselectfood"
+                            val intent = Intent(view.context,savedatafood_user::class.java)
+                            intent.putExtra("UID",UID)
+                            intent.putExtra("backtohome",backtohome)
+                            intent.putExtra("namefood", fooditem.food.namefood)
+                            intent.putExtra("kcalfood", fooditem.food.kcal)
+                            intent.putExtra("id", fooditem.food.id_food)
+                            startActivity(intent)
+                        }else{
+                            val intent = Intent(view.context,savedatafood_user::class.java)
+                            intent.putExtra("UID",UID)
+                            intent.putExtra("namefood", fooditem.food.namefood)
+                            intent.putExtra("kcalfood", fooditem.food.kcal)
+                            intent.putExtra("id", fooditem.food.id_food)
+                            startActivity(intent)
+                        }
                     }
                     mRecycleVeiew.adapter = adapter
                 }
@@ -358,7 +429,7 @@ var text:String=""
 
 
 
-    }
+        }
 
     }
    inner class Food(val food: modellistfood) : Item<ViewHolder>() {
@@ -397,10 +468,19 @@ var text:String=""
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, Home_User::class.java)
-        intent.putExtra("UID",UID)
-        startActivity(intent)
-        finish()
+        if(back_home_add != null){
+            val backtohome = "homeselectfood"
+            val intent = Intent(this, Home_User::class.java)
+            intent.putExtra("UID",UID)
+            intent.putExtra("backtohome",backtohome)
+            startActivity(intent)
+            finish()
+        }else{
+            val intent = Intent(this, Home_User::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+            finish()
+        }
     }
 
 

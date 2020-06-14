@@ -33,11 +33,13 @@ class savedatafood_user_private : AppCompatActivity(), View.OnClickListener {
     var sum = 1
     var resultBig :Int=0
     var UID :String=""
-
+var backtohome :String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_savedatafood_user_private)
 
+
+        if(intent.getStringExtra("backtohome")!=null) backtohome = intent.getStringExtra("backtohome")
         supportActionBar?.title ="Show Select Food"
         UID = intent.getStringExtra("UID")
         var nameFoodShow: String = intent.getStringExtra("namefood")
@@ -70,10 +72,23 @@ class savedatafood_user_private : AppCompatActivity(), View.OnClickListener {
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
-            val intent = Intent(this, selectelistfood_user_private::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
+            if(backtohome !=""){
+                val backtohome = "homeselectfood"
+                val intent = Intent(this, selectelistfood_user_private::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("backtohome",backtohome)
+                startActivity(intent)
+                finish()
+
+            }else{
+                val intent = Intent(this, selectelistfood_user_private::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+
+            }
+
+
         }
 
         savelist.setOnClickListener {
@@ -88,11 +103,23 @@ class savedatafood_user_private : AppCompatActivity(), View.OnClickListener {
             savetotalkcal(resultBig,nametype,UID,statusdoting,nametypeStatus,date).savetotal()
             Handler().postDelayed({
                 progest.cancel()
-            val intent = Intent(this,selectlistfood_user::class.java)
-            intent.putExtra("UID",UID)
-            intent.putExtra("nametypeStatus",nametypeStatus)
-            startActivity(intent)
-            finish()
+                if(backtohome !=""){
+                    val backtohome = "homeselectfood"
+                    val intent = Intent(this, selectlistfood_user::class.java)
+                    intent.putExtra("UID",UID)
+                    intent.putExtra("back_home_add",backtohome)
+                    intent.putExtra("nametypeStatus",nametypeStatus)
+                    startActivity(intent)
+                    finish()
+
+                }else{
+                    val intent = Intent(this, selectlistfood_user::class.java)
+                    intent.putExtra("UID",UID)
+                    intent.putExtra("nametypeStatus",nametypeStatus)
+                    startActivity(intent)
+                    finish()
+
+                }
             }, 1500)
         }
 
@@ -175,10 +202,22 @@ class savedatafood_user_private : AppCompatActivity(), View.OnClickListener {
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, selectlistfood_user::class.java)
-        intent.putExtra("UID",UID)
-        startActivity(intent)
-        finish()
+        if(backtohome !=""){
+            val backtohome = "homeselectfood"
+            val intent = Intent(this, selectlistfood_user::class.java)
+            intent.putExtra("UID",UID)
+            intent.putExtra("backtohome",backtohome)
+            startActivity(intent)
+            finish()
+
+        }else{
+            val intent = Intent(this, selectlistfood_user::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+            finish()
+
+        }
+
     }
 }
 

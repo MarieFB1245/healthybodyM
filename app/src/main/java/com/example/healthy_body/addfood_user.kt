@@ -28,9 +28,15 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
     var sum  = 1
     var amount :Int=1
     var UID :String=""
+    var backtohome : String=""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addfood_user)
+
+        if(intent.getStringExtra("backtohome")!=null) backtohome =  intent.getStringExtra("backtohome")
+
+
         UID = intent.getStringExtra("UID")
        val amount = findViewById<TextView>(R.id.textView6)
        amount.setText("${sum}")
@@ -57,10 +63,20 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
         arrow.setOnClickListener {
-            val intent = Intent(this, selectlistfood_user::class.java)
-            intent.putExtra("UID", UID)
-            startActivity(intent)
-            finish()
+            if(backtohome!=""){
+                val intent = Intent(this, selectlistfood_user::class.java)
+                intent.putExtra("UID", UID)
+                intent.putExtra("back_home_add", backtohome)
+                startActivity(intent)
+                finish()
+            }else{
+                val intent = Intent(this, selectlistfood_user::class.java)
+                intent.putExtra("UID", UID)
+                startActivity(intent)
+                finish()
+            }
+
+
         }
        ref.addListenerForSingleValueEvent(object:ValueEventListener{
            override fun onCancelled(p0: DatabaseError) {
@@ -86,10 +102,18 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
            val typefood = betterSpinner.text.toString()
            if(namefood!= ""&&kcal!=""&&unit!=""&&typefood!=""&&this.amount!=null){
                savemenufood(namefood,kcal,unit,typefood,this.amount).save()
-               val intent = Intent(this, selectlistfood_user::class.java)
-               intent.putExtra("UID", UID)
-               startActivity(intent)
-               finish()
+               if(backtohome!=""){
+                   val intent = Intent(this, selectlistfood_user::class.java)
+                   intent.putExtra("UID", UID)
+                   intent.putExtra("back_home_add", backtohome)
+                   startActivity(intent)
+                   finish()
+               }else{
+                   val intent = Intent(this, selectlistfood_user::class.java)
+                   intent.putExtra("UID", UID)
+                   startActivity(intent)
+                   finish()
+               }
            }else{
                Toast.makeText(this, "Please in put Information Food", Toast.LENGTH_SHORT).show()
            }
@@ -134,10 +158,18 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, selectlistfood_user::class.java)
-        intent.putExtra("UID", UID)
-        startActivity(intent)
-        finish()
+        if(backtohome!=""){
+            val intent = Intent(this, selectlistfood_user::class.java)
+            intent.putExtra("UID", UID)
+            intent.putExtra("back_home_add", backtohome)
+            startActivity(intent)
+            finish()
+        }else{
+            val intent = Intent(this, selectlistfood_user::class.java)
+            intent.putExtra("UID", UID)
+            startActivity(intent)
+            finish()
+        }
 
     }
 }

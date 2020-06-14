@@ -1,8 +1,10 @@
 package com.example.healthy_body
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -23,7 +25,7 @@ class addfood_user_private : AppCompatActivity(), View.OnClickListener {
     var sum  = 1
     var amount :Int=1
     var UID :String=""
-
+var backtohome:String=""
     internal var SPINNERLST = arrayOf("อาหารจานเดี่ยว/กับข้าว","เครื่องดื่ม","ขนม/ของหวาน",
         "ผลไม้")
 
@@ -32,6 +34,9 @@ class addfood_user_private : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_addfood_user_private)
 
         UID = intent.getStringExtra("UID")
+        if(intent.getStringExtra("backtohome")!=null) backtohome = intent.getStringExtra("backtohome")
+
+
         val amount = findViewById<TextView>(R.id.textView6)
         amount.setText("${sum}")
 
@@ -54,25 +59,56 @@ class addfood_user_private : AppCompatActivity(), View.OnClickListener {
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
         arrow.setOnClickListener {
-            val intent = Intent(this, selectlistfood_user::class.java)
-            intent.putExtra("UID", UID)
-            startActivity(intent)
-            finish()
+            if(backtohome !=""){
+                val backtohome = "homeselectfood"
+                val intent = Intent(this, selectelistfood_user_private::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("backtohome",backtohome)
+                startActivity(intent)
+                finish()
+
+            }else{
+                val intent = Intent(this, selectelistfood_user_private::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+
+            }
         }
 
 
 
         buttonaddfood.setOnClickListener {
+            val nametypeStatus :String = "SAVE"
             val namefood = inputname.text.toString()
             val kcal = inputkcal.text.toString()
             val unit = inputunit.text.toString()
             val typefood = betterSpinner.text.toString()
             if(namefood!= ""&&kcal!=""&&unit!=""&&typefood!=""&&this.amount!=null){
                 savemenufood_private(UID,namefood,kcal,unit,typefood,this.amount).save()
-                val intent = Intent(this, selectlistfood_user::class.java)
-                intent.putExtra("UID", UID)
-                startActivity(intent)
-                finish()
+                val progest  = ProgressDialog(this@addfood_user_private,R.style.MyTheme)
+                progest.setCancelable(false)
+                progest.show()
+                Handler().postDelayed({
+                    progest.cancel()
+
+                if(backtohome !=""){
+                    val backtohome = "homeselectfood"
+                    val intent = Intent(this, selectelistfood_user_private::class.java)
+                    intent.putExtra("UID",UID)
+                    intent.putExtra("nametypeStatus",nametypeStatus)
+                    intent.putExtra("backtohome",backtohome)
+                    startActivity(intent)
+                    finish()
+
+                }else{
+                    val intent = Intent(this, selectelistfood_user_private::class.java)
+                    intent.putExtra("UID",UID)
+                    startActivity(intent)
+                    finish()
+
+                }
+            }, 1500)
             }else{
                 Toast.makeText(this, "Please in put Information Food", Toast.LENGTH_SHORT).show()
             }
@@ -117,10 +153,21 @@ class addfood_user_private : AppCompatActivity(), View.OnClickListener {
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, selectlistfood_user::class.java)
-        intent.putExtra("UID", UID)
-        startActivity(intent)
-        finish()
+        if(backtohome !=""){
+            val backtohome = "homeselectfood"
+            val intent = Intent(this, selectelistfood_user_private::class.java)
+            intent.putExtra("UID",UID)
+            intent.putExtra("back_home_add",backtohome)
+            startActivity(intent)
+            finish()
+
+        }else{
+            val intent = Intent(this, selectelistfood_user_private::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+            finish()
+
+        }
 
     }
 }

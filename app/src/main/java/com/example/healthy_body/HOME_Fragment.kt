@@ -48,6 +48,8 @@ class HOME_Fragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_home_, container, false)
          UID = arguments!!.getString("UID")
         backtohome = arguments!!.getString("backtohome")
+
+        Log.e("backtohome fragment_home","$backtohome")
         v.buttonRe.setOnClickListener {
             val intent = Intent(this.context,dashboard_user::class.java)
             intent.putExtra("UID",UID)
@@ -108,6 +110,7 @@ if(backtohome==null){
     timeselect_Fragment=data
     v.addmenu.isVisible = true
     v.addmenu.setText("เพิ่มรายการอาหาร")
+
     number_add = 1
     v.line1.isVisible = false
     v.line2.isVisible = true
@@ -131,6 +134,8 @@ if(backtohome==null){
     transaction.replace(R.id.fragment_container,textFragment)
     transaction.addToBackStack(null)
     transaction.commit()
+
+
 }else{
     val myFormat = "dd-M-yyyy"
     val sdf = SimpleDateFormat(myFormat, Locale.US)
@@ -256,12 +261,16 @@ Log.e("time","$timeselect_Fragment")
         }
 v.addmenu.setOnClickListener {
     if (number_add == 1){
+        val back_home_add = "food"
         val intent = Intent(this.requireContext(),selectlistfood_user::class.java)
         intent.putExtra("UID",UID)
+        intent.putExtra("back_home_add",back_home_add)
         startActivity(intent)
     }else{
+        val back_home_add = "excercise"
         val intent = Intent(this.requireContext(),selectlistexcercise_user::class.java)
         intent.putExtra("UID",UID)
+        intent.putExtra("back_home_add",back_home_add)
         startActivity(intent)
     }
 

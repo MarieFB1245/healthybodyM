@@ -3,9 +3,12 @@ package com.example.healthy_body
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.core.view.isVisible
 import com.example.healthy_body.model.modellistfood
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
@@ -20,12 +23,28 @@ class selectelistfood_user_private : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
     var UID :String=""
     var searchtext :String=""
-
+var backtohome: String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selectelistfood_user_private)
 
         UID = intent.getStringExtra("UID")
+        if(intent.getStringExtra("backtohome")!=null) backtohome = intent.getStringExtra("backtohome")
+
+        if (intent.getStringExtra("nametypeStatus") != null){
+            baranimation.isVisible =true
+            val slide_down = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_down)
+            slide_down.setFillAfter(true)
+            baranimation.startAnimation(slide_down);
+
+            Handler().postDelayed({
+                val slide_up = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_up)
+                baranimation.startAnimation(slide_up);
+                baranimation.isVisible = false
+            }, 3000)
+        }
+
+
 
         Log.e("UID =>","${UID}")
         val adapter = GroupAdapter<ViewHolder>()
@@ -49,17 +68,44 @@ class selectelistfood_user_private : AppCompatActivity() {
 
 
         arrow.setOnClickListener {
-            val intent = Intent(this, selectlistfood_user::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
+
+            if(backtohome !=""){
+                val backtohome = "homeselectfood"
+                val intent = Intent(this, selectlistfood_user::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("back_home_add",backtohome)
+                startActivity(intent)
+                finish()
+
+            }else{
+                val intent = Intent(this, selectlistfood_user::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+
+            }
+
+
         }
 
         imageadd.setOnClickListener {
-            val intent = Intent(this, addfood_user_private::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
+            if(backtohome !=""){
+                val backtohome = "homeselectfood"
+                val intent = Intent(this, addfood_user_private::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("backtohome",backtohome)
+                startActivity(intent)
+                finish()
+
+            }else{
+                val intent = Intent(this, addfood_user_private::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+
+            }
+
+
         }
 
     }
@@ -87,13 +133,31 @@ class selectelistfood_user_private : AppCompatActivity() {
                     }
                     adapter.setOnItemClickListener { item, view ->
                         val fooditem = item as Food
-                        val intent = Intent(view.context, savedatafood_user_private::class.java)
-                        intent.putExtra("UID",UID)
-                        intent.putExtra("namefood", fooditem.food.namefood)
-                        intent.putExtra("kcalfood", fooditem.food.kcal)
-                        intent.putExtra("id", fooditem.food.id_food)
-                        startActivity(intent)
-                        finish()
+
+                        if(backtohome !=""){
+                            val backtohome = "homeselectfood"
+                            val intent = Intent(view.context, savedatafood_user_private::class.java)
+                            intent.putExtra("UID",UID)
+                            intent.putExtra("backtohome",backtohome)
+                            intent.putExtra("namefood", fooditem.food.namefood)
+                            intent.putExtra("kcalfood", fooditem.food.kcal)
+                            intent.putExtra("id", fooditem.food.id_food)
+                            startActivity(intent)
+                            finish()
+
+                        }else{
+                            val intent = Intent(view.context, savedatafood_user_private::class.java)
+                            intent.putExtra("UID",UID)
+                            intent.putExtra("namefood", fooditem.food.namefood)
+                            intent.putExtra("kcalfood", fooditem.food.kcal)
+                            intent.putExtra("id", fooditem.food.id_food)
+                            startActivity(intent)
+                            finish()
+
+                        }
+
+
+
                     }
                     mRecycleVeiew.adapter = adapter
                 }

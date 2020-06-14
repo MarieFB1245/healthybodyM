@@ -36,6 +36,7 @@ fun process (callback: (namefood:String) -> Unit){
                   val PERCEN = label.confidence
                   Log.e("name","${namefood}")
                   Log.e("name","${PERCEN}")
+
 callback.invoke(namefood)
 
                   break@loop

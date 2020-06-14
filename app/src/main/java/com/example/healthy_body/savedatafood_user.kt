@@ -33,10 +33,15 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
     var sum = 1
     var resultBig :Int=0
     var UID :String=""
+    var backtohome :String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_savedatafood_user)
 
+        if(intent.getStringExtra("backtohome")!=null) backtohome = intent.getStringExtra("backtohome")
+
+
+        Log.e("backtohome","$backtohome")
         supportActionBar?.title ="Show Select Food"
         UID = intent.getStringExtra("UID")
         var nameFoodShow: String = intent.getStringExtra("namefood")
@@ -69,16 +74,22 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
-            val intent = Intent(this, selectlistfood_user::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
+            if(backtohome != ""){
+                val intent = Intent(this, selectlistfood_user::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("back_home_add",backtohome)
+                startActivity(intent)
+                finish()
+            }else{
+                val intent = Intent(this, selectlistfood_user::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+            }
+
         }
 
         savelist.setOnClickListener {
-            val progest  = ProgressDialog(this@savedatafood_user,R.style.MyTheme)
-            progest.setCancelable(false)
-            progest.show()
 
             var numberadd :Int = 1
             val nametype :String= "FOOD"
@@ -87,14 +98,32 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
             val date =""
             savetodata(nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDate,idfoodShow)
             savetotalkcal(resultBig,nametype,UID,statusdoting,nametypeStatus,date).savetotal()
+            val progest  = ProgressDialog(this@savedatafood_user,R.style.MyTheme)
+            progest.setCancelable(false)
+            progest.show()
             Handler().postDelayed({
                 progest.cancel()
-                val intent = Intent(this,selectlistfood_user::class.java)
-                intent.putExtra("number",numberadd.toString())
-                intent.putExtra("UID",UID)
-                intent.putExtra("nametypeStatus",nametypeStatus)
-                startActivity(intent)
-                finish()
+                if(backtohome !=""){
+                    val backtohome = "homeselectfood"
+                    val intent = Intent(this, selectlistfood_user::class.java)
+                    intent.putExtra("UID",UID)
+                    intent.putExtra("back_home_add",backtohome)
+                    intent.putExtra("nametypeStatus",nametypeStatus)
+                    startActivity(intent)
+                    finish()
+
+                }else{
+                    val intent = Intent(this,selectlistfood_user::class.java)
+                    intent.putExtra("number",numberadd.toString())
+                    intent.putExtra("UID",UID)
+                    intent.putExtra("nametypeStatus",nametypeStatus)
+                    startActivity(intent)
+                    finish()
+
+                }
+
+
+
             }, 1500)
 
 
@@ -178,10 +207,24 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, selectlistfood_user::class.java)
-        intent.putExtra("UID",UID)
-        startActivity(intent)
-        finish()
+
+        if(backtohome !=""){
+            val backtohome = "homeselectfood"
+            val intent = Intent(this, selectlistfood_user::class.java)
+            intent.putExtra("UID",UID)
+            intent.putExtra("back_home_add",backtohome)
+            startActivity(intent)
+            finish()
+
+        }else{
+            val intent = Intent(this, selectlistfood_user::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+            finish()
+
+        }
+
+
     }
 }
 class datafood (val id:String ="",val nameFoodShowB: String="",val kcalfoodShowB :String="",val sum :Int, val resultBig : Int ,val date :String ,val id_list :String )
