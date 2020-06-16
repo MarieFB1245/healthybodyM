@@ -48,15 +48,15 @@ class register(val uid:String,val email :String,val password :String,val age :Fl
 
 
         } else if (BMI >= 23 && BMI <= 25) {
-            val status = "เริ่มอ่วน"
+            val status = "เริ่มอ้วน"
             myRef.child("status").setValue(status)
 
         } else if (BMI >= 25 && BMI <= 30) {
-            val status = "อ่วน"
+            val status = "อ้วน"
             myRef.child("status").setValue(status)
 
         } else {
-            val status = "อ่วนมาก"
+            val status = "อ้วนมาก"
             myRef.child("status").setValue(status)
 
         }

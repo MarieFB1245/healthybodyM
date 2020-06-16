@@ -40,19 +40,19 @@ class editinformation(val UID:String,val firstname :String ,val lastname : Strin
 
 
         } else if (BMI >= 23 && BMI <= 25) {
-            val status = "เริ่มอ่วน"
+            val status = "เริ่มอ้วน"
             val childUpdates = HashMap<String, String>()
             childUpdates.put("status", "${status}")
             myRef.updateChildren(childUpdates as Map<String, Any>)
 
         } else if (BMI >= 25 && BMI <= 30) {
-            val status = "อ่วน"
+            val status = "อ้วน"
             val childUpdates = HashMap<String, String>()
             childUpdates.put("status", "${status}")
             myRef.updateChildren(childUpdates as Map<String, Any>)
 
         } else {
-            val status = "อ่วนมาก"
+            val status = "อ้วนมาก"
             val childUpdates = HashMap<String, String>()
             childUpdates.put("status", "${status}")
             myRef.updateChildren(childUpdates as Map<String, Any>)

@@ -48,7 +48,7 @@ var text:String=""
     private var numtext:String =""
 
 var back_home_add:String =""
-
+    var namefoodstring :String =""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -271,50 +271,66 @@ var back_home_add:String =""
                       var search = findViewById<EditText>(R.id.Searching)
                       search.setText(namefood)
                       //loadfood(namefood)
+
+                      namefoodstring = namefood
                       Log.e("name","$namefood")
+                      if(namefoodstring =="") {
 
-                      ref.orderByChild("namefood")
-                      ref.addListenerForSingleValueEvent(object : ValueEventListener{
-                          override fun onCancelled(p0: DatabaseError) {
+                      }else{
+                          ref.orderByChild("namefood")
+                          ref.addListenerForSingleValueEvent(object : ValueEventListener{
+                              override fun onCancelled(p0: DatabaseError) {
+                              }
 
-                          }
+                              override fun onDataChange(p0: DataSnapshot) {
+                                  p0.children.forEach {
+                                      val food = it.getValue(modellistfood::class.java)
+                                      if(food!!.namefood == namefood) {
+                                          Log.e("name","$namefood")
 
-                          override fun onDataChange(p0: DataSnapshot) {
-                              p0.children.forEach {
-                                  val food = it.getValue(modellistfood::class.java)
-                                  if(food!!.namefood == namefood) {
-                                      if(back_home_add !=""){
+                                          if(back_home_add !=""){
 
-                                          val backtohome = "homeselectfood"
-                                          val intent = Intent(this@selectlistfood_user, savedatafood_user::class.java)
-                                          intent.putExtra("UID",UID)
-                                          intent.putExtra("backtohome",backtohome)
-                                          intent.putExtra("namefood", food.namefood)
-                                          intent.putExtra("kcalfood", food.kcal)
-                                          intent.putExtra("id", food.id_food)
-                                          startActivity(intent)
-                                          finish()
+                                              val backtohome = "homeselectfood"
+                                              val intent = Intent(this@selectlistfood_user, savedatafood_user::class.java)
+                                              intent.putExtra("UID",UID)
+                                              intent.putExtra("backtohome",backtohome)
+                                              intent.putExtra("namefood", food.namefood)
+                                              intent.putExtra("kcalfood", food.kcal)
+                                              intent.putExtra("id", food.id_food)
+                                              startActivity(intent)
+                                              finish()
+
+                                          }else{
+
+                                              val intent = Intent(this@selectlistfood_user, savedatafood_user::class.java)
+                                              intent.putExtra("UID",UID)
+                                              intent.putExtra("namefood", food.namefood)
+                                              intent.putExtra("kcalfood", food.kcal)
+                                              intent.putExtra("id", food.id_food)
+                                              startActivity(intent)
+
+                                          }
+
 
                                       }else{
-
-                                          val intent = Intent(this@selectlistfood_user, savedatafood_user::class.java)
-                                          intent.putExtra("UID",UID)
-                                          intent.putExtra("namefood", food.namefood)
-                                          intent.putExtra("kcalfood", food.kcal)
-                                          intent.putExtra("id", food.id_food)
-                                          startActivity(intent)
-
+                                          Log.e("data","DON have")
+                                          SweetAlertDialog(this@selectlistfood_user, SweetAlertDialog.ERROR_TYPE)
+                                              .setTitleText("ไม่ค้นพบที่ค้นหา")
+                                              .setContentText("กรุณาลองถ่ายใหม่อีกครั้ง")
+                                              .setConfirmText("ตกลง")
+                                              .showCancelButton(true)
+                                              .setCancelClickListener { sDialog -> sDialog.cancel() }
+                                              .show()
                                       }
-
-
-                                  }else{
-                                      Log.e("data","DON have")
-
                                   }
                               }
-                          }
 
-                      })
+                          })
+                      }
+
+
+
+
                   }
 
                 }

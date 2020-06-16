@@ -3,9 +3,12 @@ package com.example.healthy_body
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.core.view.isVisible
 import com.example.healthy_body.model.modellistexcercise
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
@@ -20,12 +23,27 @@ class selectlistexcercise_user_private : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
     var UID :String=""
     var searchtext :String=""
-
+var backtohome:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selectlistexcercise_user_private)
 
         UID = intent.getStringExtra("UID")
+        if(intent.getStringExtra("backtohome")!=null) backtohome =  intent.getStringExtra("backtohome")
+
+        if (intent.getStringExtra("nametypeStatus") != null){
+            baranimation.isVisible =true
+            val slide_down = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_down)
+            slide_down.setFillAfter(true)
+            baranimation.startAnimation(slide_down);
+
+            Handler().postDelayed({
+                val slide_up = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_up)
+                baranimation.startAnimation(slide_up);
+                baranimation.isVisible = false
+            }, 3000)
+        }
+
 
         val adapter = GroupAdapter<ViewHolder>()
         mRecycleVeiew.adapter = adapter
@@ -44,18 +62,49 @@ class selectlistexcercise_user_private : AppCompatActivity() {
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
-            val intent = Intent(this, selectlistexcercise_user::class.java)
-            intent.putExtra("UID", UID)
-            startActivity(intent)
-            finish()
+
+
+            if(backtohome !=""){
+                val backtohome = "homeselectexcercise"
+                val intent = Intent(this, selectlistexcercise_user::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("back_home_add",backtohome)
+                startActivity(intent)
+                finish()
+
+            }else{
+
+                val intent = Intent(this, selectlistexcercise_user::class.java)
+                intent.putExtra("UID", UID)
+                startActivity(intent)
+                finish()
+
+            }
+
+
+
         }
 
         val imageView = findViewById<ImageView>(R.id.addexcercise_private) as ImageView
         imageView.setOnClickListener {
-            val intent = Intent(this, addexcerciser_user_private::class.java)
-            intent.putExtra("UID", UID)
-            startActivity(intent)
-            finish()
+            if(backtohome !=""){
+                val backtohome = "homeselectexcercise"
+                val intent = Intent(this, addexcerciser_user_private::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("backtohome",backtohome)
+                startActivity(intent)
+                finish()
+
+            }else{
+
+                val intent = Intent(this, addexcerciser_user_private::class.java)
+                intent.putExtra("UID", UID)
+                startActivity(intent)
+                finish()
+
+            }
+
+
         }
     }
     fun loadexcercise(s: String) {
@@ -76,12 +125,29 @@ class selectlistexcercise_user_private : AppCompatActivity() {
                     }
                     adapter.setOnItemClickListener { item, view ->
                         val excerciseitem = item as Excercise
-                        val intent = Intent(view.context, savedataexcercise_user_private::class.java)
-                        intent.putExtra("UID",UID)
-                        intent.putExtra("nameexcercise", excerciseitem.excercise.name_excercise)
-                        intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
-                        intent.putExtra("id", excerciseitem.excercise.id_excercise)
-                        startActivity(intent)
+
+                        if(backtohome !=""){
+                            val backtohome = "homeselectexcercise"
+                            val intent = Intent(view.context, savedataexcercise_user_private::class.java)
+                            intent.putExtra("UID",UID)
+                            intent.putExtra("backtohome",backtohome)
+                            intent.putExtra("nameexcercise", excerciseitem.excercise.name_excercise)
+                            intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
+                            intent.putExtra("id", excerciseitem.excercise.id_excercise)
+                            startActivity(intent)
+                            finish()
+
+                        }else{
+
+                            val intent = Intent(view.context, savedataexcercise_user_private::class.java)
+                            intent.putExtra("UID",UID)
+                            intent.putExtra("nameexcercise", excerciseitem.excercise.name_excercise)
+                            intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
+                            intent.putExtra("id", excerciseitem.excercise.id_excercise)
+                            startActivity(intent)
+
+                        }
+
                     }
                     mRecycleVeiew.adapter = adapter
                 }
@@ -105,13 +171,31 @@ class selectlistexcercise_user_private : AppCompatActivity() {
                     }
                     adapter.setOnItemClickListener { item, view ->
                         val excerciseitem= item as Excercise
-                        val intent = Intent(view.context, savedataexcercise_user::class.java)
-                        intent.putExtra("UID",UID)
-                        intent.putExtra("nameexcercise", excerciseitem.excercise.name_excercise)
-                        intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
-                        intent.putExtra("id", excerciseitem.excercise.id_excercise)
-                        startActivity(intent)
-                        finish()
+
+                        if(backtohome !=""){
+                            val backtohome = "homeselectexcercise"
+                            val intent = Intent(view.context, savedataexcercise_user_private::class.java)
+                            intent.putExtra("UID",UID)
+                            intent.putExtra("backtohome",backtohome)
+                            intent.putExtra("nameexcercise", excerciseitem.excercise.name_excercise)
+                            intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
+                            intent.putExtra("id", excerciseitem.excercise.id_excercise)
+                            startActivity(intent)
+                            finish()
+
+                        }else{
+
+                            val intent = Intent(view.context, savedataexcercise_user_private::class.java)
+                            intent.putExtra("UID",UID)
+                            intent.putExtra("nameexcercise", excerciseitem.excercise.name_excercise)
+                            intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
+                            intent.putExtra("id", excerciseitem.excercise.id_excercise)
+                            startActivity(intent)
+
+                        }
+
+
+
                     }
                     mRecycleVeiew.adapter = adapter
                 }
@@ -151,9 +235,24 @@ class selectlistexcercise_user_private : AppCompatActivity() {
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, selectlistexcercise_user::class.java)
-        intent.putExtra("UID", UID)
-        startActivity(intent)
-        finish()
+
+        if(backtohome !=""){
+            val backtohome = "homeselectexcercise"
+            val intent = Intent(this, selectlistexcercise_user::class.java)
+            intent.putExtra("UID",UID)
+            intent.putExtra("back_home_add",backtohome)
+            startActivity(intent)
+            finish()
+
+        }else{
+
+            val intent = Intent(this, selectlistexcercise_user::class.java)
+            intent.putExtra("UID", UID)
+            startActivity(intent)
+            finish()
+
+        }
+
+
     }
 }

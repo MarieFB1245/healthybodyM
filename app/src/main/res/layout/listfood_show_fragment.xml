@@ -20,7 +20,6 @@
             android:gravity="center_vertical"
             android:layout_height="match_parent"
             android:textSize="20dp"
-
             android:text="name" />
         <LinearLayout
             android:layout_width="150dp"

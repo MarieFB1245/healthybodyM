@@ -8,6 +8,7 @@
     android:gravity="center"
     android:background="@drawable/all_background">
 
+
     <include
         android:id="@+id/totalkcal"
         layout="@layout/app_totalcal"
@@ -22,37 +23,90 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/totalkcal"
-
        >
-
-        <LinearLayout
-            android:id="@+id/text"
+        <RelativeLayout
+            android:id="@+id/box1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20sp"
-            android:layout_marginTop="20dp"
+            android:background="@drawable/background_object"
+            android:layout_margin="10dp"
+            >
+
+
+        <LinearLayout
+            android:id="@+id/textbody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="สถานะร่างกายของคุณ : "
-                android:textColor="#ffffff"
+                android:text="สถานะร่างกายของคุณ"
+                android:textColor="#000000"
                 android:textSize="20sp"></TextView>
 
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/text"
+            android:layout_below="@id/textbody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/statusname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" Null"
+                android:id="@+id/s1"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="ปกติ"
                 android:textColor="#ffffff"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/statusgreen"
                 android:textSize="20sp"></TextView>
 
-
+            <TextView
+                android:id="@+id/s2"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="เริ่มอ้วน"
+                android:gravity="center"
+                android:background="@drawable/statusyellow"
+                android:textColor="#ffffff"
+                android:layout_weight="1"
+                android:textSize="20sp"></TextView>
+            <TextView
+                android:id="@+id/s3"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="อ้วน"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:layout_weight="1"
+                android:background="@drawable/statusoren"
+                android:textSize="20sp"></TextView>
+            <TextView
+                android:id="@+id/s4"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="อ้วนมาก"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:background="@drawable/statusred"
+                android:layout_weight="1"
+                android:textSize="20sp"></TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -60,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/text"
-            android:layout_marginBottom="20sp"
+            android:layout_marginBottom="10sp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:orientation="horizontal">
@@ -70,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ค่า BMR ของคุณตอนนี้ : "
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textSize="20sp"></TextView>
 
 
@@ -79,7 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Null"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textSize="20sp"></TextView>
 
             <TextView
@@ -87,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" kcal"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textSize="20sp"></TextView>
 
         </LinearLayout>
@@ -107,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ค่า TDEE ของคุณตอนนี้ : "
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textSize="20sp"></TextView>
 
 
@@ -116,7 +170,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Null"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textSize="20sp"></TextView>
 
             <TextView
@@ -124,20 +178,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" kcal"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textSize="20sp"></TextView>
 
         </LinearLayout>
 
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/box2"
+            android:layout_below="@id/box1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_object"
+           android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            >
 
         <LinearLayout
         android:id="@+id/textShow_recomment_f"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/totalTDEE"
-            android:layout_marginTop="20dp"
-        android:layout_marginBottom="30sp"
+            android:layout_marginTop="10dp"
+        android:layout_marginBottom="10sp"
         android:orientation="vertical">
+
+
+
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -147,7 +214,7 @@
             android:layout_height="wrap_content"
             android:text="การลดน้ำหนัก"
             android:paddingLeft="10dp"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="20sp"></TextView>
 </RelativeLayout>
 
@@ -161,18 +228,18 @@
                     android:layout_marginTop="5dp"
                     android:paddingLeft="10dp"
                     android:text="คุณควรรับประทานอาหารให้ครบ 3 มื้อโดยการรับประทานอาหารให้ถึงค่า BMR เเต่ไม่ควรรับประทานอาหารเกินค่า TDEE เเละถ้าออกกำลังกายควบคู่จะสามารถลดน้ำหนัดได้เร็วขึ้น"
-                    android:textColor="#ffffff"
+                    android:textColor="#000000"
                     android:textSize="20sp"></TextView>
             </RelativeLayout>
     </LinearLayout>
-
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textShow_recomment_f"
-            android:layout_marginTop="20sp"
+            android:layout_below="@id/box2"
+            android:layout_marginTop="30sp"
             >
 
             <Button
@@ -192,7 +259,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/button"
-            android:layout_marginTop="40sp"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 

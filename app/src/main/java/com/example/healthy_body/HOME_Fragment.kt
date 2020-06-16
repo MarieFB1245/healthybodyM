@@ -267,11 +267,13 @@ v.addmenu.setOnClickListener {
         intent.putExtra("back_home_add",back_home_add)
         startActivity(intent)
     }else{
+
         val back_home_add = "excercise"
         val intent = Intent(this.requireContext(),selectlistexcercise_user::class.java)
         intent.putExtra("UID",UID)
         intent.putExtra("back_home_add",back_home_add)
         startActivity(intent)
+
     }
 
 }

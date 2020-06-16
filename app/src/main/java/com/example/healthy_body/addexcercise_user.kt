@@ -18,20 +18,37 @@ import kotlinx.android.synthetic.main.activity_home__user.*
 class addexcercise_user : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
     var UID :String=""
-
+var backtohome:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addexcercise_user)
         inputkcal.setTransformationMethod(null)
         UID = intent.getStringExtra("UID")
+        if(intent.getStringExtra("backtohome")!=null) backtohome =  intent.getStringExtra("backtohome")
+
+
+
         val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
         arrow.setOnClickListener {
-            val intent = Intent(this, selectlistexcercise_user::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
+
+            if(backtohome !=""){
+                val backtohome = "homeselectexcercise"
+                val intent = Intent(this, selectlistexcercise_user::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("back_home_add",backtohome)
+                startActivity(intent)
+                finish()
+
+            }else{
+                val intent = Intent(this, selectlistexcercise_user::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+
+            }
+
         }
         val inputnameexcercise = findViewById<EditText>(R.id.inputnameexcercise)
         val inputkcal = findViewById<EditText>(R.id.inputkcal)
@@ -41,10 +58,24 @@ class addexcercise_user : AppCompatActivity() {
             val textkcal = inputkcal.text.toString()
             if (textnameEX !=""&&textkcal!=""){
                 savemenuexcercise(textnameEX,textkcal).saveex()
-                val intent = Intent(this, selectlistexcercise_user::class.java)
-                intent.putExtra("UID", UID)
-                startActivity(intent)
-                finish()
+
+                if(backtohome !=""){
+                    val backtohome = "homeselectexcercise"
+                    val intent = Intent(this, selectlistexcercise_user::class.java)
+                    intent.putExtra("UID",UID)
+                    intent.putExtra("back_home_add",backtohome)
+                    startActivity(intent)
+                    finish()
+
+                }else{
+                    val intent = Intent(this, selectlistexcercise_user::class.java)
+                    intent.putExtra("UID",UID)
+                    startActivity(intent)
+                    finish()
+
+                }
+
+
             }else{
                 Toast.makeText(this, "Please in put Information Excercise", Toast.LENGTH_SHORT).show()
             }
@@ -58,10 +89,21 @@ class addexcercise_user : AppCompatActivity() {
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, selectlistexcercise_user::class.java)
-        intent.putExtra("UID",UID)
-        startActivity(intent)
-        finish()
+        if(backtohome !=""){
+            val backtohome = "homeselectexcercise"
+            val intent = Intent(this, selectlistexcercise_user::class.java)
+            intent.putExtra("UID",UID)
+            intent.putExtra("back_home_add",backtohome)
+            startActivity(intent)
+            finish()
+
+        }else{
+            val intent = Intent(this, selectlistexcercise_user::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+            finish()
+
+        }
 
     }
 }

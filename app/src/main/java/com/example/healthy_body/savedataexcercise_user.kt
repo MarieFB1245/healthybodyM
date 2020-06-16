@@ -35,6 +35,8 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
     var sum = 1
     var resultBig :Int=0
     var UID :String=""
+var backtohome :String =""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +44,9 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
 
         supportActionBar?.title ="Show Select Food"
         UID = intent.getStringExtra("UID")
+        if(intent.getStringExtra("backtohome")!=null) backtohome =  intent.getStringExtra("backtohome")
+
+
         var nameExcerciseShow: String = intent.getStringExtra("nameexcercise")
         var kcalExcerciseShow: String = intent.getStringExtra("kcalexcercise")
         var idfoodShow: String = intent.getStringExtra("id")
@@ -72,10 +77,23 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
         setSupportActionBar(tooltset)
 
         arrow.setOnClickListener {
-            val intent = Intent(this, selectlistexcercise_user::class.java)
-            intent.putExtra("UID",UID)
-            startActivity(intent)
-            finish()
+            if(backtohome !=""){
+                val backtohome = "homeselectexcercise"
+                val intent = Intent(this, selectlistexcercise_user::class.java)
+                intent.putExtra("UID",UID)
+                intent.putExtra("back_home_add",backtohome)
+                startActivity(intent)
+                finish()
+
+            }else{
+                val intent = Intent(this, selectlistexcercise_user::class.java)
+                intent.putExtra("UID",UID)
+                startActivity(intent)
+                finish()
+
+            }
+
+
         }
 
         savelist.setOnClickListener {
@@ -91,11 +109,26 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
             progest.show()
             Handler().postDelayed({
                 progest.cancel()
-            val intent = Intent(this,selectlistexcercise_user::class.java)
-            intent.putExtra("UID",UID)
-            intent.putExtra("nametypeStatus",nametypeStatus)
-            startActivity(intent)
-            finish()
+
+                if(backtohome !=""){
+                    val backtohome = "homeselectexcercise"
+                    val intent = Intent(this, selectlistexcercise_user::class.java)
+                    intent.putExtra("UID",UID)
+                    intent.putExtra("back_home_add",backtohome)
+                    intent.putExtra("nametypeStatus",nametypeStatus)
+                    startActivity(intent)
+                    finish()
+
+                }else{
+                    val intent = Intent(this,selectlistexcercise_user::class.java)
+                    intent.putExtra("UID",UID)
+                    intent.putExtra("nametypeStatus",nametypeStatus)
+                    startActivity(intent)
+                    finish()
+
+                }
+
+
             }, 1500)
         }
 
@@ -177,9 +210,24 @@ class savedataexcercise_user : AppCompatActivity(),View.OnClickListener {
         }
 
         this.doubleBackToExitPressedOnce = true
-        val intent = Intent(this, selectlistfood_user::class.java)
-        intent.putExtra("UID",UID)
-        startActivity(intent)
-        finish()
+
+
+        if(backtohome !=""){
+            val backtohome = "homeselectexcercise"
+            val intent = Intent(this, selectlistexcercise_user::class.java)
+            intent.putExtra("UID",UID)
+            intent.putExtra("back_home_add",backtohome)
+            startActivity(intent)
+            finish()
+
+        }else{
+            val intent = Intent(this, selectlistexcercise_user::class.java)
+            intent.putExtra("UID",UID)
+            startActivity(intent)
+            finish()
+
+        }
+
+
     }
 }

@@ -1,6 +1,7 @@
 package com.example.healthy_body
 
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_register__infirmation.*
 import kotlinx.android.synthetic.main.activity_totalkcal__user.*
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 class Totalkcal_User : AppCompatActivity() {
     private var myAut = FirebaseAuth.getInstance()
@@ -23,20 +29,47 @@ class Totalkcal_User : AppCompatActivity() {
         myRef = FirebaseDatabase.getInstance().reference
 
 
-        val TDEEshow = findViewById<TextView>(R.id.statusname)
+       // val TDEEshow = findViewById<TextView>(R.id.statusname)
         val numberkcalBMR = findViewById<TextView>(R.id.numberkcalBMR)
         val numberkcalTDEE = findViewById<TextView>(R.id.numberkcalTDEE)
-        var UID: String = intent.getStringExtra("UID")
+       var UID: String = intent.getStringExtra("UID")
        var status: String = intent.getStringExtra("status")
        var TDEE: String = intent.getStringExtra("TDEE")
         var BMR: String = intent.getStringExtra("BMR")
 
  //  Log.d("information","uid intent:$UID")
 
+        if(status == "ปกติ"){
+            val layout = findViewById<TextView>(R.id.s1)
+            val params = layout.getLayoutParams()
+            params.height = 120 //px
+            layout.setLayoutParams(params)
+            s1.setTypeface(s1.getTypeface(), Typeface.BOLD)
+        }else if (status == "เริ่มอ้วน"){
+            val layout = findViewById<TextView>(R.id.s2)
+            val params = layout.getLayoutParams()
+            params.height = 120
+            layout.setLayoutParams(params)
+            s2.setTypeface(s2.getTypeface(), Typeface.BOLD);
+        }else if (status == "อ้วน"){
+            val layout = findViewById<TextView>(R.id.s3)
+            val params = layout.getLayoutParams()
+            params.height = 120
+            layout.setLayoutParams(params)
+            s3.setTypeface(s3.getTypeface(), Typeface.BOLD);
+        }else{
+            val layout = findViewById<TextView>(R.id.s4)
+            val params = layout.getLayoutParams()
+            params.height = 120
+            layout.setLayoutParams(params)
+            s4.setTypeface(s4.getTypeface(), Typeface.BOLD);
+        }
 
+       // TDEEshow.text = "test"
+       // numberkcalBMR.text = "test"
+      //  numberkcalTDEE.text = "test"
 
-
-        TDEEshow.text = status
+        //TDEEshow.text = status
         numberkcalBMR.text = BMR
         numberkcalTDEE.text = TDEE
 
