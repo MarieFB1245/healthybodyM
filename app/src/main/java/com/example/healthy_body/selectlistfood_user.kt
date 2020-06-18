@@ -308,6 +308,7 @@ var back_home_add:String =""
                                               intent.putExtra("kcalfood", food.kcal)
                                               intent.putExtra("id", food.id_food)
                                               startActivity(intent)
+                                              finish()
 
                                           }
 
@@ -371,6 +372,7 @@ var back_home_add:String =""
                                 intent.putExtra("kcalfood", fooditem.food.kcal)
                                 intent.putExtra("id", fooditem.food.id_food)
                                 startActivity(intent)
+                                finish()
                             }else{
                                 val intent = Intent(view.context, savedatafood_user::class.java)
                                 intent.putExtra("UID",UID)
@@ -378,6 +380,7 @@ var back_home_add:String =""
                                 intent.putExtra("kcalfood", fooditem.food.kcal)
                                 intent.putExtra("id", fooditem.food.id_food)
                                 startActivity(intent)
+                                finish()
                             }
 
                         }
@@ -424,6 +427,7 @@ var back_home_add:String =""
                             intent.putExtra("kcalfood", fooditem.food.kcal)
                             intent.putExtra("id", fooditem.food.id_food)
                             startActivity(intent)
+                            finish()
                         }else{
                             val intent = Intent(view.context,savedatafood_user::class.java)
                             intent.putExtra("UID",UID)
@@ -431,6 +435,7 @@ var back_home_add:String =""
                             intent.putExtra("kcalfood", fooditem.food.kcal)
                             intent.putExtra("id", fooditem.food.id_food)
                             startActivity(intent)
+                            finish()
                         }
                     }
                     mRecycleVeiew.adapter = adapter
