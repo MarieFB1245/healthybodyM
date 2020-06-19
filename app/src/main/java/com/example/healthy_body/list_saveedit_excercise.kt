@@ -40,8 +40,10 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_list_saveedit_excercise)
         var add = findViewById<Button>(R.id.add)
         var sub = findViewById<Button>(R.id.sub)
+        if (intent.getStringExtra("numberbackpage")!=null) numberbackpage = intent.getStringExtra("numberbackpage")
+
+
         KEY = intent.getStringExtra("key")
-        numberbackpage = intent.getStringExtra("numberbackpage")
         UID = intent.getStringExtra("UID")
         nameExcerciseShowB = intent.getStringExtra("nameExcerciseShowB")
         kcalExcerciseShowB = intent.getStringExtra("kcalExcerciseShowB")
