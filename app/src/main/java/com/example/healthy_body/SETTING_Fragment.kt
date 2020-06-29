@@ -43,11 +43,11 @@ class SETTING_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_setting_, container, false)
-        listset.add("ตั้งค่าข้อมูลส่วนตัว")
-        listset.add("อาหาร")
-        listset.add("กิจกรรม")
-        listset.add("อาหารของฉัน")
-        listset.add("กิจกรรมของฉัน")
+        listset.add("จัดการข้อมูลส่วนตัว")
+        listset.add("จัดรายการอาหารวันนี้")
+        listset.add("จัดรายการกิจกรรมวันนี้")
+        listset.add("จัดรายการอาหารของฉัน")
+        listset.add("จัดรายการกิจกรรมของฉัน")
 
         val UID = arguments!!.getString("UID")
         val UIDs = UID.toString()

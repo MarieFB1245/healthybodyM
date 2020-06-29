@@ -15,18 +15,21 @@ import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.ImageView
 import cn.pedant.SweetAlert.SweetAlertDialog
-
-
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.database.DatabaseReference
 
 
 class Register_User : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
-    private var myRef = FirebaseAuth.getInstance()
-
+   // private var
+    private lateinit var auth: FirebaseAuth
+    private lateinit var myReft: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register__user)
+        auth = FirebaseAuth.getInstance()
         val arrow = findViewById<ImageView>(R.id.arrow)
         val tooltset = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(tooltset)
@@ -37,6 +40,7 @@ class Register_User : AppCompatActivity() {
         }
 
         val button1 = findViewById(R.id.button1) as Button
+
         button1.setOnClickListener {
             var emailPattern ="^[a-zA-Z0-9_+&*-]+(?:\\."+
                     "[a-zA-Z0-9_+&*-]+)*@" +
@@ -49,7 +53,8 @@ class Register_User : AppCompatActivity() {
             val passwordInt = password.length
             val conpasswordInt = conpassword.length
 
-          // myRef = FirebaseAuth.getInstance()
+            auth = FirebaseAuth.getInstance()
+
 
             if(email!=""&&password!=""&&conpassword!=""){
                 if(!emailPattern.toRegex().matches(email)){
@@ -68,7 +73,22 @@ class Register_User : AppCompatActivity() {
 
                     }else{
                         if(password==conpassword){
-                            saveusertodatabase(email,password)
+
+                            auth.fetchSignInMethodsForEmail(email).addOnCompleteListener {result  ->
+
+                               val test = result.getResult()!!.signInMethods
+                                if(!test!!.contains(EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD)){
+                                    saveusertodatabase(email,password)
+                                }else{
+                                    SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                                        .setTitleText("อีเมลนี้ถูกใช้งานเเล้ว")
+                                        .setContentText("กรุณาใสอีเมลอื่น!")
+                                        .setConfirmText("ตกลง")
+                                        .show()
+                                }
+
+                            }
+
                         }
                         else{
                             SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
