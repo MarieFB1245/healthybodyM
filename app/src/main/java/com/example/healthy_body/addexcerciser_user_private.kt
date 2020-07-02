@@ -80,7 +80,7 @@ class addexcerciser_user_private : AppCompatActivity() {
                     finish()
 
                 }
-                }, 3000)
+                }, 1500)
 
             }else{
                 Toast.makeText(this, "Please in put Information Excercise", Toast.LENGTH_SHORT).show()

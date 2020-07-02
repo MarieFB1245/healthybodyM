@@ -2,10 +2,12 @@ package com.example.healthy_body
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
@@ -58,6 +60,12 @@ var backtohome:String=""
             val textkcal = inputkcal.text.toString()
             if (textnameEX !=""&&textkcal!=""){
                 savemenuexcercise(textnameEX,textkcal).saveex()
+                val progest  = ProgressDialog(this@addexcercise_user,R.style.MyTheme)
+                progest.setCancelable(false)
+                progest.show()
+                Handler().postDelayed({
+                    progest.cancel()
+
 
                 if(backtohome !=""){
                     val backtohome = "homeselectexcercise"
@@ -75,7 +83,7 @@ var backtohome:String=""
 
                 }
 
-
+                }, 1500)
             }else{
                 Toast.makeText(this, "Please in put Information Excercise", Toast.LENGTH_SHORT).show()
             }

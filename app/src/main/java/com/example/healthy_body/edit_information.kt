@@ -63,7 +63,6 @@ class edit_information : AppCompatActivity() {
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val userinfo = dataSnapshot.getValue(get_dattauser_edit::class.java)
-
                 val firstname = userinfo?.textfirstname
                 val lastname = userinfo?.textlastname
                 val age = userinfo?.age
@@ -71,11 +70,9 @@ class edit_information : AppCompatActivity() {
                 val height = userinfo?.height
                 val gender = userinfo?.gender
                 val betterSpinnerNostring = userinfo?.level_Workout
-
                 val ageI = age!!.toInt()
                 val weightI = weight!!.toInt()
                 val heightI = height!!.toInt()
-
                 val agestring: String = ageI.toString()
                 val weightstring: String = weightI.toString()
                 val heightstring: String = heightI.toString()
@@ -144,6 +141,7 @@ fun pass (uid:String=""){
     startActivity(intent)
     finish()
 }
+
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
@@ -160,7 +158,7 @@ fun pass (uid:String=""){
 
     }
     fun error (){
-        Toast.makeText(this, "Please in put information in correct.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "กรุณาใส่ข้อมูลให้ถูกต้อง", Toast.LENGTH_SHORT).show()
     }
 
     }

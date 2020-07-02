@@ -61,24 +61,24 @@ class SETTING_Fragment : Fragment() {
                 //var UID :String="GRp37lrFluTK2OhZpUc5dTg0Ofa2"
                 val listsetting = item as settext
                 var textlistsetting = listsetting.listselectt
-                if(textlistsetting.equals("ตั้งค่าข้อมูลส่วนตัว")){
+                if(textlistsetting.equals("จัดการข้อมูลส่วนตัว")){
                     val intent = Intent(view.context, edit_information::class.java)
                     intent.putExtra("UID", UIDs)
                     startActivity(intent)
                     getActivity()!!.finish()
-                }else if(textlistsetting.equals("อาหาร")){
+                }else if(textlistsetting.equals("จัดรายการอาหารวันนี้")){
                     val intent = Intent(view.context, list_edit_food::class.java)
                     intent.putExtra("UID", UIDs)
                     startActivity(intent)
                     getActivity()!!.finish()
                     //  Toast.makeText(this, "อาหาร ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
-                }else if(textlistsetting.equals("กิจกรรม")){
+                }else if(textlistsetting.equals("จัดรายการกิจกรรมวันนี้")){
                     val intent = Intent(view.context, list_edit_excercise::class.java)
                     intent.putExtra("UID", UIDs)
                     startActivity(intent)
                     getActivity()!!.finish()
                     //  Toast.makeText(this, "อาหาร ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
-                }else if(textlistsetting.equals("อาหารของฉัน")){
+                }else if(textlistsetting.equals("จัดรายการอาหารของฉัน")){
                     val intent = Intent(view.context, list_edit_food_private::class.java)
                     intent.putExtra("UID", UIDs)
                     startActivity(intent)

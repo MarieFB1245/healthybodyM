@@ -1,8 +1,10 @@
 package com.example.healthy_body
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -102,6 +104,12 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
            val typefood = betterSpinner.text.toString()
            if(namefood!= ""&&kcal!=""&&unit!=""&&typefood!=""&&this.amount!=null){
                savemenufood(namefood,kcal,unit,typefood,this.amount).save()
+               val progest  = ProgressDialog(this@addfood_user,R.style.MyTheme)
+               progest.setCancelable(false)
+               progest.show()
+               Handler().postDelayed({
+                   progest.cancel()
+
                if(backtohome!=""){
                    val intent = Intent(this, selectlistfood_user::class.java)
                    intent.putExtra("UID", UID)
@@ -114,6 +122,7 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
                    startActivity(intent)
                    finish()
                }
+               }, 1500)
            }else{
                Toast.makeText(this, "Please in put Information Food", Toast.LENGTH_SHORT).show()
            }

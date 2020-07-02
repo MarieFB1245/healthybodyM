@@ -89,18 +89,21 @@ class savetotalkcal (val kcal:Int ,val nametype : String="",val UID :String="",v
                             Log.e("statusdoting", "${statusdoting}")
 
 
-                            if (statusdoting == "Add") {
+                            if (kcal <0) {
                                 if (kcaldataFood != null) {
-                                    var totalkcal = kcaldataFood + kcal
+                                    var textnum = kcal.toString()
+                                     var sumkcalcut=textnum.substring(1)
+                                    var totalkcal = kcaldataFood + sumkcalcut.toInt()
                                     myRef.setValue(totalkcal)
                                 } else {
                                     Log.e("ERROR =>", "update")
                                 }
-                            } else if (statusdoting == "de") {
+                            } else if (kcal > 0) {
 
                                 var totalkcal = kcaldataFood - kcal
                                 myRef.setValue(totalkcal)
                             } else {
+                                Log.e("ERROR =>", "update")
                             }
 
                         } else {
@@ -179,14 +182,16 @@ class savetotalkcal (val kcal:Int ,val nametype : String="",val UID :String="",v
                             Log.e("statusdoting", "${statusdoting}")
 
 
-                            if (statusdoting == "Add") {
+                            if (kcal <0) {
                                 if (kcaldataExcercise != null) {
-                                    var totalkcal = kcaldataExcercise + kcal
+                                    var textnum = kcal.toString()
+                                    var sumkcalcut=textnum.substring(1)
+                                    var totalkcal = kcaldataExcercise + sumkcalcut.toInt()
                                     myRef.setValue(totalkcal)
                                 } else {
                                     Log.e("ERROR =>", "update")
                                 }
-                            } else if (statusdoting == "de") {
+                            } else if (kcal > 0) {
                                 var totalkcal = kcaldataExcercise - kcal
                                 myRef.setValue(totalkcal)
                             } else {

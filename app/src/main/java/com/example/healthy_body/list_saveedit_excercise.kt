@@ -29,7 +29,7 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
     var resultBig: Int = 0
     var UID: String = ""
     var idfoodShow: String = ""
-    var newsum: Int = 0
+    var newsum: Int? = null
     var statusdoting: String = ""
     var date: String = ""
     var KEY :String=""
@@ -145,7 +145,26 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
             val nametype: String = "EXCERCISE"
             val nametypeStatus: String = "Edit"
             updatetodata(nameExcerciseShowB, kcalExcerciseShowB, resultBig, sum, date, idfoodShow,KEY)
-            savetotalkcal(newsum, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
+        //    savetotalkcal(newsum!!, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
+            if(newsum == null) {
+                Log.e("sub standas","$newsum")
+                newsum = 0
+                savetotalkcal(
+                    newsum!!,
+                    nametype,
+                    UID,
+                    statusdoting,
+                    nametypeStatus,
+                    date
+                ).savetotal()
+
+            }else{
+                savetotalkcal(newsum!!,nametype,UID,statusdoting,nametypeStatus,date).savetotal()
+            }
+
+
+
+
             if(numberbackpage =="2"){
                 val backtohome = "homeselectexcercise"
                 val intent = Intent(this, Home_User::class.java)
@@ -192,8 +211,23 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
             R.id.add -> {
                 sum = sum + 1
                 statusdoting = "Add"
-                newsum = newsum + sumkcal
+               // newsum = newsum - sumkcal
                 resultBig = sumkcal * sum
+                if(newsum == null){
+                    newsum=0
+                    newsum = newsum?.minus(sumkcal)
+                    Log.e("newsum Add (newsum == null)", "${newsum}")
+
+                }else if(newsum != null) {
+                    if(newsum != 0){
+                        newsum = newsum?.minus(sumkcal)
+                        Log.e("newsum Add (else)", "${newsum}")
+                    } else{
+                        newsum = newsum?.minus(sumkcal)
+                        Log.e("newsum Add (else)", "${newsum}")
+                    }
+                }
+
                 Log.d("sumkcal add =>", "${sum}")
                 amount.setText("$sum")
                 tatal.setText("$resultBig")
@@ -201,12 +235,38 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
             R.id.sub -> {
                 sum = sum - 1
                 statusdoting = "de"
-                newsum = newsum + sumkcal
+                //newsum = newsum + sumkcal
                 resultBig = resultBig - sumkcalsub
 
-                if (sum <= 1) {
+                if(sum <1 &&newsum == null){  //กรณีที่ จำนวนเป็น 1 ตั่งเเต่ต้น
                     sum = 1
-                    resultBig = sumkcalsub
+                    this.resultBig=sumkcalsub
+                    newsum=null
+                    Log.e("newsum sub (sum<1)", "${newsum}")
+                }else if (newsum == null){//กรณีที่ไม่ถูกกดเพิ่ม
+                    newsum=0
+                    newsum = newsum?.plus(sumkcal)
+                    Log.e("newsum sub (newsum == null)", "${newsum}")
+                    v.isEnabled = true
+                }else if (newsum != null){
+                    if(newsum!!>=0){
+
+
+                        if (sum < 1 ){
+                            sum = 1
+                            this.resultBig=sumkcalsub
+                            Log.e("newsum sub (else if)", "${newsum}")
+                        }else{
+                            newsum = newsum?.plus(sumkcal)
+                            Log.e("newsum sub (else)", "${newsum}")
+                        }
+
+                    }
+                    else{
+                        newsum = newsum?.plus(sumkcal)
+                        Log.e("newsum sub (else)", "${newsum}")
+                    }
+
                 }
                 Log.d("sumkcal sub =>", "${resultBig}")
                 Log.d("sum", "${sum}")

@@ -153,7 +153,7 @@ class selectlistexcercise_user : AppCompatActivity() {
             val date  = sdf.format(calendar.getTime())
             Log.e("date","${date}")
             var adapters = GroupAdapter<ViewHolder>()
-            ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child(date)
+           var ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child(date)
             ref.addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(p0: DataSnapshot) {
                     Log.d("p0", p0.toString())
@@ -192,7 +192,7 @@ class selectlistexcercise_user : AppCompatActivity() {
         val date  = sdf.format(calendar.getTime())
         Log.e("date","${date}")
         var adapters = GroupAdapter<ViewHolder>()
-        ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child(date)
+       var ref = FirebaseDatabase.getInstance().getReference("SELECTEXCERCISE").child("${UID}").child(date)
         ref.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 Log.d("p0", p0.toString())

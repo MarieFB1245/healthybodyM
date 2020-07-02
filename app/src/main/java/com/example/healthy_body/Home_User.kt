@@ -33,13 +33,13 @@ class Home_User : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
     private lateinit var myRef: DatabaseReference
     private var myAut = FirebaseAuth.getInstance()
-    //val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
+ //   val UID="BmmUcmBYN2MmvJr1oFt3MQkKDCU2"
   // val UID="Ph0BSgJTuLUluUI7IpGMcDPCeBx2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home__user)
 
-        var UID: String = intent.getStringExtra("UID")
+       var UID: String = intent.getStringExtra("UID")
 
 
 if(intent.getStringExtra("callbackAc")==null){
