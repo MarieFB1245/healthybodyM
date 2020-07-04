@@ -163,12 +163,14 @@ class savedatafood_user : AppCompatActivity(), View.OnClickListener {
                         }
                     })
                 }else{
+
                     val key: Int = 0
                     val newkey = key + 1
                     val id_list = newkey.toString()
                     val settext = modelSelectFood(id_list,nameFoodShowB,kcalfoodShowB,resultBig,sum,currentDater,id)
                     ref.child("${id_list}").setValue(settext)
                     ref.child("${id_list}").setValue(settext)
+
                 }
             }
         })

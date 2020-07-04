@@ -145,6 +145,7 @@ var backtohome:String=""
                             intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
                             intent.putExtra("id", excerciseitem.excercise.id_excercise)
                             startActivity(intent)
+                            finish()
 
                         }
 

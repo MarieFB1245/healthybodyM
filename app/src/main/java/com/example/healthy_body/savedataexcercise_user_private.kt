@@ -190,6 +190,7 @@ class savedataexcercise_user_private : AppCompatActivity(),View.OnClickListener 
                 Log.d("sumkcal add =>","${sum}")
                 amount.setText("$sum")
                 tatal.setText("$resultBig")
+
             }
             R.id.sub -> {
 
@@ -202,6 +203,7 @@ class savedataexcercise_user_private : AppCompatActivity(),View.OnClickListener 
                 }
                 amount.setText("$sum")
                 tatal.setText("$resultBig")
+
             }
             else -> {
             }

@@ -167,8 +167,6 @@ class selectlistexcercise_user : AppCompatActivity() {
                             dialog.recyclerView2.adapter = adapters
                         }
 
-                    }else{
-
                     }
 
                 }

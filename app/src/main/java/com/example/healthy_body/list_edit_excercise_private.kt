@@ -46,6 +46,7 @@ class list_edit_excercise_private : AppCompatActivity() {
             val callbackAc ="1"
             intent.putExtra("callbackAc",callbackAc)
             startActivity(intent)
+            finish()
         }
 
         loaddata()
@@ -55,6 +56,7 @@ class list_edit_excercise_private : AppCompatActivity() {
             val intent = Intent(this, addexcercise_user_private_Bsetting::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
+            finish()
         }
 
 

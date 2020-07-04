@@ -67,23 +67,25 @@ class addfood_user_private_Bsetting : AppCompatActivity(), View.OnClickListener 
             val unit = inputunit.text.toString()
             val typefood = betterSpinner.text.toString()
 
-            val progest  = ProgressDialog(this@addfood_user_private_Bsetting,R.style.MyTheme)
-            progest.setCancelable(false)
-            progest.show()
-            Handler().postDelayed({
-                progest.cancel()
+
 
             if(namefood!= ""&&kcal!=""&&unit!=""&&typefood!=""&&this.amount!=null){
                 savemenufood_private(UID,namefood,kcal,unit,typefood,this.amount).save()
+                val progest  = ProgressDialog(this@addfood_user_private_Bsetting,R.style.MyTheme)
+                progest.setCancelable(false)
+                progest.show()
+                Handler().postDelayed({
+                    progest.cancel()
                 val intent = Intent(this, list_edit_food_private::class.java)
                 intent.putExtra("UID", UID)
                 startActivity(intent)
                 finish()
+                }, 1500)
             }else{
                 Toast.makeText(this, "Please in put Information Food", Toast.LENGTH_SHORT).show()
             }
 
-            }, 1500)
+
 
         }
 

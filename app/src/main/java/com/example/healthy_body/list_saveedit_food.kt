@@ -213,7 +213,7 @@ if (intent.getStringExtra("numberbackpage")!=null) numberbackpage = intent.getSt
             Log.e("sub standas","error")
         }
     }
-//3950
+
     override fun onClick(v: View?) {
         Log.d("kcalfoodShow", "${nameFoodShowB}")
         Log.d("kcalfoodShow", "${kcalfoodShowB}")
@@ -233,10 +233,10 @@ if (intent.getStringExtra("numberbackpage")!=null) numberbackpage = intent.getSt
                     newsum = newsum?.minus(sumkcal)
                     Log.e("newsum Add (newsum == null)", "${newsum}")
 
-                }else if(newsum != null) {
+                }else if(newsum != null){
                     if(newsum != 0){
                             newsum = newsum?.minus(sumkcal)
-                    } else{
+                    }else{
                         newsum = newsum?.minus(sumkcal)
                         Log.e("newsum Add (else)", "${newsum}")
                     }
@@ -247,7 +247,6 @@ if (intent.getStringExtra("numberbackpage")!=null) numberbackpage = intent.getSt
                 Log.d("sumkcal sub =>", "${resultBig}")
                 amount.setText("$sum")
                 tatal.setText("$resultBig")
-
             }
             R.id.sub -> {
 
@@ -278,7 +277,6 @@ if (intent.getStringExtra("numberbackpage")!=null) numberbackpage = intent.getSt
                             newsum = newsum?.plus(sumkcal)
                             Log.e("newsum sub (else)", "${newsum}")
                         }
-
                     }
                     else{
                         newsum = newsum?.plus(sumkcal)
