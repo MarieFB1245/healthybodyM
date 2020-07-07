@@ -104,7 +104,7 @@ class Login_user : AppCompatActivity() {
             }
             .setConfirmClickListener {
 
-                finish()
+                this.finish()
             }
             .show()
 

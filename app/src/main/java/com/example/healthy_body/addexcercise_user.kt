@@ -58,6 +58,7 @@ var backtohome:String=""
         buttonaddexceercisee.setOnClickListener {
             val textnameEX = inputnameexcercise.text.toString()
             val textkcal = inputkcal.text.toString()
+            val nametypeStatus :String = "SAVE"
             if (textnameEX !=""&&textkcal!=""){
                 savemenuexcercise(textnameEX,textkcal).saveex()
                 val progest  = ProgressDialog(this@addexcercise_user,R.style.MyTheme)
@@ -72,12 +73,14 @@ var backtohome:String=""
                     val intent = Intent(this, selectlistexcercise_user::class.java)
                     intent.putExtra("UID",UID)
                     intent.putExtra("back_home_add",backtohome)
+                    intent.putExtra("nametypeStatus",nametypeStatus)
                     startActivity(intent)
                     finish()
 
                 }else{
                     val intent = Intent(this, selectlistexcercise_user::class.java)
                     intent.putExtra("UID",UID)
+                    intent.putExtra("nametypeStatus",nametypeStatus)
                     startActivity(intent)
                     finish()
 

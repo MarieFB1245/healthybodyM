@@ -489,7 +489,7 @@ var back_home_add:String =""
         }
 
         this.doubleBackToExitPressedOnce = true
-        if(back_home_add != null){
+        if(back_home_add !=""){
             val backtohome = "homeselectfood"
             val intent = Intent(this, Home_User::class.java)
             intent.putExtra("UID",UID)

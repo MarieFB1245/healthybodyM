@@ -417,6 +417,9 @@ class dashboard_user : AppCompatActivity() {
 
     }
 }
+
+
+
 //  /* Model */
 data class totalkcallare (var TOTALEXCERCISE:Int=0 ,var TOTALFOOD: Int=0 ,var DATE :String="",var TimeStamp:String =""  )
 

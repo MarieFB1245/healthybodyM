@@ -102,6 +102,7 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
            val kcal = inputkcal.text.toString()
            val unit = inputunit.text.toString()
            val typefood = betterSpinner.text.toString()
+           val nametypeStatus :String = "SAVE"
            if(namefood!= ""&&kcal!=""&&unit!=""&&typefood!=""&&this.amount!=null){
                savemenufood(namefood,kcal,unit,typefood,this.amount).save()
                val progest  = ProgressDialog(this@addfood_user,R.style.MyTheme)
@@ -119,6 +120,7 @@ class addfood_user : AppCompatActivity(), View.OnClickListener {
                }else{
                    val intent = Intent(this, selectlistfood_user::class.java)
                    intent.putExtra("UID", UID)
+                   intent.putExtra("nametypeStatus",nametypeStatus)
                    startActivity(intent)
                    finish()
                }

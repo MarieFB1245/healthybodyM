@@ -230,7 +230,7 @@ if(intent.getStringExtra("backtohome")==null){
                 val intent = Intent(this, Login_user::class.java)
                 myAut.signOut()
                 startActivity(intent)
-                finish()
+                this.finish()
             }
             .show()
 

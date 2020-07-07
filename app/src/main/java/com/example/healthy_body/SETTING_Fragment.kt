@@ -65,31 +65,31 @@ class SETTING_Fragment : Fragment() {
                     val intent = Intent(view.context, edit_information::class.java)
                     intent.putExtra("UID", UIDs)
                     startActivity(intent)
-                    getActivity()!!.finish()
+                    activity!!.finish()
                 }else if(textlistsetting.equals("จัดรายการอาหารวันนี้")){
                     val intent = Intent(view.context, list_edit_food::class.java)
                     intent.putExtra("UID", UIDs)
                     startActivity(intent)
-                    getActivity()!!.finish()
+                    activity!!.finish()
                     //  Toast.makeText(this, "อาหาร ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
                 }else if(textlistsetting.equals("จัดรายการกิจกรรมวันนี้")){
                     val intent = Intent(view.context, list_edit_excercise::class.java)
                     intent.putExtra("UID", UIDs)
                     startActivity(intent)
-                    getActivity()!!.finish()
+                    activity!!.finish()
                     //  Toast.makeText(this, "อาหาร ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
                 }else if(textlistsetting.equals("จัดรายการอาหารของฉัน")){
                     val intent = Intent(view.context, list_edit_food_private::class.java)
                     intent.putExtra("UID", UIDs)
                     startActivity(intent)
-                    getActivity()!!.finish()
+                    activity!!.finish()
                     //  Toast.makeText(this, "อาหาร ยังไม่ได้ทำ", Toast.LENGTH_LONG).show()
                 }
                 else {
                     val intent = Intent(view.context, list_edit_excercise_private::class.java)
                     intent.putExtra("UID", UIDs)
                     startActivity(intent)
-                    getActivity()!!.finish()
+                    activity!!.finish()
 
                 }
 
@@ -104,7 +104,7 @@ class SETTING_Fragment : Fragment() {
             val intent = Intent(this.context, Login_user::class.java)
             myAut.signOut()
             startActivity(intent)
-            getActivity()!!.finish()
+            activity!!.finish()
         }
         return v
     }

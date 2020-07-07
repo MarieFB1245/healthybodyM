@@ -104,6 +104,7 @@ var backtohome:String=""
                 }else{
                     val intent = Intent(this, selectelistfood_user_private::class.java)
                     intent.putExtra("UID",UID)
+                    intent.putExtra("nametypeStatus",nametypeStatus)
                     startActivity(intent)
                     finish()
 

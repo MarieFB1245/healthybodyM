@@ -76,14 +76,14 @@ var sumfood :Int =0
             val intent = Intent(this.context,selectlistexcercise_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
-            getActivity()!!.finish()
+            activity!!.finish()
         }
 
         v.addfood.setOnClickListener{
             val intent = Intent(this.context,selectlistfood_user::class.java)
             intent.putExtra("UID",UID)
             startActivity(intent)
-            getActivity()!!.finish()
+            activity!!.finish()
         }
 
 

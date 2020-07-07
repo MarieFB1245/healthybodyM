@@ -266,7 +266,7 @@ v.addmenu.setOnClickListener {
         intent.putExtra("UID",UID)
         intent.putExtra("back_home_add",back_home_add)
         startActivity(intent)
-        getActivity()!!.finish()
+        activity!!.finish()
     }else{
 
         val back_home_add = "excercise"
@@ -274,7 +274,7 @@ v.addmenu.setOnClickListener {
         intent.putExtra("UID",UID)
         intent.putExtra("back_home_add",back_home_add)
         startActivity(intent)
-        getActivity()!!.finish()
+        activity!!.finish()
 
     }
 
