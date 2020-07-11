@@ -24,6 +24,7 @@
             android:id="@+id/a"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             >
 
             <LinearLayout
@@ -38,12 +39,18 @@
                     android:id="@+id/TVam"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
                     android:text="จำนวนรายการที่เลือก"></TextView>
 
                 <TextView
                     android:id="@+id/TVcal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
                     android:layout_below="@+id/TVam"
                     android:text="เเคลทั้งหมด"></TextView>
             </LinearLayout>
@@ -65,6 +72,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
                     android:text="0"></TextView>
 
 
@@ -74,6 +83,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/TVam"
                     android:gravity="center"
+                    android:textSize="17dp"
+                    android:textColor="#ffffff"
                     android:text="0"></TextView>
             </LinearLayout>
 
@@ -92,17 +103,21 @@
                     android:id="@+id/TVamtwo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
                     android:text="รายการ"></TextView>
 
                 <TextView
                     android:id="@+id/TVcaltwo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
                     android:text="kcal"></TextView>
             </LinearLayout>
 
 
-            <LinearLayout
+           <!-- <LinearLayout
                 android:id="@+id/Linfour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -114,8 +129,10 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/food"></ImageView>
-            </LinearLayout>
+                    android:src="@drawable/food"
+                    android:outlineSpotShadowColor="#FFFFFF"
+                    ></ImageView>
+            </LinearLayout>-->
 
         </RelativeLayout>
 
@@ -128,7 +145,31 @@
             android:background="#b3b3b3"
             android:layout_margin="10dp"
             />
-
+      <!--  <LinearLayout
+            android:id="@+id/dd"
+            android:layout_below="@id/tt"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textkcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="17dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="ชื่ออาหาร"></TextView>
+        <TextView
+            android:id="@+id/namefood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#ffffff"
+            android:textSize="17dp"
+            android:gravity="center_horizontal"
+            android:text="เเคลลอรี่"></TextView>
+        </LinearLayout>-->
         <androidx.recyclerview.widget.RecyclerView
             android:layout_below="@id/tt"
             android:id="@+id/fragListRecycleVeiew"

@@ -7,7 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
 
@@ -16,10 +15,10 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:gravity="center_vertical"
             android:layout_height="match_parent"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:text="name" />
         <LinearLayout
             android:layout_width="150dp"
@@ -29,10 +28,10 @@
             <TextView
                 android:id="@+id/kcal"
                 android:layout_width="match_parent"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:gravity="center"
                 android:text="kcal"/>
             <TextView
@@ -40,9 +39,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:text="kcal" />
         </LinearLayout>
 
@@ -50,6 +49,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#000000" />
+        android:background="#b3b3b3" />
 
 </LinearLayout>

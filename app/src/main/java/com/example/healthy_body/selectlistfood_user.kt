@@ -275,7 +275,13 @@ var back_home_add:String =""
                       namefoodstring = namefood
                       Log.e("name","$namefood")
                       if(namefoodstring =="") {
-
+                          SweetAlertDialog(this@selectlistfood_user, SweetAlertDialog.ERROR_TYPE)
+                              .setTitleText("ไม่ค้นพบที่ค้นหา")
+                              .setContentText("กรุณาลองถ่ายใหม่อีกครั้ง")
+                              .setConfirmText("ตกลง")
+                              .showCancelButton(true)
+                              .setCancelClickListener { sDialog -> sDialog.cancel() }
+                              .show()
                       }else{
                           ref.orderByChild("namefood")
                           ref.addListenerForSingleValueEvent(object : ValueEventListener{
@@ -315,13 +321,7 @@ var back_home_add:String =""
 
                                       }else{
                                           Log.e("data","DON have")
-                                          SweetAlertDialog(this@selectlistfood_user, SweetAlertDialog.ERROR_TYPE)
-                                              .setTitleText("ไม่ค้นพบที่ค้นหา")
-                                              .setContentText("กรุณาลองถ่ายใหม่อีกครั้ง")
-                                              .setConfirmText("ตกลง")
-                                              .showCancelButton(true)
-                                              .setCancelClickListener { sDialog -> sDialog.cancel() }
-                                              .show()
+
                                       }
                                   }
                               }

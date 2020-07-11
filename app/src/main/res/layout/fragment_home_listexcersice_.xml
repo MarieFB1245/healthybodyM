@@ -18,7 +18,8 @@
         <RelativeLayout
             android:id="@+id/a"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
             <LinearLayout
                 android:id="@+id/Linone"
@@ -32,6 +33,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="จำนวนรายการที่เลือก"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
                     ></TextView>
 
                 <TextView
@@ -40,6 +44,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="เเคลทั้งหมด"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
                     ></TextView>
             </LinearLayout>
 
@@ -58,6 +65,8 @@
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
                     ></TextView>
 
 
@@ -68,6 +77,8 @@
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:gravity="center"
+                    android:textSize="17dp"
+                    android:textColor="#ffffff"
                     ></TextView>
             </LinearLayout>
 
@@ -85,17 +96,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="รายการ"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
                     ></TextView>
                 <TextView
                     android:id="@+id/TVcaltwo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="kcal"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
                     ></TextView>
             </LinearLayout>
 
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:id="@+id/Linfour"
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
@@ -110,7 +125,7 @@
                     android:layout_height="50dp"
                     android:src="@drawable/gym"
                     ></ImageView>
-            </LinearLayout>
+            </LinearLayout>-->
 
         </RelativeLayout>
 

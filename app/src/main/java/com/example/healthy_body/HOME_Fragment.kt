@@ -202,7 +202,7 @@ Log.e("time","$timeselect_Fragment")
         }
         v.list_food_fragment.setOnClickListener {
            v.addmenu.isVisible = true
-            v.addmenu.setText("เพิ่มรายการอาหาร")
+            v.addmenu.setText("เพิ่มอาหาร")
             number_add = 1
             v.line1.isVisible = false
             v.line2.isVisible = true
@@ -233,7 +233,7 @@ Log.e("time","$timeselect_Fragment")
 
         v.list_excersice_fragment.setOnClickListener {
             v.addmenu.isVisible = true
-            v.addmenu.setText("เพิ่มรายการกิจกกรม")
+            v.addmenu.setText("เพิ่มกิจกกรม")
             number_add = 2
             v.line1.isVisible = false
             v.line2.isVisible = false

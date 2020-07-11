@@ -9,8 +9,8 @@
         android:endColor="#273848"
         android:type="linear">
     </gradient>
-    <!--  <solid android:color="#334478"></solid>-->
+    <!--  <solid android:color="#334478"></solid>
        <corners android:topLeftRadius="40dp"
            android:topRightRadius="40dp"
-           />
+           />-->
  </shape>

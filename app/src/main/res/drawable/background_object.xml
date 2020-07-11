@@ -10,7 +10,7 @@
            android:endColor="#202e51"
            android:type="linear">
        </gradient>-->
-    <solid android:color="#ffffff"/>
+    <solid android:color="#1b2432"/>
     <!--  <gradient
           android:angle="90"
           android:startColor="ffffff"
@@ -21,7 +21,7 @@
             android:elevation="10dp"
             ></solid>-->
 
-    <stroke android:width="2dp"
+    <stroke android:width="0.9dp"
           android:color="#696969"/>
       <corners android:radius="15dp"/>
    <!-- <solid android:color="#334478"></solid>-->

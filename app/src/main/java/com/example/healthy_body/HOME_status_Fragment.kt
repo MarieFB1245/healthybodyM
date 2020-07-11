@@ -125,7 +125,7 @@ var sumfood :Int =0
 
                 val dataSet = PieDataSet(pieEntries, "KCAL")
                 val colors = ArrayList<Int>()
-                colors.add(Color.rgb(171,69,204))
+                colors.add(Color.rgb(255,0,0))
                 colors.add(Color.rgb(51,102,255))
                 dataSet.colors = colors
                 val data = PieData(dataSet)
@@ -135,7 +135,6 @@ var sumfood :Int =0
                 chart.data = data
                 chart.isDrawHoleEnabled = false
                 chart.centerTextRadiusPercent
-
                 chart.setCenterTextSizePixels(500f)
                 data.setValueTextSize(30f)
                 chart.animateY(500)
@@ -153,6 +152,7 @@ var sumfood :Int =0
                 val BMI = map1!!["bmis"].toString()
                 val BMR = map1!!["BMR"].toString()
                 val TDEE = map1["TDEE"].toString()
+                val status = map1["status"].toString()
                 if(BMI !=""){
                     progest.cancel()
                     TDEEshow.text = TDEE
@@ -165,6 +165,21 @@ var sumfood :Int =0
                 volume_Eat_number.setText(sumfood.toString())
                 volume_Excercise_number.setText(sumexcercise.toString())
                 Total_volume_kcal_todate.setText(result.toString())
+
+           /*     if(status == "ปกติ"){
+                 statusname.setText(status)
+                    statusname.setTextColor(Color.parseColor("#33cc33"))
+                }else if (status == "เริ่มอ้วน"){
+                    statusname.setText(status)
+                    statusname.setTextColor(Color.parseColor("#ffcc00"))
+                }else if (status == "อ้วน"){
+                    statusname.setText(status)
+                    statusname.setTextColor(Color.parseColor("#ff6600"))
+                }else {
+                    statusname.setText(status)
+                    statusname.setTextColor(Color.parseColor("#ff0000"))
+                }*/
+
 
                 if(sumfood==0){
                     Level_Eat_status.setText("ไม่มีข้อมูล")

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Home_User"
     android:id="@+id/home_user"
-    android:background="@drawable/backgroud_status"
+    android:background="#161e29"
     >
 
     <LinearLayout
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#cccccc"
+        android:background="@drawable/bacckground_color"
         app:itemIconTint="@color/bottom_nav_item_color"
         app:itemTextAppearanceActive="@style/navTextActive"
         app:itemTextAppearanceInactive="@style/navTextInactive"
