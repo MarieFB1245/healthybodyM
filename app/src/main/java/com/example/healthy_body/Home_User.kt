@@ -227,10 +227,14 @@ if(intent.getStringExtra("backtohome")==null){
                 this.doubleBackToExitPressedOnce = false
             }
             .setConfirmClickListener {
+
+
                 val intent = Intent(this, Login_user::class.java)
                 myAut.signOut()
-                startActivity(intent)
                 this.finish()
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+
             }
             .show()
 

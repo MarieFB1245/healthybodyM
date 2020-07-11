@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.core.view.isVisible
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.healthy_body.model.modellistfood
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
@@ -124,42 +125,53 @@ var backtohome: String=""
             val adapter = GroupAdapter<ViewHolder>()
             firebaseSrarchQuery.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(p0: DataSnapshot) {
-                    p0.children.forEach {
-                        Log.d("text", it.toString())
-                        val food = it.getValue(modellistfood::class.java)
-                        if (food != null) {
-                            adapter.add(Food(food))
+                    if(p0.exists()) {
+                        p0.children.forEach {
+                            Log.d("text", it.toString())
+                            val food = it.getValue(modellistfood::class.java)
+                            if (food != null) {
+                                adapter.add(Food(food))
+                            }
                         }
-                    }
-                    adapter.setOnItemClickListener { item, view ->
-                        val fooditem = item as Food
+                        adapter.setOnItemClickListener { item, view ->
+                            val fooditem = item as Food
 
-                        if(backtohome !=""){
-                            val backtohome = "homeselectfood"
-                            val intent = Intent(view.context, savedatafood_user_private::class.java)
-                            intent.putExtra("UID",UID)
-                            intent.putExtra("backtohome",backtohome)
-                            intent.putExtra("namefood", fooditem.food.namefood)
-                            intent.putExtra("kcalfood", fooditem.food.kcal)
-                            intent.putExtra("id", fooditem.food.id_food)
-                            startActivity(intent)
-                            finish()
+                            if (backtohome != "") {
+                                val backtohome = "homeselectfood"
+                                val intent =
+                                    Intent(view.context, savedatafood_user_private::class.java)
+                                intent.putExtra("UID", UID)
+                                intent.putExtra("backtohome", backtohome)
+                                intent.putExtra("namefood", fooditem.food.namefood)
+                                intent.putExtra("kcalfood", fooditem.food.kcal)
+                                intent.putExtra("id", fooditem.food.id_food)
+                                startActivity(intent)
+                                finish()
 
-                        }else{
-                            val intent = Intent(view.context, savedatafood_user_private::class.java)
-                            intent.putExtra("UID",UID)
-                            intent.putExtra("namefood", fooditem.food.namefood)
-                            intent.putExtra("kcalfood", fooditem.food.kcal)
-                            intent.putExtra("id", fooditem.food.id_food)
-                            startActivity(intent)
-                            finish()
+                            } else {
+                                val intent =
+                                    Intent(view.context, savedatafood_user_private::class.java)
+                                intent.putExtra("UID", UID)
+                                intent.putExtra("namefood", fooditem.food.namefood)
+                                intent.putExtra("kcalfood", fooditem.food.kcal)
+                                intent.putExtra("id", fooditem.food.id_food)
+                                startActivity(intent)
+                                finish()
+
+                            }
+
 
                         }
-
-
-
+                        mRecycleVeiew.adapter = adapter
+                    }else{
+                        SweetAlertDialog(this@selectelistfood_user_private, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("ไม่ค้นพบที่ค้นหา")
+                            .setContentText("กรุณากรอกข้อมูลให้ถูกต้อง")
+                            .setConfirmText("ต้องการ!")
+                            .showCancelButton(true)
+                            .setCancelClickListener { sDialog -> sDialog.cancel() }
+                            .show()
                     }
-                    mRecycleVeiew.adapter = adapter
                 }
 
                 override fun onCancelled(p0: DatabaseError) {

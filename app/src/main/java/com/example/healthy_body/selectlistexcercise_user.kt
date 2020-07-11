@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.core.view.isVisible
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.healthy_body.model.modellistexcercise
 import com.example.healthy_body.model.modellistfood
 import com.google.firebase.database.*
@@ -221,42 +222,59 @@ class selectlistexcercise_user : AppCompatActivity() {
             val adapter = GroupAdapter<ViewHolder>()
             firebaseSrarchQuery.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(p0: DataSnapshot) {
-                    p0.children.forEach {
-                        Log.d("text", it.toString())
-                        val excercise = it.getValue(modellistexcercise::class.java)
-                        if (excercise != null) {
-                            adapter.add(Excercise(excercise))
+                    if(p0.exists()) {
+                        p0.children.forEach {
+                            Log.d("text", it.toString())
+                            val excercise = it.getValue(modellistexcercise::class.java)
+                            if (excercise != null) {
+                                adapter.add(Excercise(excercise))
+                            }
                         }
-                    }
-                    adapter.setOnItemClickListener { item, view ->
-                        val excerciseitem = item as Excercise
+                        adapter.setOnItemClickListener { item, view ->
+                            val excerciseitem = item as Excercise
 
-                        if(back_home_add !=""){
-                            val backtohome = "homeselectexcercise"
-                            val intent = Intent(view.context, savedataexcercise_user::class.java)
-                            intent.putExtra("UID",UID)
-                            intent.putExtra("backtohome",backtohome)
-                            intent.putExtra("nameexcercise", excerciseitem.excercise.name_excercise)
-                            intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
-                            intent.putExtra("id", excerciseitem.excercise.id_excercise)
-                            startActivity(intent)
-                            finish()
+                            if (back_home_add != "") {
+                                val backtohome = "homeselectexcercise"
+                                val intent =
+                                    Intent(view.context, savedataexcercise_user::class.java)
+                                intent.putExtra("UID", UID)
+                                intent.putExtra("backtohome", backtohome)
+                                intent.putExtra(
+                                    "nameexcercise",
+                                    excerciseitem.excercise.name_excercise
+                                )
+                                intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
+                                intent.putExtra("id", excerciseitem.excercise.id_excercise)
+                                startActivity(intent)
+                                finish()
 
-                        }else{
-                            val intent = Intent(view.context, savedataexcercise_user::class.java)
-                            intent.putExtra("UID",UID)
-                            intent.putExtra("nameexcercise", excerciseitem.excercise.name_excercise)
-                            intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
-                            intent.putExtra("id", excerciseitem.excercise.id_excercise)
-                            startActivity(intent)
-                            finish()
+                            } else {
+                                val intent =
+                                    Intent(view.context, savedataexcercise_user::class.java)
+                                intent.putExtra("UID", UID)
+                                intent.putExtra(
+                                    "nameexcercise",
+                                    excerciseitem.excercise.name_excercise
+                                )
+                                intent.putExtra("kcalexcercise", excerciseitem.excercise.kcal)
+                                intent.putExtra("id", excerciseitem.excercise.id_excercise)
+                                startActivity(intent)
+                                finish()
+
+                            }
+
 
                         }
-
-
-
+                        mRecycleVeiew.adapter = adapter
+                    }else{
+                        SweetAlertDialog(this@selectlistexcercise_user, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("ไม่ค้นพบที่ค้นหา")
+                            .setContentText("กรุณากรอกข้อมูลให้ถูกต้อง")
+                            .setConfirmText("ต้องการ!")
+                            .showCancelButton(true)
+                            .setCancelClickListener { sDialog -> sDialog.cancel() }
+                            .show()
                     }
-                    mRecycleVeiew.adapter = adapter
                 }
 
                 override fun onCancelled(p0: DatabaseError) {
