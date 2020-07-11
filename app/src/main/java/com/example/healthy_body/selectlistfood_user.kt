@@ -386,10 +386,9 @@ var back_home_add:String =""
                         }
                         mRecycleVeiew.adapter = adapter
                     }else{
-                        SweetAlertDialog(this@selectlistfood_user, SweetAlertDialog.WARNING_TYPE)
+                        SweetAlertDialog(this@selectlistfood_user, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("ไม่ค้นพบที่ค้นหา")
-                            .setContentText("ต้องการเพิ่มลงในรายการหรือไม่?")
-                            .setCancelText("ไม่ต้องการ!")
+                            .setContentText("กรุณากรอกข้อมูลให้ถูกต้อง")
                             .setConfirmText("ต้องการ!")
                             .showCancelButton(true)
                             .setCancelClickListener { sDialog -> sDialog.cancel() }

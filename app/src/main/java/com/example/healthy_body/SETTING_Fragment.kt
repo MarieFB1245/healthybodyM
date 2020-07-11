@@ -103,6 +103,7 @@ class SETTING_Fragment : Fragment() {
         v.signout.setOnClickListener {
             val intent = Intent(this.context, Login_user::class.java)
             myAut.signOut()
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             activity!!.finish()
         }
