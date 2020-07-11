@@ -51,7 +51,7 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
         sum = intent.getIntExtra("sum", sum)
         date = intent.getStringExtra("date")
         idfoodShow = intent.getStringExtra("id")
-
+        val resultBigfoundation = resultBig
 
         val textdate = findViewById<TextView>(R.id.date)
         val textanmefood = findViewById<TextView>(R.id.nameexcercise)
@@ -85,40 +85,81 @@ class list_saveedit_excercise : AppCompatActivity(), View.OnClickListener {
                     val nametype: String = "EXCERCISE"
                     val nametypeStatus: String = "Remove"
                     val statusdoting = ""
-                    val resultB =  delectdata(UID,nameExcerciseShowB, kcalExcerciseShowB, resultBig, sum, date, idfoodShow,KEY,nametype).deelect()
-                    Log.e("resultB","${resultB}")
-                    savetotalkcal(resultBig, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
+
+                    if(resultBig  > resultBigfoundation || resultBig < resultBigfoundation) {
+                        val resultB =  delectdata(UID,nameExcerciseShowB, kcalExcerciseShowB, resultBigfoundation, sum, date, idfoodShow,KEY,nametype).deelect()
+                        Log.e("resultB","${resultB}")
+                        savetotalkcal(resultBigfoundation, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
 
 
-                    val pDialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
-                    pDialog.progressHelper.barColor = Color.parseColor("#A5DC86")
-                    pDialog.titleText = "กำลังทำการลบรายการ"
-                    pDialog.setCancelable(false)
-                    if (resultB.equals(true)){
-                        pDialog.setCancelable(true)
-                        pDialog
-      .setTitleText("ลบเรียบร้อยเเล้ว!")
-      .setContentText("ข้อมูลนี้จะไม่มีอยู่รายการของคุณ!").setConfirmText("ตกลง")
-      .setConfirmClickListener{
-          if(numberbackpage =="2"){
-          val backtohome = "homeselectexcercise"
-          val intent = Intent(this, Home_User::class.java)
-          intent.putExtra("UID",UID)
-          intent.putExtra("backtohome","$backtohome")
-          startActivity(intent)
-          finish()
-      }else{
-          val intent = Intent(this, list_edit_excercise::class.java)
-          intent.putExtra("UID",UID)
-          startActivity(intent)
-          finish()
-      }
+                        val pDialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                        pDialog.progressHelper.barColor = Color.parseColor("#A5DC86")
+                        pDialog.titleText = "กำลังทำการลบรายการ"
+                        pDialog.setCancelable(false)
+                        if (resultB.equals(true)){
+                            pDialog.setCancelable(true)
+                            pDialog
+                                .setTitleText("ลบเรียบร้อยเเล้ว!")
+                                .setContentText("ข้อมูลนี้จะไม่มีอยู่รายการของคุณ!").setConfirmText("ตกลง")
+                                .setConfirmClickListener{
+                                    if(numberbackpage =="2"){
+                                        val backtohome = "homeselectexcercise"
+                                        val intent = Intent(this, Home_User::class.java)
+                                        intent.putExtra("UID",UID)
+                                        intent.putExtra("backtohome","$backtohome")
+                                        startActivity(intent)
+                                        finish()
+                                    }else{
+                                        val intent = Intent(this, list_edit_excercise::class.java)
+                                        intent.putExtra("UID",UID)
+                                        startActivity(intent)
+                                        finish()
+                                    }
 
 
-      }
-      .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+                                }
+                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+                        }
+                        pDialog.show()
+                    }else{
+
+                        val resultB =  delectdata(UID,nameExcerciseShowB, kcalExcerciseShowB, resultBig, sum, date, idfoodShow,KEY,nametype).deelect()
+                        Log.e("resultB","${resultB}")
+                        savetotalkcal(resultBig, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
+
+
+                        val pDialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                        pDialog.progressHelper.barColor = Color.parseColor("#A5DC86")
+                        pDialog.titleText = "กำลังทำการลบรายการ"
+                        pDialog.setCancelable(false)
+                        if (resultB.equals(true)){
+                            pDialog.setCancelable(true)
+                            pDialog
+                                .setTitleText("ลบเรียบร้อยเเล้ว!")
+                                .setContentText("ข้อมูลนี้จะไม่มีอยู่รายการของคุณ!").setConfirmText("ตกลง")
+                                .setConfirmClickListener{
+                                    if(numberbackpage =="2"){
+                                        val backtohome = "homeselectexcercise"
+                                        val intent = Intent(this, Home_User::class.java)
+                                        intent.putExtra("UID",UID)
+                                        intent.putExtra("backtohome","$backtohome")
+                                        startActivity(intent)
+                                        finish()
+                                    }else{
+                                        val intent = Intent(this, list_edit_excercise::class.java)
+                                        intent.putExtra("UID",UID)
+                                        startActivity(intent)
+                                        finish()
+                                    }
+
+
+                                }
+                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+                        }
+                        pDialog.show()
                     }
-                    pDialog.show()
+
+
 
                 }
                 .show()

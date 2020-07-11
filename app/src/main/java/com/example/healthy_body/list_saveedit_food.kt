@@ -42,7 +42,6 @@ class list_saveedit_food : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_saveedit_food)
 if (intent.getStringExtra("numberbackpage")!=null) numberbackpage = intent.getStringExtra("numberbackpage")
-
         var add = findViewById<Button>(R.id.add)
         var sub = findViewById<Button>(R.id.sub)
         KEY = intent.getStringExtra("key")
@@ -53,7 +52,7 @@ if (intent.getStringExtra("numberbackpage")!=null) numberbackpage = intent.getSt
         sum = intent.getIntExtra("sum", sum)
         date = intent.getStringExtra("date")
         idfoodShow = intent.getStringExtra("id")
-
+val resultBigfoundation = resultBig
         val textdate = findViewById<TextView>(R.id.date)
         val textanmefood = findViewById<TextView>(R.id.namefood)
         val textkcal = findViewById<TextView>(R.id.Kcal)
@@ -91,39 +90,77 @@ if (intent.getStringExtra("numberbackpage")!=null) numberbackpage = intent.getSt
                     val nametype: String = "FOOD"
                     val nametypeStatus: String = "Remove"
                     val statusdoting = ""
-                   val resultB =  delectdata(UID,nameFoodShowB, kcalfoodShowB, resultBig, sum, date, idfoodShow,KEY,nametype).deelect()
-                    Log.e("resultB","${resultB}")
-                    savetotalkcal(resultBig, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
+                    if(resultBig  > resultBigfoundation || resultBig < resultBigfoundation){
+                        val resultB =  delectdata(UID,nameFoodShowB, kcalfoodShowB, resultBigfoundation, sum, date, idfoodShow,KEY,nametype).deelect()
 
+                        savetotalkcal(resultBigfoundation, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
 
-                    val pDialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
-                    pDialog.progressHelper.barColor = Color.parseColor("#A5DC86")
-                    pDialog.titleText = "กำลังทำการลบรายการ"
-                    pDialog.setCancelable(false)
-                    if (resultB.equals(true)){
-                        pDialog.setCancelable(true)
-                        pDialog
-                            .setTitleText("ลบเรียบร้อยเเล้ว!")
-                            .setContentText("ข้อมูลนี้จะไม่มีอยู่รายการของคุณ!").setConfirmText("ตกลง")
-                            .setConfirmClickListener{
-                                if(numberbackpage =="1"){
-                                    val backtohome = "homeselectfood"
-                                    val intent = Intent(this, Home_User::class.java)
-                                    intent.putExtra("UID",UID)
-                                    intent.putExtra("backtohome","$backtohome")
-                                    startActivity(intent)
-                                    finish()
-                                }else{
-                                    val intent = Intent(this, list_edit_food::class.java)
-                                    intent.putExtra("UID",UID)
-                                    startActivity(intent)
-                                    finish()
+                        val pDialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                        pDialog.progressHelper.barColor = Color.parseColor("#A5DC86")
+                        pDialog.titleText = "กำลังทำการลบรายการ"
+                        pDialog.setCancelable(false)
+                        if (resultB.equals(true)){
+                            pDialog.setCancelable(true)
+                            pDialog
+                                .setTitleText("ลบเรียบร้อยเเล้ว!")
+                                .setContentText("ข้อมูลนี้จะไม่มีอยู่รายการของคุณ!").setConfirmText("ตกลง")
+                                .setConfirmClickListener{
+                                    if(numberbackpage =="1"){
+                                        val backtohome = "homeselectfood"
+                                        val intent = Intent(this, Home_User::class.java)
+                                        intent.putExtra("UID",UID)
+                                        intent.putExtra("backtohome","$backtohome")
+                                        startActivity(intent)
+                                        finish()
+                                    }else{
+                                        val intent = Intent(this, list_edit_food::class.java)
+                                        intent.putExtra("UID",UID)
+                                        startActivity(intent)
+                                        finish()
+                                    }
+
                                 }
+                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+                        }
+                        pDialog.show()
 
-                            }
-                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+                    }else{
+                        val resultB =  delectdata(UID,nameFoodShowB, kcalfoodShowB, resultBig, sum, date, idfoodShow,KEY,nametype).deelect()
+
+
+                        savetotalkcal(resultBigfoundation, nametype, UID, statusdoting, nametypeStatus, date).savetotal()
+
+                        val pDialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                        pDialog.progressHelper.barColor = Color.parseColor("#A5DC86")
+                        pDialog.titleText = "กำลังทำการลบรายการ"
+                        pDialog.setCancelable(false)
+                        if (resultB.equals(true)){
+                            pDialog.setCancelable(true)
+                            pDialog
+                                .setTitleText("ลบเรียบร้อยเเล้ว!")
+                                .setContentText("ข้อมูลนี้จะไม่มีอยู่รายการของคุณ!").setConfirmText("ตกลง")
+                                .setConfirmClickListener{
+                                    if(numberbackpage =="1"){
+                                        val backtohome = "homeselectfood"
+                                        val intent = Intent(this, Home_User::class.java)
+                                        intent.putExtra("UID",UID)
+                                        intent.putExtra("backtohome","$backtohome")
+                                        startActivity(intent)
+                                        finish()
+                                    }else{
+                                        val intent = Intent(this, list_edit_food::class.java)
+                                        intent.putExtra("UID",UID)
+                                        startActivity(intent)
+                                        finish()
+                                    }
+
+                                }
+                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+                        }
+                        pDialog.show()
+
+
                     }
-                    pDialog.show()
 
                 }
                 .show()
