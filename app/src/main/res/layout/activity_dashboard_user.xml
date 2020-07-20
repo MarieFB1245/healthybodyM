@@ -63,6 +63,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textStyle="bold"
+                android:textColor="#FFFFFF"
                 android:textSize="40px"
                 android:text="ผลสรุปของเดือน"></TextView>
             <TextView
@@ -73,6 +74,7 @@
                 android:layout_weight="1"
                 android:textSize="40px"
                 android:textStyle="bold"
+                android:textColor="#FFFFFF"
                 android:text="มิถุนายน"></TextView>
             <TextView
                 android:id="@+id/yearTH"
@@ -81,6 +83,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textSize="40px"
+                android:textColor="#FFFFFF"
                 android:layout_weight="1"
                 android:text="0000">
                 ></TextView>
@@ -100,6 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
+                android:textColor="#FFFFFF"
                 android:text="ปริมาณรับเเคลอรี่ทั้งหมด"></TextView>
 
             <TextView
@@ -107,6 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:textColor="#FFFFFF"
                 android:layout_weight="1"
                 android:text="0"></TextView>
             <TextView
@@ -114,6 +119,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
+                android:textColor="#FFFFFF"
                 android:text="kcal">
                 ></TextView>
         </LinearLayout>
@@ -133,6 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
+                android:textColor="#FFFFFF"
                 android:text="ปริมาณเผาผลานเเคลอรี่ทั้งหมด"></TextView>
 
             <TextView
@@ -141,12 +148,14 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
+                android:textColor="#FFFFFF"
                 android:text="0"></TextView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
+                android:textColor="#FFFFFF"
                 android:text="kcal">
                 ></TextView>
         </LinearLayout>

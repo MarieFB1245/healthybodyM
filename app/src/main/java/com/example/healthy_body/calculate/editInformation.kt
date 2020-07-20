@@ -4,7 +4,7 @@ import android.content.Intent
 import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
 import com.example.healthy_body.Home_User
-import com.example.healthy_body.model.User
+import com.example.healthy_body.model.user
 import com.example.healthy_body.model.useredit
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference

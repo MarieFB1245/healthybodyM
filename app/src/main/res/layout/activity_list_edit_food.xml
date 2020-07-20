@@ -44,6 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="วันที่"
+                    android:textColor="#FFFFFF"
                     ></TextView>
 
                 <TextView
@@ -52,6 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="เเคลทั้งหมด"
+                    android:textColor="#FFFFFF"
                     ></TextView>
             </LinearLayout>
 
@@ -69,6 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0"
+                    android:textColor="#FFFFFF"
                     android:gravity="center_vertical"
                     ></TextView>
 
@@ -79,6 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0"
+                    android:textColor="#FFFFFF"
                     android:gravity="center_vertical"
                     ></TextView>
             </LinearLayout>
@@ -105,6 +109,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="kcal"
+                    android:textColor="#FFFFFF"
                     ></TextView>
             </LinearLayout>
 

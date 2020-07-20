@@ -41,6 +41,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
                 android:text="รายการทั้งหมด"
+                android:textColor="#FFFFFF"
                 ></TextView>
             <TextView
                 android:id="@+id/list_num_food"
@@ -50,6 +51,7 @@
                 android:gravity="center_vertical"
                 android:textSize="20dp"
                 android:text="0"
+                android:textColor="#FFFFFF"
                 ></TextView>
             <TextView
                 android:layout_width="wrap_content"
@@ -58,6 +60,7 @@
                 android:gravity="center_vertical"
                 android:textSize="15dp"
                 android:text="รายการ"
+                android:textColor="#FFFFFF"
                 ></TextView>
 
             <ImageView

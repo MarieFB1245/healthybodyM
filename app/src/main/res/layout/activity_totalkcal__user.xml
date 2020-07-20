@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="สถานะร่างกายของคุณ"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="20sp"></TextView>
 
 
@@ -124,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ค่า BMR ของคุณตอนนี้ : "
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="20sp"></TextView>
 
 
@@ -133,7 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Null"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="20sp"></TextView>
 
             <TextView
@@ -141,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" kcal"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="20sp"></TextView>
 
         </LinearLayout>
@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ค่า TDEE ของคุณตอนนี้ : "
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="20sp"></TextView>
 
 
@@ -170,7 +170,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Null"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="20sp"></TextView>
 
             <TextView
@@ -178,7 +178,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" kcal"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="20sp"></TextView>
 
         </LinearLayout>
@@ -214,7 +214,7 @@
             android:layout_height="wrap_content"
             android:text="การลดน้ำหนัก"
             android:paddingLeft="10dp"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="20sp"></TextView>
 </RelativeLayout>
 
@@ -228,7 +228,7 @@
                     android:layout_marginTop="5dp"
                     android:paddingLeft="10dp"
                     android:text="คุณควรรับประทานอาหารให้ครบ 3 มื้อโดยการรับประทานอาหารให้ถึงค่า BMR เเต่ไม่ควรรับประทานอาหารเกินค่า TDEE เเละถ้าออกกำลังกายควบคู่จะสามารถลดน้ำหนัดได้เร็วขึ้น"
-                    android:textColor="#000000"
+                    android:textColor="#ffffff"
                     android:textSize="20sp"></TextView>
             </RelativeLayout>
     </LinearLayout>

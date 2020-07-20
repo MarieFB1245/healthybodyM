@@ -32,7 +32,7 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import androidx.core.view.isVisible
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.healthy_body.calculate.select_month_and_year
-import com.example.healthy_body.model.User
+import com.example.healthy_body.model.user
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.PercentFormatter
@@ -254,7 +254,7 @@ class dashboard_user : AppCompatActivity() {
 
                         val dataSet = PieDataSet(pieEntries, "KCAL")
                         val colors = java.util.ArrayList<Int>()
-                        colors.add(Color.rgb(171,69,204))
+                        colors.add(Color.rgb(255,0,0))
                         colors.add(Color.rgb(51,102,255))
                         dataSet.colors = colors
                         val data = PieData(dataSet)
@@ -275,7 +275,7 @@ class dashboard_user : AppCompatActivity() {
 
 
                         var bardataset = BarDataSet(totalfood,"TOTALFOOD")
-                        bardataset.setColors(Color.rgb(171,69,204))
+                        bardataset.setColors(Color.rgb(255,0,0))
                         bardataset.setValueTextColor(Color.WHITE)
 
 
@@ -327,8 +327,8 @@ class dashboard_user : AppCompatActivity() {
                                 var lowCapacity = textTDEE!!.BMR
                                 val ll = LimitLine(maxCapacity!!.toFloat(), "TDEE")
                                 val l2 = LimitLine(lowCapacity!!.toFloat(), "BMR")
-                                ll.setTextColor(Color.BLACK)
-                                l2.setTextColor(Color.BLACK)
+                                ll.setTextColor(Color.WHITE)
+                                l2.setTextColor(Color.WHITE)
                                 barChartView.getAxisLeft().addLimitLine(ll)
                                 barChartView.getAxisLeft().addLimitLine(l2)
                             }
@@ -360,13 +360,13 @@ class dashboard_user : AppCompatActivity() {
                         barChartView.groupBars(0f,groupspace,barSpace)
                         barChartView.description.setEnabled(false)
 
-                        barChartView.setBackgroundResource(R.color.myPeach)
+                        barChartView.setBackgroundResource(R.color.g)
+                        barChartView.setNoDataTextColor(R.color.myPeach)
 
-
-                        barChartView.getAxisLeft().setTextColor(Color.BLACK); // left y-axis
-                        barChartView.getAxisRight().setTextColor(Color.BLACK)
-                        barChartView.getXAxis().setTextColor(Color.BLACK);
-                        barChartView.getLegend().setTextColor(Color.BLACK);
+                        barChartView.getAxisLeft().setTextColor(Color.WHITE); // left y-axis
+                        barChartView.getAxisRight().setTextColor(Color.WHITE)
+                        barChartView.getXAxis().setTextColor(Color.WHITE);
+                        barChartView.getLegend().setTextColor(Color.WHITE);
 
                         j=j+1
                         Log.e("j","$j")

@@ -7,8 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="30dp"
         >
         <TextView
             android:id="@+id/name"
@@ -17,7 +17,6 @@
             android:textColor="#000000"
             android:layout_height="wrap_content"
             android:textSize="25dp"
-
             android:text="name" />
         <LinearLayout
             android:layout_width="150dp"
@@ -46,6 +45,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#000000" />
+        android:background="#b3b3b3" />
 
 </LinearLayout>

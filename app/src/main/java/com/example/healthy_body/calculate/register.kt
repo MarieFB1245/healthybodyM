@@ -1,7 +1,7 @@
 package com.example.healthy_body.calculate
 
 import android.util.Log
-import com.example.healthy_body.model.User
+import com.example.healthy_body.model.user
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import java.text.DecimalFormat
@@ -25,7 +25,7 @@ class register(val uid:String,val email :String,val password :String,val age :Fl
         val myRef = FirebaseDatabase.getInstance().getReference("/users/$uid")
 
 
-        val user = User(
+        val user = user(
             uid,
             email,
             password,
