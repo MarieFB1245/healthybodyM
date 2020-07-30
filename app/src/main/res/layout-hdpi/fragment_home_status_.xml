@@ -278,14 +278,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
+
                 <TextView
                     android:id="@+id/TV_text_TH_TDEE"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ค่าปริมาณที่ใช้เเต่ละวัน"
                     android:textColor="#ffffff"
-                    android:textSize="12dp"
-                    ></TextView>
+                    android:textSize="15dp"></TextView>
 
 
                 <TextView
@@ -345,14 +345,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
+
                 <TextView
                     android:id="@+id/TV_text_TH_BMR"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ค่าปริมาณพลังงานพื้นฐาน"
                     android:textColor="#ffffff"
-                    android:textSize="12dp"
-                    ></TextView>
+                    android:textSize="15dp"></TextView>
 
 
                 <TextView
@@ -370,7 +370,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/Li_BMR"
                 android:orientation="horizontal"
-                android:layout_marginLeft="26dp"
+                android:layout_marginLeft="24dp"
                 >
                 <TextView
                     android:id="@+id/numBMR"
@@ -412,14 +412,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
+
                 <TextView
                     android:id="@+id/TV_text_TH_BMI"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ค่าดัชนีมวลกาย "
                     android:textColor="#ffffff"
-                    android:textSize="12dp"
-                    ></TextView>
+                    android:textSize="15dp"></TextView>
 
 
                 <TextView
@@ -437,7 +437,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/Li_BMI"
                 android:orientation="horizontal"
-                android:layout_marginLeft="74dp"
+                android:layout_marginLeft="81dp"
 
                 >
                 <TextView
