@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
@@ -101,11 +102,34 @@ class SETTING_Fragment : Fragment() {
             v.setting_user.adapter = adapter
         }
         v.signout.setOnClickListener {
-            val intent = Intent(this.context, Login_user::class.java)
+            SweetAlertDialog(this.context, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("คุณเเน่ใจ?")
+                .setContentText("ว่าต้องการออกจากระบบ!")
+                .setCancelText("ไม่ต้องการ!")
+                .setConfirmText("ต้องการ!")
+                .showCancelButton(true)
+                .setCancelClickListener { sDialog -> sDialog.cancel()
+
+                }
+                .setConfirmClickListener {
+
+
+                    val intent = Intent(this.context, Login_user::class.java)
+                    myAut.signOut()
+                    this.activity!!.finish()
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+
+                }
+                .show()
+
+
+
+           /* val intent = Intent(this.context, Login_user::class.java)
             myAut.signOut()
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-            activity!!.finish()
+            activity!!.finish()*/
         }
         return v
     }
